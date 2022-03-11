@@ -4,24 +4,16 @@
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
   <script language="JavaScript">
-    let z = "It could either be " + 2.3 + " or " + 5;
-    //document.write(z);
+    function checkCollege(college) {
+      let entered = college.value;
+      window.alert(1995 + parseInt(entered))
+    }
   </script>
 </head>
 <body>
-  <table>
-    <tr>
-      <th scope="col">Make</th>
-      <th scope="col">Model</th>
-    </tr>
-    <tr>
-      <td>Apple</td>
-      <td>iMac</td>
-    </tr>
-    <tr>
-      <td>Dell</td>
-      <td>Vostro</td>
-    </tr>
-  </table>
+  <form>
+    <input name="College" type="text" value="Age"
+           size="22" onchange="checkCollege(this)">
+  </form>
 </body>
 </html>
