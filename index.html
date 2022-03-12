@@ -4,22 +4,17 @@
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
   <script language="JavaScript">
-    /*
-    let tasty = "pasta"
-    switch (tasty) {
-      case "burrito":
-        cuisine = "Mexican"
-      case "tofu":
-        cuisine = "Chinese"
-      case "pasta":
-        cuisine = "Italian"
-      case "hummus":
-        cuisine = "Middle Eastern"
-      default:
-        cuisine = "American"
+    for (let year = 2003, lastyear = 2007; year < lastyear; year++) {
+      let years = lastyear - year
+      document.write('In the fall of ' + year)
+      if (year == 2006) {
+        document.write(', I graduated early.<br>')
+        break
+      }
+      document.write(', I will have ' + years)
+      document.write(' year' + (year > 1 ? 's' : ''))
+      document.write(' of school left.<br>')
     }
-    document.write(cuisine);
-    */
   </script>
 </head>
 <body>
@@ -28,7 +23,7 @@
     <input name="College" type="text" value="Age"
            size="22" onchange="checkCollege(this)">
   </form>
-  -->
+
   <table>
     <tr>
       <th scope="col">Make</th>
@@ -46,5 +41,6 @@
       <td>$49</td>       
     </tr>
   </table>
+  -->
 </body>
 </html>
