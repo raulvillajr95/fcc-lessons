@@ -1,11 +1,10 @@
+th, td {
+  width: 33%;
+  border: 1px solid black;
+  padding: .5em;    
+}
+
 table {
+  width: 50%;
   border-collapse: collapse;
-}
-
-th {
-  border-bottom: 1px solid black;
-}
-
-td {
-  padding: .5em .5em 0 .5em;
 }
