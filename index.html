@@ -4,17 +4,12 @@
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
   <script language="JavaScript">
-    for (let year = 2003, lastyear = 2007; year < lastyear; year++) {
-      let years = lastyear - year
-      document.write('In the fall of ' + year)
-      if (year == 2006) {
-        document.write(', I graduated early.<br>')
-        break
-      }
-      document.write(', I will have ' + years)
-      document.write(' year' + (year > 1 ? 's' : ''))
-      document.write(' of school left.<br>')
+    function quadranomial(x, a, b, c) {
+      return a + b*x + c*x*x
     }
+    x = 2
+    z = quadranomial(x, 4 , 3, 0)
+    document.write(typeof void quadranomial(1, 2, 3, 4))
   </script>
 </head>
 <body>
