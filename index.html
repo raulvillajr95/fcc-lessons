@@ -4,16 +4,28 @@
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
   <script language="JavaScript">
-    function checkCollege(college) {
-      let entered = college.value;
-      window.alert(1995 + parseInt(entered))
+    let tasty = "pasta"
+    switch (tasty) {
+      case "burrito":
+        cuisine = "Mexican"
+      case "tofu":
+        cuisine = "Chinese"
+      case "pasta":
+        cuisine = "Italian"
+      case "hummus":
+        cuisine = "Middle Eastern"
+      default:
+        cuisine = "American"
     }
+    document.write(cuisine);
   </script>
 </head>
 <body>
+  <!--
   <form>
     <input name="College" type="text" value="Age"
            size="22" onchange="checkCollege(this)">
   </form>
+  -->
 </body>
 </html>
