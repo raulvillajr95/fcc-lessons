@@ -4,54 +4,31 @@
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
   <script language="JavaScript">
-    function ssWrite() {
-      document.write('<table width="' + (50 + this.length * 100) + '"')
-      document.write(' border="1" cellspacing="1" cellpadding="1">')
-      document.write('<tr><td width="50" align="center"></td>')
-      for (var column = 0; column < this.length; column++) {
-        document.write('<td width="100" align="center"><b>')
-        document.write(c2name(column))
-        document.write('</b></td>')
-      }
-      for (row = 0; row < this[0].length; row++) {
-        document.write('</tr><tr><td align="center"><b>' + (row + 1) + '</b>')
-        for (column = 0; column < this.length; column++) {
-          document.write('</td><td align="center">')
-          document.write(this[column][row].value)
-        }
-      }
-      document.write('</td></tr></table>')
+    function ssToString() {
+  let ssDisplay = '<table width="' + (50 + this.length * 100) + '"' +
+      ' border="1" cellspacing="1" cellpadding="1">' +
+      '<tr><td width="50" align="center"></td>'
+  for (let column = 0; column < this.length; column++) {
+    ssDisplay += '<td width="100" align="center"><b>' +
+        c2name(column) +
+        '</b></td>'
+  }
+  for (let row = 0; row < this[0].length; row++) {
+    ssDisplay += '</tr><tr><td align="center"><b>' + (row + 1) + '</b>'
+    for (column = 0; column < this.length; column++) {
+      ssDisplay += '</td><td align="center">' +
+          this[column][row].value
     }
-
-    function SSCol(column, rows) {
-      var i
-      var sscol = new Array(rows)
-      for (i = 0; i < rows; i++) {
-        sscol[i] = new SSCell(column, i)
-      }
-      return sscol
-    }
-
-    function SSheet(columns, rows) {
-      var i
-      var ssheet = new Array(columns)
-      for (i = 0; i < columns; i++) {
-        ssheet[i] = new SSCol(i, rows)
-      }
-      ssheet.write = ssWrite
-      return ssheet
-    }
-
-    mySheet = SSheet(2, 2)
-    mySheet[0][0].value = 32.4
-    mySheet[1][0].value = ''
-    mySheet[0][1].value = -27
-    mySheet[1][1].value = 7.5
-
-    mySheet.write()
+  }
+  ssDisplay += '</td></tr></table>'
+return ssDisplay
+}
+mySheet.toString = ssToString
+document.write(mySheet)
   </script>
 </head>
 <body>
+  <!--
   <table>
     <tr class="clicka">
       <th scope="col">Make</th>
@@ -66,5 +43,6 @@
       <td>Vostro</td>
     </tr>
   </table>
+-->
 </body>
 </html>
