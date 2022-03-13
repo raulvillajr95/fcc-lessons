@@ -4,27 +4,12 @@
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
   <script language="JavaScript">
-    function ssToString() {
-  let ssDisplay = '<table width="' + (50 + this.length * 100) + '"' +
-      ' border="1" cellspacing="1" cellpadding="1">' +
-      '<tr><td width="50" align="center"></td>'
-  for (let column = 0; column < this.length; column++) {
-    ssDisplay += '<td width="100" align="center"><b>' +
-        c2name(column) +
-        '</b></td>'
-  }
-  for (let row = 0; row < this[0].length; row++) {
-    ssDisplay += '</tr><tr><td align="center"><b>' + (row + 1) + '</b>'
-    for (column = 0; column < this.length; column++) {
-      ssDisplay += '</td><td align="center">' +
-          this[column][row].value
+    f = new Array(5)
+    for (let i = 0; i < 5; i++) {
+      let body = 'z = a * Math.pow(x,' + i + '); return z'
+      f[i] = new Function('a', 'x', body)
     }
-  }
-  ssDisplay += '</td></tr></table>'
-return ssDisplay
-}
-mySheet.toString = ssToString
-document.write(mySheet)
+    document.write(f[2](4, 4))
   </script>
 </head>
 <body>
