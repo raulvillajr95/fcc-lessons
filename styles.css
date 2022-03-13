@@ -6,6 +6,6 @@ th, td {
   height: 2em;
   border: 1px solid black;
 }
-td {
-  vertical-align: top;
+tr.clicka {
+  background-color: lightgray;
 }
