@@ -4,16 +4,51 @@
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
   <script language="JavaScript">
-    function genArray(n) {
-      this['lengthy'] = n
+    function ssWrite() {
+      document.write('<table width="' + (50 + this.length * 100) + '"')
+      document.write(' border="1" cellspacing="1" cellpadding="1">')
+      document.write('<tr><td width="50" align="center"></td>')
+      for (var column = 0; column < this.length; column++) {
+        document.write('<td width="100" align="center"><b>')
+        document.write(c2name(column))
+        document.write('</b></td>')
+      }
+      for (row = 0; row < this[0].length; row++) {
+        document.write('</tr><tr><td align="center"><b>' + (row + 1) + '</b>')
+        for (column = 0; column < this.length; column++) {
+          document.write('</td><td align="center">')
+          document.write(this[column][row].value)
+        }
+      }
+      document.write('</td></tr></table>')
     }
-    let threeColleges = new genArray(3)
-    threeColleges[0] = 'Bryn Mawr College'
-    threeColleges[1] = 'Haverford College'
-    threeColleges[2] = 'Swarthmore College'
 
-    document.write('threeColleges has length ' + threeColleges.lengthy + '.<br>')
-    document.write('threeColleges[0] == ' + threeColleges[0] + '.')
+    function SSCol(column, rows) {
+      var i
+      var sscol = new Array(rows)
+      for (i = 0; i < rows; i++) {
+        sscol[i] = new SSCell(column, i)
+      }
+      return sscol
+    }
+
+    function SSheet(columns, rows) {
+      var i
+      var ssheet = new Array(columns)
+      for (i = 0; i < columns; i++) {
+        ssheet[i] = new SSCol(i, rows)
+      }
+      ssheet.write = ssWrite
+      return ssheet
+    }
+
+    mySheet = SSheet(2, 2)
+    mySheet[0][0].value = 32.4
+    mySheet[1][0].value = ''
+    mySheet[0][1].value = -27
+    mySheet[1][1].value = 7.5
+
+    mySheet.write()
   </script>
 </head>
 <body>
