@@ -4,15 +4,16 @@
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
   <script language="JavaScript">
-    ssCellA1 = { column:0, row:0, name:cr2name, value:32.4 }
+    function genArray(n) {
+      this['lengthy'] = n
+    }
+    let threeColleges = new genArray(3)
+    threeColleges[0] = 'Bryn Mawr College'
+    threeColleges[1] = 'Haverford College'
+    threeColleges[2] = 'Swarthmore College'
 
-    document.write('<table width="150" border="1" cellspacing="1" cellpadding="1">')
-    document.write('<tr><td width="50" align="center"></td>')
-    document.write('<td width="100" align="center"><b>A</b></td>')
-    document.write('</tr><tr><td align="center"><b>1</b></td>')
-    document.write('<td align="center">')
-    document.write(ssCellA1.name() + ' == ' + ssCellA1.value)
-    document.write('</td></tr></table>')
+    document.write('threeColleges has length ' + threeColleges.lengthy + '.<br>')
+    document.write('threeColleges[0] == ' + threeColleges[0] + '.')
   </script>
 </head>
 <body>
