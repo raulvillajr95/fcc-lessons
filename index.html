@@ -4,30 +4,17 @@
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
   <script language="JavaScript">
-    /*
-    function quadranomial(x, a, b, c) {
-      return a + b*x + c*x*x
-    }
-    x = 2
-    z = quadranomial(x, 4 , 3, 0)
-    document.write(typeof void quadranomial(1, 2, 3, 4))
-    */
+    ssCellA1 = { column:0, row:0, name:cr2name, value:32.4 }
+
+    document.write('<table width="150" border="1" cellspacing="1" cellpadding="1">')
+    document.write('<tr><td width="50" align="center"></td>')
+    document.write('<td width="100" align="center"><b>A</b></td>')
+    document.write('</tr><tr><td align="center"><b>1</b></td>')
+    document.write('<td align="center">')
+    document.write(ssCellA1.name() + ' == ' + ssCellA1.value)
+    document.write('</td></tr></table>')
   </script>
 </head>
 <body>
-  <table>
-    <tr>
-      <th scope="col">Make</th>
-      <th scope="col">Model</th>
-    </tr>
-    <tr>
-      <td>Apple</td>
-      <td>iMac</td>
-    </tr>
-    <tr>
-      <td>Dell</td>
-      <td>Vostro</td>
-    </tr>
-  </table>
 </body>
 </html>
