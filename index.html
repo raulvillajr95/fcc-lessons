@@ -4,11 +4,38 @@
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
   <script language="JavaScript">
-    // document.write(Math.atan2(2)/Math.PI + '\u03c0')
+    let day1 = new Date('February 28, 2003')
+    let day2 = new Date('February 28, 2004')
+
+    day1.setHours(day1.getHours() + 24)
+    day2.setDate(day2.getDate() + 1)
+
+    document.write(day1 + '<br>' + day2)
+
+
+
+    let yearDiff = day2.getFullYear() - day1.getFullYear()
+    let monthDiffWrong = day2.getMonth() - day1.getMonth()
+    let monthDiffRight = day2.getMonth() - day1.getMonth() + yearDiff*12
+
+    document.write('yearDiff = ' + yearDiff + '<br>')
+    document.write('monthDiffWrong = ' + monthDiffWrong + '<br>')
+    document.write('monthDiffRight = ' + monthDiffRight)
+
+
+
+    dayDiffWrong = day2.getDate() - day1.getDate() + monthDiffRight*30
+    dayDiffRight = (day2.getTime() - day1.getTime())/1000/60/60/24
+    
+    document.write('dayDiffWrong = ' + dayDiffWrong + '<br>')
+    document.write('dayDiffRight = ' + dayDiffRight)
+    document.write('<br>' + day1.getTime() + ' ms')
   </script>
 </head>
 <body>
+  <!--
   Enter some text here:<br>
   <input type="text" name="city" size="10" maxlength="24">
+  -->
 </body>
 </html>
