@@ -3,39 +3,86 @@
 <head>
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
-  <script language="JavaScript">
-    let day1 = new Date('February 28, 2003')
-    let day2 = new Date('February 28, 2004')
-
-    day1.setHours(day1.getHours() + 24)
-    day2.setDate(day2.getDate() + 1)
-
-    document.write(day1 + '<br>' + day2)
-
-
-
-    let yearDiff = day2.getFullYear() - day1.getFullYear()
-    let monthDiffWrong = day2.getMonth() - day1.getMonth()
-    let monthDiffRight = day2.getMonth() - day1.getMonth() + yearDiff*12
-
-    document.write('yearDiff = ' + yearDiff + '<br>')
-    document.write('monthDiffWrong = ' + monthDiffWrong + '<br>')
-    document.write('monthDiffRight = ' + monthDiffRight)
-
-
-
-    dayDiffWrong = day2.getDate() - day1.getDate() + monthDiffRight*30
-    dayDiffRight = (day2.getTime() - day1.getTime())/1000/60/60/24
-    
-    document.write('dayDiffWrong = ' + dayDiffWrong + '<br>')
-    document.write('dayDiffRight = ' + dayDiffRight)
-    document.write('<br>' + day1.getTime() + ' ms')
-  </script>
 </head>
 <body>
-  <!--
-  Enter some text here:<br>
-  <input type="text" name="city" size="10" maxlength="24">
-  -->
+  <script language="JavaScript">
+    function data()
+    {
+      return 'Distance = ' + this.distance + ' AU\n' +
+             'Sidereal Period = ' + this.sidPeriod + ' years\n' +
+             'Synodic Period = ' + this.synPeriod + ' days\n' +
+             'Eccentricity = ' + this.eccentricity + '\n' +
+             'Orbital Inclination = ' + this.inclination + '\xB0'
+    }
+    // Planet constructor to be used with "new" keyword,
+    // so "this" refers to new object
+    function Planet(name, distance, sidPeriod, synPeriod,
+              eccentricity, inclination)
+    {
+      this.name = name
+      this.distance = distance // AU
+      this.sidPeriod = sidPeriod // years
+      this.synPeriod = synPeriod // days
+      this.eccentricity = eccentricity
+      this.inclination = inclination // degrees
+      this.data = data
+    }
+  
+    solarSystem = new Object
+    solarSystem.Sun = new Planet("Sun", 0, 0, 0, 0, 0)
+    solarSystem.Mercury =
+      new Planet("Mercury", 0.3871, 0.2408, 115.88, 0.206, 7.00)
+    solarSystem.Venus =
+      new Planet("Venus", 0.7233, 0.6152, 583.92, 0.007, 3.39)
+    solarSystem.Earth =
+      new Planet("Earth", 1.0000, 1.0000, '-', 0.017, 0.00)
+    solarSystem.Mars =
+      new Planet("Mars", 1.5237, 1.8809, 779.94, 0.093, 1.85)
+    solarSystem.Jupiter =
+      new Planet("Jupiter", 5.2028, 11.862, 398.9, 0.048, 1.31)
+    solarSystem.Saturn =
+      new Planet("Saturn", 9.5388, 29.458, 378.1, 0.056, 2.49)
+    solarSystem.Uranus =
+      new Planet("Uranus", 19.1914, 84.01, 369.7, 0.046, 0.77)
+    solarSystem.Neptune =
+      new Planet("Neptune", 30.0611, 164.79, 367.5, 0.010, 1.77)
+    solarSystem.Pluto =
+      new Planet("Pluto", 39.5294, 248.5, 366.7, 0.248, 17.15)
+  
+    function planetClick(btn)
+    {
+      document.planetForm.planetData.value =
+        solarSystem[btn.value].data()
+    }
+  </script>
+  
+  <form name="planetForm">
+    <input type="radio" name="planetButtons" value="Sun"
+      onClick="planetClick(this)">Sun
+    <input type="radio" name="planetButtons" value="Mercury"
+      onClick="planetClick(this)">Mercury
+    <input type="radio" name="planetButtons" value="Venus"
+      onClick="planetClick(this)">Venus
+    <input type="radio" name="planetButtons" value="Earth"
+      onClick="planetClick(this)">Earth
+    <input type="radio" name="planetButtons" value="Mars"
+      onClick="planetClick(this)">Mars
+    <input type="radio" name="planetButtons" value="Jupiter"
+      onClick="planetClick(this)">Jupiter
+    <input type="radio" name="planetButtons" value="Saturn"
+      onClick="planetClick(this)">Saturn
+    <input type="radio" name="planetButtons" value="Uranus"
+      onClick="planetClick(this)">Uranus
+    <input type="radio" name="planetButtons" value="Neptune"
+      onClick="planetClick(this)">Neptune
+    <input type="radio" name="planetButtons" value="Pluto"
+      onClick="planetClick(this)">Pluto
+    <br>
+    <textarea name="planetData" value="" readonly rows="5" cols="100">
+    </textarea>
+  </form>
+  
+  <script language="JavaScript">
+  </script>
 </body>
 </html>
