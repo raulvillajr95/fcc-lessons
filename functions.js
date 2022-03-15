@@ -1,14 +1,15 @@
-const numWins = {
-  'Buf': 11,
-  'MIA': 9,
-  'NE': 6,
-  'NYJ': 1
-};
+const score = {
+  Nathan: 8,
+  Mia: 10,
+  Jack: 7,
+  Sunny: 6
+}
 
-const atLeast9Wins = _.flow([
-  Object.entries,
-  arr => arr.filter(([key, value]) => value >= 9),
-  Object.fromEntries
-]) (numWins);
+const scoreArr = Object.entries(score)
 
-atLeast9Wins;
+let filteredArr = scoreArr.filter(function([key, value]) {
+  return key !== 'Jack';
+})
+
+
+console.log(filteredArr)
