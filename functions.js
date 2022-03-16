@@ -1,11 +1,11 @@
-const months = ['March', 'Jan', 'Feb', 'Dec'];
-months.sort();
+let x = function(x, y) {
+  return x * y;
+}
 
-const array1 = [1, 30, 4, 21, 100000]
-array1.sort(function(a,b) {
-  return a - b;
-});
+let z = (x, y) => x * y;
 
+function checkPositive(arr) {
+  return arr.every(currVal => currVal > 0)
+}
 
-console.log(months);
-console.log(array1);
+console.log(checkPositive([1, 2, 3, -4, 5]));
