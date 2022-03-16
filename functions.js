@@ -26,4 +26,5 @@ ideas
 -if false, add to new arr?
 -repeat but now test arr2 items in arr1
 -test different arrays
+-includes might be a strong option here
 */
