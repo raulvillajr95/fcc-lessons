@@ -1,7 +1,3 @@
-form {
-  font-family: Arial, sans-serif;
-}
-
-input[type="text"] {
-  font-size: 2em;
+h1, p {
+  color: orange;
 }
