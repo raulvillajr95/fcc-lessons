@@ -7,24 +7,20 @@ console.log(javascript_freelancers)
 */
 
 
-function diffArray(arr1, arr2) {
-  let merged = arr1.concat(arr2)
-  let arr = [];
-  for (let i = 0; i < arr1.length; i++) {
-    if (!arr2.includes(arr1[i])) {
-      arr.push(arr1[i]);
+function destroyer(arr) {
+  let main = [...arguments][0]
+  let ends = [...arguments].slice(1)
+  let final = []
+  for (let i = 0; i < main.length; i++) {
+    if(!ends.includes(main[i])) {
+      final.push(main[i]);
     }
   }
-  for (let j = 0; j < arr2.length; j++) {
-    if (!arr1.includes(arr2[j])) {
-      arr.push(arr2[j])
-    }
-    
-  }
-  return arr
+
+  return final
 }
 
-console.log(diffArray([1, 2, 1.1, 3, 5], [1, 2, 3, 4, 5]));
+console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
 
 /*
 ideas 
