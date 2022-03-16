@@ -1,10 +1,15 @@
 let z = (x, y) => x * y;
 
-function checkPositive(arr) {
-  let positives = arr.filter(n => n > 0)
-  return positives.some(currVal => currVal % 2 === 0)
+function arrowF(x) {
+  return y => z => y + x + z
 }
+console.log(arrowF(10)(20)(30));
 
-console.log(checkPositive([-1, -2, -3, -4, -5]));
-
-console.log(-4 % 2)
+function normalF(x) {
+  return function normalF2(y) {
+    return function normalF3(z) {
+      return x + y + z;
+    }
+  }
+}
+console.log(normalF(10)(20)(30))
