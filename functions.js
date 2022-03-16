@@ -1,15 +1,17 @@
-let z = (x, y) => x * y;
-
-function arrowF(x) {
-  return y => z => y + x + z
-}
-console.log(arrowF(10)(20)(30));
-
-function normalF(x) {
-  return function normalF2(y) {
-    return function normalF3(z) {
-      return x + y + z;
-    }
+function sumAll(arr) {
+  let sorted = arr.sort((a,b) => a - b);
+  let nums = [];
+  for (let i = sorted[0]; i <= sorted[1]; i++) {
+    nums.push(i);
   }
+  return nums.reduce((a,b) => a + b);
 }
-console.log(normalF(10)(20)(30))
+
+console.log(sumAll([1, 4]));
+
+/*
+ideas:
+-probably sort the given array
+-get new array of range of numbers
+-add up all numbers using reduce()
+*/
