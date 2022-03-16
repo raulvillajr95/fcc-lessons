@@ -7,27 +7,23 @@ console.log(javascript_freelancers)
 */
 
 
-function destroyer(arr) {
-  let main = [...arguments][0]
-  let ends = [...arguments].slice(1)
-  let final = []
-  for (let i = 0; i < main.length; i++) {
-    if(!ends.includes(main[i])) {
-      final.push(main[i]);
-    }
-  }
-
-  return final
+function whatIsInAName(collection, source) {
+  const arr = [];
+  // Only change code below this line
+  let sourceK = source[0]
+  let resolution = collection.filter(function(n) {
+    let 
+    return sourceK == sourceV
+  })
+  // Only change code above this line
+  return resolution;
 }
 
-console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }));
 
 /*
 ideas 
--loop through each arr1
--test if each item in arr1 is in arr2, using some()??
--if false, add to new arr?
--repeat but now test arr2 items in arr1
--test different arrays
--includes might be a strong option here
+-using filter()
+-return source value == source key
+-similar to the old reduce() lesson??
 */
