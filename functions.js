@@ -9,15 +9,22 @@ console.log(javascript_freelancers)
 
 function diffArray(arr1, arr2) {
   let merged = arr1.concat(arr2)
-  let newArr = merged.filter(function(n){
-    return arr1.includes(n) === false && !arr2.includes(n) === false
-  })
-
-
-  return newArr
+  let arr = [];
+  for (let i = 0; i < arr1.length; i++) {
+    if (!arr2.includes(arr1[i])) {
+      arr.push(arr1[i]);
+    }
+  }
+  for (let j = 0; j < arr2.length; j++) {
+    if (!arr1.includes(arr2[j])) {
+      arr.push(arr2[j])
+    }
+    
+  }
+  return arr
 }
 
-console.log(diffArray(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]));
+console.log(diffArray([1, 2, 1.1, 3, 5], [1, 2, 3, 4, 5]));
 
 /*
 ideas 
