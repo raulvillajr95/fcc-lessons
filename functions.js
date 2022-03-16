@@ -1,10 +1,21 @@
+
+let aquaticCreatures = creatures.filter(creature => creature.habitat == "Ocean")
+
+console.log(aquaticCreatures)
+
+
+
+/*
 function diffArray(arr1, arr2) {
   const newArr = [];
-  
-  return newArr;
+  let ar1 = arr1.filter(function(x) {
+    
+  })
+  return ar1;
 }
 
 console.log(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]));
+*/
 
 /*
 ideas 
