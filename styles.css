@@ -6,7 +6,11 @@ div#header {
   background-color: #990000;
 }
 div#header h2 {
-  color: yellow;
-  margin-left: 5%;
-  font-family: Helvetica;
-} 
+  font-family: Helvetica, Arial, sans-serif;
+  color: white;
+  margin-left: 3%;
+}
+div#header img {
+  float: left;
+  margin: 1em 0 1em 1em;
+}
