@@ -1,25 +1,18 @@
-
-/*
-let freelancers = [{name: "Harry", skill: "JavaScript"},{name: "Mark", skill: "Python"},{name: "David", skill:"JavaScript"}];
-
-let javascript_freelancers = freelancers.filter(x => x.skill == "JavaScript")
-console.log(javascript_freelancers)
-*/
-
-
 function whatIsInAName(collection, source) {
-  const arr = [];
   // Only change code below this line
-  let sourceK = source[0]
+  let sourceK = Object.keys(source)[0]
+  let sourceV = Object.values(source)[0]
   let resolution = collection.filter(function(n) {
-    let 
-    return sourceK == sourceV
+    return this.source;
   })
   // Only change code above this line
   return resolution;
 }
+console.log(whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "cookie": 2 }));
 
-console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }));
+let obbhy = { last: "Capulet" };
+
+//console.log(Object.values(obbhy))
 
 /*
 ideas 

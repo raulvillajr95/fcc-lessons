@@ -1,9 +1,12 @@
-div#main {
-  border: 1px solid black;
-  width: 100%;
+div#a {
+  width: 32%;
+  float: left;
 }
-div#secondary {
-  border: 1px solid black;
-  width: 90%;
-  margin: 0 auto 0 auto;
+div#b {
+  width: 32%;
+  float: left;
+}
+div#c {
+  width: 32%;
+  float: right;
 }
