@@ -1,12 +1,11 @@
-div#a {
-  width: 32%;
-  float: left;
+div#header {
+  background-color: #0033cc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
-div#b {
-  width: 32%;
-  float: left;
-}
-div#c {
-  width: 32%;
-  float: right;
+h1 {
+  color: #ffff00;
+  text-align: center;
 }
