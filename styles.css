@@ -1,6 +1,9 @@
-div {
-  font-weight: 900;
-  color: red;
-  font-family: "Comic Sans MS";
-  font-style: italic;
+div#main {
+  border: 1px solid black;
+  width: 100%;
+}
+div#secondary {
+  border: 1px solid black;
+  width: 90%;
+  margin: 0 auto 0 auto;
 }
