@@ -1,18 +1,16 @@
-/*
 function whatIsInAName(collection, source) {
+  const arr = [];
   // Only change code below this line
-  let sourceK = Object.keys(source)[0]
-  let sourceV = Object.values(source)[0]
-  let resolution = collection.filter(function(n) {
-    return this.source;
-  })
+  for (let i = 0; i < collection.length; i++) {
+    if(collection[i].hasOwnProperty(Object.keys(source))){
+      arr.push(collection[i])
+    }
+  }
   // Only change code above this line
-  return resolution;
+  return arr;
 }
-console.log(whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "cookie": 2 }));
 
-let obbhy = { last: "Capulet" };
-*/
+console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }))
 
 //console.log(Object.values(obbhy))
 
@@ -22,24 +20,3 @@ ideas
 -return source value == source key
 -similar to the old reduce() lesson??
 */
-
-let people = [
-  {name: "aaron", age: 65},
-  {name: "beth", age: 15},
-  {name: "cara", age: 13},
-  {name: "daniel", age: 3},
-  {name: "ella", age: 25},
-  {name: "fin", age: 16},
-  {name: "george", age: 18},
-]
-
-let range = {
-  lower: 13,
-  upper: 16
-}
-
-let teenagers = people.filter(function(person) {
-  return person.age >= this.lower && person.age <= this.upper;
-}, range)
-
-console.log(teenagers)
