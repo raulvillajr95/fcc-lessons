@@ -1,16 +1,16 @@
 div#header {
-  position: absolute;
-  width: 100%;
+  position: fixed;
   top: 0;
   left: 0;
-  background-color: #990000;
+  background-color: maroon;
 }
 div#header h2 {
   font-family: Helvetica, Arial, sans-serif;
   color: white;
   margin-left: 3%;
 }
-div#header img {
-  float: left;
-  margin: 1em 0 1em 1em;
+p#intro {
+  font-family: George, Times, serif;
+  font-size: 1.2em;
+  margin-top: 20%;
 }
