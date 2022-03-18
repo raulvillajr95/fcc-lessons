@@ -1,16 +1,7 @@
-div#header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: maroon;
+li {
+  list-style-type: circle;
 }
-div#header h2 {
-  font-family: Helvetica, Arial, sans-serif;
-  color: white;
-  margin-left: 3%;
-}
-p#intro {
-  font-family: George, Times, serif;
-  font-size: 1.2em;
-  margin-top: 20%;
+
+li li {
+  list-style-type: square;
 }
