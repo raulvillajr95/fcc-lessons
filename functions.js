@@ -1,12 +1,30 @@
-function whatIsInAName(collection, source) {
-  // Only change code below this line
-  for (let i = 0; i < collection.length; i++) {
-    console.log(collection[i].hasOwnProperty('last'))
+let arr = [
+  { id: 15 },
+  { id: -1 },
+  { id: 0 },
+  { id: 3 },
+  { id: 12.2 },
+  { },
+  { id: null },
+  { id: NaN },
+  { id: 'undefined' }
+]
+
+let invalidEntries = 0
+
+function filterByID(item) {
+  if (Number.isFinite(item.id) && item.id !== 0)
+{
+    return true
   }
-  // Only change code above this line
+  invalidEntries++
+  return false;
 }
 
-whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" })
+let arrByID = arr.filter(filterByID)
+
+console.log('Filtered Array\n', arrByID)
+console.log('Number of Invalid Entries = ', invalidEntries)
 
 /*
 ideas 
