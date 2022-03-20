@@ -1,41 +1,35 @@
-const user = {
-  name: "Dom",
-  age: 32,
-  occupation: "Web Developer"
-};
+function translatePigLatin(str) {
+  let splitted = str.split('')
+  let part = str.match(/(?:(?![aeiou])[a-z])+/)[0];
+  let partW = str.split(part);
 
-//console.log(Object.entries(user))
-
-
-
-
-function whatIsInAName(collection, source) {
-  let arr = [];
-  let final = [];
-  // Only change code below this line
-  let ks = Object.keys(source)
-  for (let i = 0; i < collection.length; i++) {
-    for (let j = 0; j < ks.length; j++) {
-      if(collection[i].hasOwnProperty(ks[j]) && collection[i][ks[j]] == source[ks[j]]) {
-        arr.push(true);
-        
-      }
-      if (arr.length == ks.length) {
-        final.push(collection[i])
-      }
-    }
-    arr = [];
+  if (splitted[0] == 'a' || splitted[0] == 'e' || splitted[0] == 'i' || splitted[0] == 'o' || splitted[0] == 'u') {
+    return str + 'way'
+  } else {
+    return //partW+part+'ay'
   }
-
-  // Only change code above this line
-  return final;
 }
 
-console.log(whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "cookie": 2 }));
+console.log(translatePigLatin("paragraphs"))
+
+/*
+function spinalCase(str) {
+  let splitted = str.match(/\W|[A-Z][a-z]+/g)
+  let lowered = [];
+  for (let i = 0; i < splitted.length; i++) {
+    if (splitted[i] == ' ') {
+      continue
+    } else {
+    lowered.push(splitted[i].toLowerCase())
+    }
+  }
+  return splitted
+}
+/*
+
 //console.log(...party)
 /*
 ideas 
--using filter()
--return source value == source key
--similar to the old reduce() lesson??
+-get index of first appearce 
+-slice the rest, that way it wont get multiple appearances of consonant cluster
 */
