@@ -14,21 +14,14 @@ function translatePigLatin(str) {
 
 
 function spinalCase(str) {
-  let splitted = str.match(/\W|[A-Z][a-z]+/g)
-  let lowered = [];
-  for (let i = 0; i < splitted.length; i++) {
-    if (splitted[i] == ' ') {
-      continue
-    } else if (str.match(/[A-Z]/g).length >=1 ) {
-      console.log(splitted[i])
-    } else {
-      lowered.push(splitted[i].toLowerCase())
-      }
+  let splitted = str.split(/(?=[A-Z])|[-\s_]/)
+  let final = []
+  for (let i = 0;i < splitted.length; i++) {
+    final.push(splitted[i].toLowerCase())
   }
-  return lowered
+  return final.join('-');
 }
 console.log(spinalCase("thisIsSpinalTap"))
-
 
 /*
 ideas 
