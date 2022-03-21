@@ -1,27 +1,13 @@
-/*
 function translatePigLatin(str) {
-  let splitted = str.split('')
-  let part = str.match(/(?:(?![aeiou])[a-z])+/)[0];
-  let partW = str.split(part);
-
-  if (splitted[0] == 'a' || splitted[0] == 'e' || splitted[0] == 'i' || splitted[0] == 'o' || splitted[0] == 'u') {
-    return str + 'way'
+  if (str[0] == 'a' || str[0] == 'e' || str[0] == 'i' || str[0] == 'o' || str[0] == 'u') {
+    return 'vowel'
   } else {
-    return //partW+part+'ay'
+    return 'consonant'
   }
+  //return str[0];
 }
-*/
 
-
-function spinalCase(str) {
-  let splitted = str.split(/(?=[A-Z])|[-\s_]/)
-  let final = []
-  for (let i = 0;i < splitted.length; i++) {
-    final.push(splitted[i].toLowerCase())
-  }
-  return final.join('-');
-}
-console.log(spinalCase("thisIsSpinalTap"))
+console.log(translatePigLatin("california"))
 
 /*
 ideas 
