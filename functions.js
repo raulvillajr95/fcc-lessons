@@ -1,8 +1,10 @@
 function translatePigLatin(str) {
   if (str[0] == 'a' || str[0] == 'e' || str[0] == 'i' || str[0] == 'o' || str[0] == 'u') {
-    return 'vowel'
+    return str + 'way'
   } else {
-    return 'consonant'
+    let cons = str.match(/[^aeiou]+/)[0]
+    let huh = str.replace(/[^aeiou]+/, '')
+    return huh+cons+'ay'
   }
 }
 
