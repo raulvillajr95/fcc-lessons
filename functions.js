@@ -4,7 +4,6 @@ function translatePigLatin(str) {
   } else {
     return 'consonant'
   }
-  //return str[0];
 }
 
 console.log(translatePigLatin("california"))
