@@ -1,3 +1,4 @@
+/*
 function translatePigLatin(str) {
   let splitted = str.split('')
   let part = str.match(/(?:(?![aeiou])[a-z])+/)[0];
@@ -9,27 +10,31 @@ function translatePigLatin(str) {
     return //partW+part+'ay'
   }
 }
+*/
 
-console.log(translatePigLatin("paragraphs"))
 
-/*
 function spinalCase(str) {
   let splitted = str.match(/\W|[A-Z][a-z]+/g)
   let lowered = [];
   for (let i = 0; i < splitted.length; i++) {
     if (splitted[i] == ' ') {
       continue
+    } else if (str.match(/[A-Z]/g).length >=1 ) {
+      console.log(splitted[i])
     } else {
-    lowered.push(splitted[i].toLowerCase())
-    }
+      lowered.push(splitted[i].toLowerCase())
+      }
   }
-  return splitted
+  return lowered
 }
-/*
+console.log(spinalCase("thisIsSpinalTap"))
 
-//console.log(...party)
+
 /*
 ideas 
 -get index of first appearce 
 -slice the rest, that way it wont get multiple appearances of consonant cluster
+-create regex condition to split 'thisIs'
+-seperate by space, uppercase letters, underscore, and dash
+-you might be able to match them if you put em all in one bracket like [\s\_] etc.
 */
