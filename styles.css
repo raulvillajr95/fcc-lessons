@@ -1,7 +1,4 @@
-li {
-  list-style-type: circle;
-}
-
-li li {
-  list-style-type: square;
+.container {
+  width: 980px;
+  margin: 0 auto;
 }
