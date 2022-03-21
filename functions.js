@@ -1,14 +1,12 @@
-function translatePigLatin(str) {
-  if (str[0] == 'a' || str[0] == 'e' || str[0] == 'i' || str[0] == 'o' || str[0] == 'u') {
-    return str + 'way'
-  } else {
-    let cons = str.match(/[^aeiou]+/)[0]
-    let huh = str.replace(/[^aeiou]+/, '')
-    return huh+cons+'ay'
+function myReplace(str, before, after) {
+  if (before.charAt(0) == before.charAt(0).toUpperCase()) {
+    return str.replace(before, after.charAt(0).toUpperCase() + after.slice(1))
+  } else if (before.charAt(0) == before.charAt(0).toLowerCase()) {
+    return str.replace(before, after.charAt(0).toLowerCase() + after.slice(1))
   }
 }
 
-console.log(translatePigLatin("california"))
+console.log(myReplace("He is Sleeping on the couch", "Sleeping", "sitting"))
 
 /*
 ideas 
