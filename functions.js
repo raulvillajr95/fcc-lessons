@@ -1,26 +1,14 @@
-function pairElement(str) {
-  let splitted = str.split('');
-  let final = [];
-  for (let i = 0; i < splitted.length; i++) {
-    switch (splitted[i]) {
-      case 'A':
-        final.push(['A','T'])
-        break;
-      case 'T':
-        final.push(['T','A'])
-        break;
-      case 'C':
-        final.push(['C','G'])
-        break;
-      case 'G':
-        final.push(['G','C'])
-        break;
+function fearNotLetter(str) {
+  let alph = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  let splitted = str.split('')
+  for (let i = alph.indexOf(str[0]); i < splitted.length+alph.indexOf(str[0]); i++) {
+    if (alph[i] !== splitted[i]) {
+      return alph[i]
     }
   }
-  return final
 }
 
-console.log(pairElement("ATCGA"))
+console.log(fearNotLetter("abce"))
 
 /*
 ideas 
