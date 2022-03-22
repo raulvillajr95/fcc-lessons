@@ -1,24 +1,27 @@
-function fearNotLetter(str) {
-  let alph = 'abcdefghijklmnopqrstuvwxyz'.split('')
-  let splitted = str.split('')
-  let correctR = []
-  for (let i = alph.indexOf(str[0]); i < str.length+alph.indexOf(str[0]); i++) {
-    correctR.push(alph[i]);
+function uniteUnique(arr) {
+  let argi = []
+  for (let i = 0; i < arguments.length; i++) {
+    argi.push(arguments[i])
   }
-  for (let j = 0; j < splitted.length; j++) {
-    if (splitted[j] != correctR[j]) {
-      return correctR[j]
+  let final = []
+  let notOnes = []
+  for (let j = 0; j < argi.length; j++) {
+    for (let k = 0; k < argi[j].length; k++) {
+      if (argi[j][k] in final) {
+        notOnes.push(argi[j][k])
+      } else {
+        final.push(argi[j][k])
+      }
     }
   }
+  return final
 }
 
-console.log(fearNotLetter("stvwx"))
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]))
 
 /*
 ideas 
--get index of first appearce 
--slice the rest, that way it wont get multiple appearances of consonant cluster
--create regex condition to split 'thisIs'
--seperate by space, uppercase letters, underscore, and dash
--you might be able to match them if you put em all in one bracket like [\s\_] etc.
+-run through argi
+-if number is not in argi, add it
+-
 */
