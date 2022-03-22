@@ -1,14 +1,18 @@
 function fearNotLetter(str) {
   let alph = 'abcdefghijklmnopqrstuvwxyz'.split('')
   let splitted = str.split('')
-  for (let i = alph.indexOf(str[0]); i < splitted.length+alph.indexOf(str[0]); i++) {
-    if (alph[i] !== splitted[i]) {
-      return alph[i]
+  let correctR = []
+  for (let i = alph.indexOf(str[0]); i < str.length+alph.indexOf(str[0]); i++) {
+    correctR.push(alph[i]);
+  }
+  for (let j = 0; j < splitted.length; j++) {
+    if (splitted[j] != correctR[j]) {
+      return correctR[j]
     }
   }
 }
 
-console.log(fearNotLetter("abce"))
+console.log(fearNotLetter("stvwx"))
 
 /*
 ideas 
