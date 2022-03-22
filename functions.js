@@ -3,21 +3,24 @@ function uniteUnique(arr) {
   for (let i = 0; i < arguments.length; i++) {
     argi.push(arguments[i])
   }
-  let final = []
-  let notOnes = []
+
+  let toget = []
   for (let j = 0; j < argi.length; j++) {
     for (let k = 0; k < argi[j].length; k++) {
-      if (argi[j][k] in final) {
-        notOnes.push(argi[j][k])
-      } else {
-        final.push(argi[j][k])
-      }
+      toget.push(argi[j][k])
+    }
+  }
+
+  let final = []
+  for (let l = 0; l < toget.length; l++) {
+    if (final.indexOf(toget[l]) == -1) {
+      final.push(toget[l])
     }
   }
   return final
 }
 
-console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]))
+console.log(uniteUnique([1, 3, 2], [5, 4], [5, 6]))
 
 /*
 ideas 
