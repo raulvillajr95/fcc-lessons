@@ -1,26 +1,26 @@
-function convertHTML(str) {
-  let unc = str.split('');
-  let final = [];
-
-  for (let i = 0; i < unc.length; i++) {
-    if ('&' == unc[i]) {
-      final.push('&amp;')
-    } else if ('<' == unc[i]) {
-      final.push('&lt;')
-    } else if ('>' == unc[i]) {
-      final.push('&gt;')
-    } else if ('"' == unc[i]) {
-      final.push('&quot;')
-    } else if ("'" == unc[i]) {
-      final.push('&apos;')
-    } else {
-      final.push(unc[i])
+function sumFibs(num) {
+  if (num == 1) {
+    return 1;
+  }
+  let fibs = [1,1];
+  for (let i = 1; fibs[fibs.length-1] < num; i++) {
+    if (fibs[fibs.length-1] < num) {
+      fibs.push(fibs[fibs.length-1] + fibs[fibs.length-2])
     }
   }
-  return final.join('')
+  
+  let final = []
+  for (let j = 0; j < fibs.length; j++) {
+    if (fibs[j] <= num && fibs[j]%2 == 1) {
+      final.push(fibs[j])
+    }
+  }
+
+  let summed = final.reduce((a, b) => a + b);
+  return summed;
 }
 
-console.log(convertHTML("Dolce & Gabbana"))
+console.log(sumFibs(75025))
 
 /*
 ideas 
