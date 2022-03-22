@@ -1,5 +1,23 @@
 function pairElement(str) {
-  return str;
+  let splitted = str.split('');
+  let final = [];
+  for (let i = 0; i < splitted.length; i++) {
+    switch (splitted[i]) {
+      case 'A':
+        final.push(['A','T'])
+        break;
+      case 'T':
+        final.push(['T','A'])
+        break;
+      case 'C':
+        final.push(['C','G'])
+        break;
+      case 'G':
+        final.push(['G','C'])
+        break;
+    }
+  }
+  return final
 }
 
 console.log(pairElement("ATCGA"))
