@@ -1,26 +1,26 @@
-function uniteUnique(arr) {
-  let argi = []
-  for (let i = 0; i < arguments.length; i++) {
-    argi.push(arguments[i])
-  }
+function convertHTML(str) {
+  let unc = str.split('');
+  let final = [];
 
-  let toget = []
-  for (let j = 0; j < argi.length; j++) {
-    for (let k = 0; k < argi[j].length; k++) {
-      toget.push(argi[j][k])
+  for (let i = 0; i < unc.length; i++) {
+    if ('&' == unc[i]) {
+      final.push('&amp;')
+    } else if ('<' == unc[i]) {
+      final.push('&lt;')
+    } else if ('>' == unc[i]) {
+      final.push('&gt;')
+    } else if ('"' == unc[i]) {
+      final.push('&quot;')
+    } else if ("'" == unc[i]) {
+      final.push('&apos;')
+    } else {
+      final.push(unc[i])
     }
   }
-
-  let final = []
-  for (let l = 0; l < toget.length; l++) {
-    if (final.indexOf(toget[l]) == -1) {
-      final.push(toget[l])
-    }
-  }
-  return final
+  return final.join('')
 }
 
-console.log(uniteUnique([1, 3, 2], [5, 4], [5, 6]))
+console.log(convertHTML("Dolce & Gabbana"))
 
 /*
 ideas 
