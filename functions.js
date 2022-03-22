@@ -1,12 +1,8 @@
-function myReplace(str, before, after) {
-  if (before.charAt(0) == before.charAt(0).toUpperCase()) {
-    return str.replace(before, after.charAt(0).toUpperCase() + after.slice(1))
-  } else if (before.charAt(0) == before.charAt(0).toLowerCase()) {
-    return str.replace(before, after.charAt(0).toLowerCase() + after.slice(1))
-  }
+function pairElement(str) {
+  return str;
 }
 
-console.log(myReplace("He is Sleeping on the couch", "Sleeping", "sitting"))
+console.log(pairElement("ATCGA"))
 
 /*
 ideas 
