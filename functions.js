@@ -5,23 +5,17 @@ function smallestCommons(arr) {
     ran.push(i);
   }
 
-  let final = [];
-  for (let j = arr[0]; j < 100; j += arr[0]) {
-    for (let k = 0; k < ran.length; k++) {
-      if (j % arr[k] == 0) {
-        final.push(j)
-      }
-      /*
-      if (j % arr[1] == 0 && j % arr[2] == 0) {
-        return j;
-      }
-      */
+  let final = []
+  for (let i = 1; i < 100; i++) {
+    if (i % ran[0] == 0 || i % ran[1] == 0 || i % ran[2] == 0) {
+      final.push(i)
     }
   }
+
   return final
 }
 
-console.log(smallestCommons([3,4,5]))
+console.log(smallestCommons([3,5]))
 
 /*
 ideas 
