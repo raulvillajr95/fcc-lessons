@@ -1,26 +1,24 @@
-function sumFibs(num) {
-  if (num == 1) {
-    return 1;
-  }
-  let fibs = [1,1];
-  for (let i = 1; fibs[fibs.length-1] < num; i++) {
-    if (fibs[fibs.length-1] < num) {
-      fibs.push(fibs[fibs.length-1] + fibs[fibs.length-2])
+function sumPrimes(num) {
+  let finalL = [];
+
+  let primeTest = [];
+  for (let i = 1; i <= num; i++) {
+    for (let j = 1; j <= i; j++) {
+      if (i % j == 0) {
+        primeTest.push([i, j])
+      }
     }
-  }
-  
-  let final = []
-  for (let j = 0; j < fibs.length; j++) {
-    if (fibs[j] <= num && fibs[j]%2 == 1) {
-      final.push(fibs[j])
+    if (primeTest.length == 2) {
+      finalL.push(i)
     }
+    primeTest=[]
   }
 
-  let summed = final.reduce((a, b) => a + b);
+  let summed = finalL.reduce((a, b) => a + b)
   return summed;
 }
 
-console.log(sumFibs(75025))
+console.log(sumPrimes(10))
 
 /*
 ideas 
