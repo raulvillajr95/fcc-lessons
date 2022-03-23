@@ -5,22 +5,31 @@ function smallestCommons(arr) {
     ran.push(i);
   }
 
-  let final = []
-  for (let i = 1; i < 100; i++) {
-    if (i % ran[0] == 0 || i % ran[1] == 0 || i % ran[2] == 0) {
-      final.push(i)
+  function findPrimes(num) {
+    let finalL = [];
+
+    let primeTest = [];
+    for (let i = 1; i <= num; i++) {
+      for (let j = 1; j <= i; j++) {
+        if (i % j == 0) {
+          primeTest.push([i, j])
+        }
+      }
+      if (primeTest.length == 2) {
+        finalL.push(i)
+      }
+      primeTest=[]
     }
+    return finalL
   }
 
-  return final
+  return findPrimes(arr[1])
 }
 
 console.log(smallestCommons([3,5]))
 
 /*
 ideas 
--run infinetly
--if number is divisible by all of 'ran' digits, exit loop
--also set a variable equal to that first number
--needa find a way to run it through every number
+-find prime decomp of each number
+-multiply all of them
 */
