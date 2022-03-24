@@ -26,7 +26,9 @@ function smallestCommons(arr) {
   let listFactors = []
   for (let i = 0; i < ran.length; i++) {
     let factors = []
-    if (findPrimes(ran[i])[findPrimes(ran[i]).length - 1] == ran[i]) {
+    if (ran[i] == 1) {
+      factors.push(1)
+    } else if (findPrimes(ran[i])[findPrimes(ran[i]).length - 1] == ran[i]) {
       factors.push(ran[i])
     } else {
       for(let j = 1; j <= ran[i]; j++) {
@@ -55,4 +57,9 @@ i could run through number 2 at a time
 if they are both prime and they multiply to THE number
 add them to final list
 -multiply list
+As for factoring factors
+-when looping if there are no prime factors
+-choose 2 numbers that multiply to THE number
+-factor the one that is not prime
+-keep factoring until only primes
 */
