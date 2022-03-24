@@ -23,13 +23,36 @@ function smallestCommons(arr) {
     return finalL
   }
 
-  return findPrimes(arr[1])
+  let listFactors = []
+  for (let i = 0; i < ran.length; i++) {
+    let factors = []
+    if (findPrimes(ran[i])[findPrimes(ran[i]).length - 1] == ran[i]) {
+      factors.push(ran[i])
+    } else {
+      for(let j = 1; j <= ran[i]; j++) {
+        if (j * j == ran[i]) {
+          factors.push(j,j)
+        } else if (ran[i] % j == 0) {
+            factors.push(j);
+        }
+      }
+    }
+    listFactors.push(factors)
+    factors = []
+  }
+
+  return listFactors
 }
 
 console.log(smallestCommons([3,5]))
 
 /*
 ideas 
--find prime decomp of each number
--multiply all of them
+-from individual groups 'listFactors'
+-if length > 1(not a prime number)
+-find the 2 prime factors
+i could run through number 2 at a time
+if they are both prime and they multiply to THE number
+add them to final list
+-multiply list
 */
