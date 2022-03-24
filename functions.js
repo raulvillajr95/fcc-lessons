@@ -5,50 +5,29 @@ function smallestCommons(arr) {
     ran.push(i);
   }
 
-  function findPrimes(num) {
-    let finalL = [];
-
-    let primeTest = [];
-    for (let i = 1; i <= num; i++) {
-      for (let j = 1; j <= i; j++) {
-        if (i % j == 0) {
-          primeTest.push([i, j])
-        }
-      }
-      if (primeTest.length == 2) {
-        finalL.push(i)
-      }
-      primeTest=[]
-    }
-    return finalL
+  function getOccurrence(array, value) {
+    var count = 0;
+    array.forEach((v) => (v === value && count++));
+    return count;
   }
 
-  let listFactors = []
-  for (let i = 0; i < ran.length; i++) {
-    let factors = []
-    if (ran[i] == 1) {
-      factors.push(1)
-    } else if (findPrimes(ran[i])[findPrimes(ran[i]).length - 1] == ran[i]) {
-      factors.push(ran[i])
-    } else {
-      for(let j = 1; j <= ran[i]; j++) {
-        if (j * j == ran[i]) {
-          factors.push(j,j)
-        } else if (ran[i] % j == 0) {
-            factors.push(j);
-        }
+  let multiples = []
+  for (let i = 1; i > -1; i++) {
+    for (let j = 0; j < ran.length; j++) {
+      multiples.push(ran[j] * i);
+      if (getOccurrence(multiples, ran[j] * i) == ran.length) {
+        return ran[j] * i
       }
     }
-    listFactors.push(factors)
-    factors = []
   }
-
-  return listFactors
 }
 
-console.log(smallestCommons([3,5]))
+console.log(smallestCommons([1, 13]))
 
 /*
+To-Do:
+-optimize search
+
 ideas 
 -from individual groups 'listFactors'
 -if length > 1(not a prime number)
@@ -62,4 +41,19 @@ As for factoring factors
 -choose 2 numbers that multiply to THE number
 -factor the one that is not prime
 -keep factoring until only primes
+
+New Approach:
+-get a bunch of multiples of each num
+maybe send arrays in arrays
+infinite loop? 
+once per round, for index[0] send multiple
+for index[1] send multiple
+etc.
+at the end it checks
+-num should be in array certain number of times
+Ex: in [1, 5] theres 5 numbers cause [1,2,3,4,5]
+-if the num is in the array 5 times:
+break array and return that number
+-if not do a second round of multiples
+-if not third, 4th, 5th etc
 */
