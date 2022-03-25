@@ -36,8 +36,7 @@ console.log(smallestCommons([1, 13]))
 
 /*
 To-Do:
--study the prime factorization method
--apply it to smallestCommons function
+-
 
 ideas 
 -from individual groups 'listFactors'
@@ -53,7 +52,7 @@ As for factoring factors
 -factor the one that is not prime
 -keep factoring until only primes
 
-New Approach:
+Second Approach:
 -get a bunch of multiples of each num
 maybe send arrays in arrays
 infinite loop? 
@@ -67,4 +66,15 @@ Ex: in [1, 5] theres 5 numbers cause [1,2,3,4,5]
 break array and return that number
 -if not do a second round of multiples
 -if not third, 4th, 5th etc
+
+Third Approach:
+-Find all the prime factors of each given number.
+already done
+-List all the prime numbers found, as many times as they occur most often for any one given number.
+might have to loop through factors(from 2 through biggest number, in [1, 5] it'd be from 2 to 5)
+which ever array has most occurances of number, add that many times of numbers to final array
+loop that 
+-Multiply the list of prime factors together to find the LCM.
+just multiply final array
+maybe the reduce()
 */
