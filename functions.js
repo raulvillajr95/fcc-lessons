@@ -26,7 +26,8 @@ console.log(smallestCommons([1, 13]))
 
 /*
 To-Do:
--optimize search
+-optimize
+use variable names??
 
 ideas 
 -from individual groups 'listFactors'
