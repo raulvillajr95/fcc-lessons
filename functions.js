@@ -5,6 +5,8 @@ function smallestCommons(arr) {
     ran.push(i);
   }
 
+  let ranL = ran.length;
+
   function getOccurrence(array, value) {
     var count = 0;
     array.forEach((v) => (v === value && count++));
@@ -12,17 +14,18 @@ function smallestCommons(arr) {
   }
 
   let multiples = []
-  for (let i = 1; i > -1; i++) {
-    for (let j = 0; j < ran.length; j++) {
-      multiples.push(ran[j] * i);
-      if (getOccurrence(multiples, ran[j] * i) == ran.length) {
-        return ran[j] * i
+  for (let i = 1; i < 300000; i++) {
+    for (let j = 0; j < ranL; j++) {
+      let multi = ran[j] * i;
+      multiples.push(multi);
+      if (getOccurrence(multiples, multi) == ranL) {
+        return multi
       }
     }
   }
 }
 
-console.log(smallestCommons([1, 13]))
+console.log(smallestCommons([3, 8]))
 
 /*
 To-Do:
