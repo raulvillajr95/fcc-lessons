@@ -1,50 +1,60 @@
-.flex-container {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  border: 1px solid silver;
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 12.5rem;
+  gap: 1rem;
+  width: 100%;
+  max-width: 37.5rem;
+  padding: 0.5rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 27em) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+body {
   display: flex;
   flex-direction: column;
-  max-height: 400px;
+  gap: 1rem;
+  margin: 0;  
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #ff9f4d 10%, #ffc857 0, #ffc857 90%, #ff9f4d 0, #ff9f4d 100%);
 }
 
-.nowrap  { 
-  -webkit-flex-wrap: nowrap;
-  flex-wrap: nowrap;
+input[type="range"] {
+  display: block;
+  margin: 2rem auto;
 }
 
-.wrap    { 
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-}  
-.wrap li {
-  background: gold;
+.item {
+  border-radius: 15px;
+  background-color: #faf7fa;
+  background-image: linear-gradient(#fdeae3, #fdeae3), linear-gradient(#f8c966,#f8c966), linear-gradient(#f1d6c3,#f1d6c3), linear-gradient(90deg, transparent 20px, #f9e5c7 0, #f9e5c7 calc(100% - 20px), transparent 0);
+  background-size: 100% 50px, 50px 10px, 60px 10px, auto 50px;
+  background-position: 0 0, 20px 80px, 20px 100px, left 0 bottom 20px;
+  background-repeat: no-repeat;
 }
 
-.wrap-reverse         { 
-  -webkit-flex-wrap: wrap-reverse;
-  flex-wrap: wrap-reverse;
-}  
-.wrap-reverse li {
-  background: deepskyblue;
-}
 
-.flex-item {
-  background: tomato;
-  padding: 5px;
-  width: 100px;
-  height: 100px;
-  margin: 10px;
+@supports not (gap: 1px) {
+  body {
+    padding-top: 2em;  
+  }
   
-  line-height: 100px;
-  color: white;
-  font-weight: bold;
-  font-size: 2em;
-  text-align: center;
+  body::before {    
+    content: "Your browser doesn't support gap property";
+    display: block;
+    color: #e43;
+    font-weight: bold;
+    position: fixed;
+    top: 1.5em;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    text-align: center;
+  }
 }

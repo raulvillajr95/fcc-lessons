@@ -6,38 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Margin and Padding exercise 2</title>
     <link rel="stylesheet" href="styles.css">
+    <script language="JavaScript">
+      var container = document.querySelector('.container'), slider = document.querySelector('input');
+
+      slider.addEventListener('input', function () {
+        container.style.gap = this.value + 'rem';
+      }, false);  
+    </script>
   </head>
   <body>
-    <ul class="flex-container nowrap">
-      <li class="flex-item">1</li>
-      <li class="flex-item">2</li>
-      <li class="flex-item">3</li>
-      <li class="flex-item">4</li>
-      <li class="flex-item">5</li>
-      <li class="flex-item">6</li>
-      <li class="flex-item">7</li>
-      <li class="flex-item">8</li>
-    </ul>
-    
-    <ul class="flex-container wrap">
-      <li class="flex-item">1</li>
-      <li class="flex-item">2</li>
-      <li class="flex-item">3</li>
-      <li class="flex-item">4</li>
-      <li class="flex-item">5</li>
-      <li class="flex-item">6</li>
-      <li class="flex-item">7</li>
-      <li class="flex-item">8</li>
-    </ul>
-    
-    <ul class="flex-container wrap-reverse">
-      <li class="flex-item">1</li>
-      <li class="flex-item">2</li>
-      <li class="flex-item">3</li>
-      <li class="flex-item">4</li>
-      <li class="flex-item">5</li>
-      <li class="flex-item">6</li>
-      <li class="flex-item">7</li>
-      <li class="flex-item">8</li>
-    </ul>
+    <input type="range" min="0" max="10" step="0.1" value="1">
+
+    <div class="container">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>    
+    </div>
 </html>

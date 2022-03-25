@@ -1,6 +1,6 @@
 function smallestCommons(arr) {
-  let ran = [];
-  let sorted = arr.sort();
+  let ran = []
+  let sorted = arr.sort((a,b) => a - b)
   for (let i = sorted[0]; i <= sorted[1]; i++) {
     ran.push(i);
   }
@@ -19,9 +19,20 @@ function smallestCommons(arr) {
     }
     return factors;
   }
+
+  let factors = []
+  for (let i = 0; i < ran.length; i++) {
+    if (ran[i] == 1) {
+      factors.push([1])
+    } else {
+      factors.push(primeFactors(ran[i]))
+    }
+  }
+
+  return factors;
 }
 
-console.log(smallestCommons([3, 8]))
+console.log(smallestCommons([1, 13]))
 
 /*
 To-Do:
