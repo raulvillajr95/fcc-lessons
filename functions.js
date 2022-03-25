@@ -29,14 +29,37 @@ function smallestCommons(arr) {
     }
   }
 
-  return factors;
+  const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0)
+
+  let final = []
+  let count = [];
+  for (let i = 1; i <= ran.length; i++) {
+    for (let j = 0; j < factors.length; j++) {
+      //console.log(countOccurrences(factors[j], i))
+      if (countOccurrences(factors[j], i) > count) {
+        count = countOccurrences(factors[j], i)
+      }
+    }
+    final.push([i, count]);
+    count = 0;
+  }
+
+  let realFinal = []
+  for (let i = 0; i < final.length; i++) {
+    for (let j = 0; j < final[i][1]; j++) {
+      realFinal.push(final[i][0])
+    }
+  }
+
+  let superFinal = realFinal.reduce((a,b) => a * b)
+  return superFinal;
 }
 
 console.log(smallestCommons([1, 13]))
 
 /*
 To-Do:
--
+-multiply everything in superFinal
 
 ideas 
 -from individual groups 'listFactors'
