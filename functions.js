@@ -5,23 +5,19 @@ function smallestCommons(arr) {
     ran.push(i);
   }
 
-  let ranL = ran.length;
-
-  function getOccurrence(array, value) {
-    var count = 0;
-    array.forEach((v) => (v === value && count++));
-    return count;
-  }
-
-  let multiples = []
-  for (let i = 1; i < 300000; i++) {
-    for (let j = 0; j < ranL; j++) {
-      let multi = ran[j] * i;
-      multiples.push(multi);
-      if (getOccurrence(multiples, multi) == ranL) {
-        return multi
+  function primeFactors(n) {
+    const factors = [];
+    let divisor = 2;
+  
+    while (n >= 2) {
+      if (n % divisor == 0) {
+        factors.push(divisor);
+        n = n / divisor;
+      } else {
+        divisor++;
       }
     }
+    return factors;
   }
 }
 
@@ -29,8 +25,8 @@ console.log(smallestCommons([3, 8]))
 
 /*
 To-Do:
--optimize
-use variable names??
+-study the prime factorization method
+-apply it to smallestCommons function
 
 ideas 
 -from individual groups 'listFactors'
