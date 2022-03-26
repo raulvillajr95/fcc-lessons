@@ -33,9 +33,8 @@ function smallestCommons(arr) {
 
   let final = []
   let count = [];
-  for (let i = 1; i <= ran.length; i++) {
+  for (let i = 1; i <= ran[ran.length - 1]; i++) {
     for (let j = 0; j < factors.length; j++) {
-      //console.log(countOccurrences(factors[j], i))
       if (countOccurrences(factors[j], i) > count) {
         count = countOccurrences(factors[j], i)
       }
@@ -51,11 +50,11 @@ function smallestCommons(arr) {
     }
   }
 
-  let superFinal = realFinal.reduce((a,b) => a * b)
+  let superFinal = realFinal.reduce((a,b) => a * b, 1)
   return superFinal;
 }
 
-console.log(smallestCommons([1, 13]))
+console.log(smallestCommons([23, 18]))
 
 /*
 To-Do:
