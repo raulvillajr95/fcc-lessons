@@ -13,8 +13,6 @@
   color: tomato;
   background: white;
   padding: 4px 32px;
-
-  width: fit-content;
 }
 
 ul {
@@ -30,16 +28,24 @@ a {
   text-decoration: none;
 }
 
-.left-links  ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: auto;
+.left-links {
+  background-color: gray;
+  margin-left: 20px;
+}
+.right-links {
+  background-color: gray;
+  margin-right: 20px;
 }
 
-.right-links ul {
+.left-links  ul {
+  background-color: aquamarine;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  width: auto;
+}
+.right-links ul {
+  background-color: aquamarine;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
