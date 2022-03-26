@@ -26,3 +26,19 @@ img {
   justify-content: center;
   background: #eee;
 }
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding-top: 32px;
+  column-gap: 52px;
+}
+
+.container div {
+  text-align: center;
+}
+
+.container .item {
+  width: 200px;
+}
