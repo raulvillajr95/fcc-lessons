@@ -1,8 +1,18 @@
 function dropElements(arr, func) {
-  return arr;
+  for (let i = 0; i < arr.length; i++) {
+    if (func(arr[i])) {
+      return arr.slice(arr.indexOf(arr[i]))
+    }
+  }
+  return []
 }
 
-console.log(dropElements([1, 2, 3, 4], function(n) {return n >= 3;}))
+// let arr = [0, 1, 0, 1]
+// console.log(arr.filter(function(n) {
+//   return n === 1
+// }))
+
+console.log(dropElements([1, 2, 3, 4], function(n) {return n > 5;}))
 
 /*
 To-Do:
