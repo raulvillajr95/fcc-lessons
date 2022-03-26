@@ -1,60 +1,8 @@
-function smallestCommons(arr) {
-  let ran = []
-  let sorted = arr.sort((a,b) => a - b)
-  for (let i = sorted[0]; i <= sorted[1]; i++) {
-    ran.push(i);
-  }
-
-  function primeFactors(n) {
-    const factors = [];
-    let divisor = 2;
-  
-    while (n >= 2) {
-      if (n % divisor == 0) {
-        factors.push(divisor);
-        n = n / divisor;
-      } else {
-        divisor++;
-      }
-    }
-    return factors;
-  }
-
-  let factors = []
-  for (let i = 0; i < ran.length; i++) {
-    if (ran[i] == 1) {
-      factors.push([1])
-    } else {
-      factors.push(primeFactors(ran[i]))
-    }
-  }
-
-  const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0)
-
-  let final = []
-  let count = [];
-  for (let i = 1; i <= ran[ran.length - 1]; i++) {
-    for (let j = 0; j < factors.length; j++) {
-      if (countOccurrences(factors[j], i) > count) {
-        count = countOccurrences(factors[j], i)
-      }
-    }
-    final.push([i, count]);
-    count = 0;
-  }
-
-  let realFinal = []
-  for (let i = 0; i < final.length; i++) {
-    for (let j = 0; j < final[i][1]; j++) {
-      realFinal.push(final[i][0])
-    }
-  }
-
-  let superFinal = realFinal.reduce((a,b) => a * b, 1)
-  return superFinal;
+function dropElements(arr, func) {
+  return arr;
 }
 
-console.log(smallestCommons([23, 18]))
+console.log(dropElements([1, 2, 3, 4], function(n) {return n >= 3;}))
 
 /*
 To-Do:
