@@ -1,41 +1,20 @@
-function steamrollArray(arr) {
+function binaryAgent(str) {
+  let splitted = str.split(' ')
+
+  let numbers = []
+  for (let i = 0; i < splitted.length; i++) {
+    numbers.push(splitted[i]);
+  }
+
   let final = []
-  let suckOne = []
-  for (let i = 0; i < arr.length; i++) {
-    if (Array.isArray(arr[i]) && arr[i].length == 0) {
-      suckOne.push(arr[i])
-    } else {
-      final.push(arr[i].toString())
-    }
+  for (let i = 0; i < numbers.length; i++) {
+    final.push(numbers[i].toString());
   }
 
-  let finalFinal = []
-  for (let i = 0; i < final.length; i++) {
-    if (final[i].includes(',')) {
-      let commas = final[i].split(',')
-      for (let j = 0; j < commas.length; j++) {
-        if (isNaN(Number(commas[j]))) {
-          finalFinal.push(commas[j])
-        } else {
-          finalFinal.push(Number(commas[j]))
-        }
-      }
-    } else {
-      console.log(final[i])
-      if (final[i] == '[object Object]') {
-        finalFinal.push({})
-      } else if (isNaN(Number(final[i]))) {
-        finalFinal.push(final[i])
-      } else {
-        finalFinal.push(Number(final[i]))
-      }
-    }
-  }
-
-  return finalFinal
+  return final;
 }
 
-console.log(steamrollArray([1, {}, [3, [[4]]]]))
+console.log(binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111"))
 
 /*
 to-do:

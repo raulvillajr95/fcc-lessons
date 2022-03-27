@@ -20,6 +20,10 @@ body {
   width: 480px;
   border-radius: 10px;
   box-shadow: 2px 4px 16px rgba(0,0,0,.2);
+
+  display: flex;
+  padding: 1em;
+  column-gap: 1em;
 }
 
 .icon {
@@ -65,7 +69,19 @@ button.cancel {
   color: royalblue;
 }
 
-
+/* My Additions */
 .modal .header {
   font-size: 1.2em;
+}
+
+.modal .heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal .second {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.6em;
 }
