@@ -21,7 +21,10 @@ function steamrollArray(arr) {
         }
       }
     } else {
-      if (isNaN(Number(final[i]))) {
+      console.log(final[i])
+      if (final[i] == '[object Object]') {
+        finalFinal.push({})
+      } else if (isNaN(Number(final[i]))) {
         finalFinal.push(final[i])
       } else {
         finalFinal.push(Number(final[i]))
@@ -32,7 +35,7 @@ function steamrollArray(arr) {
   return finalFinal
 }
 
-console.log(steamrollArray([1, [], [3, [[4]]]]))
+console.log(steamrollArray([1, {}, [3, [[4]]]]))
 
 /*
 to-do:
