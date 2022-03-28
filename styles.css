@@ -23,12 +23,18 @@ body {
 .sidebar {
   width: 300px;
   background: royalblue;
+
+  min-width: 268px;
+  padding: 16px;
 }
 
 .card {
   border: 1px solid #eee;
   box-shadow: 2px 4px 16px rgba(0,0,0,.06);
   border-radius: 4px;
+
+  padding: 15px;
+  width: 250px;
 }
 
 /* My Additions */
@@ -49,6 +55,25 @@ body {
 
 .content {
   display: flex;
+  flex: 1;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar a {
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+}
+
+.cards {
+  padding: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1.2em 1.2em;
 }
 
 /* 
