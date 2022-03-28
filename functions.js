@@ -1,28 +1,30 @@
-function addTogether() {
-  let args = [...arguments]
-  
-  if (args.length == 1 && Number(args[0]) == args[0]) {
-    return function(n) {
-      if (Array.isArray(n)) {
-        return undefined
-      } else {
-        return n + args[0]
-      }
-    }
-  } else if (Number(args[0]) !== args[0] || Number(args[1]) !== args[1])  {
-    return undefined
-  } else {
-    return args.reduce((a, b) => a + b)
+const Person = function(firstAndLast) {
+  let splitted = firstAndLast.split(' ')
+
+  this.getFirstName = function() {return splitted[0]}
+  this.getLastName = function() {return splitted[1]}
+  this.getFullName = function() {return splitted.join(' ')}
+  this.setFirstName = function(first) {
+    splitted.shift()
+    splitted.unshift(first)
   }
-}
-//let lola = addTogether(2)
-console.log(addTogether(2)(5))
+  this.setLastName = function(last) {
+    splitted.pop()
+    splitted.push(last)
+  }
+  this.setFullName = function(fAndLast) {
+    let split2 = fAndLast.split(' ')
 
-/*
-to-do:
--test addTogether("https://www.youtube.com/watch?v=dQw4w9WgXcQ") 
--test addTogether(2)([3])
+    splitted.shift()
+    splitted.unshift(split2[0])
 
-ideas:
--turn value into boolean and check if it's true?
-*/
+    splitted.pop()
+    splitted.push(split2[1])
+  }
+};
+
+const bob = new Person('Bob Ross');
+
+bob.setFullName("Haskell Curry")
+
+console.log(bob.getFullName());
