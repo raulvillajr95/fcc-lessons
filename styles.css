@@ -64,6 +64,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  row-gap: 1em;
 }
 .content .buttons button {
   padding: 9px 12px;
