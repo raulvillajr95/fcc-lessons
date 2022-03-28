@@ -1,30 +1,16 @@
-const Person = function(firstAndLast) {
-  let splitted = firstAndLast.split(' ')
+function orbitalPeriod(arr) {
+  const GM = 398600.4418;
+  const earthRadius = 6367.4447;
 
-  this.getFirstName = function() {return splitted[0]}
-  this.getLastName = function() {return splitted[1]}
-  this.getFullName = function() {return splitted.join(' ')}
-  this.setFirstName = function(first) {
-    splitted.shift()
-    splitted.unshift(first)
+  function obPer(avgA) {
+    return Math.round(2 * Math.PI * Math.sqrt(Math.pow(earthRadius + avgA, 3)/GM))
   }
-  this.setLastName = function(last) {
-    splitted.pop()
-    splitted.push(last)
+
+  let list = []
+  for (let i = 0; i < arr.length; i++) {
+    list.push({name: arr[i].name, orbitalPeriod: obPer(arr[i].avgAlt)})
   }
-  this.setFullName = function(fAndLast) {
-    let split2 = fAndLast.split(' ')
+  return list
+}
 
-    splitted.shift()
-    splitted.unshift(split2[0])
-
-    splitted.pop()
-    splitted.push(split2[1])
-  }
-};
-
-const bob = new Person('Bob Ross');
-
-bob.setFullName("Haskell Curry")
-
-console.log(bob.getFullName());
+console.log(orbitalPeriod([{name: "iss", avgAlt: 413.6}, {name: "hubble", avgAlt: 556.7}, {name: "moon", avgAlt: 378632.553}]));
