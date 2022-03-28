@@ -1,9 +1,12 @@
 function truthCheck(collection, pre) {
-  let secondA = collection[1]
-  return secondA[pre] == 1
+  let coLen = collection.length
+  let final = collection.filter(function(n) {
+    return Boolean(n[pre])
+  })
+  return coLen == final.length
 }
 
-console.log(truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "name"))
+console.log(truthCheck([{name: "Pikachu", number: 25, caught: 3}, {name: "Togepi", number: 175, caught: 1}, {name: "MissingNo", number: NaN, caught: 0}], "caught"))
 
 /*
 to-do:
