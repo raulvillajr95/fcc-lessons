@@ -27,11 +27,66 @@ input {
 }
 
 /* My Additions */
+a {
+  text-decoration: none;
+}
+
+.whole {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 18px;
+}
+.header ul {
+  list-style-type: none;
+  padding: 0;
+}
+.header .left-links {
+  display: flex;
+  column-gap: 10px;
+}
+.header .right-links {
+  display: flex;
+  column-gap: 10px;
+}
+.header a {
+  color: #888888;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content .buttons button {
+  padding: 9px 12px;
+}
+
 .footer {
   background: #eeeeee;
-  
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 18px;
 }
 .footer ul {
   list-style-type: none;
   padding: 0;
+}
+.footer .left-links {
+  display: flex;
+  column-gap: 10px;
+}
+.footer .right-links {
+  display: flex;
+  column-gap: 10px;
+}
+.footer a {
+  color: #888888;
 }
