@@ -1,17 +1,22 @@
-function truthCheck(collection, pre) {
-  let coLen = collection.length
-  let final = collection.filter(function(n) {
-    return Boolean(n[pre])
-  })
-  return coLen == final.length
+function addTogether() {
+  let args = [...arguments]
+  if (args.length == 1) {
+    return function(n) {
+      return n + args[0]
+    }
+  } else if (Number(args[0]) !== args[0] || Number(args[1]) !== args[1]) {
+    return undefined
+  } else {
+    return args.reduce((a, b) => a + b)
+  }
 }
-
-console.log(truthCheck([{name: "Pikachu", number: 25, caught: 3}, {name: "Togepi", number: 175, caught: 1}, {name: "MissingNo", number: NaN, caught: 0}], "caught"))
+//let lola = addTogether(2)
+console.log(addTogether(2,5))
 
 /*
 to-do:
--make sure its a truthy value
-this could be true, anything greater than 0, etc.
+-test addTogether("https://www.youtube.com/watch?v=dQw4w9WgXcQ") 
+-test addTogether(2)([3])
 
 ideas:
 -turn value into boolean and check if it's true?
