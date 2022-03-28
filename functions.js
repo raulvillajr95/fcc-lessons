@@ -1,17 +1,22 @@
 function addTogether() {
   let args = [...arguments]
-  if (args.length == 1) {
+  
+  if (args.length == 1 && Number(args[0]) == args[0]) {
     return function(n) {
-      return n + args[0]
+      if (Array.isArray(n)) {
+        return undefined
+      } else {
+        return n + args[0]
+      }
     }
-  } else if (Number(args[0]) !== args[0] || Number(args[1]) !== args[1]) {
+  } else if (Number(args[0]) !== args[0] || Number(args[1]) !== args[1])  {
     return undefined
   } else {
     return args.reduce((a, b) => a + b)
   }
 }
 //let lola = addTogether(2)
-console.log(addTogether(2,5))
+console.log(addTogether(2)(5))
 
 /*
 to-do:
