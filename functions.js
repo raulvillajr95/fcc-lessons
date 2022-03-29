@@ -1,16 +1,17 @@
-function orbitalPeriod(arr) {
-  const GM = 398600.4418;
-  const earthRadius = 6367.4447;
-
-  function obPer(avgA) {
-    return Math.round(2 * Math.PI * Math.sqrt(Math.pow(earthRadius + avgA, 3)/GM))
+function palindrome(str) {
+  let what = str.match(/[A-Za-z0-9]+/g)
+  let what2 = what.join('')
+  let lowWhat2 = []
+  for (let i = 0; i < what2.length; i++) {
+    lowWhat2.push(what2[i].toLowerCase());
   }
 
-  let list = []
-  for (let i = 0; i < arr.length; i++) {
-    list.push({name: arr[i].name, orbitalPeriod: obPer(arr[i].avgAlt)})
+  let almReversed = []
+  for (let i = what2.length-1; i >= 0; i--) {
+    almReversed.push(what2[i].toLowerCase())
   }
-  return list
+  let reversed = almReversed.join('')
+  return reversed == lowWhat2.join('')
 }
 
-console.log(orbitalPeriod([{name: "iss", avgAlt: 413.6}, {name: "hubble", avgAlt: 556.7}, {name: "moon", avgAlt: 378632.553}]));
+console.log(palindrome("A man, a plan, a canal. Panama"));
