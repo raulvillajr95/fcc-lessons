@@ -1,32 +1,45 @@
-function telephoneCheck(str) {
-  if (str[3] == '-' && str[7] == '-') {
-    return true
-  } else if (str[0] == '(' && str[4] == ')' && str[8] == '-') {
-    return true
-  } else if (str[0] == '(' && str[4] == ')' && str[5] == ' ' && str[9] == '-') {
-    return true
-  } else if (str[3] == ' ' && str[7] == ' ') {
-    return true
-  } else if (str.length == 10 && isNaN(str) !== true) {
-    return true
-  } else if (str[1] == ' ' && str[5] == ' ' && str[9] == ' ') {
-    return true
-  } else if (str[0] == '1' && str[1] == ' ' && str[5] == '-' && str[9] == '-') {
-    return true
-  } else if (str[0] == '1' && str[1] == ' ' && str[2] == '(' && str[6] == ')' && str[7] == ' ' && str[11] == '-') {
-    return true
-  } else if (str[0] == '1' && str[1] == '(' && str[5] == ')' && str[9] == '-') {
-    return true
-  } else {
-    return false
-  }
+function checkCashRegister(price, cash, cid) {
+  let final = {status: 'OPEN', change: []};
+  let change = cash - price
+
+  /* Constants */
+  let penny = 0.01
+  let nickel = 0.05
+  let dime = 0.1
+  let quarter = 0.25
+  let one = 1
+  let five = 5
+  let ten = 10
+  let twenty = 20
+  let hundred = 100
+
+  /* Drawer */
+  let fullDrawer = [cid[0][1],cid[1][1],cid[2][1], cid[3][1], cid[4][1], cid[5][1], cid[6][1], cid[7][1], cid[8][1]]
+  let pennies = cid[0][1]
+  let nickels = cid[1][1]
+  let dimes = cid[2][1]
+  let quarters = cid[3][1]
+  let ones = cid[4][1]
+  let fives = cid[5][1]
+  let tens = cid[6][1]
+  let twenties = cid[7][1]
+  let hundreds = cid[8][1]
+
+  return fullDrawer;
 }
 
-console.log(telephoneCheck("1 (555) 555-5555"));
+console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
 
 /*
 
 to-do:
--need to straighten it out
+-from change return what I need if I had a full drawer example ["Quarter", 0.5]
+-then make adjustments for swanky drawer
+
+ideas:
+-when returning start with highest dollar bill
+if not, second highest
+-as far as whole form, 
+get cash - price, then do the whole change thing
 
 */
