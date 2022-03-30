@@ -1,65 +1,28 @@
-function rot13(str) {
-  let codesConverted = []
-  let abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] in abc) {
-      switch (str.charCodeAt(i)) {
-        case 78:
-          codesConverted.push(65)       
-          break;
-        case 79:
-          codesConverted.push(66)       
-          break;
-        case 80:
-          codesConverted.push(67)       
-          break;
-        case 81:
-          codesConverted.push(68)       
-          break;
-        case 82:
-          codesConverted.push(69)       
-          break;
-        case 83:
-          codesConverted.push(70)       
-          break;
-        case 84:
-          codesConverted.push(71)       
-          break;
-        case 85:
-          codesConverted.push(72)       
-          break;
-        case 86:
-          codesConverted.push(73)       
-          break;
-        case 87:
-          codesConverted.push(74)       
-          break;
-        case 88:
-          codesConverted.push(75)       
-          break;
-        case 89:
-          codesConverted.push(76)       
-          break;
-        case 90:
-          codesConverted.push(67)       
-          break;
-        default:
-          codesConverted.push(str.charCodeAt(i) + 13)
-      }
-    } else {
-      codesConverted.push(str.charCodeAt(i))
-    }
+function telephoneCheck(str) {
+  if (str[3] == '-' && str[7] == '-') {
+    return true
+  } else if (str[0] == '(' && str[4] == ')' && str[8] == '-') {
+    return true
+  } else if (str[0] == '(' && str[4] == ')' && str[5] == ' ' && str[9] == '-') {
+    return true
+  } else if (str[3] == ' ' && str[7] == ' ') {
+    return true
+  } else if (str.length == 10 && isNaN(str) !== true) {
+    return true
+  } else if (str[1] == ' ' && str[5] == ' ' && str[9] == ' ') {
+    return true
+  } else if (str[0] == '1' && str[1] == ' ' && str[5] == '-' && str[9] == '-') {
+    return true
+  } else if (str[0] == '1' && str[1] == ' ' && str[2] == '(' && str[6] == ')' && str[7] == ' ' && str[11] == '-') {
+    return true
+  } else if (str[0] == '1' && str[1] == '(' && str[5] == ')' && str[9] == '-') {
+    return true
+  } else {
+    return false
   }
-
-  let backToString = []
-  for (let i = 0; i < codesConverted.length; i++) {
-    backToString.push(String.fromCharCode(codesConverted[i]));
-  }
-
-  return backToString
 }
 
-console.log(rot13("SERR PBQR PNZC"));
+console.log(telephoneCheck("1 (555) 555-5555"));
 
 /*
 
