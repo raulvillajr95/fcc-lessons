@@ -3,6 +3,7 @@ function checkCashRegister(price, cash, cid) {
   let change = cash - price
 
   /* Constants */
+  let namesAmounts = [["ONE HUNDRED", 100], ["TWENTY", 20], ["TEN", 10], ["FIVE", 5], ["ONE", 1], ["QUARTER", 0.25], ["DIME", 0.10], ["NICKEL", 0.5], ["PENNY", 0.01]]
   let penny = 0.01
   let nickel = 0.05
   let dime = 0.1
@@ -25,7 +26,10 @@ function checkCashRegister(price, cash, cid) {
   let twenties = cid[7][1]
   let hundreds = cid[8][1]
 
-  return fullDrawer;
+  let changeList = []
+  let changeFloated = change.toFixed(2);
+
+  return changeFloated[changeFloated.length-1];
 }
 
 console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
