@@ -1,24 +1,37 @@
 function checkCashRegister(price, cash, cid) {
+  // Solidified constants
   let change = cash - price;
-
-  let drawer = [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]
-
+  let drawer = cid
   let amounts = {"PENNY": 0.01, "NICKEL": 0.05, "DIME": 0.10, "QUARTER": 0.25, "ONE": 1, "FIVE": 5, "TEN": 10, "TWENTY": 20, "ONE HUNDRED": 100}
 
+  // Calculate total in drawer
+  let totalPlacement = 0;
+  for (let i = 0; i < cid.length; i++) {
+    totalPlacement += cid[i][1];
+  }
+  /*
+  If exact change, then done
+  or less cash than price, then done
+  or drawer $$$ less than change
+  */
+  let total = Math.round((totalPlacement + Number.EPSILON) * 100) / 100;
   if (price == cash) {
     return {status: 'CLOSED', change: []}
-  } else if (cash < price) {
+  } else if (cash < price || total < change) {
     return {status: 'INSUFFICIENT_FUNDS', change: []}
   }
 
-  if (change == 100) {
-    drawer[8][1] = drawer[8][1] - change
-  }
+  /*
+  Calculate exact change(ideas)
+  -loop through and minus it??
+  -check if divisible, then minus??
+  -
+  */
 
-  return change;
+  return total;
 }
 
-console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+console.log(checkCashRegister(19, 1000, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
 
 /*
 
@@ -31,8 +44,8 @@ real thing:
 -change gets redistributed
 if perfect change, you're good-done
 if to low, can't go through-done
+add up all drawer money to make sure it's more than change-done
 if more cash than price, get change
-add up all drawer money to make sure it's more than change
 make sure it's divisible?? so that there's exact change,(if change is $1 but I only have a $5 bill then I can't)
 -hand over change
 
