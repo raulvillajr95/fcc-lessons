@@ -9,7 +9,7 @@ function checkCashRegister(price, cash, cid) {
   for (let i = 0; i < cid.length; i++) {
     totalPlacement += cid[i][1];
   }
-  let total = Math.round((totalPlacement + Number.EPSILON) * 100) / 100;
+  let total = (Math.round(((totalPlacement + Number.EPSILON) * 100) / 100) * 100);
 
   // Insufficient funds(needs work)
   if (total < change) {
@@ -34,8 +34,43 @@ function checkCashRegister(price, cash, cid) {
   -then sorted in highest to lowest
   -then numbers with names
   */
+  let trackChange = Number(change)
+  let trackList = []
+  for (let i = 1; i < 5; i++) {
+    console.log(i)
+    if (trackChange > 100) {
+      trackChange -= 100
+      trackList.push(100)
+    } else if (trackChange > 20) {
+      trackChange -= 20
+      trackList.push(20)
+    } else if (trackChange > 10) {
+      trackChange -= 10
+      trackList.push(10)
+    } else if (trackChange > 5) {
+      trackChange -= 5
+      trackList.push(5)
+    } else if (trackChange > 1) {
+      trackChange -= 1
+      trackList.push(1)
+    } else if (trackChange > 0.25) {
+      trackChange -= 0.25
+      trackList.push(0.25)
+    } else if (trackChange > 0.1) {
+      trackChange -= 0.1
+      trackList.push(0.1)
+    } else if (trackChange > 0.05) {
+      trackChange -= 0.05
+      trackList.push(0.05)
+    } else if (trackChange > 0.01) {
+      trackChange -= 0.01
+      trackList.push(0.01)
+    } else {
+      return 'something went wrong'
+    }
+  }
 
-  return change;
+  return;
 }
 
 console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
@@ -59,6 +94,9 @@ make sure it's divisible?? so that there's exact change,(if change is $1 but I o
 
 to-do:
 -break down change into amounts
+-change numbers to no decimals, js be acting weird with floats
+so $10.00 will now be 1000
+-later on convert them back
 
 ideas:
 -when returning start with highest dollar bill
