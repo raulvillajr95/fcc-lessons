@@ -9,18 +9,12 @@ function checkCashRegister(price, cash, cid) {
   for (let i = 0; i < cid.length; i++) {
     totalPlacement += cid[i][1];
   }
-  /*
-  If exact change, then done
-  or less cash than price, then done
-  or drawer $$$ less than change
-  */
   let total = Math.round((totalPlacement + Number.EPSILON) * 100) / 100;
-  if (price == cash) {
-    return {status: 'CLOSED', change: []}
-  } else if (cash < price || total < change) {
+
+  // Insufficient funds(needs work)
+  if (total < change) {
     return {status: 'INSUFFICIENT_FUNDS', change: []}
   }
-
   /*
   Calculate exact change(ideas)
   -loop through and minus it??
@@ -28,10 +22,23 @@ function checkCashRegister(price, cash, cid) {
   -
   */
 
-  return total;
+  // Closed (done)
+  if (total == change) {
+    return {status: 'CLOSED', change: cid}
+  }
+
+  // Open (needs work)
+  /*
+  Calculate exact change if I had everything
+  -first just list of numbers
+  -then sorted in highest to lowest
+  -then numbers with names
+  */
+
+  return change;
 }
 
-console.log(checkCashRegister(19, 1000, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
 
 
 /*
