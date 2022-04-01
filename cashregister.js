@@ -44,44 +44,84 @@ function checkCashRegister(price, cash, cid) {
   */
   let trackChange = Number(change)
   let trackList = []
-  for (let i = 1; i < 10; i++) {
-    if (trackChange >= 10000) {
+  for (let i = 1; i > 0 ; i++) {
+    if (trackChange >= 10000 && hundreds >= 10000) {
       trackChange -= 10000
       trackList.push(10000)
-    } else if (trackChange >= 2000) {
+      hundreds -= 10000
+    } else if (trackChange >= 2000 && twenties >= 2000) {
       trackChange -= 2000
       trackList.push(2000)
-    } else if (trackChange >= 1000) {
+      twenties -= 2000
+    } else if (trackChange >= 1000 && tens >= 1000) {
       trackChange -= 1000
       trackList.push(1000)
-    } else if (trackChange >= 500) {
+      tens -= 1000
+    } else if (trackChange >= 500 && fives >= 500) {
       trackChange -= 500
       trackList.push(500)
-    } else if (trackChange >= 100) {
+      fives -= 500
+    } else if (trackChange >= 100 && ones >= 100) {
       trackChange -= 100
       trackList.push(100)
-    } else if (trackChange >= 25) {
+      ones -= 100
+    } else if (trackChange >= 25 && quarters >= 25) {
       trackChange -= 25
       trackList.push(25)
-    } else if (trackChange >= 10) {
+      quarters -= 25
+    } else if (trackChange >= 10 && dimes >= 10) {
       trackChange -= 10
       trackList.push(10)
-    } else if (trackChange >= 5) {
+      dimes -= 10
+    } else if (trackChange >= 5 && nickels >= 5) {
       trackChange -= 5
       trackList.push(5)
-    } else if (trackChange >= 1) {
+      nickels -= 5
+    } else if (trackChange >= 1 && pennies >= 1) {
       trackChange -= 1
       trackList.push(1)
+      pennies -= 1
+    } else if (trackChange !== 0) {
+      return {status: "INSUFFICIENT_FUNDS", change: []}
     } else {
       break
     }
   }
-  console.log(trackList)
-
-  return drawer
+  //Naming
+  let named = [["PENNY",0],["NICKEL",0],["DIME",0],["QUARTER",0],["ONE",0],["FIVE",0],["TEN",0],["TWENTY",0],["ONE HUNDRED",0]]
+  for (let i = 0; i < trackList.length; i++) {
+    if (trackList[i] == 1) {
+      named[0][1] += 1
+    } else if (trackList[i] == 5) {
+      named[1][1] += 5
+    } else if (trackList[i] == 10) {
+      named[2][1] += 10
+    } else if (trackList[i] == 25) {
+      named[3][1] += 25
+    } else if (trackList[i] == 100) {
+      named[4][1] += 100
+    } else if (trackList[i] == 500) {
+      named[5][1] += 500
+    } else if (trackList[i] == 1000) {
+      named[6][1] += 1000
+    } else if (trackList[i] == 2000) {
+      named[7][1] += 2000
+    } else if (trackList[i] == 10000) {
+      named[8][1] += 10000
+    }
+  }
+  //Conversion
+  let final = []
+  for (let i = 0; i < named.length; i++) {
+    if (named[i][1] > 0) {
+      final.push([named[i][0], named[i][1]/100])
+    }
+  }
+  
+  return {status: "OPEN", change: final.reverse()}
 }
 
-console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+console.log(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
 
 
 /*
@@ -109,6 +149,7 @@ and keep track of them
   take away from the section(ex: if I need a 0.25 then takeaway from the 25 section)
   make exceptions(if there's no more 0.25, then take from the 10 section and 5 section, etc.) maybe have if statements within if statements??
   keep track of everything
+  instead of nested if statements, just add an AND(&&) to the 'if' to make sure that there's that coin in the drawer
 -at the end, convert full intergers to dollar amounts(1000 should be 10.00)
 
 ideas:
