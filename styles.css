@@ -11,13 +11,30 @@ body {
 .flex-container {
   display: flex;
   background-color: #f4f4f4;
-  justify-content: space-evenly;
+  /* Always is on the main axis */
+  /* justify-content: end; */
+  /* Always on the cross axis */
+  /* align-items: start; */
+  /* flex-wrap: wrap; */
 }
 
 .item {
-  width: 100px;
+  flex: 1 0 100px;
   height: 100px;
   background: #254de4;
   color: #fff;
   margin: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item:nth-of-type(1) {
+}
+
+.item:nth-of-type(2) {
+}
+
+.item:nth-of-type(3) {
 }
