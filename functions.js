@@ -9,7 +9,7 @@ class MyComponent extends React.Component {
     // Change code above this line
   }
   // Change code below this line
-  toggleVisibility = (setState) => {
+  toggleVisibility = () => {
     if (this.state.visibility == false) {
       this.setState({
       visibility: true
@@ -20,6 +20,18 @@ class MyComponent extends React.Component {
       })
     }
   };
+
+  /* Alternative:
+  toggleVisibility = () => {
+    this.setState(function() {
+      if (this.state.visibility == false) {
+        return {visibility: true}
+      } else {
+        return {visibility: false}
+      }
+    })
+  }
+  */
   // Change code above this line
   render() {
     if (this.state.visibility) {
