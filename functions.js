@@ -1,57 +1,40 @@
-class MyComponent extends React.Component {
+class Results extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      visibility: false
-    };
-    // Change code below this line
-    this.toggleVisibility = this.toggleVisibility.bind(this)
-    // Change code above this line
   }
-  // Change code below this line
-  toggleVisibility = () => {
-    if (this.state.visibility == false) {
-      this.setState({
-      visibility: true
-      })
-    } else {
-      this.setState({
-      visibility: false
-      })
-    }
-  };
-
-  /* Alternative:
-  toggleVisibility = () => {
-    this.setState(function() {
-      if (this.state.visibility == false) {
-        return {visibility: true}
-      } else {
-        return {visibility: false}
-      }
-    })
-  }
-  */
-  // Change code above this line
   render() {
-    if (this.state.visibility) {
-      return (
-        <div>
-          <button onClick={this.toggleVisibility}>Click Me</button>
-          <h1>Now you see me!</h1>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <button onClick={this.toggleVisibility}>Click Me</button>
-        </div>
-      );
-    }
+    {/* Change code below this line */}
+    return <h1>{this.props.fiftyFifty ? 'You Win!' : 'You Lose'}</h1>;
+    {/* Change code above this line */}
   }
 }
 
-/*
-Everything passes EXCEPT, it wants an anonymous function???????
-WTF????????????????????????????????????????????????????????????
-*/
+class GameOfChance extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 1
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState(prevState => {
+      // Complete the return statement:
+      return {
+        counter: this.state.counter += 1
+      }
+    });
+  }
+  render() {
+    const expression = Math.random() >= .5; // Change this line
+    return (
+      <div>
+        <button onClick={this.handleClick}>Play Again</button>
+        {/* Change code below this line */}
+        <Results fiftyFifty={expression}/>
+        {/* Change code above this line */}
+        <p>{'Turn: ' + this.state.counter}</p>
+      </div>
+    );
+  }
+}
