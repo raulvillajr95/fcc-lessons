@@ -1,16 +1,8 @@
-let finalResult;
-let evenOddResult;
+let result = (0.04 + 0.04) / (0.02 + 0.02);
+let result2 = 5.21 / (1 * 1);
 
-let a = 2;
-let b = 2;
-let c = 24;
-let d = 12;
-
-let added = a + b;
-let subbed = c - d;
-
-finalResult = added * subbed
-evenOddResult = finalResult % 2 === 0;
+let finalResult = (result * result2).toFixed(2)
+let finalNumber = Number(finalResult)
 
 console.log(finalResult)
-console.log(evenOddResult)
+console.log(finalNumber)
