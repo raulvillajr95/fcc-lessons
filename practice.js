@@ -1,6 +1,14 @@
-let x = 6;
-let y = 2;
+const btn = document.querySelector('button');
+const txt = document.querySelector('p');
 
-let z = x % y;
+btn.addEventListener('click', updateBtn);
 
-alert(100 + (50 - 3))
+function updateBtn() {
+  if (btn.textContent === 'Start machine') {
+    btn.textContent = 'Stop machine';
+    txt.textContent = 'The machine has started!';
+  } else {
+    btn.textContent = 'Start machine';
+    txt.textContent = 'The machine is stopped.';
+  }
+}
