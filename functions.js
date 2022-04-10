@@ -17,3 +17,7 @@ const newArr = frontEndFrameworks.map(v => ({isActive: true, v}))
 console.log(renderFrameworks)
 console.log(newArr)
 //console.log(frontEndFrameworks.indexOf('Ember'))
+
+/*
+-everything works, just need to add unique key attributes
+*/

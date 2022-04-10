@@ -1,3 +1,5 @@
+let age = 1
 
+age = undefined
 
-console.log(12 % 5)
+alert(typeof age)
