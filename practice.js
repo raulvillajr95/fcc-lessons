@@ -1,6 +1,3 @@
-let n = 2;
-n += 5;
-n *= 2;
+let b = 7 * a
 
-alert(n++)
-alert(5++)
+console.log(b)
