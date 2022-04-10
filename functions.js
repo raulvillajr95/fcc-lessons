@@ -9,7 +9,7 @@ const frontEndFrameworks = [
 
 let xixi = 0
 const renderFrameworks = frontEndFrameworks.map(function(n, i) {
-  return {i}
+  return {i, n}
 })
 
 const newArr = frontEndFrameworks.map(v => ({isActive: true, v}))
