@@ -7,17 +7,16 @@ const frontEndFrameworks = [
   'Vue'
 ];
 
-let xixi = 0
-const renderFrameworks = frontEndFrameworks.map(function(n, i) {
-  return {i, n}
-})
-
-const newArr = frontEndFrameworks.map(v => ({isActive: true, v}))
-
-console.log(renderFrameworks)
-console.log(newArr)
-//console.log(frontEndFrameworks.indexOf('Ember'))
-
-/*
--everything works, just need to add unique key attributes
-*/
+function Frameworks() {
+  const renderFrameworks = frontEndFrameworks.map(function(n, i) {
+  return <li key={i}>{n}</li>
+}); // Change this line
+  return (
+    <div>
+      <h1>Popular Front End JavaScript Frameworks</h1>
+      <ul>
+        {renderFrameworks}
+      </ul>
+    </div>
+  );
+};
