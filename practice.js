@@ -1,3 +1,3 @@
-let b = 7 * a
 
-console.log(b)
+
+console.log(12 % 5)
