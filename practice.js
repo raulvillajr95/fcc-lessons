@@ -1,5 +1,8 @@
-let age = 1
+const button = document.querySelector('button');
 
-age = undefined
+function greet() {
+  const name = prompt('What is your name?');
+  alert(`Hello ${name}, nice to see you!`);
+}
 
-alert(typeof age)
+button.addEventListener('onclick', greet())
