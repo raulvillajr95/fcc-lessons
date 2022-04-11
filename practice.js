@@ -1,4 +1,9 @@
-let text = "Please visit Microsoft and Microsoft!"
-let newText = text.replace(/MICROSOFT/ig, "Sosa")
+let count = 0;
 
-console.log(newText)
+function subs(x) {
+  return x +=1
+}
+
+console.log(subs(count))
+console.log(subs(count))
+console.log(subs(count))
