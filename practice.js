@@ -1,9 +1,3 @@
-let count = 0;
+let text = "HELLO WORLD"
 
-function subs(x) {
-  return x +=1
-}
-
-console.log(subs(count))
-console.log(subs(count))
-console.log(subs(count))
+console.log(text.split(''))
