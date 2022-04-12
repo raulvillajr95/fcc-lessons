@@ -1,28 +1,23 @@
-const ADD = 'ADD';
+const INCREMENT = 'INCREMENT'; // Define a constant for increment action types
+const DECREMENT = 'DECREMENT'; // Define a constant for decrement action types
 
-const reducer = (state = 0, action) => {
+const counterReducer = (state = 0, action) => {
   switch(action.type) {
-    case ADD:
-      return state + 1;
+    case INCREMENT:
+      return state += 1
+    case DECREMENT:
+      return state -= 1
     default:
-      return state;
+      return state
   }
-};
+}; // Define the counter reducer which will increment or decrement the state based on the action it receives
 
-const store = Redux.createStore(reducer);
+const incAction = () => {
+  return {type: INCREMENT}
+}; // Define an action creator for incrementing
 
-// Global count variable:
-let count = 0;
+const decAction = () => {
+  return {type: DECREMENT}
+}; // Define an action creator for decrementing
 
-// Change code below this line
-store.subscribe(function(x) {
-  return count += 1;
-})
-// Change code above this line
-
-store.dispatch({type: ADD});
-console.log(count);
-store.dispatch({type: ADD});
-console.log(count);
-store.dispatch({type: ADD});
-console.log(count);
+const store = Redux.createStore(counterReducer); // Define the Redux store here, passing in your reducers

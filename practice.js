@@ -1,3 +1,1 @@
-let text = "HELLO WORLD"
-
-console.log(text.split(''))
+alert(0 === false)
