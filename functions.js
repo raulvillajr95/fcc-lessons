@@ -1,6 +1,3 @@
-const ADD_TO_DO = 'ADD_TO_DO';
-
-// A list of strings representing tasks to do:
 const todos = [
   'Go to the store',
   'Clean the house',
@@ -8,23 +5,10 @@ const todos = [
   'Learn to code',
 ];
 
-const immutableReducer = (state = todos, action) => {
-  switch(action.type) {
-    case ADD_TO_DO:
-      // Don't mutate state here or the tests will fail
-      let added = todos.slice(0)
-      added.push(action.todo)
-      return added
-    default:
-      return state;
-  }
-};
+let adding = [...todos]
+let index = 2
+adding.splice(index, 1)
 
-const addToDo = (todo) => {
-  return {
-    type: ADD_TO_DO,
-    todo
-  }
-}
 
-const store = Redux.createStore(immutableReducer);
+console.log(adding)
+console.log(todos)
