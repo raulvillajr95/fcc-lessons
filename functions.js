@@ -1,14 +1,6 @@
-const todos = [
-  'Go to the store',
-  'Clean the house',
-  'Cook dinner',
-  'Learn to code',
-];
+const obj1 = {'kk' : 123}
+const obj2 = {'salsa': 333}
 
-let adding = [...todos]
-let index = 2
-adding.splice(index, 1)
+const newObject = Object.assign({}, obj1, obj2)
 
-
-console.log(adding)
-console.log(todos)
+console.log(newObject)
