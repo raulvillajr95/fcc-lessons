@@ -1,6 +1,36 @@
-const obj1 = {'kk' : 123}
-const obj2 = {'salsa': 333}
+class DisplayMessages extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: '',
+      messages: ['message1', 'message2', 'message3']
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.submitMessage = this.submitMessage.bind(this)
+  }
+  // Add handleChange() and submitMessage() methods here
+  handleChange(event) {
+    this.state.input = event.target.value
+  }
+  submitMessage() {
+    let whereState = [...this.state.messages]
+    whereState.push(this.state.input)
+    this.state.input = ''
+  }
 
-const newObject = Object.assign({}, obj1, obj2)
-
-console.log(newObject)
+  render() {
+    return (
+      <div>
+        <h2>Type in a new Message:</h2>
+        { /* Render an input, button, and ul below this line */ }
+        <input onChange={this.handleChange} value={this.state.input}/>
+        <button onClick={this.submitMessage}>Submit</button>
+        <ul>
+          {this.state.messages.map()}
+        </ul>
+        { /*<div>{this.state.input}</div>*/ } 
+        { /* Change code above this line */ }
+      </div>
+    );
+  }
+};
