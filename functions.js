@@ -3,19 +3,24 @@ class DisplayMessages extends React.Component {
     super(props);
     this.state = {
       input: '',
-      messages: ['message1', 'message2', 'message3']
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.submitMessage = this.submitMessage.bind(this)
+      messages: []
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.submitMessage = this.submitMessage.bind(this);
   }
   // Add handleChange() and submitMessage() methods here
   handleChange(event) {
-    this.state.input = event.target.value
+    this.setState({
+      input: event.target.value
+    });
   }
   submitMessage() {
-    let whereState = [...this.state.messages]
-    whereState.push(this.state.input)
-    this.state.input = ''
+    let whereState = [...this.state.messages];
+    whereState.push(this.state.input);
+    this.setState({
+      messages: whereState
+    });
+    this.state.input = '';
   }
 
   render() {
@@ -26,11 +31,17 @@ class DisplayMessages extends React.Component {
         <input onChange={this.handleChange} value={this.state.input}/>
         <button onClick={this.submitMessage}>Submit</button>
         <ul>
-          {this.state.messages.map()}
+          {this.state.messages.map(function(n) {
+            return <li>{n}</li>
+          })}
         </ul>
-        { /*<div>{this.state.input}</div>*/ } 
         { /* Change code above this line */ }
       </div>
     );
   }
 };
+
+/*
+to-do:
+-apparantly I have to clear the 'current input value' even tho it already clears???????
+*/
