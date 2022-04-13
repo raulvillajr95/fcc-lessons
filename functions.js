@@ -20,7 +20,9 @@ class DisplayMessages extends React.Component {
     this.setState({
       messages: whereState
     });
-    this.state.input = '';
+    this.setState({
+      input: ''
+    });
   }
 
   render() {
@@ -40,8 +42,3 @@ class DisplayMessages extends React.Component {
     );
   }
 };
-
-/*
-to-do:
--apparantly I have to clear the 'current input value' even tho it already clears???????
-*/
