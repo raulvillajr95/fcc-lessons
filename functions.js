@@ -1,11 +1,21 @@
-let messages = ['msg1', 'msg2', 'msg3']
+// Define ADD, addMessage(), messageReducer(), and store here:
+const ADD = "ADD";
 
-let actMsg = 'msg4'
-let arr;
-
-if (true) {
-  arr = [...messages, actMsg]
+function addMessage(message) {
+  return {
+    type: "ADD",
+    message
+  };
 }
 
-console.log(messages)
-console.log(arr)
+function messageReducer(state = [], action) {
+  switch(action.type) {
+    case "ADD":
+      let arr7578 = [...state, action.message]
+      return arr7578
+    default:
+      return state;
+  }
+}
+
+const store = Redux.createStore(messageReducer)
