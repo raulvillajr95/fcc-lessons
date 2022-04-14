@@ -1,23 +1,23 @@
 
-let response;
-let score = 75;
-let machineActive = false;
+let machineActive = true;
+let pwd = 'cheese';
+
+let machineResult;
+let pwdResult;
 
 // Add your code here
 if (machineActive) {
-  if (score ) {
-
-  } else if (score ) {
-
-  } else if (score ) {
-    
-  } else if (score ) {
-    
-  } else if (score ) {
-    
-  } else {
-    response = "This is not possible, an error has occured."
-  }
+  machineResult = 'Machine is on!'
+  pwdResult = (pwd === 'cheese') ? 'You logged in successfully!' : 'Login unsuccessful.';
 } else {
-  response = 'Please turn the response machine on.'
+  machineResult = 'Machine is off.'
 }
+
+console.log(machineResult)
+console.log(pwdResult)
+
+/*
+-the 3 bar hamburger side pop-up
+-the powerseasonx sign that moves
+-the get 10% off pop-up
+*/
