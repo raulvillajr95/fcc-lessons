@@ -1,27 +1,24 @@
-const day = new Date().getDay()
+/**
+ * ===== Troubleshooting =====
+ * The function below should log the number 2, however it does not, 
+ * see if you can fix it!
+ * Be sure to fix it in the spirit of the code, do not hard code the result.
+ */
 
-switch (day) {
-  case 0:
-    console.log("It's Sunday, time to relax!")
-    break;
-  case 1:
-    console.log("Happy Monday!")
-    break;
-  case 2:
-    console.log("It's Tuesday. Get you a taco!")
-    break;
-  case 3:
-    console.log("Hump day already!")
-    break;
-  case 4:
-    console.log("Thirsty Thursdays?")
-    break
-  case 5:
-    console.log("Happy Friday!")
-    break
-  case 6:
-    console.log("Have a wonderful Saturday!")
-    break
-  default:
-    console.log("Something went horribly wrong...")
+ function troubleshooting() {
+	const a = 1;
+	const b = 1;
+
+	let result;
+
+	// Edit between these lines
+	// =================================
+	result = a + b;
+
+	// =================================
+
+	return result;
 }
+
+// Do not change this 
+module.exports = troubleshooting;
