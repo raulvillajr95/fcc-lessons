@@ -43,9 +43,9 @@ class Presentational extends React.Component {
   }
   submitMessage() {
     this.setState((state) => ({
-      input: ''
+      input: '',
+      props: message
     }));
-    mapDispatchToProps(this.state.input)
   }
   render() {
     return (
