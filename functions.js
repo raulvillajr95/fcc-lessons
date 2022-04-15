@@ -109,14 +109,40 @@ mapDispatchToProps(this.props)
 messages: this.props.messages inside submitMessage() state
 -7 X
 this.props.submitNewMessage under submitMessage()
--8
+-8 X
 input: this.props inside submitMessage() state
--9
+-9 X
 input: props inside submitMessage() state
--10
--11
--12
--13
--14
-
+-10 X
+remove messages from handleChange(event)
+-11 X
+event as param, input: event.target.value
+-12 X
+props as param inside this.setState
+-13 X
+this.props as param inside this.setState
+-14 X
+props as param, props as param for this.setState
+-15 X
+props as param, input: props
+-16 X
+props as param, input: this.props
+-17 X
+input: this.state.input
+-18 X
+input: this.props.input
+-19 X
+input: this.props.messages
+-20 X
+mapDispatchToProps(props) under submitMessage()
+-21 X
+input: mapDispatchToProps(this.props)
+-22
+input: mapDispatchToProps(props)
+-23
+mapDispatchToProps() under submitMessage()
+-24 X
+message as param
+-25 X
+message as parm, state as param in setState
 */
