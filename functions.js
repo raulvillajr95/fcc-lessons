@@ -42,9 +42,9 @@ class Presentational extends React.Component {
     });
   }
   submitMessage() {
+    this.props.submitNewMessage(this.state.input)
     this.setState((state) => ({
-      input: '',
-      props: message
+      input: ''
     }));
   }
   render() {
@@ -145,4 +145,7 @@ mapDispatchToProps() under submitMessage()
 message as param
 -25 X
 message as parm, state as param in setState
+-26 It works!
+under submitMessage:
+this.props.submitNewMessage(this.state.input)
 */
