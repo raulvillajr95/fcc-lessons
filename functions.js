@@ -92,3 +92,31 @@ class AppWrapper extends React.Component {
     );
   }
 };
+
+/*
+things to try:
+-1 X
+submitNewMessage() as parameter on submitMessage()
+-2 X
+submitNewMessage(this.props) under submitMessage()
+-3 X
+submitMessage(this.props)
+-4 X
+this.props.submitNewMessage() under submitMessage()
+-5 X
+mapDispatchToProps(this.props)
+-6 X
+messages: this.props.messages inside submitMessage() state
+-7 X
+this.props.submitNewMessage under submitMessage()
+-8
+input: this.props inside submitMessage() state
+-9
+input: props inside submitMessage() state
+-10
+-11
+-12
+-13
+-14
+
+*/
