@@ -1,5 +1,5 @@
-function random(number) {
-  return Math.floor(Math.random() * number);
+function showMessage() {
+	alert('Hello everyone!')
 }
 
-console.log(Math.PI)
+showMessage()
