@@ -1,4 +1,5 @@
-const textBox = document.querySelector("#textBox");
-const output = document.querySelector("#output");
+function random(number) {
+  return Math.floor(Math.random() * number);
+}
 
-textBox.addEventListener('keydown', event => output.textContent = `You pressed "${event.key}".`);
+console.log(Math.PI)

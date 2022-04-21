@@ -4,12 +4,45 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
   <title>Document</title>
 </head>
 <body>
-  <input id="textBox" type="text"></input>
-  <div id="output"></div>
+  <input class="numberInput" type="text">
+  <p></p>
 
-  <script src="practice.js"></script>
+  <script>
+    const input = document.querySelector('.numberInput')
+    const para = document.querySelector('p')
+
+    function squared(num) {
+      return num * num
+    }
+    function cubed(num) {
+      return num * num * num
+    }
+
+    function factorial(num) {
+      if (num < 0) return undefined
+      if (num == 0) return 1;
+      let x = num - 1;
+      while (x > 1) {
+        num *= x
+        x--
+      }
+      return num
+    }
+
+    input.addEventListener('change', () => {
+      const num = parseFloat(input.value)
+      if (isNaN(num)) {
+        para.textContent = 'You need to enter a number!'
+      } else {
+        para.textContent = `${num} squared is ${squared(num)}. \n`
+        para.textContent += `${num} cubed is ${cubed(num)}. \n`
+        para.textContent += `${num} factorial is ${factorial(num)}. `
+      }
+    })
+  </script>
 </body>
 </html>
