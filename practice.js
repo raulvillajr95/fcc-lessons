@@ -1,9 +1,23 @@
-function sum(a, b) {
-	return a + b;
+// Practice question 1
+function add7(num) {
+	return num + 7
 }
+console.log(add7(1))
 
-// let sum = function(a, b) {
-// 	return a + b;
-// }
+// Practice question 2
+function multiply(a, b) {
+	return a * b
+}
+console.log(multiply(3,7))
 
-console.log(sum(5, 4))
+// Practice question 3
+function capitalize(str) {
+	return str[0].toUpperCase() + str.slice(1)
+}
+console.log(capitalize('string'))
+
+// Practice question 4
+function lastLetter(str) {
+	return str.slice(-1)
+}
+console.log(lastLetter('string'))
