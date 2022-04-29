@@ -1,23 +1,10 @@
-// Practice question 1
-function add7(num) {
-	return num + 7
-}
-console.log(add7(1))
+// Luhn Checksum Validation
+let num = prompt('what it do')
 
-// Practice question 2
-function multiply(a, b) {
-	return a * b
-}
-console.log(multiply(3,7))
+let newNum = []
 
-// Practice question 3
-function capitalize(str) {
-	return str[0].toUpperCase() + str.slice(1)
+for (let i = 0; i < num.length; i++) {
+  newNum.push(num[i]);
 }
-console.log(capitalize('string'))
 
-// Practice question 4
-function lastLetter(str) {
-	return str.slice(-1)
-}
-console.log(lastLetter('string'))
+console.log(newNum)
