@@ -75,4 +75,8 @@ function bothPyramidsInsideOut() {
   reversePyramid(line())
 }
 
+function addSpaceInMiddle(str) {
+  str.length/2
+}
+
 bothPyramids()
