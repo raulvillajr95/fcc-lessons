@@ -9,7 +9,7 @@ function line() {
 }
 
 function squareLines () {
-  for (let i = 1; i <= 4; i++) {
+  for (let i = 1; i <= 8; i++) {
     console.log(line())
   }
 }
@@ -25,7 +25,7 @@ function addSpaces(str, am) {
 
 function pyramid(str) {
   for (let i = 0; i <= 3; i++) {
-    let sliced = str.slice(2 * i)
+    let sliced = str.slice(i*2)
     let replaced = addSpaces(sliced, i)
     console.log(replaced)
   }
@@ -51,6 +51,28 @@ function reversePyramid(str) {
 function bothPyramids() {
   reversePyramid(line())
   pyramid(line())
+}
+
+/*
+Exercise 2-3
+
+it might be the reverse of 2-2
+start with 2 #'s
+after every new line,
+  replace 1 '#' with ' ' space on the middle
+*/
+
+// function insidePyramid(str) {
+//   for (let i = 0; i <= 3; i++) {
+//     let sliced = str.slice(2 * i)
+//     let replaced = addSpaces(sliced, i)
+//     console.log(replaced)
+//   }
+// }
+
+function bothPyramidsInsideOut() {
+  pyramid(line())
+  reversePyramid(line())
 }
 
 bothPyramids()
