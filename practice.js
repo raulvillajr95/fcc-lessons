@@ -31,4 +31,26 @@ function pyramid(str) {
   }
 }
 
-pyramid(line())
+/*
+Exercise 2-2
+
+the reverse of 2-1 is add to top
+start with 2 #'s
+after every new line,
+  replace 1 '#' with ' ' space on each side
+*/
+
+function reversePyramid(str) {
+  for (let i = 3; i >= 0; i--) {
+    let sliced = str.slice(2 * i)
+    let replaced = addSpaces(sliced, i)
+    console.log(replaced)
+  }
+}
+
+function bothPyramids() {
+  reversePyramid(line())
+  pyramid(line())
+}
+
+bothPyramids()
