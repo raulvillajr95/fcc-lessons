@@ -1,37 +1,17 @@
 /*
-Square within a square
+ISBN 10 & 13
 */
 
-function topAndBottomOfSquare() {
-  let outer = 20
-  console.log('#'.repeat(outer))
-  console.log('#' + ' '.repeat(outer-2) + '#')
-  console.log('#'.repeat(outer))
-}
-
-function twentyByTenSquare() {
-  let outer = 20
-  console.log('#'.repeat(outer))
-  for (let i = 1; i <= (outer/2)-2; i++) {
-    console.log('#' + ' '.repeat(outer-2) + '#')
+function isbn10(str) {
+  let added = 0
+  let cnt = 0
+  for (let i = 10; i >= 1; i--) {
+    added += (str[cnt] * i)
+    cnt += 1
   }
-  console.log('#'.repeat(outer))
-}
-
-function squareInSquare() {
-  let outer = 20
-  let inner = outer-6
-  console.log('#'.repeat(outer))
-  console.log('#' + ' '.repeat(outer-2) + '#')
-  console.log('#' + ' '.repeat(2) + '#'.repeat(inner) + ' '.repeat(2) + '#')
-
-  for (let i = 0; i < 4; i++) {
-    console.log('#' + ' '.repeat(2) + '#' + ' '.repeat(inner-2) + '#' + ' '.repeat(2) + '#')
+  if (added % 11 == 0) {
+    console.log('Valid')
+  } else {
+    console.log('Invalid code')
   }
-
-  console.log('#' + ' '.repeat(2) + '#'.repeat(inner) + ' '.repeat(2) + '#')
-  console.log('#' + ' '.repeat(outer-2) + '#')
-  console.log('#'.repeat(outer))
 }
-
-squareInSquare()
