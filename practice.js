@@ -1,17 +1,11 @@
-/*
-ISBN 10 & 13
-*/
+let tenIntegerArray = [4,5,9,12,-4,0,-57,30987,-287,1]
 
-function isbn10(str) {
-  let added = 0
-  let cnt = 0
-  for (let i = 10; i >= 1; i--) {
-    added += (str[cnt] * i)
-    cnt += 1
-  }
-  if (added % 11 == 0) {
-    console.log('Valid')
-  } else {
-    console.log('Invalid code')
+let highest = 0;
+
+for (let i = 0; i < tenIntegerArray.length; i++) {
+  if (tenIntegerArray[i] > highest) {
+    highest = tenIntegerArray[i]
   }
 }
+
+console.log(highest)
