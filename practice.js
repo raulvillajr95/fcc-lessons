@@ -1,11 +1,29 @@
-let tenIntegerArray = [4,5,9,12,-4,0,-57,30987,-287,1]
+/*
+Finding the Mode
+-return the value that appears most often
 
-let highest = 0;
+Plan:
+-from full list, create individual once only value list
+-count number of times individual value appears in big list
+-if value is highest or equal, push to final list
+*/
 
-for (let i = 0; i < tenIntegerArray.length; i++) {
-  if (tenIntegerArray[i] > highest) {
-    highest = tenIntegerArray[i]
+let surveyData = [4, 7, 3, 8, 9, 7, 3, 9, 9, 3, 3, 10]
+
+let counter = 0
+
+let countOfEach = []
+
+let counterOfEach = []
+for (let i = 0; i < surveyData.length; i++) {
+  for (let j = 0; j < surveyData.length; j++) {
+    if (surveyData[i] == surveyData[j]) {
+      counter += 1
+      countOfEach.push(surveyData[j])
+    }
+    counterOfEach.push(counter)
+    counter = 0
   }
 }
 
-console.log(highest)
+console.log(counterOfEach)
