@@ -1,29 +1,17 @@
-/*
-Finding the Mode
--return the value that appears most often
+const timerText = document.getElementById('timer-text')
+const btnStart = document.getElementById('btn-start')
+const btnPause = document.getElementById('btn-pause')
 
-Plan:
--from full list, create individual once only value list
--count number of times individual value appears in big list
--if value is highest or equal, push to final list
-*/
+let count = 0
+let intervalID
 
-let surveyData = [4, 7, 3, 8, 9, 7, 3, 9, 9, 3, 3, 10]
+btnStart.addEventListener('click', function () {
+  intervalID = setInterval(function () {
+    count += 1
+    timerText.textContent = count
+  }, 1000)
 
-let counter = 0
-
-let countOfEach = []
-
-let counterOfEach = []
-for (let i = 0; i < surveyData.length; i++) {
-  for (let j = 0; j < surveyData.length; j++) {
-    if (surveyData[i] == surveyData[j]) {
-      counter += 1
-      countOfEach.push(surveyData[j])
-    }
-    counterOfEach.push(counter)
-    counter = 0
-  }
-}
-
-console.log(counterOfEach)
+  btnPause.addEventListener('click', function () {
+    clearInterval(intervalID)
+  })
+})
