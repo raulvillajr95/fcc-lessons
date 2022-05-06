@@ -1,4 +1,4 @@
-const punctuation = [87,28, 100, 78];
+const punctuation = [28, 100, 78];
 
 let sortedPunc = [];
 
@@ -20,8 +20,6 @@ for (let i = 0; i < punctuation.length; i++) {
   }
 }
 
-console.log(sortedPunc)
-
 /*
       if (punctuation[i] > sortedPunc[j]) {
         sortedPunc.splice(sortedPunc[j],0,punctuation[i])
@@ -34,8 +32,6 @@ console.log(sortedPunc)
 Sorting by grade
 
 ideas:
--check for number is last
--sort 4+ numbers
 -sort number singles, but double layered e.g. [[87],[28],[100],[78],[84],[98],[75],[70]]
 -sort the actual list
 
@@ -52,3 +48,28 @@ const punctuation = [
   [68, 10010, "Veronica"]
 ];
 */
+
+
+let arr = [87, 28, 100, 78, 84, 98, 75, 70, 81, 68] 
+let len = arr.length
+
+let emp = []
+
+let highest = 0
+
+for (let j = 0; j < len; j++) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > highest) {
+      highest = arr[i]
+      console.log(arr[i])
+    }
+  }
+  emp.unshift(highest)
+  let index = arr.indexOf(highest)
+  if (index > -1) {
+    arr.splice(index, 1)
+  }
+  highest = 0
+}
+
+console.log(emp)
