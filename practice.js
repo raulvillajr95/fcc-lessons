@@ -15,15 +15,11 @@ let len = arr.length
 
 let emp = []
 
-// Test
-let test = []
-
-let highest = [0,,]
+let highest = [0,0,'']
 
 for (let j = 0; j < len; j++) {
   for (let i = 0; i < arr.length; i++) {
-    test.push(arr[i])
-    if (arr[i][0] > highest[0]) {
+    if (arr[i][1] > highest[1]) {
       highest = arr[i]
     }
   }
@@ -32,7 +28,7 @@ for (let j = 0; j < len; j++) {
   if (index > -1) {
     arr.splice(index, 1)
   }
-  highest = [0,,]
+  highest = [0,0,'']
 }
 console.log(emp)
 
