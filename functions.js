@@ -97,3 +97,28 @@ function sortNumFirstArray(arr) {
   }
   return emp
 }
+
+// e.g. [[1,2,3],[1,2,3],[1,2,3]]
+function sortArraysWithinArrays(arr) {
+  let emp = []
+  for (let i = 0; i < arr.length; i++) {
+    emp.push(sortNum(arr[i]))
+  }
+  return emp
+}
+
+// From sorted arrays, find the median of each array
+function medianOfEachArray(arr1) {
+  let arr2 = sortArraysWithinArrays(arr1)
+  let emp = []
+  for (let i = 0; i < arr2.length; i++) {
+    let middle;
+    if (arr2[i].length % 2 == 1) {
+      middle = arr2[i][Math.floor(arr2[i].length/2)]
+    } else if (arr2[i].length % 2 == 0) {
+      middle = (arr2[i][(arr2[i].length/2)-1] + arr2[i][arr2[i].length/2]) / 2
+    }
+    emp.push(middle)
+  }
+  return emp
+}

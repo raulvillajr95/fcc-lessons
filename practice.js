@@ -1,68 +1,98 @@
-let arr = [
-  [87, 10001, "Fred"],
-  [28, 10002, "Tom"],
-  [100, 10003, "Alistair"],
-  [78, 10004, "Sasha"],
-  [84, 10005, "Erin"],
-  [98, 10006, "Belinda"],
-  [75, 10007, "Leslie"],
-  [70, 10008, "Candy"],
-  [81, 10009, "Aretha"],
-  [68, 10010, "Veronica"]
+let arr1 = [
+  [1856, 498, 30924, 87478, 328, 2653, 387, 3754, 387587, 2873, 276, 32],
+  [5865, 5456, 3983, 6464, 9957, 4785, 3875, 3838, 4959, 1122, 7766, 2534],
+  [23, 55, 67, 99, 265, 376, 232, 223, 4546, 564, 4544, 3434]
 ];
 
-let len = arr.length
-
-let emp = []
-
-let highest = [0,0,'']
-
-for (let j = 0; j < len; j++) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i][1] > highest[1]) {
-      highest = arr[i]
+// Sort number array
+function sortNum(arr) {
+  let len = arr.length;
+  let emp = []
+  let highest = 0
+  for (let j = 0; j < len; j++) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > highest) {
+        highest = arr[i]
+      }
     }
+    emp.unshift(highest)
+    let index = arr.indexOf(highest)
+    if (index > -1) {
+      arr.splice(index, 1)
+    }
+    highest = 0
   }
-  emp.unshift(highest)
-  let index = arr.indexOf(highest)
-  if (index > -1) {
-    arr.splice(index, 1)
-  }
-  highest = [0,0,'']
+  return emp
 }
-console.log(emp)
+
+// Sort number arrays within arrays
+function sortArraysWithinArrays(arr) {
+  let emp = []
+  for (let i = 0; i < arr.length; i++) {
+    emp.push(sortNum(arr1[i]))
+  }
+  return emp
+}
+
+// Medians
+function medianOfEachArray(arr1) {
+  let arr2 = sortArraysWithinArrays(arr1)
+  let emp = []
+  for (let i = 0; i < arr2.length; i++) {
+    let middle;
+    if (arr2[i].length % 2 == 1) {
+      middle = arr2[i][Math.floor(arr2[i].length/2)]
+    } else if (arr2[i].length % 2 == 0) {
+      middle = (arr2[i][(arr2[i].length/2)-1] + arr2[i][arr2[i].length/2]) / 2
+    }
+    emp.push(middle)
+  }
+  return emp
+}
+
+/* 3 - 2 */
+
+let arr2 = medianOfEachArray(arr1)
+
+let highest = 0
+
+for (let i = 0; i < arr2.length; i++) {
+  if (arr2[i] > highest) {
+    highest = arr2[i]
+  }
+}
+
+console.log(`Agent ${arr2.indexOf(highest)} had the highest median sales`)
 
 /*
-Sorting by grade
-
 ideas:
--sort doubles, numbers & names
--sort the actual list
+-first do 2 agents, 3 sales each
+  sort first arr[0] only
+  sort first 2
+  get median of each
+-sort by sales
+-if even number of values,
+  grab 2 middles
+  add them and divide by 2
+-return agent name
 
-const punctuation = [
-  [87, 10001, "Fred"],
-  [28, 10002, "Tom"],
-  [100, 10003, "Alistair"],
-  [78, 10004, "Sasha"],
-  [84, 10005, "Erin"],
-  [98, 10006, "Belinda"],
-  [75, 10007, "Leslie"],
-  [70, 10008, "Candy"],
-  [81, 10009, "Aretha"],
-  [68, 10010, "Veronica"]
-];
+let sales = [
+  [1856, 498, 30924, 87478, 328, 2653, 387, 3754, 387587, 2873, 276, 32],
+  [5865, 5456, 3983, 6464, 9957, 4785, 3875, 3838, 4959, 1122, 7766, 2534],
+  [23, 55, 67, 99, 265, 376, 232, 223, 4546, 564, 4544, 3434]
+]
 
 
-let arr = [
-  [87, "Fred"],
-  [28, "Tom"],
-  [100, "Alistair"],
-  [78, "Sasha"],
-  [84, "Erin"],
-  [98, "Belinda"],
-  [75, "Leslie"],
-  [70, "Candy"],
-  [81, "Aretha"],
-  [68, "Veronica"]
-];
+for (let i = 0; i < arr.length; i++) {
+      console.log(arr[i])
+      if (arr[i] > highest) {
+        highest = arr[i]
+      }
+    }
+    emp.unshift(highest)
+    let index = arr.indexOf(highest)
+    if (index > -1) {
+      arr.splice(index, 1)
+    }
+    highest = 0
 */
