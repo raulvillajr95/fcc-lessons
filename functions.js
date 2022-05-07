@@ -140,3 +140,25 @@ function cipher(word) {
   }
   return ciphered.join('')
 }
+
+// Remove one item from array
+function removeOneFromArr(arr, ind) {
+  let cop = [...arr]
+  if (ind > -1) {
+    cop.splice(ind, 1)
+  }
+  return cop
+}
+
+// Self-explanatory, enter array and return new array with same values but random order 
+function randomizeCharsInArray(arr) {
+  let rand = []
+  let copChar = [...characters]
+  for (let i = 0; i < arr.length; i++) {
+    let randomInt = Math.floor(Math.random() * copChar.length)
+    rand.unshift(copChar[randomInt])
+    let firstChar = rand[0]
+    copChar = removeOneFromArr(copChar, copChar.indexOf(firstChar))
+  }
+  return rand
+}
