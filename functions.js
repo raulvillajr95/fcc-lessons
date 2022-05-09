@@ -162,3 +162,40 @@ function randomizeCharsInArray(arr) {
   }
   return rand
 }
+
+// From array with multiple of the same values, return array with single values
+function singleValueArr(arr) {
+  let emp = []
+  for (let i = 0; i < arr.length; i++) {
+    if (emp.includes(arr[i]) == false) {
+      emp.push(ints[i])
+    }
+  }
+  return emp
+}
+
+// Self explanatory, get the mode of an array of integers
+function mode(arr) {
+  // Needs singleValueArr()
+  let singled = singleValueArr(arr)
+  let empty = []
+  let count = 0
+  // Gets Arrays with num of appearances
+  for (let i = 0; i < singled.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (singled[i] == arr[j]) {
+        count += 1
+      }
+    }
+    empty.push([singled[i], count])
+    count = 0
+  }
+  // From paired arrays, gets value with most appearances
+  let cnt = [,0]
+  for (let i = 0; i < empty.length; i++) {
+    if (empty[i][1] > cnt[1]) {
+      cnt = [empty[i][0],empty[i][1]]
+    }
+  }
+  return cnt[0]
+}
