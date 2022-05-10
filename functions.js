@@ -11,7 +11,7 @@ function loopInSeconds() {
   }
 }
 
-// Sort numbers in array
+// Sort numbers in array. Self-sustained function.
 function sortNum(arr) {
   let len = arr.length;
   let emp = []
