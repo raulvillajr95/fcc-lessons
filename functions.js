@@ -235,3 +235,20 @@ function oddBinaries(arr) {
   let count = arr[len] + oddBinaries(arr.slice(0,len))
   return count%2 == 1
 }
+
+// Return number of occurrences of target in the array
+function targetNumAppearances(arr, targetNum) {
+  let len = arr.length-1
+  if (len == 0) {
+    if (arr[0] == targetNum) {
+      return 1
+    } else {
+      return 0
+    }
+  }
+  if (arr[len] == targetNum) {
+    return 1 + targetNumAppearances(arr.slice(0,len), targetNum)
+  } else {
+    return 0 + targetNumAppearances(arr.slice(0,len), targetNum)
+  }
+}

@@ -71,5 +71,21 @@ function oddBinaries(arr) {
   return count%2 == 1
 }
 
-console.log(oddBinaries([1,0,1]))
-console.log(oddBinaries([1,1,1,0]))
+// Return number of occurrences of target in the array
+function targetNumAppearances(arr, targetNum) {
+  let len = arr.length-1
+  if (len == 0) {
+    if (arr[0] == targetNum) {
+      return 1
+    } else {
+      return 0
+    }
+  }
+  if (arr[len] == targetNum) {
+    return 1 + targetNumAppearances(arr.slice(0,len), targetNum)
+  } else {
+    return 0 + targetNumAppearances(arr.slice(0,len), targetNum)
+  }
+}
+
+console.log(targetNumAppearances([1,7,7,2,7,3,7], 7))
