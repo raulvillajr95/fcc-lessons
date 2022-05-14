@@ -88,4 +88,19 @@ function targetNumAppearances(arr, targetNum) {
   }
 }
 
-console.log(targetNumAppearances([1,7,7,2,7,3,7], 7))
+// Return number of occurances of even numbers in the array
+function findEvens(arr) {
+  let len = arr.length-1
+  if (len == 0) {
+    if (arr[0] % 2 == 0) {
+      return 1
+    } else {
+      return 0
+    }
+  }
+  if (arr[len] % 2 == 0) {
+    return 1 + findEvens(arr.slice(0,len))
+  } else {
+    return 0 + findEvens(arr.slice(0,len))
+  }
+}
