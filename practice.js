@@ -1,27 +1,6 @@
-// Computing the Sum of an Array of Integers
-
-let arr1 = [1,2,3]
-
-let len1 = arr1.length
-let count = 0
-
-// Recursion
-function sum(arr, len) {
-  if (len > 0) {
-    len1 -= 1
-    count += arr[len1]
-    return sum(len1, len1)
-  }
-}
-
-//console.log(sum(arr1, len1))
-
-// For loop
-let summ = 0
-for (let i = 0; i < arr1.length; i++) {
-  summ += arr1[i];
-}
-//console.log(summ)
+/*
+Exercise 6-1
+*/
 
 // Sum of ints using iteration(the book solution)
 function iterativeArraySum(integers, size) {
@@ -52,4 +31,47 @@ function arraySumRecursive(integers, size) {
   return lastNumber + allButLastSum
 }
 
-console.log(arraySumRecursive([1,2,3,4,5], 5))
+function arraySumRecursiveExtraParams(integers, size, sum, currentIndex) {
+  if (currentIndex == size) {
+    return sum
+  }
+  sum += integers[currentIndex]
+  return arraySumRecursiveExtraParams(integers, size, sum, currentIndex + 1)
+}
+
+
+function zeroCountRecursive(numbers, size) {
+  if (size == 0) {
+    return 0
+  }
+  let count = zeroCountRecursive(numbers, size-1)
+  if (numbers[size-1] == 0) {
+    count++
+  }
+  return count
+}
+
+// My function
+function sumOfPositives(arr) {
+  let count = 0
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 0) {
+      count += arr[i]
+    }
+  }
+
+  return count
+}
+
+console.log(sumOfPositives([-1,-2,1,2,3]))
+
+// Book function that I tweaked
+function arraySumRecursive(integers, size) {
+  if (size == 0) {
+    return 0
+  }
+  let lastNumber = integers[size - 1]
+  let allButLastSum = arraySumRecursive(integers, size - 1)
+  return lastNumber + allButLastSum
+}
