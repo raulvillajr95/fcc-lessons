@@ -51,20 +51,6 @@ function zeroCountRecursive(numbers, size) {
   return count
 }
 
-// My function
-function sumOfPositives(arr) {
-  let count = 0
-
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > 0) {
-      count += arr[i]
-    }
-  }
-
-  return count
-}
-
-//console.log(sumOfPositives([-1,-2,1,2,3]))
 
 
 function factorial(num) {
@@ -75,18 +61,22 @@ function factorial(num) {
   }
 }
 
-console.log(factorial(4))
+// console.log(factorial(4))
 
-function sumOfPositives1(arr) {
+function sumOfPositives(arr) {
   let len = arr.length-1
-  if (len == 1) {
-    return arr[0]
+  if (len == 0) {
+    if (arr[0] > 0) {
+      return arr[0]
+    } else {
+      return 0
+    }
+  }
+  if (arr[len] > 0) {
+    return arr[len] + sumOfPositives(arr.slice(0,len))
   } else {
-    return arr[len] + sumOfPositives1(arr.slice(0,len))
+    return 0 + sumOfPositives(arr.slice(0,len))
   }
 }
 
-console.log(sumOfPositives1([1,2,3,4,5]))
-
-sumOfPositives1([1,2,3,4,5])
-  5 + sumOfPositives([])
+console.log(sumOfPositives([-1,-2,3,4,-5,6]))

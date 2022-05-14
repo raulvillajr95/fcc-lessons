@@ -209,6 +209,19 @@ function factorial(n) {
   }
 }
 
-let arr = [1,2,3,4,5]
-console.log(arr.length)
- console.log(arr.slice(0, 4))
+// Return the sum of all positive integers in array
+function sumOfPositives(arr) {
+  let len = arr.length-1
+  if (len == 0) {
+    if (arr[0] > 0) {
+      return arr[0]
+    } else {
+      return 0
+    }
+  }
+  if (arr[len] > 0) {
+    return arr[len] + sumOfPositives1(arr.slice(0,len))
+  } else {
+    return 0 + sumOfPositives1(arr.slice(0,len))
+  }
+}
