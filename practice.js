@@ -64,14 +64,29 @@ function sumOfPositives(arr) {
   return count
 }
 
-console.log(sumOfPositives([-1,-2,1,2,3]))
+//console.log(sumOfPositives([-1,-2,1,2,3]))
 
-// Book function that I tweaked
-function arraySumRecursive(integers, size) {
-  if (size == 0) {
-    return 0
+
+function factorial(num) {
+  if (num == 1 || num == 0) {
+    return 1
+  } else {
+    return num * factorial(num - 1)
   }
-  let lastNumber = integers[size - 1]
-  let allButLastSum = arraySumRecursive(integers, size - 1)
-  return lastNumber + allButLastSum
 }
+
+console.log(factorial(4))
+
+function sumOfPositives1(arr) {
+  let len = arr.length-1
+  if (len == 1) {
+    return arr[0]
+  } else {
+    return arr[len] + sumOfPositives1(arr.slice(0,len))
+  }
+}
+
+console.log(sumOfPositives1([1,2,3,4,5]))
+
+sumOfPositives1([1,2,3,4,5])
+  5 + sumOfPositives([])
