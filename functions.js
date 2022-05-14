@@ -225,3 +225,13 @@ function sumOfPositives(arr) {
     return 0 + sumOfPositives1(arr.slice(0,len))
   }
 }
+
+// Return true if total # of 1's in array are odd
+function oddBinaries(arr) {
+  let len = arr.length-1
+  if (len == 0) {
+    return arr[0]
+  }
+  let count = arr[len] + oddBinaries(arr.slice(0,len))
+  return count%2 == 1
+}

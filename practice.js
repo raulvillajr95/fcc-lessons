@@ -61,22 +61,15 @@ function factorial(num) {
   }
 }
 
-// console.log(factorial(4))
-
-function sumOfPositives(arr) {
+// Odd # of 1's return true
+function oddBinaries(arr) {
   let len = arr.length-1
   if (len == 0) {
-    if (arr[0] > 0) {
-      return arr[0]
-    } else {
-      return 0
-    }
+    return arr[0]
   }
-  if (arr[len] > 0) {
-    return arr[len] + sumOfPositives(arr.slice(0,len))
-  } else {
-    return 0 + sumOfPositives(arr.slice(0,len))
-  }
+  let count = arr[len] + oddBinaries(arr.slice(0,len))
+  return count%2 == 1
 }
 
-console.log(sumOfPositives([-1,-2,3,4,-5,6]))
+console.log(oddBinaries([1,0,1]))
+console.log(oddBinaries([1,1,1,0]))
