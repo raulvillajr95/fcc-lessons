@@ -1,7 +1,3 @@
-/*
-Exercise 6-1
-*/
-
 // Sum of ints using iteration(the book solution)
 function iterativeArraySum(integers, size) {
   let sum = 0
@@ -104,3 +100,31 @@ function findEvens(arr) {
     return 0 + findEvens(arr.slice(0,len))
   }
 }
+
+/*
+Exercise 7-3
+Find record by student number
+*/
+
+const studentArray = [
+  [87, 10001, "Fred"],
+  [28, 10002, "Tom"],
+  [100, 10003, "Alistair"],
+  [78, 10004, "Sasha"],
+  [84, 10005, "Erin"],
+  [98, 10006, "Belinda"],
+  [75, 10007, "Leslie"],
+  [70, 10008, "Candy"],
+  [81, 10009, "Aretha"],
+  [68, 10010, "Veronica"]
+];
+
+function studentRecordSearch(arr, id) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i][1] == id) {
+      return arr[i]
+    }
+  }
+}
+
+console.log(studentRecordSearch(studentArray, 10005))
