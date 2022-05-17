@@ -101,11 +101,6 @@ function findEvens(arr) {
   }
 }
 
-/*
-Exercise 7-3
-Find record by student number
-*/
-
 const studentArray = [
   [87, 10001, "Fred"],
   [28, 10002, "Tom"],
@@ -127,4 +122,3 @@ function studentRecordSearch(arr, id) {
   }
 }
 
-console.log(studentRecordSearch(studentArray, 10005))
