@@ -1,5 +1,3 @@
-const cars = ["Saab", "Volvo", "BMW"];
+const points = new Array(40, 2);
 
-cars[0] = "Opel";
-
-console.log(cars);
+console.log(points instanceof Array)
