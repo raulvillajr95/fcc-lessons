@@ -1,3 +1,5 @@
-const points = new Array(40, 2);
+const cats = ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion'];
 
-console.log(points instanceof Array)
+const filtered = cats.filter(cat => cat.startsWith('L'))
+
+console.log(filtered)
