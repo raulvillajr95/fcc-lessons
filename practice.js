@@ -1,5 +1,13 @@
-const cats = ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion'];
+const cats = ['Pete', 'Biggles', 'Jasmine'];
 
-const filtered = cats.filter(cat => cat.startsWith('L'))
+let myFavoriteCats = 'My cats are called ';
 
-console.log(filtered)
+for (let i = 0; i < cats.length; i++) {
+  if (i === cats.length - 1) {
+    myFavoriteCats = `${myFavoriteCats} and ${cats[i]}.`
+  } else {
+    myFavoriteCats = `${myFavoriteCats}${cats[i]}, `
+  }
+}
+
+console.log(myFavoriteCats)
