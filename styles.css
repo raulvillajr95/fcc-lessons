@@ -1,19 +1,8 @@
-html {
-  font-family: sans-serif;
+p {
+  color: purple;
+  margin: 0.5em 0;
 }
 
-h2 {
-  font-size: 16px;
-}
-
-.a11y-label {
-  margin: 0;
-  text-align: right;
-  font-size: 0.7rem;
-  width: 98%;
-}
-
-body {
-  margin: 10px;
-  background: #f5f9fa;
+* {
+  box-sizing: border-box;
 }
