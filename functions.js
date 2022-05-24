@@ -284,3 +284,23 @@ function studentRecordSearch(arr, id) {
 function randomNum(b) {
   return Math.floor(Math.random() * b) + 1;
 }
+
+// Return a Array of primes from 2 to n
+function primes(n) {
+  let listy = []
+  for (let i = 2; i <= n; i++) {
+    let list = []
+    for (let j = 2; j <= i; j++) {
+      if (i % j == 0) {
+        list.push(j)
+      } else {
+        continue
+      }
+    }
+    if (list.length == 1) {
+      listy.push(i)
+    }
+    list = []
+  }
+  return listy
+}
