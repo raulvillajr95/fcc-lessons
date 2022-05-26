@@ -1,14 +1,13 @@
-const div = document.createElement('div')
+// const container = document.querySelector('#container')
 
-// 3 ways to turn text blue:
+// const content = document.createElement('div')
+// content.classList.add('content')
+// content.textContent = 'This is the glorious text-content!'
 
-// 1
-div.style.color = 'blue';
+// container.appendChild(content)
+// console.log(container)
 
-// 2
-div.style.cssText = 'color: blue; background: white;';
+const body = document.querySelector('html > head title')
 
-// 3
-// div.setAttribute('style', 'color: blue; background: white;');
-
-console.log(div)
+body.textContent = 'New Title'
+console.log(body)
