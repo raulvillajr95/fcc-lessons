@@ -1,29 +1,14 @@
-function removeFromArray(arr, rem) {
-  let  finalArr = []
+const div = document.createElement('div')
 
-  let arr 
+// 3 ways to turn text blue:
 
-  // for (let i = 0; i < arr.length; i++) {
-  //   for (let j = 1; j < arguments.length; j++) {
-  //     console.log(`${arr[i]}, ${arguments[j]}`)
-  //     if (arr[i] !== arguments[j]) {
-  //       continue
-  //     } else {
-  //       finalArr.push(arr[i])
-  //     }
-  //   }
-  // }
+// 1
+div.style.color = 'blue';
 
-  for (let i = 1; i < arguments.length; i++) {
-    for (let j = 0; j < arr.length; j++) {
-      console.log(`${arguments[i]}, ${arr[j]}`)
+// 2
+div.style.cssText = 'color: blue; background: white;';
 
-    }
-  }
-  
-  // return finalArr
-}
+// 3
+// div.setAttribute('style', 'color: blue; background: white;');
 
-// console.log(removeFromArray([1,2,3,4], 3, 4))
-
-removeFromArray([1,2,3,4], 3, 4)
+console.log(div)

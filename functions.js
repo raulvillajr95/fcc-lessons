@@ -304,3 +304,56 @@ function primes(n) {
   }
   return listy
 }
+
+// Removes optional arguments from Array
+function removeFromArray(arr) {
+  for (let i = 1; i < arguments.length; i++) {
+    if (arr.indexOf(arguments[i]) == -1) {
+      continue
+    } else {
+      arr.splice(arr.indexOf(arguments[i]), 1)
+    }
+  }
+  return arr
+}
+
+// Take 2 integers and sum every number between(including 2 params)
+function sumAll(num1, num2) {
+  let count = 0;
+  if (num1 < 0 || num2 < 0 || typeof num1 != 'number' || typeof num2 != 'number') {
+    return 'ERROR'
+  }
+  if (num1 < num2) {
+    for (let i = num1; i <= num2; i++) {
+      count += i
+    }
+  } else if (num1 > num2) {
+    for (let i = num2; i <= num1; i++) {
+      count += i
+    }
+  }
+  return count
+}
+
+// Checks if a year is a leap year
+function leapYears(year) {
+  if ( year % 100 == 0 && year % 400 != 0) {
+    return false
+  } else if (year % 4 == 0) {
+    return true
+  } else {
+    return false
+  }
+} 
+
+// Converts farenheight temp to celcius with a precision of 0.1
+function ftoc(deg) {
+  let fullDecimal = (deg - 32) * (5/9)
+  return parseFloat(fullDecimal.toFixed(1))
+}
+
+// Converts celcius temp to farenheight with a precision of 0.1
+function ctof(deg) {
+  let fullDecimal = (deg * (9/5)) + 32
+  return parseFloat(fullDecimal.toFixed(1))
+}
