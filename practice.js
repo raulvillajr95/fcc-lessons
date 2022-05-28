@@ -1,6 +1,3 @@
-let paras = document.body.getElementsByTagName("p");
-for (let para of Array.from(paras)) {
-  if (para.getAttribute("data-classified") == "secret") {
-    para.remove();
-  }
-}
+let para = document.body.getElementsByTagName("p")[0];
+console.log("clientHeight:", para.clientHeight);
+console.log("offsetHeight:", para.offsetHeight);
