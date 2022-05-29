@@ -8,17 +8,51 @@ const MOUNTAINS = [
   {name: "Denali", height: 6168, place: "United States"},
   {name: "Popocatepetl", height: 5465, place: "Mexico"},
   {name: "Mont Blanc", height: 4808, place: "Italy/France"}
-]
+];
 
-const mountainsDiv = document.getElementById('#mountains')
+const mountainsDiv = document.querySelector('#mountains');
+
+const table = document.createElement('table');
+const row = document.createElement('tr');
+
+mountainsDiv.appendChild(table);
+table.appendChild(row);
+
+
+/* loop to create heading section */
+let headings = ['name', 'height', 'place']
+for (let i = 0; i < headings.length; i++) {
+  const rowHeading = document.createElement('th')
+  rowHeading.innerText = headings[i]
+  row.appendChild(rowHeading);
+}
+
+/* loop to create body */
+let mntKeys = ['name', 'height', "place"]
+for (let i = 0; i < MOUNTAINS.length; i++) {
+  const mntRow = document.createElement('tr')
+  table.appendChild(mntRow)
+  for (let j = 0; j < 3; j++) {
+    const rowCell = document.createElement('td')
+
+    // make condition for 'height'
+    if (mntkeys[j] == 'height') {
+      rowCell.setAttribute('style','text-align: right;')
+    }
+    rowCell.innerText = MOUNTAINS[i][mntKeys[j]]
+
+    mntRow.appendChild(rowCell)
+  }
+}
+
+console.log(mountainsDiv)
 
 /*
 ideas:
-1st-creat table with name, height, & place headings
 2nd-recreate the sample one
   th's and 1 mountain
 
--copy given code to see what gives
--try some stuff out
+-nested for loop??? 3 within 7??
+-try stuff out
 -reread
 */
