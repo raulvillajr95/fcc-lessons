@@ -36,7 +36,7 @@ for (let i = 0; i < MOUNTAINS.length; i++) {
     const rowCell = document.createElement('td')
 
     // make condition for 'height'
-    if (mntkeys[j] == 'height') {
+    if (j == 1) {
       rowCell.setAttribute('style','text-align: right;')
     }
     rowCell.innerText = MOUNTAINS[i][mntKeys[j]]
