@@ -1,4 +1,4 @@
-const body = document.querySelector('body')
+
 
 
 // console.log(body.children.length)
@@ -7,16 +7,30 @@ const body = document.querySelector('body')
 //   console.log(child)
 // }
 
-function byTagName(node) {
-  if (node.children.length === 0) {
-    return
+function byTagName(node, tagName) {
+  let list = []
+  function inByTagName(nada) {
+    if (nada.children == 0) {
+      return
+    }
+    for (const child of nada.children) {
+      if (child.nodeName.toLowerCase() == tagName) {
+        list.push(child.nodeName.toLowerCase())
+      }
+      inByTagName(child)
+    }
   }
-  for (const child of body.children) {
-    console.log(child)
-    byTagName(child)
-  }
+  inByTagName(node)
+  return list
 }
-// byTagName(body)
+console.log(byTagName(document.body, "h1").length)
+console.log(byTagName(document.body, "span").length)
+console.log(byTagName(document.querySelector("p"), "span").length)
+
+// for (const child of body.children) {
+//   console.log(child.nodeName.toLowerCase())
+//   console.log(child.children.length)
+// }
 
 
 function printChildrenRecursive(t) {
@@ -66,5 +80,6 @@ const tree = {
 
 /*
 ideas:
--create manual body tree
+-break down my current byTagName() function
+  why in tf is it not returning???????????????????????????
 */
