@@ -357,3 +357,21 @@ function ctof(deg) {
   let fullDecimal = (deg * (9/5)) + 32
   return parseFloat(fullDecimal.toFixed(1))
 }
+
+// Manual version of document.getElementsByTagName
+function byTagName(node, tagName) {
+  let list = []
+  function inByTagName(nada) {
+    if (nada.children == 0) {
+      return
+    }
+    for (const child of nada.children) {
+      if (child.nodeName.toLowerCase() == tagName) {
+        list.push(child.nodeName.toLowerCase())
+      }
+      inByTagName(child)
+    }
+  }
+  inByTagName(node)
+  return list
+}

@@ -1,85 +1,19 @@
+let cat = document.querySelector("#cat");
+let hat = document.querySelector("#hat");
 
-
-
-// console.log(body.children.length)
-
-// for (const child of body.children) {
-//   console.log(child)
-// }
-
-function byTagName(node, tagName) {
-  let list = []
-  function inByTagName(nada) {
-    if (nada.children == 0) {
-      return
-    }
-    for (const child of nada.children) {
-      if (child.nodeName.toLowerCase() == tagName) {
-        list.push(child.nodeName.toLowerCase())
-      }
-      inByTagName(child)
-    }
+let angle = 0;
+let lastTime = null;
+function animate(time) {
+  if (lastTime != null) {
+    angle += (time - lastTime) * 0.001;
   }
-  inByTagName(node)
-  return list
+  lastTime = time;
+  cat.style.top = (Math.sin(angle) * 40 + 40) + "px";
+  cat.style.left = (Math.cos(angle) * 200 + 230) + "px";
+
+  hat.style.top = (Math.sin(angle) * 40 + 40) + "px";
+  hat.style.right = (Math.cos(angle) * 200 + 230) + "px";
+
+  requestAnimationFrame(animate);
 }
-console.log(byTagName(document.body, "h1").length)
-console.log(byTagName(document.body, "span").length)
-console.log(byTagName(document.querySelector("p"), "span").length)
-
-// for (const child of body.children) {
-//   console.log(child.nodeName.toLowerCase())
-//   console.log(child.children.length)
-// }
-
-
-function printChildrenRecursive(t) {
-  if (t.children.length === 0) {
-    return
-  }
-  t.children.forEach(child => {
-    console.log(child.name)
-    printChildrenRecursive(child)
-  })
-}
-
-const tree = {
-  name: 'body',
-  children: [
-    {
-      name: 'h1',
-      children: [
-        {
-          name: 'span',
-          children: []
-        }
-      ]
-    },
-    {
-      name: 'p',
-      children: [
-        {
-          name: 'span',
-          children: []
-        },
-        {
-          name: 'span',
-          children: []
-        },
-      ]
-    }
-  ]
-}
-
-// body
-//   h1
-//     span
-//   p
-//     span
-//     span
-
-/*
-ideas:
--break down my current byTagName() function
-  why in tf is it not returning???????????????????????????
-*/
+requestAnimationFrame(animate);
