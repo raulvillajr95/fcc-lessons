@@ -16,8 +16,18 @@ function byTagName(node) {
     byTagName(child)
   }
 }
+// byTagName(body)
 
-byTagName(body)
+
+function printChildrenRecursive(t) {
+  if (t.children.length === 0) {
+    return
+  }
+  t.children.forEach(child => {
+    console.log(child.name)
+    printChildrenRecursive(child)
+  })
+}
 
 const tree = {
   name: 'body',
@@ -25,12 +35,34 @@ const tree = {
     {
       name: 'h1',
       children: [
-        {}
+        {
+          name: 'span',
+          children: []
+        }
+      ]
+    },
+    {
+      name: 'p',
+      children: [
+        {
+          name: 'span',
+          children: []
+        },
+        {
+          name: 'span',
+          children: []
+        },
       ]
     }
-    {}
   ]
 }
+
+// body
+//   h1
+//     span
+//   p
+//     span
+//     span
 
 /*
 ideas:
