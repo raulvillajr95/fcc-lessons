@@ -1,7 +1,10 @@
-#progresss {
-  border-bottom: 2px solid blue;
-  width: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
+.trail {
+  position: absolute;
+  height: 6px;
+  width: 6px;
+  border-radius: 3px;
+  background: teal;
+}
+body {
+  height: 300px;
 }
