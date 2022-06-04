@@ -1,3 +1,6 @@
-document.getElementById('A').innerHTML = '<strong>Hi</strong>';
+let ulElementChildNodes = document.querySelector('ul').childNodes;
+console.log(ulElementChildNodes)
 
-document.getElementById('B').outerHTML = '<div id="B" class"new">Whats Shaking</div>'
+Array.prototype.forEach.call(ulElementChildNodes, function(item) {
+  console.log(item);
+})
