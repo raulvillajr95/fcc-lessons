@@ -1,6 +1,6 @@
-let elm = document.querySelector('div')
+let div = document.querySelector('div')
 
-console.log(elm.classList)
-console.log(elm.className)
+div.scrollTop = 750
+div.scrollLeft = 750
 
-console.log(elm)
+console.log(div.scrollTop, div.scrollLeft)
