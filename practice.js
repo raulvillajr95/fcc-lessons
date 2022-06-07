@@ -1,16 +1,6 @@
-console.log(Object.keys(document).sort())
+let elm = document.querySelector('div')
 
-let documentPropertiesIncludeInherited = [];
+console.log(elm.classList)
+console.log(elm.className)
 
-for (let p in document) {
-  documentPropertiesIncludeInherited.push(p)
-}
-console.log(documentPropertiesIncludeInherited.sort())
-
-let documentPropertiesOnlyInherited = [];
-for(let p in document) {
-  if (!document.hasOwnProperty(p)) {
-    documentPropertiesOnlyInherited.push(p)
-  }
-}
-console.log(documentPropertiesOnlyInherited.sort())
+console.log(elm)
