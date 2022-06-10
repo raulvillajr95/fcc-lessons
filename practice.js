@@ -1,7 +1,11 @@
-document.querySelector('#styleElement').sheet.insertRule('p{color:red}', 1)
+window.addEventListener('mousemove', function() {
+  console.log('moving over window');
+}, false)
 
-console.log(document.querySelector('#styleElement').sheet.cssRules[1].cssText)
+document.addEventListener('mousemove', function() {
+  console.log('moving over document')
+}, false)
 
-document.querySelector('#styleElement').sheet.deleteRule(1)
-
-console.log(document.querySelector('#styleElement').sheet.cssRules[1].cssText)
+document.querySelector('div').addEventListener('mousemove', function() {
+  console.log('moving over div')
+}, false)
