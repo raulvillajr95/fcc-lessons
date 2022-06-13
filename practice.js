@@ -1,11 +1,3 @@
-window.addEventListener('mousemove', function() {
-  console.log('moving over window');
-}, false)
+let form = document.getElementById('addForm')
+let itemList = document.getElementById('items')
 
-document.addEventListener('mousemove', function() {
-  console.log('moving over document')
-}, false)
-
-document.querySelector('div').addEventListener('mousemove', function() {
-  console.log('moving over div')
-}, false)
