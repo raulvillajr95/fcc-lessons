@@ -1,26 +1,27 @@
-function isEmpty(obj) {
-  let lst = []
-  for (const key in obj) {
-    if (key) {
-      lst.push(key)
-    }
+const person = {
+  name: {
+    first: 'Bob',
+    last: 'Smith'
+  },
+  age: 32,
+  bio() {
+    console.log(`${this.name.first} ${this.name.last} is ${this.age} years old.`)
+  },
+  introduceSelf() {
+    console.log(`Hi! I'm ${this.name.first}.`)
   }
-  return lst.length == 0
 }
 
-let menu = {
-  width: 200,
-  height: 300,
-  title: "My menu"
-};
+person.age = 45;
+person['name']['last'] = 'Cratchit'
 
-function multiplyNumeric(obj) {
-  for (const key in menu) {
-    if (typeof menu[key] == 'number') {
-      menu[key] *= 2
-    }
-  }
-  return obj
+person['eyes'] = 'hazel'
+person.farewell = function() {
+  console.log('Bye everybody!')
 }
 
-console.log(multiplyNumeric(menu))
+const myDataName = 'height'
+const myDataValue = '1.75m'
+person[myDataName] = myDataValue
+
+console.log(person.height)
