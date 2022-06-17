@@ -8,15 +8,19 @@ function isEmpty(obj) {
   return lst.length == 0
 }
 
-let salaries = {
+let menu = {
+  width: 200,
+  height: 300,
+  title: "My menu"
+};
+
+function multiplyNumeric(obj) {
+  for (const key in menu) {
+    if (typeof menu[key] == 'number') {
+      menu[key] *= 2
+    }
+  }
+  return obj
 }
 
-let sum = 0;
-if (isEmpty(salaries)) {
-  console.log(sum)
-} else {
-  for (const key in salaries) {
-    sum += salaries[key]
-  }
-  console.log(sum)
-}
+console.log(multiplyNumeric(menu))
