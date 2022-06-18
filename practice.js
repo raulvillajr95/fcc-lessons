@@ -1,27 +1,31 @@
-const person = {
-  name: {
-    first: 'Bob',
-    last: 'Smith'
-  },
-  age: 32,
-  bio() {
-    console.log(`${this.name.first} ${this.name.last} is ${this.age} years old.`)
-  },
-  introduceSelf() {
-    console.log(`Hi! I'm ${this.name.first}.`)
+// function createPerson(name) {
+//   const obj = {};
+//   obj.name = name;
+//   obj.introduceSelf = function() {
+//     console.log(`Hi! I'm ${this.name}.`);
+//   }
+//   return obj;
+// }
+// const salva = createPerson('Salva')
+// console.log(salva.name)
+// salva.introduceSelf()
+// const frankie = createPerson('Frankie')
+// console.log(frankie.name)
+// frankie.introduceSelf()
+
+function Person(name) {
+  this.name = name;
+  this.introduceSelf = function() {
+    console.log(`Hi! I'm ${this.name}.`);
   }
 }
 
-person.age = 45;
-person['name']['last'] = 'Cratchit'
+const salva = new Person('Salva');
+console.log(salva.name);
+salva.introduceSelf();
 
-person['eyes'] = 'hazel'
-person.farewell = function() {
-  console.log('Bye everybody!')
-}
+const frankie = new Person('Frankie');
+console.log(frankie.name);
+frankie.introduceSelf();
 
-const myDataName = 'height'
-const myDataValue = '1.75m'
-person[myDataName] = myDataValue
-
-console.log(person.height)
+const myNotification = new Notification('Hello!');
