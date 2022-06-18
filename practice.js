@@ -1,31 +1,15 @@
-// function createPerson(name) {
-//   const obj = {};
-//   obj.name = name;
-//   obj.introduceSelf = function() {
-//     console.log(`Hi! I'm ${this.name}.`);
-//   }
-//   return obj;
-// }
-// const salva = createPerson('Salva')
-// console.log(salva.name)
-// salva.introduceSelf()
-// const frankie = createPerson('Frankie')
-// console.log(frankie.name)
-// frankie.introduceSelf()
-
-function Person(name) {
+function Cat(name, breed, color) {
   this.name = name;
-  this.introduceSelf = function() {
-    console.log(`Hi! I'm ${this.name}.`);
+  this.breed = breed;
+  this.color = color;
+  this.greeting = function() {
+    console.log(`Hello, said ${this.name} the ${this.breed}`)
   }
 }
 
-const salva = new Person('Salva');
-console.log(salva.name);
-salva.introduceSelf();
+const cat = new Cat('Bertie', 'Cymric', 'white')
 
-const frankie = new Person('Frankie');
-console.log(frankie.name);
-frankie.introduceSelf();
+const cat2 = new Cat('Canelo', 'American', 'orange')
 
-const myNotification = new Notification('Hello!');
+console.log(cat)
+console.log(cat2)
