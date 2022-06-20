@@ -375,3 +375,47 @@ function byTagName(node, tagName) {
   inByTagName(node)
   return list
 }
+
+function add(a, b) {
+  return a + b
+};
+
+function subtract(a, b) {
+	return a - b
+};
+
+function sum(arr) {
+	let total = 0;
+  if (arr.length == 0) {
+    return 0
+  } else if (arr.length == 1) {
+    return arr[0]
+  }
+  for (let i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+  return total;
+};
+
+function multiply(arr) {
+  let total = 1;
+  for (let i = 0; i < arr.length; i++) {
+    total *= arr[i];
+  }
+  return total;
+};
+
+function power(a,b) {
+	return a**b;
+};
+
+function factorial(a) {
+	if (a == 0) {
+    return 1;
+  }
+  let total = 1;
+  for (let i = 2; i <= a; i++) {
+    total *= i;
+  }
+  return total;
+};
