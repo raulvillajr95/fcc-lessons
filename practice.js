@@ -1,17 +1,22 @@
-function fibonacci(a) {
-  let fibList = [1, 1]
-
-  if (a < 0) {
-    return "OOPS"
+const books = [
+  {
+    title: 'Book',
+    author: 'Name'
+  },
+  {
+    title: 'Book2',
+    author: 'Name2'
   }
+]
 
-  for (let i = 0; i <= parseInt(a); i++) {
-    let last = fibList[fibList.length-1]
-    let secondLast = fibList[fibList.length-2]
-    fibList.push(last + secondLast)
-  }
+let bookTitles = books.map(a => {
+  return a.title;
+})
 
-  return fibList[a-1]
-}
+/*
+map
+reduce
+filter
+*/
 
-console.log(fibonacci(6))
+console.log(bookTitles)
