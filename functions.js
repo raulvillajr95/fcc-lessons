@@ -376,14 +376,17 @@ function byTagName(node, tagName) {
   return list
 }
 
+// Simply adds 2 numbers
 function add(a, b) {
   return a + b
 };
 
+// Simply subtracts 2 numbers
 function subtract(a, b) {
 	return a - b
 };
 
+// Adds an array of numbers
 function sum(arr) {
 	let total = 0;
   if (arr.length == 0) {
@@ -397,6 +400,7 @@ function sum(arr) {
   return total;
 };
 
+// Multiplies an array of numbers
 function multiply(arr) {
   let total = 1;
   for (let i = 0; i < arr.length; i++) {
@@ -405,10 +409,12 @@ function multiply(arr) {
   return total;
 };
 
+// Get 'a' to the power of 'b'
 function power(a,b) {
 	return a**b;
 };
 
+// Simply gets the factorial of a
 function factorial(a) {
 	if (a == 0) {
     return 1;
@@ -418,4 +424,21 @@ function factorial(a) {
     total *= i;
   }
   return total;
+};
+
+// Check if string is a plindrome
+function palindromes(str) {
+  let punctuation = [" ", "!", ",", ".", ""]
+  let splat = []
+  for (let i = 0; i < str.length; i++) {
+    if (punctuation.includes(str[i])) {
+      continue;
+    } else {
+      splat.push(str[i].toLowerCase());
+    }
+  }
+  let reversed = splat.reverse().join('');
+  let regular = splat.join('')
+
+  return splat.join('') == splat.reverse().join('')
 };
