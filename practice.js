@@ -1,113 +1,64 @@
-// 1
-function total(arr) {
-  let total = arr.reduce((a, b) => {
-    return a + b;
-  }, 0)
-  return total
-}
-// console.log(total([1,2,3]))
+const people = [
+  {
+    name: "Carly",
+    yearOfBirth: 2018,
+  },
+  {
+    name: "Ray",
+    yearOfBirth: 1962,
+    yearOfDeath: 2011,
+  },
+  {
+    name: "Jane",
+    yearOfBirth: 1912,
+    yearOfDeath: 1941,
+  },
+]
 
-
-// 2
-function stringConcat(arr) {
-  let together = arr.reduce((a,b) => {
-    return a + b;
-  }, "")
-  return together
-}
-// console.log(stringConcat([10,2,3]))
-
-
-// 3
-var voters = [
-  {name:'Bob' , age: 30, voted: true},
-  {name:'Jake' , age: 32, voted: true},
-  {name:'Kate' , age: 25, voted: false},
-  {name:'Sam' , age: 20, voted: false},
-  {name:'Phil' , age: 21, voted: true},
-  {name:'Ed' , age:55, voted:true},
-  {name:'Tami' , age: 54, voted:true},
-  {name: 'Mary', age: 31, voted: false},
-  {name: 'Becky', age: 43, voted: false},
-  {name: 'Joey', age: 41, voted: true},
-  {name: 'Jeff', age: 30, voted: true},
-  {name: 'Zack', age: 19, voted: false}
-];
-function totalVotes(arr) {
-  let total = 0;
-  arr.reduce((a, b) => {
-    if (b.voted == true) {
-      return  total  += 1
+function findTheOldest(arra) {
+  function sortNum(arr) {
+    let len = arr.length;
+    let emp = []
+    let highest = 0
+    for (let j = 0; j < len; j++) {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > highest) {
+          highest = arr[i]
+        }
+      }
+      emp.unshift(highest)
+      let index = arr.indexOf(highest)
+      if (index > -1) {
+        arr.splice(index, 1)
+      }
+      highest = 0
     }
-  }, 0)
-  return total
-}
-// console.log(totalVotes(voters))
-
-
-// 4
-var wishlist = [
-  { title: "Tesla Model S", price: 90000 },
-  { title: "4 carat diamond ring", price: 45000 },
-  { title: "Fancy hacky Sack", price: 5 },
-  { title: "Gold fidgit spinner", price: 2000 },
-  { title: "A second Tesla Model S", price: 90000 }
-];
-function shoppingSpree(arr) {
-  let total = arr.reduce((a, b) => {
-    return a += b.price
-  }, 0)
-  return total;
-}
-// console.log(shoppingSpree(wishlist))
-
-
-// 5
-var arrays = [
-  ["1", "2", "3"],
-  [true],
-  [4, 5, 6]
-];
-function flatten(arr) {
-  let allOfArr = arr.reduce((a, b) => {
-    return a.concat(b)
-  }, [])
-  return allOfArr;
-}
-// console.log(flatten(arrays))
-
-
-// 6 
-function voterResults(arr) {
-  let results = {
-    numYoungVotes: 0,
-    numYoungPeople: 0,
-    numMidVotesPeople: 0,
-    numMidsPeople: 0,
-    numOldVotesPeople: 0,
-    numOldsPeople: 0,
+    return emp
   }
-  arr.reduce((a, b) => {
-    let age = b.age;
-    let vote = b.voted;
-    if (age > 17 && age < 26) {
-      results.numYoungPeople += 1
-      if (vote == true) {
-        results.numYoungVotes += 1
-      }
-    } else if (age > 25 && age < 36) {
-      results.numMidsPeople += 1
-      if (vote == true) {
-        results.numMidVotesPeople += 1
-      }
-    } else if (age > 35 && age < 56) {
-      results.numOldsPeople += 1
-      if (vote == true) {
-        results.numOldVotesPeople += 1
-      }
+  let ages = []
+  
+  // add 'if' for objects with no yearOfDeath
+  arra.reduce((a, b) => {
+    if (b.yearOfDeath == undefined) {
+      const yearNow = new Date().getFullYear();
+      b["yearOfDeath"] = yearNow
+      ages.push(b.yearOfDeath - b.yearOfBirth)
+    } else {
+      ages.push(b.yearOfDeath - b.yearOfBirth);
     }
   }, 0)
+  console.log(ages)
 
-  return results;
+  let agesSorted = sortNum(ages)
+  let oldestNum = agesSorted[agesSorted.length - 1];
+  let oldest;
+  for (let i = 0; i < agesSorted.length; i++) {
+    arra.reduce((a, b) => {
+      if (oldestNum == b.yearOfDeath - b.yearOfBirth) {
+        oldest = b;
+      }
+    }, 0)
+  }
+  return oldest
 }
-console.log(voterResults(voters))
+console.log(findTheOldest(people).name)
