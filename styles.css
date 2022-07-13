@@ -1,18 +1,8 @@
-body {
-  font-family: 'Helvetica Neue', Helvetica, sans-serif;
-  font-size: 1.1rem;
-  color: #333;
+svg rect {
+  fill: orange;
 }
-#menu {
-  margin: 0.9rem;
-}
-#content div {
-  display: inline-block;
-  margin: 0.1rem;
-  background-color: orange;
-  color: white;
-  padding: 0.6rem;
-  width: 9rem;
-  height: 1.1rem;
-  text-align: center;
+svg text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
 }

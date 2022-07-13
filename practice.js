@@ -1,18 +1,29 @@
-//Make new data
-function makeNewData() {
-  let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  letters = letters.slice(0, Math.floor(Math.random() * 26)).split('')
-  document.getElementById('dataDisplayer').innerHTML = letters;
-  redraw(letters);
-}
-//Redraw entire board
-function redraw(receivedData) {
-  d3.select('#content')
-    .selectAll('div')
-    .data(receivedData)
-    .enter()
-    .append("div")
-    .text((d, i) => d); 
-}
+var data = [5, 10, 12];
+var width = 200,
+scaleFactor = 10,
+barHeight = 20;
 
-makeNewData()
+var graph = d3.select("body")
+          .append("svg")
+          .attr("width", width)
+          .attr("height", barHeight * data.length);
+
+var bar = graph.selectAll("g")
+          .data(data)
+          .enter()
+          .append("g")
+          .attr("transform", function(d, i) {
+                return "translate(0," + i * barHeight + ")";
+          });
+
+bar.append("rect")
+.attr("width", function(d) {
+        return d * scaleFactor;
+})
+.attr("height", barHeight - 1);
+
+bar.append("text")
+.attr("x", function(d) { return (d*scaleFactor); })
+.attr("y", barHeight / 2)
+.attr("dy", ".35em")
+.text(function(d) { return d; });
