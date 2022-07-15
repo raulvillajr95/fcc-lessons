@@ -1,29 +1,49 @@
-var data = [5, 10, 12];
-var width = 200,
-scaleFactor = 10,
-barHeight = 20;
+var svg = d3.select("svg"),
+width = svg.attr("width"),
+height = svg.attr("height"),
+radius = Math.min(width, height) / 2;
 
-var graph = d3.select("body")
-          .append("svg")
-          .attr("width", width)
-          .attr("height", barHeight * data.length);
+var g = svg.append("g")
+       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-var bar = graph.selectAll("g")
-          .data(data)
-          .enter()
-          .append("g")
-          .attr("transform", function(d, i) {
-                return "translate(0," + i * barHeight + ")";
-          });
+var color = d3.scaleOrdinal(['#4daf4a','#377eb8','#ff7f00','#984ea3','#e41a1c']);
 
-bar.append("rect")
-.attr("width", function(d) {
-        return d * scaleFactor;
-})
-.attr("height", barHeight - 1);
+var pie = d3.pie().value(function(d) { 
+    return d.percent; 
+});
 
-bar.append("text")
-.attr("x", function(d) { return (d*scaleFactor); })
-.attr("y", barHeight / 2)
-.attr("dy", ".35em")
-.text(function(d) { return d; });
+var path = d3.arc()
+         .outerRadius(radius - 10)
+         .innerRadius(150);
+
+var label = d3.arc()
+          .outerRadius(radius)
+          .innerRadius(radius - 80);
+
+d3.csv("browseruse.csv", function(error, data) {
+if (error) {
+    throw error;
+}
+var arc = g.selectAll(".arc")
+           .data(pie(data))
+           .enter().append("g")
+           .attr("class", "arc");
+
+arc.append("path")
+   .attr("d", path)
+   .attr("fill", function(d) { return color(d.data.browser); });
+
+console.log(arc)
+
+arc.append("text")
+   .attr("transform", function(d) { 
+            return "translate(" + label.centroid(d) + ")"; 
+    })
+   .text(function(d) { return d.data.browser; });
+});
+
+svg.append("g")
+   .attr("transform", "translate(" + (width / 2 - 120) + "," + 20 + ")")
+   .append("text")
+   .text("Browser use statistics - Jan 2017")
+   .attr("class", "title")

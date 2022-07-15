@@ -1,8 +1,13 @@
-svg rect {
-  fill: orange;
-}
-svg text {
-  fill: white;
+.arc text {
   font: 10px sans-serif;
-  text-anchor: end;
+  text-anchor: middle;
+}
+
+.arc path {
+  stroke: #fff;
+}
+
+.title {
+  fill: teal;
+  font-weight: bold;
 }
