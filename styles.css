@@ -1,4 +1,3 @@
-
 html {
   font-family: sans-serif;
 }
@@ -33,12 +32,4 @@ tr:nth-child(odd) td {
 
 caption {
   padding: 10px;
-}
-
-tbody {
-  font-size: 95%;
-  font-style: italic;
-}
-tfoot {
-  font-weight: bold;
 }
