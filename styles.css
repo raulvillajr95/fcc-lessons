@@ -1,51 +1,38 @@
-input {
-  display: none;
-}
-label, ul {
-  border: 1px solid #cecfd5;
-  border-radius: 6px;
-}
-label {
-  color: #0087cc;
-  cursor: pointer;
+.arrow {
+  background: #2db34a;
+  color: #fff;
   display: inline-block;
-  font-size: 18px;
-  padding: 5px 9px;
-  transition: all .15s ease;
-}
-label:hover {
-  color: #ff7b29;
-}
-input:checked + label {
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
-  color: #9799a7;
-}
-nav {
-  max-height: 0;
-  overflow: hidden;
-  transition: all .15s ease;
-}
-input:checked ~ nav {
-  max-height: 500px;
-}
-ul {
-  list-style: none;
-  margin: 8px 0 0 0;
-  padding: 0;
-  width: 100px;
-}
-li {
-  border-bottom: 1px solid #cecfd5;
-}
-li:last-child {
-  border-bottom: 0;
-}
-a {
-  color: #0087cc;
-  display: block;
-  padding: 6px 12px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 12px;
+  position: relative;
   text-decoration: none;
 }
-a:hover {
-  color: #ff7b29;
+.arrow::before, .arrow::after {
+  content: "";
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+.arrow::before {
+  border-bottom: 15px solid #2db34a;
+  border-left: 15px solid transparent;
+  border-top: 15px solid #2db34a;
+  left: -15px;
+}
+.arrow::after {
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid #2db34a;
+  border-top: 15px solid transparent;
+  right: -15px;
+}
+.arrow:hover {
+  background: #ff7b29;
+}
+.arrow:hover::before {
+  border-bottom: 15px solid #ff7b29;
+  border-top: 15px solid #ff7b29;
+}
+.arrow:hover::after {
+  border-left: 15px solid #ff7b29;
 }
