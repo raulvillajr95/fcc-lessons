@@ -1,18 +1,24 @@
-div {
-  font-family: sans-serif;
+* {
+  box-sizing: border-box;
 }
-.sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 10px;
-  color: white;
-  padding: 10px;
-  font-size: 1.1em;
-  background-color: #e74c3c;
+body {
+  font-size: 1.25rem;
+  font-family: system-ui, sans-serif;
 }
-.long {
-  padding: 1em;
-  height: 25ch;
-  font-size: 3em;
-  text-transform: uppercase;
+main {
+  width: min(60ch, 100vw - 2rem);
+  margin-top: max(8vh, 2rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+h2 {
+  border: min(6px, 0.15em) solid purple;
+  font-size: clamp(1.5rem, 6vw + 1rem, 3rem);
+  padding: max(5%, 1rem);
+}
+p {
+  line-height: 1.5;
+}
+a {
+  color: blue;
 }
