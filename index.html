@@ -1,19 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
   <head>
     <meta charset="utf-8">
-    <title>FCC Lessons</title>
-    <link href="styles.css" rel="stylesheet" type="text/css">
-    <script src="practice.js" defer></script>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles.css">
+    <title>My test page</title>
   </head>
   <body>
-    <label class="form-control">
-      <input type="checkbox" name="checkbox" />
-      Checkbox
-    </label>
-    <label class="form-control">
-      <input type="checkbox" name="checkbox-checked" checked />
-      Checkbox - checked
-    </label>
+    <form action="/my-handling-form-page" method="post">
+      <ul>
+        <li>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="user_name">
+        </li>
+        <li>
+          <label for="mail">E-mail:</label>
+          <input type="email" id="mail" name="user_email">
+        </li>
+        <li>
+          <label for="msg">Message:</label>
+          <textarea id="msg" name="user_message"></textarea>
+        </li>
+        <li class="button">
+          <button type="submit">Send your message</button>
+        </li>
+      </ul>
+    </form>
   </body>
 </html>
