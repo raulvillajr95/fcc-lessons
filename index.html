@@ -1,89 +1,43 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="styles.css">
-    <title>My test page</title>
+    <meta charset="utf-8"/>
+    <title>Basic controls: Task 1</title>
+    <style>
+      body {
+        background-color: #fff;
+        color: #333;
+        font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+        padding: 1em;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
   </head>
+
   <body>
     <form>
-      <h1>Payment form</h1>
-      <p>Required fields are followed by <strong><span aria-label="required">*</span></strong>.</p>
-      <section>
-        <h2>Contact information</h2>
-        <fieldset>
-          <legend>Title</legend>
-          <ul>
-            <li>
-              <label for="title_1">
-                <input type="radio" id="title_1" name="title" value="K">
-                King
-              </label>
-            </li>
-            <li>
-              <label for="title_2">
-                <input type="radio" name="title" id="title_2">
-                Queen
-              </label>
-            </li>
-            <li>
-              <label for="title_3">
-                <input type="radio" name="title" id="title_3">
-                Joker
-              </label>
-            </li>
-          </ul>
-        </fieldset>
-        <p>
-          <label for="name">
-            <span>Name: </span>
-            <strong><span aria-label="required">*</span></strong>
+      <ul>
+        <li>
+          <label for="username">
+            User ID
+            <input type="text" name="username" id="username">
           </label>
-          <input type="text" id="username">
-        </p>
-        <p>
-          <label for="mail">
-            <span>E-mail: </span>
-            <strong><span aria-label="required">*</span></strong>
-          </label>
-          <input type="email" name="usermail" id="mail">
-        </p>
-        <p>
+        </li>
+        <li>
           <label for="pwd">
-            <span>Password: </span>
-            <strong><span aria-label="required">*</span></strong>
+            Password
+            <input type="password" name="pwd" id="pwd">
           </label>
-          <input type="password" name="password" id="pwd">
-        </p>
-      </section>
-      <section>
-        <h2>Payment information</h2>
-        <p>
-          <label for="card">
-            <span>Card type:</span>
-          </label>
-          <select name="usercard" id="card">
-            <option value="visa">Visa</option>
-            <option value="mc">Mastercard</option>
-            <option value="amex">American Express</option>
-          </select>
-        </p>
-        <p>
-          <label for="number">
-            <span>Card number:</span>
-            <strong><span aria-label="required">*</span></strong>
-          </label>
-          <input type="tel" name="cardnumber" id="number">
-        </p>
-        <p>
-          <label for="expiration">
-            <span>Expiration date:</span>
-            <strong><span aria-label="required">*</span></strong>
-          </label>
-          <input type="text" id="expiration" required="true" placeholder="MM/YY" pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$">
-        </p>
-      </section>
+        </li>
+        <li>
+          <button type="submit">Log in</button>
+        </li>
+      </ul>
     </form>
   </body>
+
 </html>
