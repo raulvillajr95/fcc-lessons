@@ -1,43 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
   <head>
-    <meta charset="utf-8"/>
-    <title>Basic controls: Task 1</title>
-    <style>
-      body {
-        background-color: #fff;
-        color: #333;
-        font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
-        padding: 1em;
-        margin: 0;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles.css">
+    <title>Postcard example</title>
   </head>
-
   <body>
     <form>
-      <ul>
-        <li>
-          <label for="username">
-            User ID
-            <input type="text" name="username" id="username">
-          </label>
-        </li>
-        <li>
-          <label for="pwd">
-            Password
-            <input type="password" name="pwd" id="pwd">
-          </label>
-        </li>
-        <li>
-          <button type="submit">Log in</button>
-        </li>
-      </ul>
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+      </div>
+      <div>
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email">
+      </div>
+      <div>
+        <label for="tel">Phone number:</label>
+        <input type="tel" name="tel" id="tel">
+      </div>
+      <div>
+        <label for="message">Message:</label>
+        <textarea name="message" id="message"></textarea>
+      </div>
     </form>
+    <button class="btn">Submit</button>
   </body>
-
 </html>
