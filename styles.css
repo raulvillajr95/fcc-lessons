@@ -1,45 +1,87 @@
+body {
+  background-color: #fff;
+  color: #333;
+  font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+  padding: 1em;
+  margin: 0;
+}
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-form {
-  margin: 0 auto;
-  width: 65%;
-}
-.btn {
-  margin-left: 17.5%;
-  margin-top: 10px;
-  height: 2rem;
-  width: 6rem;
+button,
+input,
+select {
+  font-family: inherit;
   font-size: 100%;
-  border-radius: 5px;
-  border-style: none;
-
-  background: linear-gradient(40deg, #e1e1e1, #f2f2f2);
+  padding: 0; margin: 0;
 }
-div {
+
+fieldset {
+  padding: 10px 30px 0;
+  width: 400px;
+}
+
+legend {
+  color: white;
+  background: black;
+  padding: 5px 10px;
+}
+
+fieldset > div {
+  margin-bottom: 20px;
   display: flex;
-  padding: 1rem 0;
-  justify-content: space-between;
+  flex-flow: row wrap;
 }
 
-input, textarea {
-  width: 60%;
-  border-style: none;
-  background-color: #e1e1e1;
-  border-radius: 5px;
+button, label, input {
+  display: block;
+  font-family: inherit;
+  font-size: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+  height: 30px;
 }
 
 input {
-  height: 1.5rem;
+  box-shadow: inset 1px 1px 3px #ccc;
+  border-radius: 5px;
 }
 
-textarea {
-  height: 5rem;
+input:hover, input:focus {
+  background-color: #eee;
+}
+
+button {
+  width: 60%;
+  margin: 0 auto;
+}
+
+input[name="fname"]:empty {
+  outline: 3px solid red;
+  border-style: none;
+}
+
+input[name="fname"]:valid {
+  outline: 3px solid green;
+  border-style: none;
+}
+
+input[name="lname"]:empty {
+  outline: 3px solid red;
+  border-style: none;
+}
+
+input[name="lname"]:valid {
+  outline: 3px solid green;
+  border-style: none;
+}
+
+input[id="email"]:valid {
+  outline: 3px solid green;
+  border-style: none;
 }
