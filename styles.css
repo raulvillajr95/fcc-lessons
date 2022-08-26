@@ -1,32 +1,28 @@
-@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700);
+.wrapper {
+  display: grid;
+  grid-template: repeat(3, 100px) / repeat(3, 1fr);
+  gap: 1em 20px;
+  background-color: lightblue;
+}
 
-form {
-  max-width: 450px;
-  margin: 0auto;
+.box1 {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  grid-row-end: span 3;
+  background-color: red;
 }
-form > div {
-  position: relative;
-  background: white;
-  border-bottom: 1px solid #ccc;
+.box2 {
+  grid-column: 3;
+  grid-row: 1/span 2;
+  background-color: blue;
 }
-form > div > label {
-  opacity: 0.3;
-  font-weight: bold;
-  position: absolute;
-  top: 22px;
-  left: 20px;
+.box3 {
+  grid-column: 2;
+  grid-row: 1;
+  background-color: green;
 }
-form > div > input[type="text"],
-form > div > input[type="email"],
-form > div > input[type="password"] {
-  width: 100%;
-  border: 0;
-  padding: 20px 20px 20px 50px;
-  background: #eee;
-}
-form > div > input[type="text"]:focus,
-form > div > input[type="email"]:focus,
-form > div > input[type="password"]:focus {
-  outline: 0;
-  background: white;
+.box4 {
+  grid-column: 2/span 2;
+  grid-row: 3;
+  background-color: purple;
 }
