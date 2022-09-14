@@ -459,3 +459,9 @@ function fibonacci(a) {
 
   return fibList[a-1]
 }
+
+// Check is a numbe is a negative zero (-0)
+function isNegZero(n) {
+  n = Number(n);
+  return (n ===0) && (1 / n === -Infinity)
+}
