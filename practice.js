@@ -1,8 +1,5 @@
-function isNegZero(n) {
-  n = Number(n);
-  return (n ===0) && (1 / n === -Infinity)
-}
+var a = new Array(1,2,3);
+console.log(a) // [1, 2, 3]
 
-console.log(isNegZero(-0)) // true
-console.log(isNegZero(0 / -3)) // true
-console.log(isNegZero(0)); // false
+var b = [1,2,3];
+console.log(b) // [1, 2, 3]
