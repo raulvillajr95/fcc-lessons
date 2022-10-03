@@ -1,10 +1,51 @@
-let num = 10010100101010
+var tasks = {
+  [Symbol.iterator]() {
+    var steps = this.actions.slice();
 
-while (num !== 1) {
-  if (num % 2 === 1) {
-    num = (num * 3) + 1;
-  } else if (num % 2 === 0) {
-    num = num / 2;
-  }
-  console.log(num)
+    return {
+      [Symbol.iterator]() {return this;},
+
+      next(...args) {
+        if (steps.length > 0) {
+          let res = steps.shift()(...args);
+          return {value: res, done: false};
+        }
+        else {
+          return {done: true}
+        }
+      },
+
+      return(v) {
+        steps.length = 0;
+        return {value: v, done: true};
+      }
+    };
+  },
+  actions: []
 }
+
+tasks.actions.push(
+  function step1(x) {
+    console.log("step 1:", x);
+    return x * 2;
+  },
+  function step2(x,y) {
+    console.log("step 2:", x, y);
+    return x + (y * 2);
+  },
+  function step3(x,y,z) {
+    console.log("step 3:", x, y, z);
+    return (x * y) + z;
+  }
+);
+
+var it = tasks[Symbol.iterator]();
+
+console.log(it.next(10));
+console.log(it.next(20,50));
+console.log(it.next(20,50,120));
+console.log(it.next());
+
+
+
+// goal wpm = 32
