@@ -1,17 +1,3 @@
-function Player(name, marker) {
-  this.name = name
-  this.marker = marker
-  this.sayName = function() {
-    console.log(name)
-  }
-}
-
-const player1 = new Player('steve', 'X')
-const player2 = new Player('also steve', 'O')
-player1.sayName()
-player2.sayName()
-
-
 // function Book(title, author, pages, read) {
 //   this.title = title
 //   this.author = author
@@ -24,3 +10,15 @@ player2.sayName()
 
 // const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'not read yet')
 // console.log(theHobbit.info())
+
+function PrintStuff (myDocuments) {
+  this.documents = myDocuments;
+}
+
+PrintStuff.prototype.print = function () {
+  console.log(this.documents);
+}
+
+var newObj = new PrintStuff ("I am a new Object and I can print.");
+
+newObj.print();
