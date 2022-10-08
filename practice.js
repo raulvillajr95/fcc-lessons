@@ -1,51 +1,19 @@
-var tasks = {
-  [Symbol.iterator]() {
-    var steps = this.actions.slice();
+var o = { a: 1, b: 2 };
+var p = Object.create( o );
+p.c = 3;
+p.d = 4;
 
-    return {
-      [Symbol.iterator]() {return this;},
-
-      next(...args) {
-        if (steps.length > 0) {
-          let res = steps.shift()(...args);
-          return {value: res, done: false};
-        }
-        else {
-          return {done: true}
-        }
-      },
-
-      return(v) {
-        steps.length = 0;
-        return {value: v, done: true};
-      }
-    };
-  },
-  actions: []
+for (var prop of Reflect.enumerate( p )) {
+	console.log( prop );
 }
+// c d a b
 
-tasks.actions.push(
-  function step1(x) {
-    console.log("step 1:", x);
-    return x * 2;
-  },
-  function step2(x,y) {
-    console.log("step 2:", x, y);
-    return x + (y * 2);
-  },
-  function step3(x,y,z) {
-    console.log("step 3:", x, y, z);
-    return (x * y) + z;
-  }
-);
+for (var prop in p) {
+	console.log( prop );
+}
+// c d a b
 
-var it = tasks[Symbol.iterator]();
+JSON.stringify( p );
+// {"c":3,"d":4}
 
-console.log(it.next(10));
-console.log(it.next(20,50));
-console.log(it.next(20,50,120));
-console.log(it.next());
-
-
-
-// goal wpm = 32
+Object.keys( p );
