@@ -1,25 +1,20 @@
-const documentMock = (() => ({
-  querySelector: (selector) => ({
-    innerHTML: null,
-  }),
-}))();
+const myPrivateVar = new WeakMap()
+const myPrivateMethod = new WeakMap()
 
-const Formatter = (function(doc) {
-  const log = (message) => console.log(`[${Date.now()}] Logger: ${message}`);
-
-  const makeUppercase = (text) => {
-    log("Making uppercase");
-    return text.toUpperCase();
-  };
-
-  const writeToDOM = (selector, message) => {
-    doc.querySelector(selector).innerHTML = message;
+class MyNamespace {
+  constructor() {
+    myPrivateVar.set(this, 0)
+    myPrivateMethod.set(this, foo => console.log(foo))
+    this.myPublicVar = 'foo';
   }
 
-  return {
-    makeUppercase,
-    writeToDOM,
-  }
-})(document || documentMock);
+  myPublicFunction(bar) {
+    let privateVar = myPrivateVar.get(this);
+    const privateMethod = myPrivateMethod.get(this)
 
-Formatter.writeToDOM("#target", "Hello World");
+    privateVar++
+    myPrivateVar.set(this, privateVar)
+
+    privateMethod(bar)
+  }
+}
