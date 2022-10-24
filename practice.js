@@ -1,106 +1,63 @@
-class ObserverList {
-  constructor() {
-    this.observerList = [];
+var Interface = function (name, methods) {
+  if (arguments.length != 2) {
+      throw new Error("Interface constructor called with " + arguments.length + "arguments, but expected exactly 2.");
   }
-
-  add(obj) {
-    return this.observerList.push(obj);
-  }
-
-  count() {
-    return this.observerList.length;
-  }
-
-  get(index) {
-    if (index > -1 && index < this.observerList.length) {
-      return this.observerList[index];
-    }
-  }
-
-  indexOf(obj, startIndex) {
-    let i = startIndex;
-
-    while (i < this.observerList.length) {
-      if (this.observerList[i] === obj) {
-        return i;
+  this.name = name;
+  this.methods = [];
+  for (var i = 0, len = methods.length; i < len; i++) {
+      if (typeof methods[i] !== 'string') {
+          throw new Error("Interface constructor expects method names to be " + "passed in as a string.");
       }
-      i++;
-    }
-
-    return -1;
+      this.methods.push(methods[i]);
   }
+};
 
-  removeAt(index) {
-    this.observerList.splice(index, 1);
+
+// Static class method.
+Interface.ensureImplements = function (object) {
+if (arguments.length < 2) {
+  throw new Error("Function Interface.ensureImplements called with " + arguments.length + "arguments, but expected at least 2.");
+}
+for (var i = 1, len = arguments.length; i < len; i++) {
+  var interface = arguments[i];
+  if (interface.constructor !== Interface) {
+      throw new Error("Function Interface.ensureImplements expects arguments" + "two and above to be instances of Interface.");
+  }
+  for (var j = 0, methodsLen = interface.methods.length; j < methodsLen; j++) {
+      var method = interface.methods[j];
+      if (!object[method] || typeof object[method] !== 'function') {
+          throw new Error("Function Interface.ensureImplements: object " + "does not implement the " + interface.name + " interface. Method " + method + " was not found.");
+      }
+  }
+}
+};
+
+const reminder = new Interface('List', ['summary', 'placeOrder']);
+
+const properties = {
+  name: 'Remember to buy the milk',
+  date: '05/06/2016',
+  actions: {
+    summary() {
+      return 'Remember to buy the milk, we are almost out!';
+    },
+    placeOrder() {
+      return 'Ordering milk from your local grocery store';
+    },
+  },
+};
+
+class Todo {
+  constructor({actions, name}) {
+
+    Interface.ensureImplements(actions, reminder);
+
+    this.name = name;
+    this.methods = actions;
   }
 }
 
-class Subject {
-  constructor() {
-    this.observers = new ObserverList();
-  }
+const todoItem = new Todo(properties);
 
-  addObserver(observer) {
-    this.observers.add(observer);
-  }
-
-  removeObserver(observer) {
-    this.observers.removeAt(this.observers.indexOf(observer, 0));
-  }
-
-  notify(context) {
-    const observerCount = this.observers.count();
-    for(let i = 0; i < observerCount; i++) {
-      this.observers.get(i).update(context);
-    }
-  }
-}
-
-class Observer {
-  constructor() {}
-  update() {
-
-  }
-}
-
-class ConcreteSubject extends Subject {
-  constructor(element) {
-
-    super();
-    this.element = element;
-
-    this.element.onclick = () => {
-      this.notify(this.element.checked);
-    };
-  }
-}
-
-class ConcreteObserver extends Observer {
-  constructor(element) {
-    super();
-    this.element = element;
-  }
-
-  update(value) {
-    this.element.checked = value;
-  }
-}
-
-const addBtn = document.getElementById('addNewObserver');
-const container = document.getElementById('observersContainer');
-const controlCheckbox = new ConcreteSubject(
-  document.getElementById('mainCheckbox')
-);
-
-const addNewObserver = () => {
-  
-  const check = document.createElement('input');
-  check.type = 'checkbox';
-  const checkObserver = new ConcreteObserver(check);
-
-  controlCheckbox.addObserver(checkObserver);
-
-  container.appendChild(check);
-}
-
-addBtn.onclick = addNewObserver;
+console.log(todoItem.methods.summary());
+console.log(todoItem.methods.placeOrder());
