@@ -1,63 +1,29 @@
-var Interface = function (name, methods) {
-  if (arguments.length != 2) {
-      throw new Error("Interface constructor called with " + arguments.length + "arguments, but expected exactly 2.");
+// 2 ✅ Write factory method that returns an object
+let Person = function(name) {
+  let logOut = () => {
+    return `${name} has logged out!`
   }
-  this.name = name;
-  this.methods = [];
-  for (var i = 0, len = methods.length; i < len; i++) {
-      if (typeof methods[i] !== 'string') {
-          throw new Error("Interface constructor expects method names to be " + "passed in as a string.");
-      }
-      this.methods.push(methods[i]);
-  }
-};
 
-
-// Static class method.
-Interface.ensureImplements = function (object) {
-if (arguments.length < 2) {
-  throw new Error("Function Interface.ensureImplements called with " + arguments.length + "arguments, but expected at least 2.");
+  return {logOut}
 }
-for (var i = 1, len = arguments.length; i < len; i++) {
-  var interface = arguments[i];
-  if (interface.constructor !== Interface) {
-      throw new Error("Function Interface.ensureImplements expects arguments" + "two and above to be instances of Interface.");
+
+let raul = Person('Raul');
+console.log(raul.logOut())
+
+
+// ✅ 6 Use inheritance in objects using the factory pattern
+let Person2 = function(name) {
+  let logIn = () => {
+    return `${name} has logged in!`
   }
-  for (var j = 0, methodsLen = interface.methods.length; j < methodsLen; j++) {
-      var method = interface.methods[j];
-      if (!object[method] || typeof object[method] !== 'function') {
-          throw new Error("Function Interface.ensureImplements: object " + "does not implement the " + interface.name + " interface. Method " + method + " was not found.");
-      }
-  }
-}
-};
 
-const reminder = new Interface('List', ['summary', 'placeOrder']);
+  let {logOut} = Person(name);
 
-const properties = {
-  name: 'Remember to buy the milk',
-  date: '05/06/2016',
-  actions: {
-    summary() {
-      return 'Remember to buy the milk, we are almost out!';
-    },
-    placeOrder() {
-      return 'Ordering milk from your local grocery store';
-    },
-  },
-};
-
-class Todo {
-  constructor({actions, name}) {
-
-    Interface.ensureImplements(actions, reminder);
-
-    this.name = name;
-    this.methods = actions;
+  return {
+    logIn,
+    logOut
   }
 }
 
-const todoItem = new Todo(properties);
-
-console.log(todoItem.methods.summary());
-console.log(todoItem.methods.placeOrder());
+let jose = Person2('Jose');
+console.log(jose.logOut())
