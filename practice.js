@@ -13,115 +13,24 @@ function minimax(depth, nodeIndex, isMax, scores, h) {
   }
 }
 
-let board = ["","","",""];
-let x = 0;
-let o = 0;
-let scores = [-1,1,1,-1];
+let scores = [1, 0]
 
-// Turn 1 - Me
-let myFirstChoice = Number(prompt(`pick an index: ["${board[0]}","${board[1]}","${board[2]}","${board[3]}"]`))
-board[myFirstChoice] = "X"
-console.log("Turn 1:",board)
-
-for (let i = 0; i < board.length; i++) {
-  if (board[i] === "X") {
-    scores[i] -= 1
-  } else if (board[i] === "O") {
-    scores[i] -= 1
-  }
-}
-console.log(scores)
-
-// Turn 2 - CPU
-console.log("right before turn 2",scores)
 let n = scores.length;
-// maybe change 3 to n
-let h = Math.log(n)/Math.log(4);
+let h = Math.log2(n);
 let res = minimax(0,0,true,scores,h);
 console.log("The optimal value is: " + res)
-let index = scores.indexOf(res)
-
-board[index] = "O"
-console.log("Turn 2:", board)
-
-console.log(scores)
-for (let i = 0; i < board.length; i++) {
-  if (board[i] === "X") {
-    scores[i] = -1
-  } else if (board[i] === "O") {
-    scores[i] = -1
-  }
-}
-
-// Turn 3 - Me
-let mySecondChoice = Number(prompt(`pick an index: ["${board[0]}","${board[1]}","${board[2]}","${board[3]}"]`))
-board[mySecondChoice] = "X"
-console.log("Turn 3:",board)
-
-console.log(scores)
-scores = [-1,1,1,-1];
-for (let i = 0; i < board.length; i++) {
-  if (board[i] === "X") {
-    scores[i] -= 1
-    console.log("reached X")
-  } else if (board[i] === "O") {
-    scores[i] -= 1
-    console.log("reached O")
-  } else {
-    scores[i] += 1
-  }
-}
-
-// Turn 4 - CPU
-console.log("right before turn 4",scores)
-n = scores.length;
-// maybe change 3 to n
-h = Math.log(n)/Math.log(4);
-res = minimax(0,0,true,scores,h);
-console.log("The optimal value is: " + res)
-index = scores.indexOf(res)
-// console.log("turn 4", index)
-
-board[index] = "O"
-console.log("Turn 4:", board)
-// console.log(scores)
-
-console.log(scores)
-for (let i = 0; i < board.length; i++) {
-  if (board[i] === "X") {
-    scores[i] = null
-  } else if (board[i] === "O") {
-    scores[i] = null
-  }
-}
-
-// End of game
-// console.log("Scores", x, o)
-let scoresPrincipal = [-1,1,1,-1];
-for (let i = 0; i < board.length; i++) {
-  if (board[i] === "O") {
-    o += scoresPrincipal[i]
-  } else if (board[i] === "X") {
-    x += scoresPrincipal[i]
-  }
-}
-
-if (x > o) {
-  winner = "X"
-} else if (o > x) {
-  winner = "O"
-} else if (o == x) {
-  winner = "TIE, nobody"
-}
-
-console.log(null == 0)
-// console.log(`End: ${winner} wins!`)
-// console.log("Scores", x, o)
 
 // 1 win, 0 draw, -1 lose
 
 /*
 to-do:
+-create a 1 depth, a or b or c
+-create a 2 depth, a or b or c
+-create a 1 depth, a or b or c or d
+-create a 2 depth, a or b or c or d
+-create a 3 depth, a or b or c or d
+-create a 1 depth, a or b or c or d or e
+-etc. up to 9 depth, 9 options
 -create a 4 box tic tac toe cpu
   -still using min max, not just "if empty, fill in box"
   -at 4 boxes, it's 4 moves, me then cpu then me then cpu
@@ -182,3 +91,25 @@ but if spot filled place anywhere else
 -if 2 Xs on each end diagonally, put O in the middle
 but if spot filled place anywhere else
 */
+
+
+let a = 0;
+let b = 0;
+
+function maxValue(state, a, b, depth) {
+  if (depth == 0) {return state}
+  for (let s in (state + 1)) {
+   a = Math.max(a, minValue(s,a,b,depth-1)) 
+   if (a >= b) {return a}
+  }
+  return a
+}
+
+function minValue(state, a, b, depth) {
+  if (depth == 0) {return state}
+  for (let s in (state + 1)) {
+   a = Math.min(b, maxValue(s,a,b,depth-1)) 
+   if (a <= b) {return b}
+  }
+  return b
+}
