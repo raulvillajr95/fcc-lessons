@@ -1,35 +1,51 @@
-function minimax(depth, nodeIndex, isMax, scores, h) {
+let score = 0
 
-  if (depth == h) {
-    return scores[nodeIndex]
-  }
-  
-  if (isMax) {
-    return Math.max(minimax(depth+1, nodeIndex*2, false, scores, h),
-      minimax(depth+1, nodeIndex*2 + 1, false, scores, h));
-  } else {
-    return Math.min(minimax(depth+1, nodeIndex*2, true, scores, h),
-      minimax(depth+1, nodeIndex*2 + 1, true, scores, h));
-  }
+function minimax(node, depth, maximizingPlayer) { 
+   if (depth == 0 || node) {
+   return console.log("????")
+   }
+   if (maximizingPlayer) {      // for Maximizer Player  
+   let maxEva = -Infinity            
+    for (child in node) {  
+      console.log("max")
+      let eva= minimax(child, depth - 1, false) 
+      maxEva= Math.max(maxEva, eva)
+    }         //gives Maximum of the values  
+   return maxEva  
+   } else {                         // for Minimizer player  
+    let minEva = Infinity   
+    for (child in node) {  
+      console.log("min")
+      let eva= minimax(child, depth - 1, true)  
+      minEva = Math.min(minEva, eva)         
+    }        //gives minimum of the values  
+    return minEva 
+   }
 }
 
-let scores = [1, 0]
-
-let n = scores.length;
-let h = Math.log2(n);
-let res = minimax(0,0,true,scores,h);
-console.log("The optimal value is: " + res)
+minimax([-1,4,2,6,-3,-5,0,7,0], 10, true)
 
 // 1 win, 0 draw, -1 lose
 
+/* Reading the Board:
+-2 dimensional array
+[[Piece(), 0, Piece()],
+[0, Piece(), 0],
+[0, 0, Piece()]]
+0's are empty spaces
+-after reading board make count pieces of each X and O
+*/
+/* Get board after each ai move:
+-were setting the new board after the ai moves
+*/
+
 /*
 to-do:
--create a 1 depth, a or b or c
--create a 2 depth, a or b or c
--create a 1 depth, a or b or c or d
--create a 2 depth, a or b or c or d
--create a 3 depth, a or b or c or d
--create a 1 depth, a or b or c or d or e
+-create a 2 depth, 3 then 2 options
+-create a 3 depth, 4 then 3 then 2 options
+-create a 4 depth, 5 then 4 then 3 then 2 options
+-etc
+
 -etc. up to 9 depth, 9 options
 -create a 4 box tic tac toe cpu
   -still using min max, not just "if empty, fill in box"
@@ -42,6 +58,7 @@ to-do:
 -and so on, just increase box number, 5, 6, 7, 8, 9
 
 ideas:
+-keep things organized like using iifes, factory functions, etc
 -for 4 boxes,
   i could slice array off that was picked
     save the index number
@@ -51,6 +68,8 @@ and work that out some how
 ["","",""]
 ["","",""]
 ["","",""]
+or [["","",""],["","",""],["","",""]]
+using variable[row][col]
 -give it a set of correct array, like the one I already have
   -if the choice leads to that then make the move
   -using scores like -1= lose, 0 = tie, 1 = win
@@ -90,6 +109,12 @@ but if spot filled place anywhere else
 but if spot filled place anywhere else
 -if 2 Xs on each end diagonally, put O in the middle
 but if spot filled place anywhere else
+
+Study:
+-study all minimax articles/videos
+-if nothing clicks, do the MIT course
+-if nothing clicks, do it my own way. i'll no longer be
+tied to minimax
 */
 
 
