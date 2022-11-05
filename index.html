@@ -10,8 +10,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="practice.js" defer></script>
   </head>
-  <body>
-    <div class="item" data-plugin-options="{'message':'Goodbye World!'}"></div>
+  <body class="body">
+    <div class="start-menu">
+      <form>
+        <label for="player1">Player 1 - X </label>
+        <input type="text" name="player1" id="player1">
+        <span id="player1-display"></span>
+        <br>
+        <label for="player2">Player 2 - O </label>
+        <input type="text" name="player2" id="player2">
+        <span id="player2-display"></span>
+      </form>
+      <button class="start-btn">Start</button>
+      <button class="cpu-btn">Play CPU</button>
+      <br>
+      <span class="warning">Enter player names or play CPU</span>
+    </div>
+    <div class="container">
+      <span class="space-1"></span>
+      <span class="space-2"></span>
+      <span class="space-3"></span>
+      <span class="space-4"></span>
+      <span class="space-5"></span>
+      <span class="space-6"></span>
+      <span class="space-7"></span>
+      <span class="space-8"></span>
+      <span class="space-9"></span>
+    </div>
+    <div class="buttons">
+      <button class="x-btn">X</button>
+      <button class="o-btn">O</button>
+    </div>
   </body>
 </html>
 

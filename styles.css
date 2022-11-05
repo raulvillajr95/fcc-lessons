@@ -1,4 +1,67 @@
-body {
-  background-color: #141414;
-  color: white;
+:root {
+}
+
+/* Desktop Body */
+.body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 10rem 2rem;
+}
+.start-menu {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.container {
+  height: 10rem;
+  width: 10rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  column-gap: 3px;
+  row-gap: 3px;
+  margin: 0 auto;
+  grid-column: 2/-1;
+  grid-row: 1/2;
+  background-color: black;
+}
+.container > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+.buttons {
+  height: fit-content;
+  width: 5rem;
+  margin: 0 auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  align-self: center;
+  justify-self: center;
+}
+
+/* Might delete buttons permanently */
+.buttons {
+  display: none;
+}
+
+/* Tablet */
+@media only screen and (max-width: 70em) {
+  /* Tablet Body */
+}
+
+/* Mobile */
+@media only screen and (max-width: 38em) {
+  /* Mobile Body */
+}
+
+/* Super small phones */
+@media only screen and (max-width: 22em) {
+  /* Small Body */
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Desktop Body */
 }
