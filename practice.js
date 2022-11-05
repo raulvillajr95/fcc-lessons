@@ -24,7 +24,7 @@ let Player = () => {
   return {}
 }
 
-// Wining/Losing logic
+// Winning/Losing logic
 let correct = (() => {
 
   let result = (board,marker) => 
@@ -263,9 +263,6 @@ let closeStates = (() => {
       }
     }
 
-    // needa find out why it sets the index but then goes 
-    // back to undefined
-
     return hasTwoSameMarkers
   }
 
@@ -297,10 +294,9 @@ let cpuMatch = (() => {
             if (closeStates().findState()) {
               gameBoard.scores[gameBoard.indexOfMissing] += 10
             }
-
-            console.log(gameBoard.scores)
     
             gameBoard.turnsCount++;
+            gameBoard.markerChoiceState = "O";
     
             // checking results
             if (correct.result(gameBoard.board, gameBoard.markerChoiceState) && container.children[i].textContent != "") {
@@ -328,16 +324,31 @@ let cpuMatch = (() => {
             let high = highest(gameBoard.scores)
             let index = gameBoard.scores.indexOf(high);
 
-            if (container.children[index].textContent == "") {
-              container.children[index].textContent = "O"
-              gameBoard.board[index] = "O"
-              gameBoard.scores[index] = null
+            // needa catch it right at the diagonal moment
+            // remember the specialPatternBoard reset, if used
+
+            if (container.children[index].textContent == "" && gameBoard.markerChoiceState == "O") {
+              if (gameBoard.turnsCount == 3 &&
+                ((gameBoard.board[0] == 'X' && gameBoard.board[8]) ||
+                (gameBoard.board[2] == 'X' && gameBoard.board[6]))) {
+                console.log(gameBoard.board[0], gameBoard.board[8])
+                container.children[1].textContent = "O"
+                gameBoard.board[1] = "O"
+                gameBoard.scores[1] = null
+                
+              } else {
+                container.children[index].textContent = "O"
+                gameBoard.board[index] = "O"
+                gameBoard.scores[index] = null
+                
+              }
 
               if (closeStates().findState()) {
                 gameBoard.scores[gameBoard.indexOfMissing] += 10
               }
 
               gameBoard.turnsCount++;
+              gameBoard.markerChoiceState = "X";
 
               // checking results
               if (correct.result(gameBoard.board, "O")) {
@@ -364,13 +375,6 @@ let cpuMatch = (() => {
     run
   }
 })();
-
-/*
--create losing states, take account for empty boxes
--create winning states, take account for empty boxes
-*/
-
-
 
 // 1 win, 0 draw, -1 lose
 
