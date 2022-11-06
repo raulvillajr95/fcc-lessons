@@ -1,4 +1,5 @@
 let gameBoard = (() => {
+  // All the defaults
   let board = ["","","","","","","","",""];
 
   let markerChoiceState = "X";
@@ -19,10 +20,6 @@ let gameBoard = (() => {
     indexOfMissing
   }
 })();
-
-let Player = () => {
-  return {}
-}
 
 // Winning/Losing logic
 let correct = (() => {
@@ -56,7 +53,6 @@ let correct = (() => {
 
         gameBoard.turnsCount++;
 
-        // working on single character match
         if (correct.result(gameBoard.board, gameBoard.markerChoiceState) && container.children[i].textContent != "") {
           gameBoard.tableEnabled = false
 
@@ -80,20 +76,6 @@ let correct = (() => {
   }
 })();
 
-// Change X and O state with buttons
-(function() {
-  let xBtn = document.querySelector(".x-btn")
-  let oBtn = document.querySelector(".o-btn")
-
-  xBtn.addEventListener('click', () => {
-    gameBoard.markerChoiceState = "X";
-  })
-
-  oBtn.addEventListener('click', () => {
-    gameBoard.markerChoiceState = "O";
-  })
-})();
-
 // Start menu
 (function() {
   let player1 = document.getElementById("player1")
@@ -105,9 +87,7 @@ let correct = (() => {
   let warningElem = document.querySelector(".warning")
   let cpuBtn = document.querySelector(".cpu-btn")
 
-  // delete
-  let startBtnToggle = true
-
+  // Events after start button clicked
   startBtn.addEventListener('click', (e) => {
     if (player1.value === "" || player2.value === "") {
       warningElem.textContent = "Please enter player names/name"
@@ -128,11 +108,14 @@ let correct = (() => {
         startBtn.textContent = "Restart"
         gameBoard.startBtnToggle = false;
       } else if (!gameBoard.startBtnToggle) {
-        gameBoard.tableEnabled = false;
         gameBoard.board = ["","","","","","","","",""];
         gameBoard.markerChoiceState = "X";
         gameBoard.turnsCount = 0;
+        gameBoard.tableEnabled = false;
         gameBoard.mode = "";
+        gameBoard.startBtnToggle = true;
+        gameBoard.scores = [3, 2, 3, 2, 4, 2, 3, 2, 3];
+        gameBoard.indexOfMissing = 0;
 
         warningElem.textContent = "Enter Player names or play CPU"
   
@@ -170,6 +153,7 @@ let correct = (() => {
   let container = document.querySelector(".container");
   let warningElem = document.querySelector(".warning")
 
+  // Events after 'Play CPU' button clicked
   cpuBtn.addEventListener('click', (e) => {
     if (player1.value === "") {
       warningElem.textContent = "Please enter player 1 name"
@@ -185,7 +169,6 @@ let correct = (() => {
         player1.style.display = "none";
         player2.style.display = "none";
         cpuBtn.style.display = "none";
-
   
         player1Display.textContent = player1.value
 
@@ -195,11 +178,14 @@ let correct = (() => {
         startBtn.textContent = "Restart"
         gameBoard.startBtnToggle = false;
       } else if (!gameBoard.startBtnToggle) {
-        gameBoard.tableEnabled = false;
         gameBoard.board = ["","","","","","","","",""];
         gameBoard.markerChoiceState = "X";
         gameBoard.turnsCount = 0;
+        gameBoard.tableEnabled = false;
         gameBoard.mode = "";
+        gameBoard.startBtnToggle = true;
+        gameBoard.scores = [3, 2, 3, 2, 4, 2, 3, 2, 3];
+        gameBoard.indexOfMissing = 0;
 
         warningElem.textContent = "Enter player names or play CPU"
   
@@ -235,9 +221,6 @@ let closeStates = (() => {
   {index0: gameBoard.board[0],index4: gameBoard.board[4],index8: gameBoard.board[8]},
   {index2: gameBoard.board[2],index4: gameBoard.board[4],index6: gameBoard.board[6]}]
 
-  // make boolean function for finding if it's in losing/winning state
-  // find empty spot index, change the scores on same index
-  // may be there's a way to track it by row and col, then i can get index
   let closeLetter = "";
   let findState = () => {
     let hasTwoSameMarkers = false;
@@ -246,7 +229,6 @@ let closeStates = (() => {
       if(Object.values(rowsColsDia[i]).join('') === "XX" || Object.values(rowsColsDia[i]).join('') === "OO") {
         hasTwoSameMarkers = true;
 
-        //console.log(rowsColsDia[i])
         for (let j = 0; j < 3; j++) {
           if (rowsColsDia[i][Object.keys(rowsColsDia[i])[j]] == "") {
             gameBoard.indexOfMissing = Number(Object.keys(rowsColsDia[i])[j].slice(-1));
@@ -256,8 +238,6 @@ let closeStates = (() => {
               closeLetter = "O"
             }
             break;
-
-            ////
           }
         }
       }
@@ -266,13 +246,11 @@ let closeStates = (() => {
     return hasTwoSameMarkers
   }
 
-
   return {
     findState,
     closeLetter
   }
 });
-closeStates().findState()
 
 // CPU Match logic
 let cpuMatch = (() => {
@@ -308,69 +286,142 @@ let cpuMatch = (() => {
             }
           }
 
-          /////// CPU O's logic
-          function highest(arr) {
-            let count = 0;
-            for (let i = 0; i < arr.length; i++) {
-              if (arr[i] > count) {
-                count = arr[i]
-              }
-            }
-            return count;
-          }
-
-          if (gameBoard.tableEnabled && gameBoard.mode === "cpu") {
-  
-            let high = highest(gameBoard.scores)
-            let index = gameBoard.scores.indexOf(high);
-
-            // needa catch it right at the diagonal moment
-            // remember the specialPatternBoard reset, if used
-
-            if (container.children[index].textContent == "" && gameBoard.markerChoiceState == "O") {
-              if (gameBoard.turnsCount == 3 &&
-                ((gameBoard.board[0] == 'X' && gameBoard.board[8]) ||
-                (gameBoard.board[2] == 'X' && gameBoard.board[6]))) {
-                console.log(gameBoard.board[0], gameBoard.board[8])
-                container.children[1].textContent = "O"
-                gameBoard.board[1] = "O"
-                gameBoard.scores[1] = null
-                
-              } else {
-                container.children[index].textContent = "O"
-                gameBoard.board[index] = "O"
-                gameBoard.scores[index] = null
-                
-              }
-
-              if (closeStates().findState()) {
-                gameBoard.scores[gameBoard.indexOfMissing] += 10
-              }
-
-              gameBoard.turnsCount++;
-              gameBoard.markerChoiceState = "X";
-
-              // checking results
-              if (correct.result(gameBoard.board, "O")) {
-                warningElem.textContent = "O wins";
-                console.log("O wins")
-                gameBoard.tableEnabled = false
-              } else if (gameBoard.turnsCount === 9) {
-                warningElem.textContent = "TIE";
-                console.log("TIE")
-                gameBoard.tableEnabled = false
-              }
-
-            } else if (container.children.textContent !== "") {
-              if (gameBoard.turnsCount == 9) {
-                //break;
-              }
-            }
-          }
+          // CPU O's logic
+          gameBoard.tableEnabled = false
+          // CPU delay for a natural look
+          setTimeout(() => {
+            gameBoard.tableEnabled = true
+            cpuTurn.run()
+          }, 500)
         });
       }
     }
   }
+  return {
+    run
+  }
+})();
+
+let cpuTurn = (() => {
+  let run = () => {
+    function highest(arr) {
+      let count = 0;
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > count) {
+          count = arr[i]
+        }
+      }
+      return count;
+    }
+
+    function oneMove(currentBoard, currentMarker) {
+      let fullPositions = []
+    
+      let tempboard;
+    
+      for (let i = 0; i < currentBoard.length; i++) {
+        tempboard = [...currentBoard]
+    
+        if (currentBoard[i] == "") {
+          if (currentMarker == "X") {
+            tempboard[i] = "O"
+          } else {
+            tempboard[i] = "X"
+          }
+    
+          fullPositions.push(tempboard)
+        }
+    
+      }
+    
+      return fullPositions
+    }
+
+
+    // when minimax is called put real actual board,
+    // gameBoard.board
+    function minimax(position, depth, maximizingPlayer) {
+      console.log('first')
+      if (depth == 0 || correct.result(gameBoard.board, "X") || correct.result(gameBoard.board, "O")) {
+        if (correct.result(gameBoard.board, gameBoard.markerChoiceState) && gameBoard.markerChoiceState == "O") {
+          return 1
+        } else if (correct.result(gameBoard.board, gameBoard.markerChoiceState) && gameBoard.markerChoiceState == "O") {
+          return -1
+        } else {
+          return 0
+        }
+      }
+
+      if (maximizingPlayer) {
+        let maxEval = -Infinity
+
+        for (let child of oneMove(position, currentState)) {
+          let eval = minimax(child, depth - 1, false)
+          maxEval = Math.max(maxEval, eval)
+        }
+
+        return maxEval
+      } else {
+        let minEval = +Infinity
+
+        for (let child of oneMove(position, currentState)) {
+          let eval = minimax(child, depth - 1, true)
+          minEval = Math.min(minEval, eval)
+        }
+
+        return minEval
+      }
+    }
+
+    let container = document.querySelector(".container");
+    let warningElem = document.querySelector(".warning");
+
+    if (gameBoard.tableEnabled && gameBoard.mode === "cpu") {
+  
+      let high = highest(gameBoard.scores)
+      let index = gameBoard.scores.indexOf(high);
+
+      if (!!container.children[index] && container.children[index].textContent == "" && gameBoard.markerChoiceState == "O") {
+
+        if (gameBoard.turnsCount == 3 &&
+          ((gameBoard.board[0] == 'X' && gameBoard.board[8]) ||
+          (gameBoard.board[2] == 'X' && gameBoard.board[6]))) {
+            
+          container.children[1].textContent = "O"
+          gameBoard.board[1] = "O"
+          gameBoard.scores[1] = null
+          
+        } else {
+          container.children[index].textContent = "O"
+          gameBoard.board[index] = "O"
+          gameBoard.scores[index] = null
+          
+        }
+
+        if (closeStates().findState()) {
+          gameBoard.scores[gameBoard.indexOfMissing] += 10
+
+          console.log(closeStates().closeLetter)
+        }
+
+        //
+        minimax(gameBoard.board, 3, true)
+
+        gameBoard.turnsCount++;
+        gameBoard.markerChoiceState = "X";
+
+        // checking results
+        if (correct.result(gameBoard.board, "O")) {
+          warningElem.textContent = "O wins";
+          gameBoard.tableEnabled = false
+        } else if (gameBoard.turnsCount === 9) {
+          warningElem.textContent = "TIE";
+          gameBoard.tableEnabled = false
+        }
+      }
+    }
+  }
+
   return {
     run
   }

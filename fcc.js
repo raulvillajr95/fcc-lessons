@@ -1,13 +1,27 @@
-function highest(arr) {
-  let count = -Infinity;
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === null) {
-      continue;
-    } else if (arr[i] > count) {
-      count = arr[i]
+// function that makes one move ahead
+let currentState = "O";
+
+let board = ["X", "", "", "", "O", "", "", "", ""]
+
+function oneMove(currentBoard, currentMarker) {
+  let fullPositions = []
+
+  let tempboard;
+
+  for (let i = 0; i < currentBoard.length; i++) {
+    tempboard = [...currentBoard]
+
+    if (currentBoard[i] == "") {
+      if (currentMarker == "X") {
+        tempboard[i] = "O"
+      } else {
+        tempboard[i] = "X"
+      }
+
+      fullPositions.push(tempboard)
     }
+
   }
-  return count;
+
+  return fullPositions
 }
-console.log(highest([null, -1000]))
-console.log(-1000 > -Infinity)
