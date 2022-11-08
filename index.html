@@ -12,21 +12,22 @@
     <script src="fcc.js" defer></script>
   </head>
   <body class="body">
+    <div class="title">Tic Tac Toe</div>
     <div class="start-menu">
-      <form>
-        <label for="player1">Player 1 - X </label>
-        <input type="text" name="player1" id="player1">
+      <form class="form">
+        <label for="player1">X's</label>
+        <input type="text" name="player1" id="player1" placeholder="Player 1">
         <span id="player1-display"></span>
-        <br>
-        <label for="player2">Player 2 - O </label>
-        <input type="text" name="player2" id="player2">
+        <br><br>
+        <label for="player2">O's</label>
+        <input type="text" name="player2" id="player2" placeholder="Player 2">
         <span id="player2-display"></span>
       </form>
-      <button class="start-btn">Start</button>
-      <button class="cpu-btn">Play CPU</button>
-      <br>
+      <button class="start-btn">Pass & Play</button>
+      <button class="cpu-btn">Play Computer</button>
       <span class="warning">Enter player names or play CPU</span>
     </div>
+    <!-- Tic tac toe board -->
     <div class="container">
       <span class="space-1"></span>
       <span class="space-2"></span>
@@ -37,10 +38,6 @@
       <span class="space-7"></span>
       <span class="space-8"></span>
       <span class="space-9"></span>
-    </div>
-    <div class="buttons">
-      <button class="x-btn">X</button>
-      <button class="o-btn">O</button>
     </div>
   </body>
 </html>

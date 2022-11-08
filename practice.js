@@ -55,6 +55,7 @@ let correct = (() => {
 
         if (correct.result(gameBoard.board, gameBoard.markerChoiceState) && container.children[i].textContent != "") {
           gameBoard.tableEnabled = false
+          console.log("first")
 
           if (gameBoard.markerChoiceState === "X") {
             warningElem.textContent = `${player1.value} wins!`
@@ -134,7 +135,8 @@ let correct = (() => {
         player2.value = ""
         cpuBtn.style.display = "";
   
-        startBtn.textContent = "Start"
+        startBtn.textContent = "Pass & Play"
+        console.log("startBtn")
         gameBoard.startBtnToggle = true;
       }
     }
@@ -155,58 +157,56 @@ let correct = (() => {
 
   // Events after 'Play CPU' button clicked
   cpuBtn.addEventListener('click', (e) => {
-    if (player1.value === "") {
-      warningElem.textContent = "Please enter player 1 name"
-    } else {
-      if (gameBoard.startBtnToggle) {
-        gameBoard.tableEnabled = true;
-        gameBoard.mode = "cpu"
 
-        cpuMatch.run()
+    if (gameBoard.startBtnToggle) {
+      gameBoard.tableEnabled = true;
+      gameBoard.mode = "cpu"
 
-        warningElem.textContent = ""
-  
-        player1.style.display = "none";
-        player2.style.display = "none";
-        cpuBtn.style.display = "none";
-  
-        player1Display.textContent = player1.value
+      cpuMatch.run()
 
-        player2.value = "CPU"
-        player2Display.textContent = player2.value
-  
-        startBtn.textContent = "Restart"
-        gameBoard.startBtnToggle = false;
-      } else if (!gameBoard.startBtnToggle) {
-        gameBoard.board = ["","","","","","","","",""];
-        gameBoard.markerChoiceState = "X";
-        gameBoard.turnsCount = 0;
-        gameBoard.tableEnabled = false;
-        gameBoard.mode = "";
-        gameBoard.startBtnToggle = true;
-        gameBoard.scores = [3, 2, 3, 2, 4, 2, 3, 2, 3];
-        gameBoard.indexOfMissing = 0;
+      // warningElem.textContent = "";
 
-        warningElem.textContent = "Enter player names or play CPU"
-  
-        // Reset Xs and Os on table
-        for (let i = 0; i < container.children.length; i++) {
-          container.children[i].textContent = ""; 
-        }
-  
-        player1.style.display = "";
-        player2.style.display = "";
-        cpuBtn.style.display = "";
-  
-        player1Display.textContent = ""
-        player2Display.textContent = ""
-  
-        player1.value = ""
-        player2.value = ""
-  
-        startBtn.textContent = "Start"
-        gameBoard.startBtnToggle = true;
+      player1.style.display = "none";
+      player2.style.display = "none";
+      cpuBtn.style.display = "none";
+
+      player1.value = "Player 1"
+      player1Display.textContent = player1.value
+
+      player2.value = "CPU"
+      player2Display.textContent = player2.value
+
+      startBtn.textContent = "Restart"
+      gameBoard.startBtnToggle = false;
+    } else if (!gameBoard.startBtnToggle) {
+      gameBoard.board = ["","","","","","","","",""];
+      gameBoard.markerChoiceState = "X";
+      gameBoard.turnsCount = 0;
+      gameBoard.tableEnabled = false;
+      gameBoard.mode = "";
+      gameBoard.startBtnToggle = true;
+      gameBoard.scores = [3, 2, 3, 2, 4, 2, 3, 2, 3];
+      gameBoard.indexOfMissing = 0;
+
+      warningElem.textContent = "Enter player names or play CPU"
+
+      // Reset Xs and Os on table
+      for (let i = 0; i < container.children.length; i++) {
+        container.children[i].textContent = ""; 
       }
+
+      player1.style.display = "";
+      player2.style.display = "";
+      cpuBtn.style.display = "";
+
+      player1Display.textContent = ""
+      player2Display.textContent = ""
+
+      player1.value = ""
+      player2.value = ""
+
+      startBtn.textContent = "Pass & Play"
+      gameBoard.startBtnToggle = true;
     }
   })
 })();
@@ -221,7 +221,6 @@ let closeStates = (() => {
   {index0: gameBoard.board[0],index4: gameBoard.board[4],index8: gameBoard.board[8]},
   {index2: gameBoard.board[2],index4: gameBoard.board[4],index6: gameBoard.board[6]}]
 
-  let closeLetter = "";
   let findState = () => {
     let hasTwoSameMarkers = false;
 
@@ -232,11 +231,6 @@ let closeStates = (() => {
         for (let j = 0; j < 3; j++) {
           if (rowsColsDia[i][Object.keys(rowsColsDia[i])[j]] == "") {
             gameBoard.indexOfMissing = Number(Object.keys(rowsColsDia[i])[j].slice(-1));
-            if (Object.values(rowsColsDia[i])[0] == "X" || Object.values(rowsColsDia[i])[0] == "X") {
-              closeLetter = "X"
-            } else if (Object.values(rowsColsDia[i])[0] == "O" || Object.values(rowsColsDia[i])[0] == "O") {
-              closeLetter = "O"
-            }
             break;
           }
         }
@@ -248,7 +242,6 @@ let closeStates = (() => {
 
   return {
     findState,
-    closeLetter
   }
 });
 
@@ -258,7 +251,16 @@ let cpuMatch = (() => {
     let container = document.querySelector(".container");
     let warningElem = document.querySelector(".warning")
 
-    if (gameBoard.mode = "cpu") {
+    function random2() {
+      return Math.floor(Math.random() * 2)
+    }
+    let choice = random2()
+    console.log(choice)
+    console.log(gameBoard.mode)
+
+    if (gameBoard.mode == "cpu" && choice == 1) {
+      warningElem.textContent = "Player 1 first";
+
       for (let i = 0; i < container.children.length; i++) {
 
         container.children[i].addEventListener('click', (e) => {
@@ -286,11 +288,47 @@ let cpuMatch = (() => {
             }
           }
 
-          // CPU O's logic
-          gameBoard.tableEnabled = false
-          // CPU delay for a natural look
+          // CPU O's logic, CPU delay for a natural look
           setTimeout(() => {
-            gameBoard.tableEnabled = true
+            cpuTurn.run()
+          }, 500)
+        });
+      }
+    } else if (gameBoard.mode == "cpu" && choice == 0) {
+      // CPU O's logic, CPU delay for a natural look
+      warningElem.textContent = "CPU first";
+      gameBoard.markerChoiceState = "O"
+      cpuTurn.run()
+
+      for (let i = 0; i < container.children.length; i++) {
+
+        container.children[i].addEventListener('click', (e) => {
+    
+          // My X's logic
+          if (container.children[i].textContent === "" && gameBoard.tableEnabled && gameBoard.mode === "cpu") {
+            container.children[i].textContent = gameBoard.markerChoiceState
+            gameBoard.board[i] = gameBoard.markerChoiceState
+            gameBoard.scores[i] = null
+
+            if (closeStates().findState()) {
+              gameBoard.scores[gameBoard.indexOfMissing] += 10
+            }
+    
+            gameBoard.turnsCount++;
+            gameBoard.markerChoiceState = "O";
+    
+            // checking results
+            if (correct.result(gameBoard.board, gameBoard.markerChoiceState) && container.children[i].textContent != "") {
+              warningElem.textContent = "X wins";
+              gameBoard.tableEnabled = false
+            } else if (gameBoard.turnsCount === 9) {
+              warningElem.textContent = "TIE";
+              gameBoard.tableEnabled = false
+            }
+          }
+
+          // CPU O's logic, CPU delay for a natural look
+          setTimeout(() => {
             cpuTurn.run()
           }, 500)
         });
@@ -304,84 +342,23 @@ let cpuMatch = (() => {
 
 let cpuTurn = (() => {
   let run = () => {
-    function highest(arr) {
-      let count = 0;
-      for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > count) {
-          count = arr[i]
-        }
-      }
-      return count;
-    }
-
-    function oneMove(currentBoard, currentMarker) {
-      let fullPositions = []
-    
-      let tempboard;
-    
-      for (let i = 0; i < currentBoard.length; i++) {
-        tempboard = [...currentBoard]
-    
-        if (currentBoard[i] == "") {
-          if (currentMarker == "X") {
-            tempboard[i] = "O"
-          } else {
-            tempboard[i] = "X"
-          }
-    
-          fullPositions.push(tempboard)
-        }
-    
-      }
-    
-      return fullPositions
-    }
-
-
-    // when minimax is called put real actual board,
-    // gameBoard.board
-    function minimax(position, depth, maximizingPlayer) {
-      console.log('first')
-      if (depth == 0 || correct.result(gameBoard.board, "X") || correct.result(gameBoard.board, "O")) {
-        if (correct.result(gameBoard.board, gameBoard.markerChoiceState) && gameBoard.markerChoiceState == "O") {
-          return 1
-        } else if (correct.result(gameBoard.board, gameBoard.markerChoiceState) && gameBoard.markerChoiceState == "O") {
-          return -1
-        } else {
-          return 0
-        }
-      }
-
-      if (maximizingPlayer) {
-        let maxEval = -Infinity
-
-        for (let child of oneMove(position, currentState)) {
-          let eval = minimax(child, depth - 1, false)
-          maxEval = Math.max(maxEval, eval)
-        }
-
-        return maxEval
-      } else {
-        let minEval = +Infinity
-
-        for (let child of oneMove(position, currentState)) {
-          let eval = minimax(child, depth - 1, true)
-          minEval = Math.min(minEval, eval)
-        }
-
-        return minEval
-      }
-    }
+    console.log("sosa")
 
     let container = document.querySelector(".container");
     let warningElem = document.querySelector(".warning");
 
     if (gameBoard.tableEnabled && gameBoard.mode === "cpu") {
+
+      console.log("enabled?")
   
-      let high = highest(gameBoard.scores)
+      let high = Math.max(...gameBoard.scores)
       let index = gameBoard.scores.indexOf(high);
 
+      console.log(gameBoard.markerChoiceState == "O")
+
       if (!!container.children[index] && container.children[index].textContent == "" && gameBoard.markerChoiceState == "O") {
+
+        console.log("first pass")
 
         if (gameBoard.turnsCount == 3 &&
           ((gameBoard.board[0] == 'X' && gameBoard.board[8]) ||
@@ -399,13 +376,9 @@ let cpuTurn = (() => {
         }
 
         if (closeStates().findState()) {
-          gameBoard.scores[gameBoard.indexOfMissing] += 10
-
-          console.log(closeStates().closeLetter)
+          // Priotize a win over a save
+          gameBoard.scores[gameBoard.indexOfMissing] += 15
         }
-
-        //
-        minimax(gameBoard.board, 3, true)
 
         gameBoard.turnsCount++;
         gameBoard.markerChoiceState = "X";
