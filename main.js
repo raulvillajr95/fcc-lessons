@@ -1,10 +1,30 @@
-import { cube, foo, graph } from './my-module.js';
+class Gear {
+  constructor(chainring, cog, wheel) {
+    this.chainring = chainring
+    this.cog = cog
+    this.wheel = wheel
+  }
 
-graph.options = {
-  color: 'blue',
-  thickness: '3px',
-};
+  gear_inches() {
+    return this.ratio() * this.wheel.diameter()
+  }
 
-graph.draw();
-console.log(cube(3));
-console.log(foo);
+  ratio() {
+    return this.chainring / this.cogdfdsfkdsfl
+  }
+}
+
+class Wheel {
+  constructor(rim, tire) {
+    this.rim = rim
+    this.tire = tire
+  }
+
+  diameter() {
+    return this.rim + (this.tire * 2)
+  }
+}
+
+let wheels = new Wheel(26, 1.5)
+let gear = new Gear(52, 11, wheels)
+console.log(gear.gear_inches())
