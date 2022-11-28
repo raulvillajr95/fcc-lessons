@@ -1,30 +1,44 @@
-class Gear {
-  constructor(chainring, cog, wheel) {
-    this.chainring = chainring
-    this.cog = cog
-    this.wheel = wheel
-  }
-
-  gear_inches() {
-    return this.ratio() * this.wheel.diameter()
-  }
-
-  ratio() {
-    return this.chainring / this.cogdfdsfkdsfl
-  }
-}
-
-class Wheel {
-  constructor(rim, tire) {
-    this.rim = rim
-    this.tire = tire
-  }
-
-  diameter() {
-    return this.rim + (this.tire * 2)
+class Bottles {
+  song() {
+    return `99 bottles of beer on the wall, 99 bottles of beer.
+    Take one down and pass it around, 98 bottles of beer on the wall.
+    
+    98 bottles of beer on the wall, 98 bottles of beer.
+    Take one down and pass it around, 97 bottles of beer on the wall.
+    
+    97 bottles of beer on the wall, 97 bottles of beer.
+    Take one down and pass it around, 96 bottles of beer on the wall.
+    
+    96 bottles of beer on the wall, 96 bottles of beer.
+    Take one down and pass it around, 95 bottles of beer on the wall.
+    
+    95 bottles of beer on the wall, 95 bottles of beer.
+    Take one down and pass it around, 94 bottles of beer on the wall.`;
   }
 }
 
-let wheels = new Wheel(26, 1.5)
-let gear = new Gear(52, 11, wheels)
-console.log(gear.gear_inches())
+let song = new Bottles();
+
+console.log(song.song())
+
+let expected = `99 bottles of beer on the wall, 99 bottles of beer.
+Take one down and pass it around, 98 bottles of beer on the wall.
+
+98 bottles of beer on the wall, 98 bottles of beer.
+Take one down and pass it around, 97 bottles of beer on the wall.
+
+97 bottles of beer on the wall, 97 bottles of beer.
+Take one down and pass it around, 96 bottles of beer on the wall.
+
+96 bottles of beer on the wall, 96 bottles of beer.
+Take one down and pass it around, 95 bottles of beer on the wall.
+
+95 bottles of beer on the wall, 95 bottles of beer.
+Take one down and pass it around, 94 bottles of beer on the wall.`;
+
+
+console.log(song.song() == expected)
+console.log(song.song().length)
+console.log(expected.length)
+
+console.log("hhh\n\nhhh")
