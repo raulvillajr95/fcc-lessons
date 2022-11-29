@@ -1,44 +1,34 @@
 class Bottles {
   song() {
-    return `99 bottles of beer on the wall, 99 bottles of beer.
-    Take one down and pass it around, 98 bottles of beer on the wall.
-    
-    98 bottles of beer on the wall, 98 bottles of beer.
-    Take one down and pass it around, 97 bottles of beer on the wall.
-    
-    97 bottles of beer on the wall, 97 bottles of beer.
-    Take one down and pass it around, 96 bottles of beer on the wall.
-    
-    96 bottles of beer on the wall, 96 bottles of beer.
-    Take one down and pass it around, 95 bottles of beer on the wall.
-    
-    95 bottles of beer on the wall, 95 bottles of beer.
-    Take one down and pass it around, 94 bottles of beer on the wall.`;
+    return this.verses(99, 0);
+  }
+
+  verses(hi, lo) {
+    return downTo(hi, lo).map(n => this.verse(n)).join('\n');
+  }
+
+  verse(n) {
+    return (
+      `${n === 0 ? 'No more' : n} bottle${n === 1 ? '' : 's'}` +
+      ' of beer on the wall, ' +
+      `${n === 0 ? 'no more' : n} bottle${n === 1 ? '' : 's'} of beer.\n` +
+      `${n > 0 ? `Take ${n > 1 ? 'one' : 'it'} down and pass it around`
+        : 'Go to the store and buy some more'}, ` +
+      `${n-1 < 0 ? 99 : n-1 === 0 ? 'no more' : n-1} bottle${n-1 === 1 ? '' : 's'}` +
+      ' of beer on the wall.\n'
+    );
   }
 }
 
-let song = new Bottles();
+const downTo = (max, min) => {
+  const numbers = [];
+  for (let n = max; n >= min; n--) {
+    numbers.push(n);
+  }
+  return numbers;
+};
 
-console.log(song.song())
-
-let expected = `99 bottles of beer on the wall, 99 bottles of beer.
-Take one down and pass it around, 98 bottles of beer on the wall.
-
-98 bottles of beer on the wall, 98 bottles of beer.
-Take one down and pass it around, 97 bottles of beer on the wall.
-
-97 bottles of beer on the wall, 97 bottles of beer.
-Take one down and pass it around, 96 bottles of beer on the wall.
-
-96 bottles of beer on the wall, 96 bottles of beer.
-Take one down and pass it around, 95 bottles of beer on the wall.
-
-95 bottles of beer on the wall, 95 bottles of beer.
-Take one down and pass it around, 94 bottles of beer on the wall.`;
+let bottle = new Bottles()
 
 
-console.log(song.song() == expected)
-console.log(song.song().length)
-console.log(expected.length)
-
-console.log("hhh\n\nhhh")
+console.log(88, new Bottles().verse(99))
