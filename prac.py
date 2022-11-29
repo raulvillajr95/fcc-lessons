@@ -3,15 +3,15 @@
 
 # 6.
 def computepay(hours, rate):
-  hr = int(hours)
-  rt = int(rate)
+  hr = float(hours)
+  rt = float(rate)
 
   if hr <= 40:
     return hr * rt
   elif hr > 40:
     ex = hr - 40
     return ex * (1.5 * rt) + 40 * rt
-#print(computepay(input('Enter Hours: '), input('Enter Rate: ')))
+#print("Pay",computepay(input('Enter Hours: '), input('Enter Rate: ')))
 
 # 7.
 def computegrade(score):
@@ -34,5 +34,4 @@ def computegrade(score):
       return "Bad score"
   except:
     return "Bad score"
-
-print(computegrade(input('Enter score: ')))
+#print(computegrade(input('Enter score: ')))
