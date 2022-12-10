@@ -120,16 +120,16 @@ function GameController(
 
   // MY
   const winningPositions = () => {
-    // bottom row
+    // 1 Diagonal winning position
     // number of boards
-    for (let g = 0; g < 4; g++) {
+    for (let g = 0; g < 1; g++) {
       let fullBoard = []
       // number of rows
       for (let h = 0; h < 6; h++) {
         let row = []
         // number of columns
         for (let i = 0; i < 7; i++) {
-          if (i < g+4 && i >= g && h == 5) {
+          if (i == 0 && h == 2) {
             row[i] = 1
           } else {
             row[i] = 0
@@ -140,6 +140,52 @@ function GameController(
       }
       console.log(fullBoard, 'Bingo!')
     }
+
+    // 21 Vertical winning positions
+    // for (let f = 0; f < 7; f++) {
+    //   // number of boards
+    //   for (let g = 0; g < 3; g++) {
+    //     let fullBoard = []
+    //     // number of rows
+    //     for (let h = 0; h < 6; h++) {
+    //       let row = []
+    //       // number of columns
+    //       for (let i = 0; i < 7; i++) {
+    //         if (h < g+4 && h >= g && i === f) {
+    //           row[i] = 1
+    //         } else {
+    //           row[i] = 0
+    //         }
+    //       }
+    //       fullBoard[h] = row;
+    //       row = 0
+    //     }
+    //     console.log(fullBoard, 'Bingo!')
+    //   }
+    // }
+
+    // 24 Horizontal winning positions 
+    // for (let f = 0; f < 6; f++) {
+    //   // number of boards
+    //   for (let g = 0; g < 4; g++) {
+    //     let fullBoard = []
+    //     // number of rows
+    //     for (let h = 0; h < 6; h++) {
+    //       let row = []
+    //       // number of columns
+    //       for (let i = 0; i < 7; i++) {
+    //         if (i < g+4 && i >= g && h == f) {
+    //           row[i] = 1
+    //         } else {
+    //           row[i] = 0
+    //         }    
+    //       }
+    //       fullBoard[h] = row;
+    //       row = 0
+    //     }
+    //     console.log(fullBoard, 'Bingo!')
+    //   }
+    // }
   }
   // MY
   const checkForWinner = () => {
@@ -183,8 +229,32 @@ const game = GameController();
 
 /*
 create winning condition for console
-  create all horizontal winning pos.
-  check for a single horizontal win
   check for all horizontal wins
 create tie condition for console
 */
+
+// Just saving
+function continousImgAppearance() {
+  let objectImgElem = document.getElementById('object-image');
+  let imgSwitch = "off";
+  let loadDate;
+
+  let interval = setInterval(function() {
+    let time = randomNumbers(3000, 6001)
+    let date = Date.now()
+    if (imgSwitch == "off") {
+      imgSwitch = "on"
+      // loadRandomImage()
+      loadDate = Date.now()
+      // console.log(time)
+    } else if (imgSwitch == "on") {
+      imgSwitch = "off"
+      // objectImgElem.setAttribute('src', "")
+      // objectImgElem.style.backgroundColor = "";
+      // objectImgElem.style.outline = "";
+      // console.log(time)
+    }
+    console.log(loadDate);
+  }, 1)
+}
+continousImgAppearance()
