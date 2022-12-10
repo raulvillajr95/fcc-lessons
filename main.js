@@ -120,26 +120,48 @@ function GameController(
 
   // MY
   const winningPositions = () => {
-    // 1 Diagonal winning position
+    let fullBoard = []
     // number of boards
     for (let g = 0; g < 1; g++) {
-      let fullBoard = []
       // number of rows
       for (let h = 0; h < 6; h++) {
         let row = []
         // number of columns
         for (let i = 0; i < 7; i++) {
-          if (i == 0 && h == 2) {
-            row[i] = 1
-          } else {
-            row[i] = 0
-          }
+          row[i] = 0
         }
         fullBoard[h] = row;
         row = 0
       }
-      console.log(fullBoard, 'Bingo!')
     }
+
+    // 1 Diagonal winning position
+    // let row = 2
+    // let col = 0
+    // for (let i = 0; i < 4; i++) {
+    //   fullBoard[row][col] = 1
+    //   row += 1
+    //   col += 1
+    // }
+    // fullBoard[2][0] = 1
+    // fullBoard[3][1] = 1
+    // fullBoard[4][2] = 1
+    // fullBoard[5][3] = 1
+    // console.log(fullBoard, 'Bingo!')
+
+    // let row = 2
+    // let col = 0
+    // for (let i = 0; i < 4; i++) {
+    //   fullBoard[row][col] = 1
+    //   row += 1
+    //   col += 1
+    // }
+    // let row = 1
+    // fullBoard[1][0] = 1
+    // fullBoard[2][1] = 1
+    // fullBoard[3][2] = 1
+    // fullBoard[4][3] = 1
+    // console.log(fullBoard, 'Bingo!')
 
     // 21 Vertical winning positions
     // for (let f = 0; f < 7; f++) {
@@ -203,7 +225,7 @@ function GameController(
         such as a win message. */
     // MY
     //checkForWinner()
-    winningPositions()
+    // winningPositions()
 
     // Switch player turn
     switchPlayerTurn();
@@ -222,7 +244,7 @@ function GameController(
 }
 
 const game = GameController();
-
+game.playRound(2)
 
 
 
@@ -232,29 +254,3 @@ create winning condition for console
   check for all horizontal wins
 create tie condition for console
 */
-
-// Just saving
-function continousImgAppearance() {
-  let objectImgElem = document.getElementById('object-image');
-  let imgSwitch = "off";
-  let loadDate;
-
-  let interval = setInterval(function() {
-    let time = randomNumbers(3000, 6001)
-    let date = Date.now()
-    if (imgSwitch == "off") {
-      imgSwitch = "on"
-      // loadRandomImage()
-      loadDate = Date.now()
-      // console.log(time)
-    } else if (imgSwitch == "on") {
-      imgSwitch = "off"
-      // objectImgElem.setAttribute('src', "")
-      // objectImgElem.style.backgroundColor = "";
-      // objectImgElem.style.outline = "";
-      // console.log(time)
-    }
-    console.log(loadDate);
-  }, 1)
-}
-continousImgAppearance()
