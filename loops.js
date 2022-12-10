@@ -16,40 +16,48 @@ function createBoard() {
   return board;
 }
 
-// Empty Board 1
-let fullBoard = createBoard()
-fullBoard[2][0] = 1
-fullBoard[3][1] = 1
-fullBoard[4][2] = 1
-fullBoard[5][3] = 1
-console.log(fullBoard, "Board 1")
+for (let i = 0; i < 3; i++) {
+  let fullBoard = createBoard()
 
-// Empty Board 2
-let fullBoard2 = createBoard()
-fullBoard2[1][0] = 1
-fullBoard2[2][1] = 1
-fullBoard2[3][2] = 1
-fullBoard2[4][3] = 1
-console.log(fullBoard2, "Board 2")
+  fullBoard[2-i][0] = 1
+  fullBoard[3-i][1] = 1
+  fullBoard[4-i][2] = 1
+  fullBoard[5-i][3] = 1
 
-// Empty Board 3
-let fullBoard3 = createBoard()
-fullBoard3[0][0] = 1
-fullBoard3[1][1] = 1
-fullBoard3[2][2] = 1
-fullBoard3[3][3] = 1
-console.log(fullBoard3, "Board 3")
-
+  console.log(fullBoard, `Board ${i+1}`)
+}
 
 for (let i = 0; i < 3; i++) {
   let fullBoard = createBoard()
 
-  fullBoard[2][0] = 1
-  fullBoard[3][1] = 1
-  fullBoard[4][2] = 1
-  fullBoard[5][3] = 1
+  fullBoard[2-i][1] = 1
+  fullBoard[3-i][2] = 1
+  fullBoard[4-i][3] = 1
+  fullBoard[5-i][4] = 1
 
-  console.log(fullBoard, `Board ${i+1}`)
+  console.log(fullBoard, `Board ${i+4}`)
+}
+
+for (let i = 0; i < 3; i++) {
+  let fullBoard = createBoard()
+
+  fullBoard[2-i][2] = 1
+  fullBoard[3-i][3] = 1
+  fullBoard[4-i][4] = 1
+  fullBoard[5-i][5] = 1
+
+  console.log(fullBoard, `Board ${i+7}`)
+}
+
+for (let i = 0; i < 3; i++) {
+  let fullBoard = createBoard()
+
+  fullBoard[2-i][3] = 1
+  fullBoard[3-i][4] = 1
+  fullBoard[4-i][5] = 1
+  fullBoard[5-i][6] = 1
+
+  console.log(fullBoard, `Board ${i+10}`)
 }
 
 /*
