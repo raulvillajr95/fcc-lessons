@@ -135,79 +135,51 @@ function GameController(
       }
     }
 
-    // 1 Diagonal winning position
-    // let row = 2
-    // let col = 0
-    // for (let i = 0; i < 4; i++) {
-    //   fullBoard[row][col] = 1
-    //   row += 1
-    //   col += 1
-    // }
-    // fullBoard[2][0] = 1
-    // fullBoard[3][1] = 1
-    // fullBoard[4][2] = 1
-    // fullBoard[5][3] = 1
-    // console.log(fullBoard, 'Bingo!')
-
-    // let row = 2
-    // let col = 0
-    // for (let i = 0; i < 4; i++) {
-    //   fullBoard[row][col] = 1
-    //   row += 1
-    //   col += 1
-    // }
-    // let row = 1
-    // fullBoard[1][0] = 1
-    // fullBoard[2][1] = 1
-    // fullBoard[3][2] = 1
-    // fullBoard[4][3] = 1
-    // console.log(fullBoard, 'Bingo!')
-
     // 21 Vertical winning positions
-    // for (let f = 0; f < 7; f++) {
-    //   // number of boards
-    //   for (let g = 0; g < 3; g++) {
-    //     let fullBoard = []
-    //     // number of rows
-    //     for (let h = 0; h < 6; h++) {
-    //       let row = []
-    //       // number of columns
-    //       for (let i = 0; i < 7; i++) {
-    //         if (h < g+4 && h >= g && i === f) {
-    //           row[i] = 1
-    //         } else {
-    //           row[i] = 0
-    //         }
-    //       }
-    //       fullBoard[h] = row;
-    //       row = 0
-    //     }
-    //     console.log(fullBoard, 'Bingo!')
-    //   }
-    // }
+    for (let f = 0; f < 7; f++) {
+      // number of boards
+      for (let g = 0; g < 3; g++) {
+        let fullBoard = []
+        // number of rows
+        for (let h = 0; h < 6; h++) {
+          let row = []
+          // number of columns
+          for (let i = 0; i < 7; i++) {
+            if (h < g+4 && h >= g && i === f) {
+              row[i] = 1
+            } else {
+              row[i] = 0
+            }
+          }
+          fullBoard[h] = row;
+          row = 0
+        }
+        console.log(fullBoard, 'Bingo!')
+      }
+    }
 
     // 24 Horizontal winning positions 
-    // for (let f = 0; f < 6; f++) {
-    //   // number of boards
-    //   for (let g = 0; g < 4; g++) {
-    //     let fullBoard = []
-    //     // number of rows
-    //     for (let h = 0; h < 6; h++) {
-    //       let row = []
-    //       // number of columns
-    //       for (let i = 0; i < 7; i++) {
-    //         if (i < g+4 && i >= g && h == f) {
-    //           row[i] = 1
-    //         } else {
-    //           row[i] = 0
-    //         }    
-    //       }
-    //       fullBoard[h] = row;
-    //       row = 0
-    //     }
-    //     console.log(fullBoard, 'Bingo!')
-    //   }
-    // }
+    for (let f = 0; f < 6; f++) {
+      // number of boards
+      for (let g = 0; g < 4; g++) {
+        let fullBoard = []
+        // number of rows
+        for (let h = 0; h < 6; h++) {
+          let row = []
+          // number of columns
+          for (let i = 0; i < 7; i++) {
+            if (i < g+4 && i >= g && h == f) {
+              row[i] = 1
+            } else {
+              row[i] = 0
+            }    
+          }
+          fullBoard[h] = row;
+          row = 0
+        }
+        console.log(fullBoard, 'Bingo!')
+      }
+    }
   }
   // MY
   const checkForWinner = () => {
@@ -254,3 +226,32 @@ create winning condition for console
   check for all horizontal wins
 create tie condition for console
 */
+
+// Just saving
+// random interval attempt
+
+let interval = setInterval(function() {
+  if (imgSwitch == "off") {
+    imgSwitch = "on";
+    loadRandomImage();
+    timeOfAppearance = Date.now()
+  } else if (imgSwitch == "on") {
+    imgSwitch = "off"
+    objectImgElem.setAttribute('src', "")
+    objectImgElem.style.backgroundColor = "";
+    objectImgElem.style.outline = "";
+    game.tapCount = 0;
+  }
+  test = randomIntervalTime(10, 2000)
+  console.log(imgSwitch, test)
+}, 2000)
+
+let grabTimeAppearance = () => {
+  return timeOfAppearance;
+}
+
+return {
+  timeOfAppearance,
+  grabTimeAppearance
+}
+})()

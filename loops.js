@@ -15,51 +15,52 @@ function createBoard() {
   }
   return board;
 }
+let count = 1
+// for (let i = 0; i < 3; i++) {
+//   for (let j = 0; j < 4; j++) {
+//     let fullBoard = createBoard()
+//     fullBoard[2-i][j] = 1
+//     fullBoard[3-i][j+1] = 1
+//     fullBoard[4-i][j+2] = 1
+//     fullBoard[5-i][j+3] = 1
+//     console.log(fullBoard, `Board ${count}`)
+//     count += 1
+//   }
+// }
 
-for (let i = 0; i < 3; i++) {
-  let fullBoard = createBoard()
+// for (let i = 0; i < 3; i++) {
+//   for (let j = 6; j > 2; j--) {
+//     let fullBoard = createBoard()
+//     fullBoard[2-i][j] = 1
+//     fullBoard[3-i][j-1] = 1
+//     fullBoard[4-i][j-2] = 1
+//     fullBoard[5-i][j-3] = 1
+//     console.log(fullBoard, `Board ${count}`)
+//     count += 1
+//   }
+// }
 
-  fullBoard[2-i][0] = 1
-  fullBoard[3-i][1] = 1
-  fullBoard[4-i][2] = 1
-  fullBoard[5-i][3] = 1
+let fullBoard = createBoard()
+fullBoard[0][0] = 1
+fullBoard[1][0] = 1
+fullBoard[2][0] = 1
+fullBoard[3][0] = 1
+console.log(fullBoard, 'Board 1')
 
-  console.log(fullBoard, `Board ${i+1}`)
-}
+let fullBoard2 = createBoard()
+fullBoard2[1][0] = 1
+fullBoard2[2][0] = 1
+fullBoard2[3][0] = 1
+fullBoard2[4][0] = 1
+console.log(fullBoard2, 'Board 2')
 
-for (let i = 0; i < 3; i++) {
-  let fullBoard = createBoard()
-
-  fullBoard[2-i][1] = 1
-  fullBoard[3-i][2] = 1
-  fullBoard[4-i][3] = 1
-  fullBoard[5-i][4] = 1
-
-  console.log(fullBoard, `Board ${i+4}`)
-}
-
-for (let i = 0; i < 3; i++) {
-  let fullBoard = createBoard()
-
-  fullBoard[2-i][2] = 1
-  fullBoard[3-i][3] = 1
-  fullBoard[4-i][4] = 1
-  fullBoard[5-i][5] = 1
-
-  console.log(fullBoard, `Board ${i+7}`)
-}
-
-for (let i = 0; i < 3; i++) {
-  let fullBoard = createBoard()
-
-  fullBoard[2-i][3] = 1
-  fullBoard[3-i][4] = 1
-  fullBoard[4-i][5] = 1
-  fullBoard[5-i][6] = 1
-
-  console.log(fullBoard, `Board ${i+10}`)
-}
+let fullBoard3 = createBoard()
+fullBoard3[2][0] = 1
+fullBoard3[3][0] = 1
+fullBoard3[4][0] = 1
+fullBoard3[5][0] = 1
+console.log(fullBoard3, 'Board 3')
 
 /*
-then add the 3 looped diagonals
+do the verticals
 */
