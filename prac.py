@@ -20,11 +20,9 @@
 # word = 'banana'
 # print(word.count('a'))
 
-while True:
-  line = input('> ')
-  if len(line) > 0 and line[0] == '#':
-    continue
-  if line == 'done':
-    break
-  print(line)
-print('Done!')
+# Ex: 6.5
+# str = 'X-DSPAM-Confidence: 0.8475 '
+# beforeFloat = str.find(' ')
+# afterFloat = str.find(' ', beforeFloat+1)
+# floatStr = float(str[beforeFloat+1:afterFloat])
+# print(floatStr)

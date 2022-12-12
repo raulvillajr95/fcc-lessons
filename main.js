@@ -216,7 +216,26 @@ function GameController(
 }
 
 const game = GameController();
+game.playRound(0)
+game.playRound(1)
 game.playRound(2)
+game.playRound(3)
+game.playRound(6)
+game.playRound(5)
+game.playRound(0)
+game.playRound(4)
+game.playRound(1)
+game.playRound(2)
+game.playRound(3)
+game.playRound(4)
+game.playRound(5)
+game.playRound(3)
+game.playRound(0)
+game.playRound(0)
+game.playRound(4)
+game.playRound(4)
+game.playRound(5)
+game.playRound(5)
 
 
 
@@ -226,32 +245,3 @@ create winning condition for console
   check for all horizontal wins
 create tie condition for console
 */
-
-// Just saving
-// random interval attempt
-
-let interval = setInterval(function() {
-  if (imgSwitch == "off") {
-    imgSwitch = "on";
-    loadRandomImage();
-    timeOfAppearance = Date.now()
-  } else if (imgSwitch == "on") {
-    imgSwitch = "off"
-    objectImgElem.setAttribute('src', "")
-    objectImgElem.style.backgroundColor = "";
-    objectImgElem.style.outline = "";
-    game.tapCount = 0;
-  }
-  test = randomIntervalTime(10, 2000)
-  console.log(imgSwitch, test)
-}, 2000)
-
-let grabTimeAppearance = () => {
-  return timeOfAppearance;
-}
-
-return {
-  timeOfAppearance,
-  grabTimeAppearance
-}
-})()
