@@ -26,3 +26,8 @@
 # afterFloat = str.find(' ', beforeFloat+1)
 # floatStr = float(str[beforeFloat+1:afterFloat])
 # print(floatStr)
+
+#Ex: 6.6
+str = "string"
+modified = str.endswith(('r','s'))
+print(modified)

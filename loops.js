@@ -16,94 +16,11 @@ function createBoard() {
   return board;
 }
 
-// function checkIfWin(currentPlayer, board) {
-//   if (currentPlayer == 1) {
-//     // function(board)
-//   } else if (currentPlayer == 2) {
-
-//   }
-// }
-
-// maybe delete, might be able to do in 1 function
-// function checkBoard(params) {
-  
-// }
-
-let count = 1
-// Diagonal topL/bottomR
-for (let i = 0; i < 3; i++) {
-  for (let j = 0; j < 4; j++) {
-    let fullBoard = createBoard()
-    fullBoard[2-i][j] = 1
-    fullBoard[3-i][j+1] = 1
-    fullBoard[4-i][j+2] = 1
-    fullBoard[5-i][j+3] = 1
-    //console.log(fullBoard, `Board ${count}`)
-    count += 1
-  }
+function winCheck(board, currentPlayer) {
+  return (diagonalCheck(board, currentPlayer) ||
+          verticalCheck(board, currentPlayer) ||
+          horizontalCheck(board, currentPlayer))
 }
-
-// Diagonal topR/bottomL
-for (let i = 0; i < 3; i++) {
-  for (let j = 6; j > 2; j--) {
-    let fullBoard = createBoard()
-    fullBoard[2-i][j] = 1
-    fullBoard[3-i][j-1] = 1
-    fullBoard[4-i][j-2] = 1
-    fullBoard[5-i][j-3] = 1
-    //console.log(fullBoard, `Board ${count}`)
-    count += 1
-  }
-}
-
-// Verticals
-for (let i = 0; i < 3; i++) {
-  for (let j = 0; j < 7; j++) {
-    let fullBoard = createBoard()
-    fullBoard[i][j] = 1
-    fullBoard[i+1][j] = 1
-    fullBoard[i+2][j] = 1
-    fullBoard[i+3][j] = 1
-    //console.log(fullBoard, `Board ${count}`)
-    count += 1
-  }
-}
-
-// Horizontals
-for (let i = 0; i < 4; i++) {
-  for (let j = 0; j < 6; j++) {
-    let fullBoard = createBoard()
-    fullBoard[j][i] = 1
-    fullBoard[j][1+i] = 1
-    fullBoard[j][2+i] = 1
-    fullBoard[j][3+i] = 1
-    //console.log(fullBoard, `Board ${count}`)
-    count += 1
-  }
-}
-
-let fullBoard = createBoard()
-fullBoard[5][0] = 1
-fullBoard[5][1] = 2
-fullBoard[5][2] = 1
-fullBoard[5][3] = 2
-fullBoard[5][4] = 2
-fullBoard[5][5] = 2
-fullBoard[5][6] = 1
-fullBoard[4][0] = 1
-fullBoard[4][1] = 1
-fullBoard[4][2] = 2
-fullBoard[4][3] = 1
-fullBoard[4][4] = 2
-fullBoard[4][5] = 1
-fullBoard[3][0] = 1
-fullBoard[3][3] = 2
-fullBoard[3][4] = 1
-fullBoard[3][5] = 1
-fullBoard[2][0] = 2
-fullBoard[2][4] = 2
-fullBoard[2][5] = 2
-// console.log(fullBoard, 'fullboard')
 
 function diagonalCheck(board, currentPlayer) {
   // Diagonal topL/bottomR
@@ -170,7 +87,3 @@ function horizontalCheck(board, currentPlayer) {
   }
   return false;
 }
-
-/*
-
-*/

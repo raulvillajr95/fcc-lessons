@@ -9,6 +9,9 @@ function Gameboard() {
   const columns = 7;
   const board = [];
 
+  // MY
+  let falseCount = 0;
+
   // Create a 2d array that will represent the state of the game board
   // For this 2d array, row 0 will represent the top row and
   // column 0 will represent the left-most column.
@@ -47,7 +50,8 @@ function Gameboard() {
   // but we won't need it after we build our UI
   const printBoard = () => {
     const boardWithCellValues = board.map((row) => row.map((cell) => cell.getValue()))
-    console.log(boardWithCellValues);
+    // console.log(boardWithCellValues);
+
   };
 
   // MY
@@ -57,7 +61,12 @@ function Gameboard() {
 
   // Here, we provide an interface for the rest of our
   // application to interact with the board
-  return { getBoard, dropToken, printBoard, fullBoard };
+  return { 
+    getBoard,
+    dropToken,
+    printBoard,
+    fullBoard,
+    falseCount };
 }
 
 /*
@@ -115,89 +124,105 @@ function GameController(
 
   const printNewRound = () => {
     board.printBoard();
-    console.log(`${getActivePlayer().name}'s turn.`);
+    // console.log(`${getActivePlayer().name}'s turn.`);
   };
 
   // MY
-  const winningPositions = () => {
-    let fullBoard = []
-    // number of boards
-    for (let g = 0; g < 1; g++) {
-      // number of rows
-      for (let h = 0; h < 6; h++) {
-        let row = []
-        // number of columns
-        for (let i = 0; i < 7; i++) {
-          row[i] = 0
-        }
-        fullBoard[h] = row;
-        row = 0
-      }
-    }
-
-    // 21 Vertical winning positions
-    for (let f = 0; f < 7; f++) {
-      // number of boards
-      for (let g = 0; g < 3; g++) {
-        let fullBoard = []
-        // number of rows
-        for (let h = 0; h < 6; h++) {
-          let row = []
-          // number of columns
-          for (let i = 0; i < 7; i++) {
-            if (h < g+4 && h >= g && i === f) {
-              row[i] = 1
-            } else {
-              row[i] = 0
-            }
-          }
-          fullBoard[h] = row;
-          row = 0
-        }
-        console.log(fullBoard, 'Bingo!')
-      }
-    }
-
-    // 24 Horizontal winning positions 
-    for (let f = 0; f < 6; f++) {
-      // number of boards
-      for (let g = 0; g < 4; g++) {
-        let fullBoard = []
-        // number of rows
-        for (let h = 0; h < 6; h++) {
-          let row = []
-          // number of columns
-          for (let i = 0; i < 7; i++) {
-            if (i < g+4 && i >= g && h == f) {
-              row[i] = 1
-            } else {
-              row[i] = 0
-            }    
-          }
-          fullBoard[h] = row;
-          row = 0
-        }
-        console.log(fullBoard, 'Bingo!')
-      }
+  function winCheck(boardToCheck, currentPlayer) {
+    let matched =(diagonalCheck(boardToCheck, currentPlayer) ||
+                  verticalCheck(boardToCheck, currentPlayer) ||
+                  horizontalCheck(boardToCheck, currentPlayer))
+    if (matched == false) {
+      board.falseCount += 1
+      return false
+    } else {
+      return true
     }
   }
-  // MY
-  const checkForWinner = () => {
-    console.log(board.fullBoard()[5], "Bingo!")
+
+  function tieCheck() {
+      return board.falseCount >= 42
+  }
+  
+  function diagonalCheck(board, currentPlayer) {
+    // Diagonal topL/bottomR
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 4; j++) {
+        let matched = (board[2-i][j] == currentPlayer &&
+        board[3-i][j+1] == currentPlayer &&
+        board[4-i][j+2] == currentPlayer &&
+        board[5-i][j+3] == currentPlayer)
+        if (matched) {
+          return true;
+        } else {
+          continue;
+        }
+      }
+    }
+    // Diagonal topR/bottomL
+    for (let i = 0; i < 3; i++) {
+      for (let j = 6; j > 2; j--) {
+        let matched = (board[2-i][j] == currentPlayer &&
+        board[3-i][j-1] == currentPlayer &&
+        board[4-i][j-2] == currentPlayer &&
+        board[5-i][j-3] == currentPlayer)
+        if (matched) {
+          return true;
+        } else {
+          continue;
+        }
+      }
+    }
+    return false;
+  }
+  
+  function verticalCheck(board, currentPlayer) {
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 7; j++) {
+        let matched = (board[i][j] == currentPlayer &&
+        board[i+1][j] == currentPlayer &&
+        board[i+2][j] == currentPlayer &&
+        board[i+3][j] == currentPlayer)
+        if (matched) {
+          return true;
+        } else {
+          continue;
+        }
+      }
+    }
+    return false;
+  }
+  
+  function horizontalCheck(board, currentPlayer) {
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 6; j++) {
+        let matched = (board[j][i] == currentPlayer &&
+        board[j][1+i] == currentPlayer &&
+        board[j][2+i] == currentPlayer &&
+        board[j][3+i] == currentPlayer)
+        if (matched) {
+          return true;
+        } else {
+          continue;
+        }
+      }
+    }
+    return false;
   }
 
   const playRound = (column) => {
     // Drop a token for the current player
-    console.log(
-      `Dropping ${getActivePlayer().name}'s token into column ${column}...`
-    );
+    // console.log(
+    //   `Dropping ${getActivePlayer().name}'s token into column ${column}...`
+    // );
     board.dropToken(column, getActivePlayer().token);
 
     /*  This is where we would check for a winner and handle that logic,
         such as a win message. */
     // MY
-    //checkForWinner()
-    // winningPositions()
+    console.log('Win?', winCheck(board.fullBoard(), getActivePlayer().token))
+    console.log('Tie?', tieCheck())
+
 
     // Switch player turn
     switchPlayerTurn();
@@ -211,37 +236,70 @@ function GameController(
   // getActivePlayer for the UI version, so I'm revealing it now
   return {
     playRound,
-    getActivePlayer
+    getActivePlayer,
+    getBoard: board.getBoard
   };
 }
 
-const game = GameController();
-game.playRound(0)
-game.playRound(1)
-game.playRound(2)
-game.playRound(3)
-game.playRound(6)
-game.playRound(5)
-game.playRound(0)
-game.playRound(4)
-game.playRound(1)
-game.playRound(2)
-game.playRound(3)
-game.playRound(4)
-game.playRound(5)
-game.playRound(3)
-game.playRound(0)
-game.playRound(0)
-game.playRound(4)
-game.playRound(4)
-game.playRound(5)
-game.playRound(5)
+function ScreenController() {
+  const game = GameController();
+  const playerTurnDiv = document.querySelector('.turn');
+  const boardDiv = document.querySelector('.board');
+
+  const updateScreen = () => {
+    // clear the board
+    boardDiv.textContent = "";
+
+    // get the newest version of the board and player turn
+    const board = game.getBoard();
+    const activePlayer = game.getActivePlayer();
+
+    // Display player's turn
+    playerTurnDiv.textContent = `${activePlayer.name}'s turns...`
+
+    // Render board squares
+    board.forEach(row => {
+      row.forEach((cell, index) => {
+        // Anything clickable should be a button!!
+        const cellButton = document.createElement("button");
+        cellButton.classList.add("cell");
+        // Create a data attribute to identify the column
+        // This makes it easier to pass into our
+        // `playRound` function
+        cellButton.dataset.column = index
+        cellButton.textContent = cell.getValue();
+        boardDiv.appendChild(cellButton);
+      })
+    })
+  }
+
+  // Add event listener for the board
+  function clickHandlerBoard(e) {
+    const selectedColumn = e.target.dataset.column;
+    // Make sure I've clicked a column and not the gaps in
+    // between
+    if (!selectedColumn) return;
+
+    game.playRound(selectedColumn);
+    updateScreen();
+  }
+  boardDiv.addEventListener("click", clickHandlerBoard);
+
+  // Initial render
+  updateScreen();
+  
+  // We don't need to return anything from this module 
+  // becuase everything is encapsulated inside this screen
+  // controller.
+}
+
+// const game = GameController();
+
+ScreenController();
 
 
 
 
 /*
-create winning condition for console
-  check for all horizontal wins
-create tie condition for console
+get visual board up and running
 */
