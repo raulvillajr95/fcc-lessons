@@ -136,12 +136,27 @@ function GameController(
       board.falseCount += 1
       return false
     } else {
+      gameResultElement('win')
       return true
     }
   }
 
+  function gameResultElement(result) {
+    let gameResultElem = document.querySelector('.game-result');
+    if (result == 'win') {
+      gameResultElem.textContent = `Player ${getActivePlayer().token} has won`
+    } else if (result == 'tie'){
+      gameResultElem.textContent = `TIE!`
+    }
+  }
+
   function tieCheck() {
-      return board.falseCount >= 42
+      if (board.falseCount >= 42) {
+        gameResultElement('tie')
+        return true
+      } else {
+        return false
+      }
   }
   
   function diagonalCheck(board, currentPlayer) {
@@ -293,13 +308,11 @@ function ScreenController() {
   // controller.
 }
 
-// const game = GameController();
-
 ScreenController();
 
 
 
 
 /*
-get visual board up and running
+intro screen for name choosing
 */
