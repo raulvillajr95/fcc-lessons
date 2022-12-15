@@ -28,6 +28,6 @@
 # print(floatStr)
 
 #Ex: 6.6
-str = "string"
-modified = str.endswith(('r','s'))
+str = "www.google.com"
+modified = str.rsplit('.')
 print(modified)

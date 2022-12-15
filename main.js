@@ -4,6 +4,34 @@
 ** and we expose a dropToken method to be able to add Cells to squares
 */
 
+let dependencies = (function() {
+  let playerOneName;
+  let playerTwoName;
+
+  return {
+    playerOneName,
+    playerTwoName
+  }
+})()
+
+// loads turn, game-result, and board
+function loadGameElements() {
+  let container = document.querySelector('.container')
+
+  let turnElem = document.createElement('h1');
+  turnElem.setAttribute('class', 'turn');
+  container.appendChild(turnElem)
+
+  let gameResultElem = document.createElement('h2');
+  gameResultElem.setAttribute('class', 'game-result');
+  container.appendChild(gameResultElem)
+
+  let boardDiv = document.createElement('div');
+  boardDiv.setAttribute('class', 'board');
+  container.appendChild(boardDiv)
+}
+// loadGameElements()
+
 function Gameboard() {
   const rows = 6;
   const columns = 7;
@@ -11,6 +39,8 @@ function Gameboard() {
 
   // MY
   let falseCount = 0;
+  let playerOneName;
+  let playerTwoName;
 
   // Create a 2d array that will represent the state of the game board
   // For this 2d array, row 0 will represent the top row and
@@ -66,7 +96,10 @@ function Gameboard() {
     dropToken,
     printBoard,
     fullBoard,
-    falseCount };
+    falseCount,
+    playerOneName,
+    playerTwoName
+  };
 }
 
 /*
@@ -252,12 +285,22 @@ function GameController(
   return {
     playRound,
     getActivePlayer,
-    getBoard: board.getBoard
+    getBoard: board.getBoard,
+    board
   };
 }
 
 function ScreenController() {
-  const game = GameController();
+  let playerOneValue = dependencies.playerOneName
+  let playerTwoValue = dependencies.playerTwoName
+
+  let game;
+  if (!playerOneValue || !playerTwoValue) {
+    game = GameController();
+  } else {
+    game = GameController(dependencies.playerOneName, dependencies.playerTwoName);
+  }
+
   const playerTurnDiv = document.querySelector('.turn');
   const boardDiv = document.querySelector('.board');
 
@@ -270,7 +313,7 @@ function ScreenController() {
     const activePlayer = game.getActivePlayer();
 
     // Display player's turn
-    playerTurnDiv.textContent = `${activePlayer.name}'s turns...`
+    playerTurnDiv.textContent = `${activePlayer.name}'s turn...`
 
     // Render board squares
     board.forEach(row => {
@@ -307,12 +350,105 @@ function ScreenController() {
   // becuase everything is encapsulated inside this screen
   // controller.
 }
+// ScreenController();
 
-ScreenController();
+function loadStartPage() {
+  let container = document.querySelector('.container');
+  let startContainer = document.createElement('div');
+  startContainer.setAttribute('class', 'start-container');
+
+  let playerOneLabel = document.createElement('label');
+  playerOneLabel.setAttribute('for', 'player-one');
+  playerOneLabel.textContent = 'Player One Name'
+  startContainer.appendChild(playerOneLabel);
+
+  let playerOneElem = document.createElement('input');
+  playerOneElem.setAttribute('type', 'text');
+  playerOneElem.setAttribute('id', 'player-one');
+  playerOneElem.setAttribute('name', 'player-one');
+  startContainer.appendChild(playerOneElem);
+
+  let playerTwoLabel = document.createElement('label');
+  playerTwoLabel.setAttribute('for', 'player-two');
+  playerTwoLabel.textContent = 'Player Two Name'
+  startContainer.appendChild(playerTwoLabel);
+
+  let playerTwoElem = document.createElement('input');
+  playerTwoElem.setAttribute('type', 'text');
+  playerTwoElem.setAttribute('id', 'player-two');
+  playerTwoElem.setAttribute('name', 'player-two');
+  startContainer.appendChild(playerTwoElem);
+
+  let startBtn = document.createElement('button');
+  startBtn.setAttribute('class', 'start-btn');
+  startBtn.textContent = 'Start';
+  startContainer.appendChild(startBtn);
+
+  container.appendChild(startContainer)
+}
+loadStartPage()
 
 
+function clearPage() {
+  let container = document.querySelector('.container')
+  for (let i = 0; i < container.children.length; i++) {
+    container.children[0].remove()
+  }
+}
 
+let grabNames = (() => {
+  let playerOneInp = document.querySelector('#player-one')
+  let playerTwoInp = document.querySelector('#player-two')
+  dependencies.playerOneName = playerOneInp.value
+  dependencies.playerTwoName = playerTwoInp.value
+})
+
+let startScreenStartBtn = (() => {
+  let startBtn = document.querySelector('.start-btn')
+  startBtn.addEventListener('click', () => {
+    grabNames()
+    clearPage();
+    loadGameElements();
+    ScreenController();
+  })
+})()
+
+function loadStartPage() {
+  let container = document.querySelector('.container');
+  let winContainer = document.createElement('div');
+  winContainer.setAttribute('class', 'winner-container');
+
+  let playerOneLabel = document.createElement('label');
+  playerOneLabel.setAttribute('for', 'player-one');
+  playerOneLabel.textContent = 'Player One Name'
+  startContainer.appendChild(playerOneLabel);
+
+  let playerOneElem = document.createElement('input');
+  playerOneElem.setAttribute('type', 'text');
+  playerOneElem.setAttribute('id', 'player-one');
+  playerOneElem.setAttribute('name', 'player-one');
+  startContainer.appendChild(playerOneElem);
+
+  let playerTwoLabel = document.createElement('label');
+  playerTwoLabel.setAttribute('for', 'player-two');
+  playerTwoLabel.textContent = 'Player Two Name'
+  startContainer.appendChild(playerTwoLabel);
+
+  let playerTwoElem = document.createElement('input');
+  playerTwoElem.setAttribute('type', 'text');
+  playerTwoElem.setAttribute('id', 'player-two');
+  playerTwoElem.setAttribute('name', 'player-two');
+  startContainer.appendChild(playerTwoElem);
+
+  let startBtn = document.createElement('button');
+  startBtn.setAttribute('class', 'start-btn');
+  startBtn.textContent = 'Start';
+  startContainer.appendChild(startBtn);
+
+  container.appendChild(winContainer)
+}
 
 /*
-intro screen for name choosing
+function that creates winner page elements
+function that clears, loads, winnner, assigns winner, and displays
 */
