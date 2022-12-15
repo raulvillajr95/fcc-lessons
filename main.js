@@ -190,12 +190,15 @@ function GameController(
   }
 
   function tieCheck() {
-      if (board.falseCount >= 42) {
-        gameResultElement('tie')
-        return true
-      } else {
-        return false
-      }
+    if (board.falseCount >= 42) {
+      gameResultElement('tie')
+      dependencies.winner = getActivePlayer().name
+      clearPage()
+      loadRestartPage()
+      return true
+    } else {
+      return false
+    }
   }
   
   function diagonalCheck(board, currentPlayer) {
@@ -331,7 +334,13 @@ function ScreenController() {
         // This makes it easier to pass into our
         // `playRound` function
         cellButton.dataset.column = index
-        cellButton.textContent = cell.getValue();
+        let cellValue = cell.getValue()
+        if (cellValue == 1) {
+          cellButton.style.backgroundColor = "red"
+        } else if (cellValue == 2) {
+          cellButton.style.backgroundColor = "blue"
+        }
+        // cellButton.textContent = cell.getValue();
         boardDiv.appendChild(cellButton);
       })
     })
