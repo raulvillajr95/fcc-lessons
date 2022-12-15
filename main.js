@@ -8,9 +8,12 @@ let dependencies = (function() {
   let playerOneName;
   let playerTwoName;
 
+  let winner;
+
   return {
     playerOneName,
-    playerTwoName
+    playerTwoName,
+    winner
   }
 })()
 
@@ -170,6 +173,9 @@ function GameController(
       return false
     } else {
       gameResultElement('win')
+      dependencies.winner = getActivePlayer().name
+      clearPage()
+      loadRestartPage()
       return true
     }
   }
@@ -352,7 +358,19 @@ function ScreenController() {
 }
 // ScreenController();
 
+let startScreenStartBtn = (() => {
+  let startBtn = document.querySelector('.start-btn')
+  startBtn.addEventListener('click', () => {
+    grabNames()
+    clearPage();
+    loadGameElements();
+    ScreenController();
+    console.log(dependencies.playerOneName, dependencies.playerTwoName)
+  })
+})
+
 function loadStartPage() {
+  clearPage();
   let container = document.querySelector('.container');
   let startContainer = document.createElement('div');
   startContainer.setAttribute('class', 'start-container');
@@ -385,6 +403,7 @@ function loadStartPage() {
   startContainer.appendChild(startBtn);
 
   container.appendChild(startContainer)
+  startScreenStartBtn()
 }
 loadStartPage()
 
@@ -403,52 +422,45 @@ let grabNames = (() => {
   dependencies.playerTwoName = playerTwoInp.value
 })
 
-let startScreenStartBtn = (() => {
-  let startBtn = document.querySelector('.start-btn')
-  startBtn.addEventListener('click', () => {
-    grabNames()
-    clearPage();
-    loadGameElements();
-    ScreenController();
-  })
-})()
+///
 
-function loadStartPage() {
+function loadRestartPage() {
+  clearPage();
   let container = document.querySelector('.container');
   let winContainer = document.createElement('div');
   winContainer.setAttribute('class', 'winner-container');
 
-  let playerOneLabel = document.createElement('label');
-  playerOneLabel.setAttribute('for', 'player-one');
-  playerOneLabel.textContent = 'Player One Name'
-  startContainer.appendChild(playerOneLabel);
+  // review
+  let announcementElem = document.createElement('h1');
+  announcementElem.setAttribute('class', 'announcement');
+  announcementElem.textContent = `${dependencies.winner} has won`
+  winContainer.appendChild(announcementElem);
 
-  let playerOneElem = document.createElement('input');
-  playerOneElem.setAttribute('type', 'text');
-  playerOneElem.setAttribute('id', 'player-one');
-  playerOneElem.setAttribute('name', 'player-one');
-  startContainer.appendChild(playerOneElem);
-
-  let playerTwoLabel = document.createElement('label');
-  playerTwoLabel.setAttribute('for', 'player-two');
-  playerTwoLabel.textContent = 'Player Two Name'
-  startContainer.appendChild(playerTwoLabel);
-
-  let playerTwoElem = document.createElement('input');
-  playerTwoElem.setAttribute('type', 'text');
-  playerTwoElem.setAttribute('id', 'player-two');
-  playerTwoElem.setAttribute('name', 'player-two');
-  startContainer.appendChild(playerTwoElem);
-
-  let startBtn = document.createElement('button');
-  startBtn.setAttribute('class', 'start-btn');
-  startBtn.textContent = 'Start';
-  startContainer.appendChild(startBtn);
+  let restartBtn = document.createElement('button');
+  restartBtn.setAttribute('class', 'restart-btn');
+  restartBtn.textContent = 'Restart';
+  winContainer.appendChild(restartBtn);
 
   container.appendChild(winContainer)
+  winScreenStartBtn()
 }
+
+let winScreenStartBtn = (() => {
+  let restartBtn = document.querySelector('.restart-btn')
+  restartBtn.addEventListener('click', () => {
+    clearPage();
+    loadStartPage();
+    dependencies.playerOneName = undefined;
+    dependencies.playerTwoName = undefined;
+    // ScreenController();
+  })
+})
 
 /*
 function that creates winner page elements
 function that clears, loads, winnner, assigns winner, and displays
+work on connection between pages
+
+bugs:
+- when win, clearPage() doesn't clear page
 */

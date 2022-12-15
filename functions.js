@@ -465,3 +465,8 @@ function isNegZero(n) {
   n = Number(n);
   return (n ===0) && (1 / n === -Infinity)
 }
+
+// Random number between min and max
+function randomNumberInRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
