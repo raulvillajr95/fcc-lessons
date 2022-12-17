@@ -21,13 +21,15 @@
 # print(word.count('a'))
 
 # Ex: 6.5
-# str = 'X-DSPAM-Confidence: 0.8475 '
-# beforeFloat = str.find(' ')
-# afterFloat = str.find(' ', beforeFloat+1)
-# floatStr = float(str[beforeFloat+1:afterFloat])
-# print(floatStr)
+text = "X-DSPAM-Confidence:    0.8475"
+beforeFloat = text.find(' ')
+afterFloat = text.find(' ', beforeFloat+1)
+floatStr = float(text[beforeFloat+1:])
+print(floatStr)
 
 #Ex: 6.6
-str = "www.google.com"
-modified = str.rsplit('.')
-print(modified)
+# str = "www.google.com"
+# modified = str.zfill(20)
+# print(modified)
+
+'From marquard@uct.ac.za'
