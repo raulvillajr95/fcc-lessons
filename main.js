@@ -1,19 +1,13 @@
-['get', 'post', 'put'].map((httpMethod) => Object.prototype.hasOwnProperty.call(
-    httpMagicObjectWithAVeryLongName,
-    httpMethod,
-  )
-);
+const hero = {
+  firstName: 'Ada'
+  , lastName: 'Lovelace'
+  , birthYear: 1815
+  , superPower: 'computers'
+};
 
-['get', 'post', 'put'].map((httpMethod) => (
-  Object.prototype.hasOwnProperty.call(
-    httpMagicObjectWithAVeryLongName,
-    httpMethod,
-  )
-))
+/**
+ * airbnb style guide
+ * ch20
+ */
 
-/*
-airbnb style guide ch8
-
-chats:
-- create a weekly plan to help me get smarter
-*/
+// chat: improve this code
