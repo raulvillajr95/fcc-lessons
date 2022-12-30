@@ -1,13 +1,15 @@
-const hero = {
-  firstName: 'Ada'
-  , lastName: 'Lovelace'
-  , birthYear: 1815
-  , superPower: 'computers'
-};
+import './style.css';
+import './reset.css';
+import { Todo, createTodo } from './todo.js';
+import { Folder, createFolder } from './folder.js';
 
-/**
- * airbnb style guide
- * ch20
- */
+let todoDependencies = (function() {
 
-// chat: improve this code
+  let defaultFolder = new Folder('Default');
+  let folders = [defaultFolder];
+
+  return {
+    folders,
+    defaultFolder,
+  }
+})()

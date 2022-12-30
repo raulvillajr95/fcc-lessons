@@ -31,3 +31,12 @@ let eurPointsFormat = ((num) => {
     return strNum
   }
 })
+
+// Deleter every item in element
+function clearDisplay(element) {
+  let elem = document.querySelector(element);
+  let childrenCount = elem.children.length;
+  for (let i = 0; i < childrenCount; i++) {
+    elem.children[0].remove()
+  }
+}
