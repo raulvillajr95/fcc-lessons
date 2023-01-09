@@ -1,62 +1,55 @@
-# 9.1
-# fname = input('Enter file name: ')
-# fhandle = open(fname)
-# wordKeys = dict()
-# for line in fhandle:
-#   for word in line.split():
-#     if word not in wordKeys:
-#       wordKeys[word] = 1
-#     else:
-#       wordKeys[word] = wordKeys[word] + 1
-# print(wordKeys)
+# 10.1
+# fname = input('Enter a file name: ')
+# file = open(fname)
+# addresses = dict()
+# for line in file:
+#   lsplit = line.split()
+#   if len(lsplit) <= 0: continue
+#   if lsplit[0] != 'From': continue
+#   addresses[lsplit[1]] = addresses.get(lsplit[1], 0) + 1
+# print(addresses)
+# lst = list()
+# for k, v in addresses.items():
+#   lst.append((v,k))
+# revSorted = sorted(lst, reverse=True)
+# x, y = revSorted[0]
+# print(y, x)
 
-# 9.2
-# fname = input('Enter file name: ')
-# fhandle = open(fname)
-# day_count = dict()
-# for line in fhandle:
-#   sline = line.split()
-#   if len(sline) < 3: continue
-#   if sline[0] != 'From': continue
-#   day_count[sline[2]] = day_count.get(sline[2], 0) + 1
-# print(day_count)
+# 10.2
+# fname = input('Enter a file name: ')
+# file = open(fname)
+# times = dict()
+# for line in file:
+#   lsplit = line.split()
+#   if len(lsplit) <= 0: continue
+#   if lsplit[0] != 'From': continue
+#   time = lsplit[-2].split(':')[0]
+#   times[time] = times.get(time, 0) + 1
+# print(times)
+# lst = list()
+# for k, v in times.items():
+#   lst.append((k, v))
+# print(sorted(lst))
+# for k, v in lst:
+#   print(k, v)
 
-# 9.3
-# fname = input('Enter file name: ')
-# fhandle = open(fname)
-# day_count = dict()
-# for line in fhandle:
-#   sline = line.split()
-#   if len(sline) < 3: continue
-#   if sline[0] != 'From': continue
-#   day_count[sline[1]] = day_count.get(sline[1], 0) + 1
-# print(day_count)
+# 10.3
+#fname = input('Enter a file name: ')
+# file = open(fname)
+# times = dict()
+# for line in file:
+#   for letter in line:
+#     if letter.isalpha() == False: continue
+#     lower_letter = letter.lower()
+#     times[lower_letter] = times.get(lower_letter, 0) + 1
+# lst = list()
+# for k, v in times.items():
+#   # print(k, v)
+#   lst.append((v, k))
+# print(sorted(lst, reverse=True))
 
-# 9.4
-fname = input('Enter file name: ')
-fhandle = open(fname)
-email_count = dict()
-for line in fhandle:
-  sline = line.split()
-  if len(sline) < 3: continue
-  if sline[0] != 'From': continue
-  email_count[sline[1]] = email_count.get(sline[1], 0) + 1
-email_max_count = -1
-email_max_name = ''
-for email in email_count:
-  if email_count[email] > email_max_count:
-    email_max_count = email_count[email]
-    email_max_name = email
-print(email_max_name, email_max_count)
-
-# 9.5
-# fname = input('Enter file name: ')
-# fhandle = open(fname)
-# domain_count = dict()
-# for line in fhandle:
-#   sline = line.split()
-#   if len(sline) < 3: continue
-#   if sline[0] != 'From': continue
-#   domain = sline[1].split('@')[1]
-#   domain_count[domain] = domain_count.get(domain, 0) + 1
-# print(domain_count)
+# eng: e, t, o
+# fren: e, t, s
+# span: e, a, s
+# Germ: e, n, i
+# Lorem: e, i, s
