@@ -1,17 +1,25 @@
+/**
+ *
+ *
+ *
+ */
 
-
-
-// Count vowels
-function vo(str) {
-  let vowels = ['a', 'e', 'i', 'o', 'u']
-  let count = 0
-  for (let i = 0; i < str.length; i++) {
-    console.log(str[i] in vowels)
-    if (vowels.includes(str[i].toLowerCase())) {
-      count += 1
-    }
+// divide two ints, return string with commas
+//
+function foo(num1, num2) {
+  let num = num1 / num2;
+  let strNum = String(num);
+  if (num > 999999) {
+    return (
+      strNum.slice(0, -6) +
+      "," +
+      strNum.slice(-6, -3) +
+      "," +
+      strNum.slice(-3, strNum.length)
+    );
+  } else if (num > 999) {
+    return strNum.slice(0, -3) + "," + strNum.slice(-3, strNum.length);
   }
-  return count
 }
 
-console.log(vo('using our site'))
+console.log(foo(2000000, 2));
