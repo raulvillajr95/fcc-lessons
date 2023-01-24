@@ -4,60 +4,30 @@
  *
  */
 
-/* 
-extract first half of string
-*/
-// function foo(str) {
-//   let len = str.length / 2;
-//   return str.slice(0, len);
-// }
-
-// console.log(foo("stringyy"));
-
-let ordersRemaining = [
-  "Pure Strawberry Joy",
-  "Pure Strawberry Joy",
-  "Vitality",
-  "Tropical Island",
-  "All or Nothing",
-  "All or Nothing",
-  "All or Nothing",
-  "Green Garden",
-  "Limetime",
-];
-function remainingOrders(timeLeft, orders) {
-  let count = 0;
-  let initialLengthOfOrders = orders.length;
-  for (let i = 0; count < timeLeft && i < initialLengthOfOrders; i++) {
-    console.log("oh");
-    if (orders[0] === "Pure Strawberry Joy") {
-      count += 0.5;
-      console.log("P");
-      orders.splice(0, 1);
-    } else if (orders[0] === "Energizer" || orders[0] === "Green Garden") {
-      count += 1.5;
-      console.log("EG");
-      orders.splice(0, 1);
-    } else if (orders[0] === "Tropical Island") {
-      count += 3;
-      console.log("T");
-      orders.splice(0, 1);
-    } else if (orders[0] === "All or Nothing") {
-      count += 5;
-      console.log("alll");
-      orders.splice(0, 1);
-    } else {
-      count += 2.5;
-      console.log("Rand");
-      orders.splice(0, 1);
-    }
-  }
-  console.log(count);
-  return orders;
+function translate2d(dx, dy) {
+  return function (x, y) {
+    return [(dx += x), (dy += y)];
+  };
 }
+const moveCoordinatesRight2Px = translate2d(2, 0);
+const result = moveCoordinatesRight2Px(4, 8);
+console.log(result);
 
-/**
- * 6, 10, 10, 8, 6, 10
- */
+function scale2d(sx, sy) {
+  return function (x, y) {
+    return [sx * x, sy * y];
+  };
+}
+const doubleScale = scale2d(2, 2);
+const result2 = doubleScale(6, -3);
+console.log(result2);
 
-console.log(remainingOrders(13, ordersRemaining), "final");
+function composeTransform(f, g) {
+  return scale2d(translate2d(f, g));
+}
+const composeTransformations = composeTransform(
+  moveCoordinatesRight2Px,
+  doubleScale
+);
+const result3 = composeTransformations(0, 1);
+console.log(result3);

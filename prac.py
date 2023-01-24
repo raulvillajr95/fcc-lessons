@@ -1,3 +1,6 @@
 import re
 
-re.sub(r'def\s+([a-zA-Z_][a-zA-Z_0-9]*)\s*\(\s*\):', r'static PyObject*\npy_\1(void)\n{','def myfunc():' )
+pattern = re.compile('o[gh]')
+print(pattern.fullmatch('dog'))
+print(pattern.fullmatch('ogre'))
+print(pattern.fullmatch('doggie', 1, 3))
