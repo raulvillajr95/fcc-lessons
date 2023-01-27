@@ -1,21 +1,43 @@
-body {
-  padding: 50px;
-  color: rgba(0, 0, 0, 0.7);
-}
-
-.trigger {
-  width: 200px;
-  height: 200px;
-  border: 20px solid #999;
-  background: #ddd;
-}
-
 .container {
-  display: inline-block;
-  background: pink;
-  width: 200px;
-  height: 200px;
-  transition: transform 300ms ease-in-out;
-  pointer-events: none;
-  transform: translate(200px, 150px) rotate(20deg);
+  background-color: rgb(0, 0, 25);
+  height: 100vh;
+  width: 100vw;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav1 {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3.5rem;
+}
+.nav1 > .title {
+  margin-left: 2rem;
+}
+.nav1 > .right-nav {
+  margin-right: 2rem;
+  display: flex;
+  width: 20rem;
+  justify-content: space-between;
+}
+
+/* Dropdown */
+.category-drop {
+  display: none;
+}
+.category-drop > li > a {
+  text-decoration: none;
+  color: black;
+}
+.visible-cate-drop {
+  background-color: white;
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  right: 7.5rem;
 }
