@@ -11,8 +11,10 @@
 let dependencies = (() => {
   let imageCounter = 1;
 
+  let intervalCounter = 1;
   return {
     imageCounter,
+    intervalCounter,
   };
 })();
 
@@ -97,6 +99,14 @@ function previous() {
   if (dependencies.imageCounter > 1) {
     dependencies.imageCounter -= 1;
     displayImg(`images/img${dependencies.imageCounter}.jpg`, ".slides");
+    displayHomePage.makeDotsEmpty();
+    let dotContainer = document.querySelector(".dot-container");
+    dotContainer.children[dependencies.imageCounter - 1].classList.remove(
+      "fa-regular"
+    );
+    dotContainer.children[dependencies.imageCounter - 1].classList.add(
+      "fa-solid"
+    );
   }
 }
 
@@ -109,11 +119,31 @@ button2.addEventListener("click", () => {
   next();
 });
 
+let slideShow = (() => {
+  setInterval(() => {
+    // dependencies.imageCounter += 1;
+    // console.log("SIII");
+    // console.log(dependencies.intervalCounter);
+    next();
+    if (dependencies.imageCounter >= 5) {
+      stopTimer();
+    }
+  }, 5000);
+})();
+
+function stopTimer() {
+  clearInterval(slideShow);
+  // dependencies.intervalCounter = 0;
+  dependencies.imageCounter = 0;
+  // sslideShow();
+}
+
 /**
- * dot navigation
- *  empty circles
- *  it's filled where it's at
- *  clickable
  * add automatic timer
  *  slides to next image every 5 seconds
+ *  it just start on to the first picture
+ *    the timer never actually restarts
+ *  the dots move with it
+ *  find out how to get it from 1-5 repeatedly, 1-5, 1-5, 1-5
+ *    then it could just use next()
  */
