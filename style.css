@@ -3,91 +3,61 @@
   height: 100vh;
   width: 100vw;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.nav1 {
-  background-color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 3.5rem;
-}
-.nav1 > .title {
-  margin-left: 2rem;
-}
-.nav1 > .right-nav {
-  margin-right: 2rem;
-  display: flex;
-  width: 20rem;
-  justify-content: space-between;
-}
-.nav1 > .ham-nav1 {
-  display: none;
-}
-
-/* Dropdown */
-.category-drop {
-  display: none;
-}
-.category-drop > li > a {
-  text-decoration: none;
-  color: black;
-}
-.visible-cate-drop {
-  background-color: white;
-  width: 10rem;
-  height: 10rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  position: fixed;
-  right: 7.5rem;
 }
 
 /* Mobile Phone */
 @media only screen and (max-width: 38em) {
   .container {
     background-color: rgb(25, 0, 0);
-  }
-
-  .nav1 > .right-nav {
-    display: none;
-  }
-  .nav1 > .ham-nav1 {
-    display: inline-block;
-    margin-right: 2rem;
-    font-size: 1.3rem;
-  }
-
-  .nav2 {
-    height: 100vh;
-    background-color: white;
-    width: 40vw;
-    position: fixed;
-    right: -40vw;
-    top: 0;
-  }
-  .nav2 > .ham-nav2 {
-    height: 3.5rem;
-    width: 100%;
     display: flex;
+    justify-content: center;
     align-items: center;
-    padding-left: 2rem;
-    font-size: 1.3rem;
-  }
-  .nav2 > .right-ham-menu {
-    width: 100%;
-    height: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding-left: 2rem;
   }
 
-  /* Triggered css */
-  .nav2-sidebar {
-    transform: translateX(-40vw);
-    transition: transform 200ms ease-in-out;
+  .slides {
+    height: 100vw;
+    width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .slides > button {
+    border: none;
+    width: 4rem;
+    height: 100%;
+    color: white;
+  }
+  .slides > button:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  .slides > .button1 {
+    background-color: transparent;
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.65),
+      transparent
+    );
+  }
+  .slides > .button2 {
+    background-color: transparent;
+    background-image: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0.65),
+      transparent
+    );
+  }
+
+  .dot-container {
+    height: 2rem;
+    width: 7.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
   }
 }

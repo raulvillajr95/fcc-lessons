@@ -1,6 +1,5 @@
 import re
 
-pattern = re.compile('o[gh]')
-print(pattern.fullmatch('dog'))
-print(pattern.fullmatch('ogre'))
-print(pattern.fullmatch('doggie', 1, 3))
+m = re.match(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Isaac Newton, physicist")
+print(m['first_name'])
+print(m['last_name'])
