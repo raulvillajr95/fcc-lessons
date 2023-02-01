@@ -1,5 +1,5 @@
 import re
 
-m = re.match(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Isaac Newton, physicist")
-print(m['first_name'])
-print(m['last_name'])
+email = "tony@tiremove_thisger.net"
+m = re.search('remove_this', email)
+print(email[:m.start()] + email[m.end():])

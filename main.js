@@ -7,143 +7,189 @@
  *
  */
 
-// Dependencies
-let dependencies = (() => {
-  let imageCounter = 1;
+// Helpers
+function loadElemToContainer(container, element, id) {
+  const containerElem = document.querySelector(container);
+  const newElem = document.createElement(element);
+  newElem.setAttribute("id", id);
+  containerElem.appendChild(newElem);
+}
+function addAttributeToElem(element, attName, attValue) {
+  const elem = document.querySelector(element);
+  elem.setAttribute(attName, attValue);
+}
+function addTextToElem(element, text) {
+  const elem = document.querySelector(element);
+  elem.textContent = text;
+}
 
-  let intervalCounter = 1;
-  return {
-    imageCounter,
-    intervalCounter,
+// Just display form
+const displayForm = (() => {
+  // whole of form
+  loadElemToContainer(".content", "form", "main-form");
+
+  // Email
+  loadElemToContainer("#main-form", "label", "email-label");
+  addTextToElem("#email-label", "Email:");
+  addAttributeToElem("#email-label", "for", "email");
+  loadElemToContainer("#main-form", "input", "email");
+  addAttributeToElem("#email", "type", "email");
+  addAttributeToElem("#email", "name", "email");
+  addAttributeToElem("#email", "required", "");
+  loadElemToContainer("#main-form", "span", "email-message");
+
+  // Country
+  loadElemToContainer("#main-form", "label", "country-label");
+  addTextToElem("#country-label", "Country:");
+  addAttributeToElem("#country-label", "for", "countries");
+  loadElemToContainer("#main-form", "select", "countries");
+  addAttributeToElem("#countries", "required", "");
+  const countries = [
+    "USA",
+    "India",
+    "UK",
+    "Brazil",
+    "Thailand",
+    "Russia",
+    "South Korea",
+    "Spain",
+    "Japan",
+    "Canada",
+    "Turkey",
+    "Mexico",
+    "Vietnam",
+    "Germany",
+    "France",
+    "Argentina",
+    "Australia",
+    "Indonesia",
+    "Phlippines",
+    "Colombia",
+    "Italy",
+    "Netherlands",
+    "Ukraine",
+    "Saudi Arabia",
+    "Romania",
+  ];
+
+  for (let i = 0; i < countries.length; i++) {
+    loadElemToContainer("#countries", "option", `country-${i + 1}`);
+    addTextToElem(`#country-${i + 1}`, `${countries[i]}`);
+    addAttributeToElem(
+      `#country-${i + 1}`,
+      "value",
+      `${countries[i].toLowerCase()}`
+    );
+  }
+
+  // Zip Code //////
+  loadElemToContainer("#main-form", "label", "postal-label");
+  addTextToElem("#postal-label", "Postal code:");
+  addAttributeToElem("#postal-label", "for", "postal");
+  loadElemToContainer("#main-form", "input", "postal");
+  addAttributeToElem("#postal", "type", "text");
+  addAttributeToElem("#postal", "name", "postal");
+  addAttributeToElem("#postal", "required", "");
+  loadElemToContainer("#main-form", "span", "postal-message");
+
+  // Password
+  loadElemToContainer("#main-form", "label", "password-label");
+  addTextToElem("#password-label", "Password:");
+  addAttributeToElem("#password-label", "for", "password");
+  loadElemToContainer("#main-form", "input", "password");
+  addAttributeToElem("#password", "type", "text");
+  addAttributeToElem("#password", "name", "password");
+  loadElemToContainer("#main-form", "span", "password-message");
+  // password confirmation /////
+  loadElemToContainer("#main-form", "label", "password-confirmation-label");
+  addTextToElem("#password-confirmation-label", "Password Confirmation:");
+  addAttributeToElem(
+    "#password-confirmation-label",
+    "for",
+    "password-confirmation"
+  );
+  loadElemToContainer("#main-form", "input", "password-confirmation");
+  addAttributeToElem("#password-confirmation", "type", "text");
+  addAttributeToElem("#password-confirmation", "name", "password-confirmation");
+  loadElemToContainer("#main-form", "span", "password-confirmation-message");
+
+  // Submit button
+  loadElemToContainer("#main-form", "input", "submit");
+  addTextToElem("#submit", "Submit");
+  addAttributeToElem("#submit", "type", "submit");
+})();
+
+// Validation functions
+const emailValidation = (validationType) => {
+  const email = document.querySelector("#email");
+  const emailMessage = document.querySelector("#email-message");
+  if (validationType === "hard") {
+  } else if (validationType === "soft") {
+  }
+  console.log(email.checkValidity());
+};
+const postalValidation = () => {
+  const postalCode = document.querySelector("#postal");
+  const postalMessage = document.querySelector("#postal-message");
+  console.log(postalCode.checkValidity());
+};
+const passwordValidation = () => {
+  const password = document.querySelector("#password");
+  const passwordMessage = document.querySelector("#password-message");
+
+  console.log(password.checkValidity());
+};
+// a different cause it's matching passwords
+const passConfValidation = () => {
+  const passwordConfirmation = document.querySelector("#password-confirmation");
+  const passConfMessage = document.querySelector(
+    "#password-confirmation-message"
+  );
+
+  console.log(passwordConfirmation.checkValidity());
+};
+
+// Validate Form
+const autoValidateForm = (() => {
+  const submit = document.querySelector("#submit");
+  submit.addEventListener("click", (e) => {
+    emailValidation("hard");
+    postalValidation("hard");
+    passwordValidation("hard");
+    passConfValidation("hard");
+
+    console.log("submit");
+
+    e.preventDefault();
+  });
+
+  window.onchange = () => {
+    emailValidation("soft");
+    postalValidation("soft");
+    passwordValidation("soft");
+    passConfValidation("soft");
+
+    console.log("window has changed");
   };
 })();
-
-// Display start up page
-let displayHomePage = (function () {
-  let container = document.querySelector(".container");
-
-  // Slides
-  let div = document.createElement("div");
-  div.setAttribute("class", "slides");
-
-  // Buttons
-  let button1 = document.createElement("button");
-  button1.setAttribute("class", "button1");
-  button1.textContent = "previous";
-  div.appendChild(button1);
-  let button2 = document.createElement("button");
-  button2.setAttribute("class", "button2");
-  button2.textContent = "next";
-  div.appendChild(button2);
-
-  container.appendChild(div);
-
-  // Dot Navigation
-  function makeDotsEmpty() {
-    let dotContainer = document.querySelector(".dot-container");
-    for (let i = 0; i < dotContainer.children.length; i++) {
-      dotContainer.children[i].classList.remove("fa-solid");
-      dotContainer.children[i].classList.add("fa-regular");
-    }
-  }
-  function dotPictureChange(dotNum) {
-    dependencies.imageCounter = dotNum;
-    displayImg(`images/img${dotNum}.jpg`, ".slides");
-  }
-  let dotContainer = document.createElement("div");
-  dotContainer.setAttribute("class", "dot-container");
-  for (let i = 1; i <= 5; i++) {
-    let dot = document.createElement("i");
-    dot.addEventListener("click", () => {
-      console.log(i);
-      makeDotsEmpty();
-      dot.classList.add("fa-solid");
-      dotPictureChange(i);
-    });
-    dot.classList.add("fa-regular", "fa-circle", `dot-${i}`);
-    dotContainer.appendChild(dot);
-  }
-  dotContainer.children[0].classList.remove("fa-regular");
-  dotContainer.children[0].classList.add("fa-solid");
-  container.appendChild(dotContainer);
-
-  return {
-    dotPictureChange,
-    makeDotsEmpty,
-  };
-})();
-
-function displayImg(image, element) {
-  let imageElement = document.querySelector(element);
-
-  imageElement.style.backgroundImage = `url(${image})`;
-  // imageElement.setAttribute("style", `background-image: ${image}`);
-}
-displayImg("images/img1.jpg", ".slides");
-
-function next(params) {
-  if (dependencies.imageCounter < 5) {
-    dependencies.imageCounter += 1;
-    displayImg(`images/img${dependencies.imageCounter}.jpg`, ".slides");
-    displayHomePage.makeDotsEmpty();
-    let dotContainer = document.querySelector(".dot-container");
-    dotContainer.children[dependencies.imageCounter - 1].classList.remove(
-      "fa-regular"
-    );
-    dotContainer.children[dependencies.imageCounter - 1].classList.add(
-      "fa-solid"
-    );
-  }
-}
-function previous() {
-  if (dependencies.imageCounter > 1) {
-    dependencies.imageCounter -= 1;
-    displayImg(`images/img${dependencies.imageCounter}.jpg`, ".slides");
-    displayHomePage.makeDotsEmpty();
-    let dotContainer = document.querySelector(".dot-container");
-    dotContainer.children[dependencies.imageCounter - 1].classList.remove(
-      "fa-regular"
-    );
-    dotContainer.children[dependencies.imageCounter - 1].classList.add(
-      "fa-solid"
-    );
-  }
-}
-
-let button1 = document.querySelector(".button1");
-button1.addEventListener("click", () => {
-  previous();
-});
-let button2 = document.querySelector(".button2");
-button2.addEventListener("click", () => {
-  next();
-});
-
-let slideShow = (() => {
-  setInterval(() => {
-    // dependencies.imageCounter += 1;
-    // console.log("SIII");
-    // console.log(dependencies.intervalCounter);
-    next();
-    if (dependencies.imageCounter >= 5) {
-      stopTimer();
-    }
-  }, 5000);
-})();
-
-function stopTimer() {
-  clearInterval(slideShow);
-  // dependencies.intervalCounter = 0;
-  dependencies.imageCounter = 0;
-  // sslideShow();
-}
 
 /**
- * add automatic timer
- *  slides to next image every 5 seconds
- *  it just start on to the first picture
- *    the timer never actually restarts
- *  the dots move with it
- *  find out how to get it from 1-5 repeatedly, 1-5, 1-5, 1-5
- *    then it could just use next()
+ * create funcion that validates each input
+ *  email
+ *  postal code
+ *  password
+ *  password confirmation
+ *  when window.onchange it 'soft' validates
+ *    yellow warning
+ *  when submit, it 'hard' validates
+ *    red warning
+ * password is validated after every word
+ * passwrod confirmation is validated on submit
+ * advanced css
+ *
+ * notes:
+ * -collect email, country, zip code, password(twice, password confirmation)
+ * -live inline validation(js)
+ *    each input has field that says what's wrong with form(validationMessage)
+ * -higlight fields red when incorrect
  */
