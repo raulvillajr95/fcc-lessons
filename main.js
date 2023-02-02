@@ -36,6 +36,11 @@ const displayForm = (() => {
   addAttributeToElem("#email", "type", "email");
   addAttributeToElem("#email", "name", "email");
   addAttributeToElem("#email", "required", "");
+  addAttributeToElem(
+    "#email",
+    "pattern",
+    `^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$`
+  );
   loadElemToContainer("#main-form", "span", "email-message");
 
   // Country
@@ -97,10 +102,18 @@ const displayForm = (() => {
   addTextToElem("#password-label", "Password:");
   addAttributeToElem("#password-label", "for", "password");
   loadElemToContainer("#main-form", "input", "password");
-  addAttributeToElem("#password", "type", "text");
+  addAttributeToElem("#password", "type", "password");
   addAttributeToElem("#password", "name", "password");
+  addAttributeToElem("#password", "required", "");
+  addAttributeToElem(
+    "#password",
+    "pattern",
+    `^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$`
+  );
+  addAttributeToElem("#password", "minlength", "8");
+  addAttributeToElem("#password", "maxlength", "12");
   loadElemToContainer("#main-form", "span", "password-message");
-  // password confirmation /////
+  // password confirmation
   loadElemToContainer("#main-form", "label", "password-confirmation-label");
   addTextToElem("#password-confirmation-label", "Password Confirmation:");
   addAttributeToElem(
@@ -109,8 +122,16 @@ const displayForm = (() => {
     "password-confirmation"
   );
   loadElemToContainer("#main-form", "input", "password-confirmation");
-  addAttributeToElem("#password-confirmation", "type", "text");
+  addAttributeToElem("#password-confirmation", "type", "password");
   addAttributeToElem("#password-confirmation", "name", "password-confirmation");
+  addAttributeToElem("#password-confirmation", "required", "");
+  addAttributeToElem(
+    "#password-confirmation",
+    "pattern",
+    `^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$`
+  );
+  addAttributeToElem("#password-confirmation", "minlength", "8");
+  addAttributeToElem("#password-confirmation", "maxlength", "12");
   loadElemToContainer("#main-form", "span", "password-confirmation-message");
 
   // Submit button
@@ -123,30 +144,106 @@ const displayForm = (() => {
 const emailValidation = (validationType) => {
   const email = document.querySelector("#email");
   const emailMessage = document.querySelector("#email-message");
+
+  // Check for YES validation
+  // *    type check/typeMismatch
+  // *    required check/valueMissing
+  // *    pattern check/patternMismatch
+  if (
+    !email.validity.typeMismatch &&
+    !email.validity.valueMissing &&
+    !email.validity.patternMismatch
+  ) {
+    console.log("VALID email");
+  } else {
+    console.log("NOT valid email");
+  }
+
   if (validationType === "hard") {
   } else if (validationType === "soft") {
   }
-  console.log(email.checkValidity());
 };
-const postalValidation = () => {
+const postalValidation = (validationType) => {
   const postalCode = document.querySelector("#postal");
   const postalMessage = document.querySelector("#postal-message");
-  console.log(postalCode.checkValidity());
+
+  // Check for YES validation
+  // *    required check/valueMissing
+  // *    pattern check/patternMismatch
+  if (!postalCode.validity.valueMissing) {
+    // create conditions for each country
+    if (condition) {
+      // console.log("VALID postal code");
+    }
+  } else {
+    // console.log("NOT valid postal code");
+  }
+
+  if (validationType === "hard") {
+  } else if (validationType === "soft") {
+  }
+  // console.log(postalCode.checkValidity());
 };
-const passwordValidation = () => {
+const passwordValidation = (validationType) => {
   const password = document.querySelector("#password");
   const passwordMessage = document.querySelector("#password-message");
 
-  console.log(password.checkValidity());
+  // Check for YES validation
+  // *    required/valueMissing
+  // *    type check/typeMismatch
+  // *    pattern/patternMismatch
+  // *    maxlength/tooLong
+  // *    minlength/tooShort
+  if (
+    !password.validity.typeMismatch &&
+    !password.validity.valueMissing &&
+    !password.validity.patternMismatch &&
+    !password.validity.tooShort &&
+    !password.validity.tooLong
+  ) {
+    // console.log("VALID password");
+  } else {
+    // console.log("NOT valid password");
+  }
+
+  if (validationType === "hard") {
+  } else if (validationType === "soft") {
+  }
+  // console.log(password.checkValidity());
 };
-// a different cause it's matching passwords
-const passConfValidation = () => {
+// a bit different cause it's matching passwords
+const passConfValidation = (validationType) => {
   const passwordConfirmation = document.querySelector("#password-confirmation");
   const passConfMessage = document.querySelector(
     "#password-confirmation-message"
   );
+  const password = document.querySelector("#password");
 
-  console.log(passwordConfirmation.checkValidity());
+  // Check for YES validation
+  // *    required/valueMissing
+  // *    type check/typeMismatch
+  // *    pattern/patternMismatch
+  // *    maxlength/tooLong
+  // *    minlength/tooShort
+  // *    match password
+  if (password.value === passwordConfirmation.value) {
+    if (
+      !passwordConfirmation.validity.typeMismatch &&
+      !passwordConfirmation.validity.valueMissing &&
+      !passwordConfirmation.validity.patternMismatch &&
+      !passwordConfirmation.validity.tooShort &&
+      !passwordConfirmation.validity.tooLong
+    ) {
+      // console.log("VALID password confirmation");
+    } else {
+      // console.log("NOT valid password confirmation");
+    }
+  }
+
+  if (validationType === "hard") {
+  } else if (validationType === "soft") {
+  }
+  // console.log(passwordConfirmation.checkValidity());
 };
 
 // Validate Form
@@ -158,31 +255,48 @@ const autoValidateForm = (() => {
     passwordValidation("hard");
     passConfValidation("hard");
 
-    console.log("submit");
+    // console.log("submit");
 
-    e.preventDefault();
+    // e.preventDefault();
   });
 
-  window.onchange = () => {
+  window.onkeydown = () => {
     emailValidation("soft");
     postalValidation("soft");
     passwordValidation("soft");
     passConfValidation("soft");
 
-    console.log("window has changed");
+    // console.log("window has changed");
   };
 })();
 
 /**
- * create funcion that validates each input
- *  email
+ * checkout type=password
+ * create function that validates each input
+ *  email(check inline and js)
+ *    type check/typeMismatch
+ *    required check/valueMissing
+ *    pattern check/patternMismatch
  *  postal code
+ *    required/valueMissing
+ *    patternMismatch
  *  password
+ *    required/valueMissing
+ *    type check/typeMismatch
+ *    pattern/patternMismatch
+ *    maxlength/tooLong
+ *    minlength/tooShort
  *  password confirmation
- *  when window.onchange it 'soft' validates
- *    yellow warning
- *  when submit, it 'hard' validates
- *    red warning
+ *    required/valueMissing
+ *    type check/typeMismatch
+ *    pattern/patternMismatch
+ *    maxlength/tooLong
+ *    minlength/tooShort
+ *    match password
+ *  yellow warnings for soft validations
+ *  red warnings for hard validations
+ *  use 'typeMismatch' where needed, and other methods
+ *    just look through a validity methods and see where they can be used
  * password is validated after every word
  * passwrod confirmation is validated on submit
  * advanced css
