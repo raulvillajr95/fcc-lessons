@@ -7,9 +7,14 @@
  *
  */
 
-function descendingOrder(n) {
-  const part = String(n).split("");
-  return Number(part.sort().reverse().join(""));
+function filter_list(arr) {
+  let nums = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === "number") {
+      nums.push(arr[i]);
+    }
+  }
+  return nums;
 }
 
-// console.log(descendingOrder(42145));
+// console.log(filter_list(["a", 1, "b", "2", "c", 3]));

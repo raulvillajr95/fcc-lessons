@@ -25,3 +25,18 @@ body {
   align-items: flex-end;
   padding-bottom: 0.4rem;
 }
+
+/* Email */
+#email:valid {
+  border: 3px solid green;
+  outline: none;
+}
+/* #email:invalid {
+  outline: 3px solid rgb(218, 178, 0);
+} */
+
+/* Postal Code */
+#postal:valid {
+  border: 3px solid green;
+  outline: none;
+}

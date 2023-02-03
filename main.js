@@ -7,6 +7,107 @@
  *
  */
 
+// Dependencies
+const postalCodePatterns = [
+  {
+    country: "argentina",
+    pattern: "(^[a-z]{1}\\d{4}[a-z]{3}$|^\\d{4}$)",
+  },
+  {
+    country: "australia",
+    pattern: "^(?:(?:[2-8]\\d|9[0-7]|0?[28]|0?9(?=09))(?:\\d{2}))$",
+  },
+  { country: "brazil", pattern: `^\\d{5}-?\\d{3}$` },
+  {
+    country: "canada",
+    pattern: `^(?:[ABCEGHJ-NPRSTVXY]\\d[A-Z][ -]?\\d[A-Z]\\d)$`,
+  },
+  {
+    country: "colombia",
+    pattern: `^\\d{6}$`,
+  },
+  {
+    country: "france",
+    pattern: `^\\d{5}$`,
+  },
+  {
+    country: "germany",
+    pattern: `^\\d{5}$`,
+  },
+  {
+    country: "india",
+    pattern: `^\\d{6}$`,
+  },
+  {
+    country: "indonesia",
+    pattern: `^\\d{5}$`,
+  },
+  {
+    country: "italy",
+    pattern: `^\\d{5}$`,
+  },
+  {
+    country: "japan",
+    pattern: `^\\d{3}-\\d{4}$`,
+  },
+  {
+    country: "mexico",
+    pattern: `^\\d{5}$`,
+  },
+  {
+    country: "netherlands",
+    pattern: `^\\d{4} ?[A-Z]{2}$`,
+  },
+  {
+    country: "philippines",
+    pattern: `^\\d{4}$`,
+  },
+  {
+    country: "romania",
+    pattern: `^\\d{6}$`,
+  },
+  {
+    country: "russia",
+    pattern: `^\\d{6}$`,
+  },
+  {
+    country: "saudi arabia",
+    pattern: `^\\d{5}(-\\d{4})?$`,
+  },
+  {
+    country: "south korea",
+    pattern: `^\\d{5}$`,
+  },
+  {
+    country: "spain",
+    pattern: `^\\d{5}$`,
+  },
+  {
+    country: "thailand",
+    pattern: `^\\d{5}$`,
+  },
+  {
+    country: "turkey",
+    pattern: `^\\d{5}$`,
+  },
+  {
+    country: "uk",
+    pattern: `^[A-Za-z][A-Ha-hK-Yk-y]?\\d[A-Za-z0-9]? ?\\d[A-Za-z]{2}$`,
+  },
+  {
+    country: "usa",
+    pattern: `^\\d{5}([- ]\\d{4})?$`,
+  },
+  {
+    country: "ukraine",
+    pattern: `^\\d{5}$`,
+  },
+  {
+    country: "vietnam",
+    pattern: `^\\d{6}$`,
+  },
+];
+
 // Helpers
 function loadElemToContainer(container, element, id) {
   const containerElem = document.querySelector(container);
@@ -50,33 +151,32 @@ const displayForm = (() => {
   loadElemToContainer("#main-form", "select", "countries");
   addAttributeToElem("#countries", "required", "");
   const countries = [
-    "USA",
-    "India",
-    "UK",
-    "Brazil",
-    "Thailand",
-    "Russia",
-    "South Korea",
-    "Spain",
-    "Japan",
-    "Canada",
-    "Turkey",
-    "Mexico",
-    "Vietnam",
-    "Germany",
-    "France",
     "Argentina",
     "Australia",
-    "Indonesia",
-    "Phlippines",
+    "Brazil",
+    "Canada",
     "Colombia",
+    "France",
+    "Germany",
+    "India",
+    "Indonesia",
     "Italy",
+    "Japan",
+    "Mexico",
     "Netherlands",
-    "Ukraine",
-    "Saudi Arabia",
+    "Philippines",
     "Romania",
+    "Russia",
+    "Saudi Arabia",
+    "South Korea",
+    "Spain",
+    "Thailand",
+    "Turkey",
+    "UK",
+    "USA",
+    "Ukraine",
+    "Vietnam",
   ];
-
   for (let i = 0; i < countries.length; i++) {
     loadElemToContainer("#countries", "option", `country-${i + 1}`);
     addTextToElem(`#country-${i + 1}`, `${countries[i]}`);
@@ -95,7 +195,17 @@ const displayForm = (() => {
   addAttributeToElem("#postal", "type", "text");
   addAttributeToElem("#postal", "name", "postal");
   addAttributeToElem("#postal", "required", "");
+  addAttributeToElem("#postal", "pattern", `${postalCodePatterns[0].pattern}`);
   loadElemToContainer("#main-form", "span", "postal-message");
+  // change country pattern when select is changed
+  const countriesSelect = document.querySelector(`#countries`);
+  countriesSelect.addEventListener("change", (e) => {
+    addAttributeToElem(
+      "#postal",
+      "pattern",
+      `${postalCodePatterns[countriesSelect.selectedIndex].pattern}`
+    );
+  });
 
   // Password
   loadElemToContainer("#main-form", "label", "password-label");
@@ -154,9 +264,10 @@ const emailValidation = (validationType) => {
     !email.validity.valueMissing &&
     !email.validity.patternMismatch
   ) {
-    console.log("VALID email");
+    // console.log("VALID email");
+    // email.style.border = "1px solid green";
   } else {
-    console.log("NOT valid email");
+    // console.log("NOT valid email");
   }
 
   if (validationType === "hard") {
@@ -170,11 +281,11 @@ const postalValidation = (validationType) => {
   // Check for YES validation
   // *    required check/valueMissing
   // *    pattern check/patternMismatch
-  if (!postalCode.validity.valueMissing) {
-    // create conditions for each country
-    if (condition) {
-      // console.log("VALID postal code");
-    }
+  if (
+    !postalCode.validity.valueMissing &&
+    !postalCode.validity.patternMismatch
+  ) {
+    // console.log("VALID postal code");
   } else {
     // console.log("NOT valid postal code");
   }
@@ -260,7 +371,7 @@ const autoValidateForm = (() => {
     // e.preventDefault();
   });
 
-  window.onkeydown = () => {
+  window.onkeyup = () => {
     emailValidation("soft");
     postalValidation("soft");
     passwordValidation("soft");
@@ -271,7 +382,8 @@ const autoValidateForm = (() => {
 })();
 
 /**
- * checkout type=password
+ * do all valids
+ * then work on all invalids
  * create function that validates each input
  *  email(check inline and js)
  *    type check/typeMismatch
@@ -279,7 +391,7 @@ const autoValidateForm = (() => {
  *    pattern check/patternMismatch
  *  postal code
  *    required/valueMissing
- *    patternMismatch
+ *    pattern check/patternMismatch
  *  password
  *    required/valueMissing
  *    type check/typeMismatch
@@ -295,8 +407,6 @@ const autoValidateForm = (() => {
  *    match password
  *  yellow warnings for soft validations
  *  red warnings for hard validations
- *  use 'typeMismatch' where needed, and other methods
- *    just look through a validity methods and see where they can be used
  * password is validated after every word
  * passwrod confirmation is validated on submit
  * advanced css

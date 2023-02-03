@@ -6,7 +6,7 @@ lines to practice = 15(15 is max on speedcoder)
 
 key combiner: 2 correct
 
-'re' doc: Simulating scanf()
+'re' doc: Making a Phonebook
 -->
 
 <!-- 
