@@ -222,7 +222,18 @@ const displayForm = (() => {
   );
   addAttributeToElem("#password", "minlength", "8");
   addAttributeToElem("#password", "maxlength", "12");
-  loadElemToContainer("#main-form", "span", "password-message");
+  loadElemToContainer("#main-form", "ul", "password-message");
+  const passwordRequirements = [
+    "Minimum 1 uppercase letter",
+    "Minimum 1 lowercase letter",
+    "Minimum 1 number",
+    "Minimum 1 symbol",
+    "8 to 12 characters total",
+  ];
+  for (let j = 0; j < 5; j++) {
+    loadElemToContainer("#password-message", "li", `password-message-${j + 1}`);
+    addTextToElem(`#password-message-${j + 1}`, `${passwordRequirements[j]}`);
+  }
   // password confirmation
   loadElemToContainer("#main-form", "label", "password-confirmation-label");
   addTextToElem("#password-confirmation-label", "Password Confirmation:");
@@ -298,6 +309,11 @@ const postalValidation = (validationType) => {
 const passwordValidation = (validationType) => {
   const password = document.querySelector("#password");
   const passwordMessage = document.querySelector("#password-message");
+  const min1Upper = document.querySelector("#password-message-1");
+  const min1Lower = document.querySelector("#password-message-2");
+  const min1Number = document.querySelector("#password-message-3");
+  const min1Symbol = document.querySelector("#password-message-4");
+  const eightToTwelve = document.querySelector("#password-message-5");
 
   // Check for YES validation
   // *    required/valueMissing
@@ -312,10 +328,31 @@ const passwordValidation = (validationType) => {
     !password.validity.tooShort &&
     !password.validity.tooLong
   ) {
-    // console.log("VALID password");
+    console.log("VALID password");
   } else {
-    // console.log("NOT valid password");
+    console.log("NOT valid password");
   }
+
+  // Minimum 1 uppercase letter
+  password.value.match(/[A-Z]+/g)
+    ? min1Upper.classList.add("success")
+    : min1Upper.classList.remove("success");
+  // // Minimum 1 lowercase letter
+  password.value.match(/[a-z]+/g)
+    ? min1Lower.classList.add("success")
+    : min1Lower.classList.remove("success");
+  // // Minimum 1 number
+  password.value.match(/[0-9]+/g)
+    ? min1Number.classList.add("success")
+    : min1Number.classList.remove("success");
+  // // Minimum 1 symbol
+  password.value.match(/[!@#$%^&*_=+-]+/g)
+    ? min1Symbol.classList.add("success")
+    : min1Symbol.classList.remove("success");
+  // // 8 to 12 characters total
+  password.value.match(/.{8,12}/g)
+    ? eightToTwelve.classList.add("success")
+    : eightToTwelve.classList.remove("success");
 
   if (validationType === "hard") {
   } else if (validationType === "soft") {
@@ -345,9 +382,9 @@ const passConfValidation = (validationType) => {
       !passwordConfirmation.validity.tooShort &&
       !passwordConfirmation.validity.tooLong
     ) {
-      // console.log("VALID password confirmation");
+      console.log("VALID password confirmation");
     } else {
-      // console.log("NOT valid password confirmation");
+      console.log("NOT valid password confirmation");
     }
   }
 
@@ -382,8 +419,8 @@ const autoValidateForm = (() => {
 })();
 
 /**
- * do all valids
- * then work on all invalids
+ * do all validation messages
+ * then work on all invalid styling
  * create function that validates each input
  *  email(check inline and js)
  *    type check/typeMismatch

@@ -16,7 +16,7 @@ body {
   width: 60vw;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(15, 1fr);
+  grid-template-rows: repeat(10, 1fr) 3fr repeat(4, 1fr);
 }
 
 #main-form > label {
@@ -39,4 +39,24 @@ body {
 #postal:valid {
   border: 3px solid green;
   outline: none;
+}
+
+/* Password */
+#password-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#password:valid {
+  border: 3px solid green;
+  outline: none;
+}
+#password-confirmation:valid {
+  border: 3px solid green;
+  outline: none;
+}
+
+/* Generic classes */
+.success {
+  color: green;
 }
