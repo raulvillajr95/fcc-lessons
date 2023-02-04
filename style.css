@@ -15,6 +15,7 @@ body {
 #main-form {
   height: 70%;
   width: 60vw;
+  max-width: 30rem;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(10, 1fr) 3fr repeat(4, 1fr);
@@ -25,6 +26,11 @@ body {
   justify-content: flex-start;
   align-items: flex-end;
   padding-bottom: 0.4rem;
+}
+#main-form input,
+#main-form select {
+  border-style: solid;
+  border-radius: 0.25rem;
 }
 
 /* Email */
@@ -51,10 +57,16 @@ body {
 }
 
 /* Password */
+#password,
+#password-confirmation {
+  font-size: 1.5rem;
+  letter-spacing: 0.15rem;
+}
 #password-message {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  font-size: 0.9rem;
 }
 #password:valid {
   border: 3px solid green;

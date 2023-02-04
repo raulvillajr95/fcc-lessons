@@ -271,7 +271,6 @@ const emailValidation = (validationType) => {
   // *    type check/typeMismatch
   // *    required check/valueMissing
   // *    pattern check/patternMismatch
-
   if (validationType === "hard") {
     if (
       !email.validity.typeMismatch &&
@@ -279,15 +278,11 @@ const emailValidation = (validationType) => {
       !email.validity.patternMismatch
     ) {
       shouldSubmit = true;
-      // console.log("VALID email");
       addTextToElem("#email-message", "");
-      // email.style.border = "1px solid green";
       email.classList.remove("failure");
     } else {
       shouldSubmit = false;
-      // console.log("NOT valid email");
       addTextToElem("#email-message", email.validationMessage);
-      // console.log(email.validationMessage);
       email.classList.add("failure");
     }
   } else if (validationType === "soft") {
@@ -296,13 +291,10 @@ const emailValidation = (validationType) => {
       !email.validity.valueMissing &&
       !email.validity.patternMismatch
     ) {
-      // console.log("VALID email");
       addTextToElem("#email-message", "");
       email.classList.remove("failure");
     } else {
-      // console.log("NOT valid email");
       addTextToElem("#email-message", email.validationMessage);
-      // console.log(email.validationMessage);
     }
   }
 };
@@ -312,19 +304,16 @@ const postalValidation = (validationType) => {
   // Check for YES validation
   // *    required check/valueMissing
   // *    pattern check/patternMismatch
-
   if (validationType === "hard") {
     if (
       !postalCode.validity.valueMissing &&
       !postalCode.validity.patternMismatch
     ) {
       shouldSubmit = true;
-      // console.log("VALID postal code");
       addTextToElem("#postal-message", "");
       postalCode.classList.remove("failure");
     } else {
       shouldSubmit = false;
-      // console.log("NOT valid postal code");
       addTextToElem("#postal-message", postalCode.validationMessage);
       postalCode.classList.add("failure");
     }
@@ -333,15 +322,12 @@ const postalValidation = (validationType) => {
       !postalCode.validity.valueMissing &&
       !postalCode.validity.patternMismatch
     ) {
-      // console.log("VALID postal code");
       addTextToElem("#postal-message", "");
       postalCode.classList.remove("failure");
     } else {
-      // console.log("NOT valid postal code");
       addTextToElem("#postal-message", postalCode.validationMessage);
     }
   }
-  // console.log(postalCode.checkValidity());
 };
 const passwordValidation = (validationType) => {
   const password = document.querySelector("#password");
@@ -388,11 +374,9 @@ const passwordValidation = (validationType) => {
       !password.validity.tooLong
     ) {
       shouldSubmit = true;
-      // console.log("VALID password");
       password.classList.remove("failure");
     } else {
       shouldSubmit = false;
-      // console.log("NOT valid password");
       password.classList.add("failure");
       document.querySelector("#submit").preventDevault;
     }
@@ -404,14 +388,11 @@ const passwordValidation = (validationType) => {
       !password.validity.tooShort &&
       !password.validity.tooLong
     ) {
-      // console.log("VALID password");
       password.classList.remove("failure");
     } else {
-      // console.log("NOT valid password");
     }
   }
 };
-// a bit different cause it's matching passwords
 const passConfValidation = (validationType) => {
   const passwordConfirmation = document.querySelector("#password-confirmation");
   const passConfMessage = document.querySelector(
@@ -426,7 +407,6 @@ const passConfValidation = (validationType) => {
   // *    maxlength/tooLong
   // *    minlength/tooShort
   // *    match password
-
   if (validationType === "hard") {
     if (password.value === passwordConfirmation.value) {
       if (
@@ -437,13 +417,11 @@ const passConfValidation = (validationType) => {
         !passwordConfirmation.validity.tooLong
       ) {
         shouldSubmit = true;
-        // console.log("VALID password confirmation");
         addTextToElem("#password-confirmation-message", "");
         passwordConfirmation.classList.add("password-confirmation-success");
         passwordConfirmation.classList.remove("failure");
       } else {
         shouldSubmit = false;
-        // console.log("NOT valid password confirmation");
         addTextToElem(
           "#password-confirmation-message",
           passwordConfirmation.validationMessage
@@ -453,7 +431,6 @@ const passConfValidation = (validationType) => {
       }
     } else {
       shouldSubmit = false;
-      // console.log("NOT valid password confirmation");
       addTextToElem(
         "#password-confirmation-message",
         passwordConfirmation.validationMessage
@@ -470,12 +447,10 @@ const passConfValidation = (validationType) => {
         !passwordConfirmation.validity.tooShort &&
         !passwordConfirmation.validity.tooLong
       ) {
-        // console.log("VALID password confirmation");
         addTextToElem("#password-confirmation-message", "");
         passwordConfirmation.classList.add("password-confirmation-success");
         passwordConfirmation.classList.remove("failure");
       } else {
-        // console.log("NOT valid password confirmation");
         addTextToElem(
           "#password-confirmation-message",
           passwordConfirmation.validationMessage
@@ -483,7 +458,6 @@ const passConfValidation = (validationType) => {
         passwordConfirmation.classList.remove("password-confirmation-success");
       }
     } else {
-      // console.log("NOT valid password confirmation");
       addTextToElem(
         "#password-confirmation-message",
         passwordConfirmation.validationMessage
@@ -491,7 +465,6 @@ const passConfValidation = (validationType) => {
       passwordConfirmation.classList.remove("password-confirmation-success");
     }
   }
-  // console.log(passwordConfirmation.checkValidity());
 };
 
 // Validate Form
@@ -503,12 +476,8 @@ const autoValidateForm = (() => {
     postalValidation("hard");
     passwordValidation("hard");
     passConfValidation("hard");
-    console.log("BAADDDD BLOOOOD");
     if (!shouldSubmit) {
       e.preventDefault();
-      console.log("should not submit");
-    } else {
-      ("should submit");
     }
   });
 
@@ -517,15 +486,10 @@ const autoValidateForm = (() => {
     postalValidation("soft");
     passwordValidation("soft");
     passConfValidation("soft");
-
-    // console.log("window has changed");
   };
 })();
 
 /**
- * style validation messages
- * yellow warnings for soft validations
- * red warnings for hard validations
  * advanced css
  * delete all clgs and unused stuff
  *
