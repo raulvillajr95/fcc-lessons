@@ -107,6 +107,7 @@ const postalCodePatterns = [
     pattern: `^\\d{6}$`,
   },
 ];
+let shouldSubmit = true;
 
 // Helpers
 function loadElemToContainer(container, element, id) {
@@ -128,6 +129,7 @@ function addTextToElem(element, text) {
 const displayForm = (() => {
   // whole of form
   loadElemToContainer(".content", "form", "main-form");
+  addAttributeToElem("#main-form", "novalidate", "");
 
   // Email
   loadElemToContainer("#main-form", "label", "email-label");
@@ -264,51 +266,85 @@ const displayForm = (() => {
 // Validation functions
 const emailValidation = (validationType) => {
   const email = document.querySelector("#email");
-  const emailMessage = document.querySelector("#email-message");
 
   // Check for YES validation
   // *    type check/typeMismatch
   // *    required check/valueMissing
   // *    pattern check/patternMismatch
-  if (
-    !email.validity.typeMismatch &&
-    !email.validity.valueMissing &&
-    !email.validity.patternMismatch
-  ) {
-    // console.log("VALID email");
-    // email.style.border = "1px solid green";
-  } else {
-    // console.log("NOT valid email");
-  }
 
   if (validationType === "hard") {
+    if (
+      !email.validity.typeMismatch &&
+      !email.validity.valueMissing &&
+      !email.validity.patternMismatch
+    ) {
+      shouldSubmit = true;
+      // console.log("VALID email");
+      addTextToElem("#email-message", "");
+      // email.style.border = "1px solid green";
+      email.classList.remove("failure");
+    } else {
+      shouldSubmit = false;
+      // console.log("NOT valid email");
+      addTextToElem("#email-message", email.validationMessage);
+      // console.log(email.validationMessage);
+      email.classList.add("failure");
+    }
   } else if (validationType === "soft") {
+    if (
+      !email.validity.typeMismatch &&
+      !email.validity.valueMissing &&
+      !email.validity.patternMismatch
+    ) {
+      // console.log("VALID email");
+      addTextToElem("#email-message", "");
+      email.classList.remove("failure");
+    } else {
+      // console.log("NOT valid email");
+      addTextToElem("#email-message", email.validationMessage);
+      // console.log(email.validationMessage);
+    }
   }
 };
 const postalValidation = (validationType) => {
   const postalCode = document.querySelector("#postal");
-  const postalMessage = document.querySelector("#postal-message");
 
   // Check for YES validation
   // *    required check/valueMissing
   // *    pattern check/patternMismatch
-  if (
-    !postalCode.validity.valueMissing &&
-    !postalCode.validity.patternMismatch
-  ) {
-    // console.log("VALID postal code");
-  } else {
-    // console.log("NOT valid postal code");
-  }
 
   if (validationType === "hard") {
+    if (
+      !postalCode.validity.valueMissing &&
+      !postalCode.validity.patternMismatch
+    ) {
+      shouldSubmit = true;
+      // console.log("VALID postal code");
+      addTextToElem("#postal-message", "");
+      postalCode.classList.remove("failure");
+    } else {
+      shouldSubmit = false;
+      // console.log("NOT valid postal code");
+      addTextToElem("#postal-message", postalCode.validationMessage);
+      postalCode.classList.add("failure");
+    }
   } else if (validationType === "soft") {
+    if (
+      !postalCode.validity.valueMissing &&
+      !postalCode.validity.patternMismatch
+    ) {
+      // console.log("VALID postal code");
+      addTextToElem("#postal-message", "");
+      postalCode.classList.remove("failure");
+    } else {
+      // console.log("NOT valid postal code");
+      addTextToElem("#postal-message", postalCode.validationMessage);
+    }
   }
   // console.log(postalCode.checkValidity());
 };
 const passwordValidation = (validationType) => {
   const password = document.querySelector("#password");
-  const passwordMessage = document.querySelector("#password-message");
   const min1Upper = document.querySelector("#password-message-1");
   const min1Lower = document.querySelector("#password-message-2");
   const min1Number = document.querySelector("#password-message-3");
@@ -321,17 +357,6 @@ const passwordValidation = (validationType) => {
   // *    pattern/patternMismatch
   // *    maxlength/tooLong
   // *    minlength/tooShort
-  if (
-    !password.validity.typeMismatch &&
-    !password.validity.valueMissing &&
-    !password.validity.patternMismatch &&
-    !password.validity.tooShort &&
-    !password.validity.tooLong
-  ) {
-    console.log("VALID password");
-  } else {
-    console.log("NOT valid password");
-  }
 
   // Minimum 1 uppercase letter
   password.value.match(/[A-Z]+/g)
@@ -355,9 +380,36 @@ const passwordValidation = (validationType) => {
     : eightToTwelve.classList.remove("success");
 
   if (validationType === "hard") {
+    if (
+      !password.validity.typeMismatch &&
+      !password.validity.valueMissing &&
+      !password.validity.patternMismatch &&
+      !password.validity.tooShort &&
+      !password.validity.tooLong
+    ) {
+      shouldSubmit = true;
+      // console.log("VALID password");
+      password.classList.remove("failure");
+    } else {
+      shouldSubmit = false;
+      // console.log("NOT valid password");
+      password.classList.add("failure");
+      document.querySelector("#submit").preventDevault;
+    }
   } else if (validationType === "soft") {
+    if (
+      !password.validity.typeMismatch &&
+      !password.validity.valueMissing &&
+      !password.validity.patternMismatch &&
+      !password.validity.tooShort &&
+      !password.validity.tooLong
+    ) {
+      // console.log("VALID password");
+      password.classList.remove("failure");
+    } else {
+      // console.log("NOT valid password");
+    }
   }
-  // console.log(password.checkValidity());
 };
 // a bit different cause it's matching passwords
 const passConfValidation = (validationType) => {
@@ -374,22 +426,70 @@ const passConfValidation = (validationType) => {
   // *    maxlength/tooLong
   // *    minlength/tooShort
   // *    match password
-  if (password.value === passwordConfirmation.value) {
-    if (
-      !passwordConfirmation.validity.typeMismatch &&
-      !passwordConfirmation.validity.valueMissing &&
-      !passwordConfirmation.validity.patternMismatch &&
-      !passwordConfirmation.validity.tooShort &&
-      !passwordConfirmation.validity.tooLong
-    ) {
-      console.log("VALID password confirmation");
-    } else {
-      console.log("NOT valid password confirmation");
-    }
-  }
 
   if (validationType === "hard") {
+    if (password.value === passwordConfirmation.value) {
+      if (
+        !passwordConfirmation.validity.typeMismatch &&
+        !passwordConfirmation.validity.valueMissing &&
+        !passwordConfirmation.validity.patternMismatch &&
+        !passwordConfirmation.validity.tooShort &&
+        !passwordConfirmation.validity.tooLong
+      ) {
+        shouldSubmit = true;
+        // console.log("VALID password confirmation");
+        addTextToElem("#password-confirmation-message", "");
+        passwordConfirmation.classList.add("password-confirmation-success");
+        passwordConfirmation.classList.remove("failure");
+      } else {
+        shouldSubmit = false;
+        // console.log("NOT valid password confirmation");
+        addTextToElem(
+          "#password-confirmation-message",
+          passwordConfirmation.validationMessage
+        );
+        passwordConfirmation.classList.remove("password-confirmation-success");
+        passwordConfirmation.classList.add("failure");
+      }
+    } else {
+      shouldSubmit = false;
+      // console.log("NOT valid password confirmation");
+      addTextToElem(
+        "#password-confirmation-message",
+        passwordConfirmation.validationMessage
+      );
+      passwordConfirmation.classList.remove("password-confirmation-success");
+      passwordConfirmation.classList.add("failure");
+    }
   } else if (validationType === "soft") {
+    if (password.value === passwordConfirmation.value) {
+      if (
+        !passwordConfirmation.validity.typeMismatch &&
+        !passwordConfirmation.validity.valueMissing &&
+        !passwordConfirmation.validity.patternMismatch &&
+        !passwordConfirmation.validity.tooShort &&
+        !passwordConfirmation.validity.tooLong
+      ) {
+        // console.log("VALID password confirmation");
+        addTextToElem("#password-confirmation-message", "");
+        passwordConfirmation.classList.add("password-confirmation-success");
+        passwordConfirmation.classList.remove("failure");
+      } else {
+        // console.log("NOT valid password confirmation");
+        addTextToElem(
+          "#password-confirmation-message",
+          passwordConfirmation.validationMessage
+        );
+        passwordConfirmation.classList.remove("password-confirmation-success");
+      }
+    } else {
+      // console.log("NOT valid password confirmation");
+      addTextToElem(
+        "#password-confirmation-message",
+        passwordConfirmation.validationMessage
+      );
+      passwordConfirmation.classList.remove("password-confirmation-success");
+    }
   }
   // console.log(passwordConfirmation.checkValidity());
 };
@@ -397,15 +497,19 @@ const passConfValidation = (validationType) => {
 // Validate Form
 const autoValidateForm = (() => {
   const submit = document.querySelector("#submit");
+
   submit.addEventListener("click", (e) => {
     emailValidation("hard");
     postalValidation("hard");
     passwordValidation("hard");
     passConfValidation("hard");
-
-    // console.log("submit");
-
-    // e.preventDefault();
+    console.log("BAADDDD BLOOOOD");
+    if (!shouldSubmit) {
+      e.preventDefault();
+      console.log("should not submit");
+    } else {
+      ("should submit");
+    }
   });
 
   window.onkeyup = () => {
@@ -419,34 +523,11 @@ const autoValidateForm = (() => {
 })();
 
 /**
- * do all validation messages
- * then work on all invalid styling
- * create function that validates each input
- *  email(check inline and js)
- *    type check/typeMismatch
- *    required check/valueMissing
- *    pattern check/patternMismatch
- *  postal code
- *    required/valueMissing
- *    pattern check/patternMismatch
- *  password
- *    required/valueMissing
- *    type check/typeMismatch
- *    pattern/patternMismatch
- *    maxlength/tooLong
- *    minlength/tooShort
- *  password confirmation
- *    required/valueMissing
- *    type check/typeMismatch
- *    pattern/patternMismatch
- *    maxlength/tooLong
- *    minlength/tooShort
- *    match password
- *  yellow warnings for soft validations
- *  red warnings for hard validations
- * password is validated after every word
- * passwrod confirmation is validated on submit
+ * style validation messages
+ * yellow warnings for soft validations
+ * red warnings for hard validations
  * advanced css
+ * delete all clgs and unused stuff
  *
  * notes:
  * -collect email, country, zip code, password(twice, password confirmation)

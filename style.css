@@ -9,6 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #main-form {
@@ -34,6 +35,14 @@ body {
 /* #email:invalid {
   outline: 3px solid rgb(218, 178, 0);
 } */
+#email-message,
+#postal-message,
+#password-confirmation-message {
+  color: red;
+  font-style: italic;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
 
 /* Postal Code */
 #postal:valid {
@@ -51,7 +60,7 @@ body {
   border: 3px solid green;
   outline: none;
 }
-#password-confirmation:valid {
+.password-confirmation-success {
   border: 3px solid green;
   outline: none;
 }
@@ -59,4 +68,11 @@ body {
 /* Generic classes */
 .success {
   color: green;
+}
+.warning {
+  border: 3px solid yellow;
+  outline: none;
+}
+.failure {
+  border: 3px solid red;
 }

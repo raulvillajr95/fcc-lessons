@@ -7,14 +7,19 @@
  *
  */
 
-function filter_list(arr) {
-  let nums = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (typeof arr[i] === "number") {
-      nums.push(arr[i]);
+function XO(str) {
+  let xCounter = 0;
+  let oCounter = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i].toLowerCase() === "x") {
+      xCounter += 1;
+    } else if (str[i].toLowerCase() === "o") {
+      oCounter += 1;
     }
   }
-  return nums;
+
+  return xCounter === oCounter;
 }
 
-// console.log(filter_list(["a", 1, "b", "2", "c", 3]));
+console.log(XO("ooxx"));
