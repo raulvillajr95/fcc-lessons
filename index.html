@@ -29,7 +29,12 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <div class="content"></div>
+    <form class="content">
+      <label for="name">Name:</label>
+      <input id="name" type="text" required minlength="4" maxlength="15" />
+      <span id="name-message"></span>
+      <input type="submit" value="Submit" id="submit" />
+    </form>
     <script src="loops.js"></script>
     <script src="main.js"></script>
   </body>
