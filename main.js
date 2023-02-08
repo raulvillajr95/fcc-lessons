@@ -5,11 +5,8 @@
  *
  */
 
-const submitBtn = document.querySelector("#submit");
-const nameMessage = document.querySelector("#name-message");
-const nameInput = document.querySelector("#name");
-submitBtn.addEventListener("click", () => {
-  if (nameInput.validity.tooShort) {
-    nameMessage.textContent = "Name is too short";
-  }
-});
+console.log("a");
+setTimeout(function () {
+  console.log("c");
+}, 1000);
+console.log("b");

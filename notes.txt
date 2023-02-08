@@ -1,40 +1,15 @@
 <!-- 
-goal wpm = 30(a lot of them)
+goal wpm = 31(a lot of them)
 * when I reach 40, stay ther and move up when I'm free of job
 after 48 completion, new code
 backtracking after completion: 9wpm
 lines to practice = 15(15 is max on speedcoder)
 
-key combiner: 2 correct
+key combiner: 3 correct
 
-'re' doc: Making a Phonebook
 -->
 
 <!-- 
 Phyhics book(ch1-ch14): pg 59
 Calculus book: pg 39
 -->
-
-Knowledge Check(Form Validation With JavaScript)(2 wrong max)
-1.✅ Gotta make sure you're receiving the correct data. You just might get hacked.
-2.✅ Built-in: using attributes like 'minlength', 'required', 'pattern', etc.
-             These give you some sort of validation message in the UI and won't
-             let you continue until they're validated.
-   Using JS: this would be with the Validation API. You can use .validity to
-             check validations, very similar to the HTML attributes. They're
-             linked to the attributes. You can check that pattern is matching,
-             that it's the right length, that it's not missing, etc.
-3.✅ It does provide more customization, one example is the validation message,
-   instead of being a pop-up, you can have it appear in an html element and then
-   customize it with css.
-4.✅ 
-const submitBtn = document.querySelector("#submit");
-const nameMessage = document.querySelector("#name-message");
-const nameInput = document.querySelector("#name");
-submitBtn.addEventListener("click", () => {
-  if (nameInput.validity.tooShort) {
-    nameMessage.textContent = "Name is too short";
-  }
-});
-5. Yeah, you can grab value and test it. Like check value's length, or match it
-   against patterns, etc.
