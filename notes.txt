@@ -1,11 +1,16 @@
 <!-- 
-goal wpm = 31(a lot of them)
+goal wpm = 33(a lot of them)
 * when I reach 40, stay ther and move up when I'm free of job
 after 48 completion, new code
 backtracking after completion: 9wpm
 lines to practice = 15(15 is max on speedcoder)
 
-key combiner: 3 correct
+key combiner: 4 correct
+
+ch3 promises: Single Resolution
+
+html/css: exercises 6 ch72
+js: exercises 4 #60
 
 -->
 
