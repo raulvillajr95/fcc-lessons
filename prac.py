@@ -1,12 +1,10 @@
-# 
-# 
-# 
-# 
-
-import re
-
-hand = open('mbox-short.txt')
-for line in hand:
-    line = line.rstrip()
-    x = re.findall('^From .* ([0-9][0-9]):', line)
-    if len(x) > 0: print(x)
+# Exercise 1
+# import re
+# expression = input('Enter a regular expression: ')
+# file = open('mbox.txt')
+# counter = 0
+# for line in file:
+#     if re.findall(r'%s'%(expression), line):
+#         counter += 1
+# str = 'mbox.txt had %d lines that matched %s' % (counter, expression)
+# print(str)

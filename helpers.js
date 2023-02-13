@@ -1,13 +1,8 @@
-/* 
-list of useful functions
-like functions.js, but some of these work with the DOM
-*/
-
 // Load set Id and load element to a container
 function loadElemToContainer(container, element, id) {
   const containerElem = document.querySelector(container);
   const newElem = document.createElement(element);
-  newElem.setAttribute("id", id);
+  newElem.setAttribute('id', id);
   containerElem.appendChild(newElem);
 }
 // Add an attribute to element
@@ -34,7 +29,7 @@ function clearDisplay(element) {
 let eurPointsFormat = (num) => {
   let strNum = num.toString();
   if (num >= 1000 || num <= -1000) {
-    return strNum.slice(0, -3) + "." + strNum.slice(-3, strNum.length);
+    return strNum.slice(0, -3) + '.' + strNum.slice(-3, strNum.length);
   } else {
     return strNum;
   }
