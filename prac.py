@@ -1,10 +1,18 @@
-# Exercise 1
+# Main answer
 # import re
-# expression = input('Enter a regular expression: ')
-# file = open('mbox.txt')
-# counter = 0
+# file = open('regex_sum_1689714.txt')
+# total = 0
 # for line in file:
-#     if re.findall(r'%s'%(expression), line):
-#         counter += 1
-# str = 'mbox.txt had %d lines that matched %s' % (counter, expression)
-# print(str)
+#     line = line.rstrip()
+#     if re.findall(r'[0-9]+', line):
+#         numList = re.findall(r'[0-9]+', line)
+#         for number in numList:
+#           total += int(number)
+# print(total)
+# 261594
+
+import re
+total = 0
+# numers = 0
+for i in ['3', '2']: int(i)
+print(tuple(re.findall('[0-9]+', open('regex_sum_1689714.txt').read())))
