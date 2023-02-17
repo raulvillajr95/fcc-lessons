@@ -5,26 +5,27 @@
  *
  *
  *
+ *
  */
 
-// for loop(1st)
-// function sumTo(n) {
-//   let counter = 0;
-//   for (let i = 1; i <= n; i++) {
-//     counter += i;
-//   }
-//   return counter;
-// }
-// console.log(sumTo(100));
+function pow(x, n) {
+  let result = 1;
 
-// Recursion(3rd)
-function sumTo(n) {
-  return n == 1 ? 1 : n + sumTo(n - 1);
+  for (let i = 0; i < n; i++) {
+    result *= x;
+  }
+
+  return result;
 }
-console.log(sumTo(100));
+console.log(pow(2, 3));
 
-// arithmetic progression(2nd)
-// function sumTo(n) {
-//   return (n * (1 + n)) / 2;
+// function fib(n) {
+//   // let arr = [1, 1];
+//   if (n <= 0) {
+//     return 0;
+//   } else {
+//     let x = [fib(n - 1), fib(n - 1) + 1];
+//     return x;
+//   }
 // }
-// console.log(sumTo(100));
+// console.log(fib(5));

@@ -12,7 +12,11 @@
 # 261594
 
 import re
-total = 0
 # numers = 0
-for i in ['3', '2']: int(i)
-print(tuple(re.findall('[0-9]+', open('regex_sum_1689714.txt').read())))
+# print(for i in ['3', '2']: int(i))
+# print(list(filter( lambda x: x == '976' ,re.findall('[0-9]+', open('regex_sum_1689714.txt').read()))))
+# lambda x: for i in ['s']: int(i)
+# for i in ['a', 'b']: print(int(i))
+# print(fruit) for fruit in ['Apple', 'Mango']
+# print(sum(list(map(lambda x: int(x),re.findall('[0-9]+', open('regex_sum_1689714.txt').read())))))
+print(sum(list(map(lambda x: int(x), re.findall('[0-9]+', open('regex_sum_1689714.txt').read())))))
