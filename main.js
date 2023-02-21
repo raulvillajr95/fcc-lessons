@@ -23,22 +23,33 @@ let list = {
 };
 
 // Linked List(Loop)
-function printList(lst) {
-  while (lst.next !== null) {
-    console.log(lst.value);
-    lst = lst.next;
-  }
-  console.log(lst.value);
-}
-printList(list);
-
-// // Linked List(Recursive)
-// function printList(lst, y = lst.value) {
-//   if (lst.next === null) {
-//     return lst.value;
-//   } else {
-//     console.log(y);
-//     return printList(lst.next, lst.next.value);
+// function printList(lst) {
+//   while (lst.next) {
+//     console.log(lst.value);
+//     lst = lst.next;
 //   }
+//   console.log(lst.value);
 // }
-// console.log(printList(list));
+// // printList(list);
+
+// // Linked List Reverse(Loop)
+// function reverse(lst, vb = 0) {
+// console.log(n, vb);
+// if (n === 1) {
+//   return 1;
+// } else {
+//   return reverse(n - 1, vb + n);
+// }
+// }
+// reverse(list);
+
+function reverseStr(word) {
+  if (word.length === 1) {
+    return word;
+  } else {
+    return (
+      word.slice(word.length - 1) + reverseStr(word.slice(0, word.length - 1))
+    );
+  }
+}
+console.log(reverseStr('freeCodeCamp'));

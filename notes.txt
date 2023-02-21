@@ -15,5 +15,5 @@ html/css: exercises 6 ch74
 
 <!-- 
 Phyhics book(ch1-ch14): pg 59
-Calculus book: pg 39
+Calculus book: pg 40
 -->
