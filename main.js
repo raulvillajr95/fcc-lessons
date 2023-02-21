@@ -8,54 +8,33 @@
  *
  */
 
-let list = {
-  value: 1,
-  next: {
-    value: 2,
-    next: {
-      value: 3,
-      next: {
-        value: 4,
-        next: null,
-      },
-    },
-  },
-};
-
-// Linked List(Loop)
-// function printList(lst) {
-//   while (lst.next) {
-//     console.log(lst.value);
-//     lst = lst.next;
-//   }
-//   console.log(lst.value);
+// let arr = [];
+// for (let i = 0; i < 32; i++) {
+//   arr.unshift(num % 2);
+//   num = Math.floor(num / 2);
 // }
-// // printList(list);
-
-// // Linked List Reverse(Loop)
-// function reverse(lst, vb = 0) {
-// console.log(n, vb);
-// if (n === 1) {
-//   return 1;
-// } else {
-//   return reverse(n - 1, vb + n);
+// let counter = 0;
+// for (let j = 0; j < arr.length; j++) {
+//   counter += arr[j];
 // }
-// }
-// reverse(list);
+// return counter;
 
-function countChar(word, char) {
-  if (word.length === 1) {
-    if (word.slice(word.length - 1) === char) {
-      return 1;
-    } else {
-      return 0;
-    }
-  } else {
-    if (word.slice(word.length - 1) === char) {
-      return 1 + countChar(word.slice(0, word.length - 1), char);
-    } else {
-      return countChar(word.slice(0, word.length - 1), char);
-    }
+function countBits(num) {
+  let arr = [];
+  while (Math.floor(num / 2) != 0) {
+    arr.unshift(num % 2);
+    num = Math.floor(num / 2);
   }
+  arr.unshift(num % 2);
+
+  let counter = 0;
+  for (let i = 0; i < arr.length; i++) {
+    counter += arr[i];
+  }
+
+  return counter;
 }
-console.log(countChar('JavaScript', 'a'));
+
+console.log(countBits(13));
+
+// 26
