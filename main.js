@@ -43,13 +43,19 @@ let list = {
 // }
 // reverse(list);
 
-function reverseStr(word) {
+function countChar(word, char) {
   if (word.length === 1) {
-    return word;
+    if (word.slice(word.length - 1) === char) {
+      return 1;
+    } else {
+      return 0;
+    }
   } else {
-    return (
-      word.slice(word.length - 1) + reverseStr(word.slice(0, word.length - 1))
-    );
+    if (word.slice(word.length - 1) === char) {
+      return 1 + countChar(word.slice(0, word.length - 1), char);
+    } else {
+      return countChar(word.slice(0, word.length - 1), char);
+    }
   }
 }
-console.log(reverseStr('freeCodeCamp'));
+console.log(countChar('JavaScript', 'a'));
