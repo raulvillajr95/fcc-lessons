@@ -531,7 +531,6 @@ function randomNumberInRange(min, max) {
 // 60 seconds countdown timer
 function timer() {
   const end = Date.now() + 60000;
-
   const time = setInterval(() => {
     if (end - Date.now() < 0) {
       console.log(`0${Math.round((end - Date.now()) / 1000)}`);
@@ -542,4 +541,18 @@ function timer() {
       console.log(`${Math.round((end - Date.now()) / 1000)}`);
     }
   }, 1000);
+}
+
+// Turn multi dimensional arrays into 1 single array
+function flattenArray(arr, total = []) {
+  if (Array.isArray(arr)) {
+    arr.forEach((e) => {
+      return flattenArray(e, total);
+    });
+  } else {
+    if (typeof arr == 'number') {
+      total.push(arr);
+    }
+  }
+  return total;
 }
