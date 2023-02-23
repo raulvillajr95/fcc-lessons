@@ -10,7 +10,7 @@
 
 var exampleArr = [[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]];
 
-// for
+// Third layer(for)
 function totalIntegers(arr) {
   for (let i = 0; i < arr.length; i++) {
     if (typeof arr[i] == 'object') {
@@ -29,49 +29,6 @@ function totalIntegers(arr) {
   }
 }
 // console.log(totalIntegers(exampleArr));
-
-// while
-function totalIntegers2(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if (typeof arr[i] == 'object') {
-      for (let j = 0; j < arr[i].length; j++) {
-        if (typeof arr[i][j] == 'object') {
-          for (let k = 0; k < arr[i][j].length; k++) {
-            console.log(arr[i][j][k]);
-          }
-        } else {
-          console.log(arr[i][j]);
-        }
-      }
-    } else {
-      console.log(arr[i]);
-    }
-  }
-  // while (typeof arr[arr] == 'object') {
-
-  // } else {
-  //   arr[i]
-  // }
-}
-// recursion
-function totalIntegers3(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if (typeof arr[i] == 'object') {
-      for (let j = 0; j < arr[i].length; j++) {
-        if (typeof arr[i][j] == 'object') {
-          for (let k = 0; k < arr[i][j].length; k++) {
-            console.log(arr[i][j][k]);
-          }
-        } else {
-          console.log(arr[i][j]);
-        }
-      }
-    } else {
-      console.log(arr[i]);
-    }
-  }
-}
-// console.log(totalIntegers3(exampleArr));
 
 // second layer(for)
 function secondLayer(arr) {
@@ -102,6 +59,9 @@ function basic(n) {
   }
 }
 // basic(10);
+
+// Third layer(while)
+function totalIntegers2(arr) {}
 
 // second layer(while)
 function secondLayer2(arr) {
@@ -141,53 +101,43 @@ function basic2(n) {
 }
 // basic2(10);
 
+// Third layer(recursive)
+// base case rule: when we've reached a value, not array
+// move along rule:
+function totalIntegers3(arr, total = 0) {
+  if (typeof arr != 'object') {
+    return total;
+  } else {
+    arr.forEach((e) => {
+      if (typeof e == 'number') {
+        total += 1;
+      }
+      console.log(typeof e);
+      totalIntegers3(e, total);
+    });
+  }
+  return total;
+}
+console.log(totalIntegers3(exampleArr), 'end');
+
 // second layer(recursive)
 function secondLayer3(arr, i = 0, j = 0) {
   if (i < arr.length) {
-    // console.log(arr[i], 'f3');
-    console.log(i, 'iiiii');
-
-    let j = 0;
     if (typeof arr[i] == 'object') {
-      console.log(arr[i], 'f3 obj');
-      ///////// mess with this(second layer)
-      // try running the code in chrome debugger
-      // mess with j
-      // try with length of arr[i] use the length as second, like arr[i][length]
-      if (j < arr[i].length) {
-        // console.log(arr[i], 'f3');
-        console.log(j, 'jjjjjjj');
-
-        if (typeof arr[i][j] == 'object') {
-          console.log(arr[i][j], 'f3 obj in');
-          /////////
-        } else {
-          console.log(arr[i][j], 'f3 else in');
-        }
-
+      while (j < arr[i].length) {
+        console.log(arr[i][j]);
         j++;
-        return secondLayer3(arr[i], j);
-      } else {
-        console.log('end 1');
-        return secondLayer3(arr, j);
       }
-      /////////
     } else {
-      j = 0;
-      console.log('first');
-      console.log(arr[i], 'f3 else');
+      console.log(arr[i]);
     }
-    // j = 0;
-    console.log('placed 1');
-
     i++;
     return secondLayer3(arr, i);
   } else {
-    console.log('end 2');
     return;
   }
 }
-secondLayer3(exampleArr);
+// secondLayer3(exampleArr);
 
 // first layer(recursive)
 function firstLayer3(arr, i = 0) {
