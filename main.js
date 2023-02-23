@@ -142,32 +142,43 @@ function basic2(n) {
 // basic2(10);
 
 // second layer(recursive)
-function secondLayer3(arr, i = 0) {
+function secondLayer3(arr, i = 0, j = 0) {
   if (i < arr.length) {
     // console.log(arr[i], 'f3');
+    console.log(i, 'iiiii');
 
     let j = 0;
     if (typeof arr[i] == 'object') {
       console.log(arr[i], 'f3 obj');
       ///////// mess with this(second layer)
-      if (i < arr[i].length) {
-        let j = 0;
-        if (typeof arr[i] == 'object') {
-          console.log(arr[i], 'f3 obj');
+      // try running the code in chrome debugger
+      // mess with j
+      // try with length of arr[i] use the length as second, like arr[i][length]
+      if (j < arr[i].length) {
+        // console.log(arr[i], 'f3');
+        console.log(j, 'jjjjjjj');
+
+        if (typeof arr[i][j] == 'object') {
+          console.log(arr[i][j], 'f3 obj in');
+          /////////
         } else {
-          console.log(arr[i], 'f3 else');
+          console.log(arr[i][j], 'f3 else in');
         }
 
-        i++;
-        return secondLayer3(arr[i], i);
+        j++;
+        return secondLayer3(arr[i], j);
       } else {
         console.log('end 1');
-        return;
+        return secondLayer3(arr, j);
       }
       /////////
     } else {
+      j = 0;
+      console.log('first');
       console.log(arr[i], 'f3 else');
     }
+    // j = 0;
+    console.log('placed 1');
 
     i++;
     return secondLayer3(arr, i);
