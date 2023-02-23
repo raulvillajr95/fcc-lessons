@@ -103,22 +103,20 @@ function basic2(n) {
 
 // Third layer(recursive)
 // base case rule: when we've reached a value, not array
-// move along rule:
-function totalIntegers3(arr, total = 0) {
-  if (typeof arr != 'object') {
-    return total;
-  } else {
+// move along rule: forEach()
+function totalIntegers3(arr, total = []) {
+  if (typeof arr == 'object') {
     arr.forEach((e) => {
-      if (typeof e == 'number') {
-        total += 1;
-      }
-      console.log(typeof e);
-      totalIntegers3(e, total);
+      return 3 * totalIntegers3(e, total);
     });
+  } else {
+    if (typeof arr == 'number') {
+      total.push(arr);
+    }
   }
-  return total;
+  return total.length;
 }
-console.log(totalIntegers3(exampleArr), 'end');
+console.log(totalIntegers3(exampleArr));
 
 // second layer(recursive)
 function secondLayer3(arr, i = 0, j = 0) {
