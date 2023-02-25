@@ -575,6 +575,5 @@ function fibonacciRec(n, arr = [1, 2]) {
     arr.push(arr[arr.length - 2] + arr[arr.length - 1]);
     message = fibonacciRec(n - 1, arr) + arr[n - 3];
   }
-  console.log(arr);
   return message;
 }
