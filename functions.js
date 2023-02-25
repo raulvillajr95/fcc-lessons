@@ -556,3 +556,25 @@ function flattenArray(arr, total = []) {
   }
   return total;
 }
+
+// Find the sum of all numbers up to 'n'
+function sumUpToNumber(n) {
+  if (n <= 1) {
+    return 1;
+  } else {
+    return n + sumUpToNumber(n - 1);
+  }
+}
+
+// Fibonacci(recursively) starting 1,2,3,5,8,...
+function fibonacciRec(n, arr = [1, 2]) {
+  let message;
+  if (n <= 2) {
+    message = arr[n - 1];
+  } else {
+    arr.push(arr[arr.length - 2] + arr[arr.length - 1]);
+    message = fibonacciRec(n - 1, arr) + arr[n - 3];
+  }
+  console.log(arr);
+  return message;
+}

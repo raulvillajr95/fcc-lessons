@@ -1,5 +1,5 @@
 <!-- 
-goal wpm = 39(a lot of them)
+goal wpm = 40(a lot of them)
 * when I'm working on job, stay at current wpm and move up when I'm free of job
 after 48 completion, new code
 backtracking after completion: 9wpm
