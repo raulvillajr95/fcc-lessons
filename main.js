@@ -7,13 +7,18 @@
  *
  *
  */
-
-function replicate(reps, num) {
-  if (reps <= 0) return [];
-  if (reps == 1) {
-    return [num];
+function multiples3or5(num, counter = 0) {
+  if (num < 3) {
+    return 0;
   } else {
-    return [num].concat(replicate(reps - 1, num));
+    counter += 1;
+    if ((num % 3 == 0 || num % 5 == 0) && counter > 1) {
+      debugger;
+      return num + multiples3or5(num - 1, counter);
+    } else {
+      return multiples3or5(num - 1, counter);
+    }
   }
 }
-console.log(replicate(2, 5));
+
+console.log(multiples3or5(1000));
