@@ -9,10 +9,7 @@ key combiner: 30 correct
 
 async await article: Managing errors and return values
 
-html/css: exercises 6 ch75
-
-w3resource js recursion: #2
-
+html/css: exercises 6 ch76
 -->
 
 <!-- 

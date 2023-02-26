@@ -577,3 +577,14 @@ function fibonacciRec(n, arr = [1, 2]) {
   }
   return message;
 }
+
+// Reverse string
+function reverseString(str) {
+  let splat = str.split('');
+  return splat.reverse().join('');
+}
+
+// Return negative integer
+function makeNegative(num) {
+  return num < 0 ? num : -num;
+}
