@@ -93,6 +93,43 @@ function primeFactors(n) {
     }
   }
 
-  // return primes;
+  return primeFactors;
 }
 // console.log(primeFactors(100));
+
+function primeFactors2(n, arr = []) {
+  let primes = [];
+
+  if (n <= 2) {
+    return arr;
+  } else {
+    // create list of primes
+    for (let i = 2; i <= Math.ceil(Math.sqrt(n)); i++) {
+      let list = [];
+      for (let j = 2; j <= i; j++) {
+        if (i % j == 0) {
+          list.push(j);
+        } else {
+          continue;
+        }
+      }
+      if (list.length == 1) {
+        primes.push(i);
+      }
+      list = [];
+    }
+
+    // get prime factors
+    for (let i = 0; i < primes.length; i++) {
+      if (n % primes[i] == 0) {
+        arr.push(primes[i]);
+
+        return primeFactors2(n / primes[i], arr);
+      }
+    }
+  }
+}
+console.log(primeFactors2(600851475143));
+
+// create list of primes faster
+// get biggest number in arr

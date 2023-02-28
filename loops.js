@@ -10,21 +10,36 @@
  */
 
 // if looping, use recursion
-function findAverage(arr, counter = arr.length - 1, total) {
-  if (arr.length === 0) return 0;
-  if (arr.length === 1) return arr[0];
-  if (counter <= 0) {
-    total = total + arr[counter];
-    console.log(total);
-    return total / arr.length;
+function reverseSeq(n) {
+  n <= 1;
+  if (n <= 1) {
+    return [n];
   } else {
-    if (total === undefined) {
-      total = 0;
-    }
-    total = total + arr[counter];
-    console.log(total);
-    return findAverage(arr, counter - 1, total);
+    return [n].concat(reverseSeq(n - 1));
   }
 }
 
-console.log(findAverage([96]));
+// var decimals = [];
+// var max = 20000;
+
+// function _recurse() {
+//   decimals.push(Math.floor(Math.random() * 10));
+//   if (decimals.length === max) return;
+//   return () => _recurse();
+// }
+
+// const trampoline =
+//   (fn) =>
+//   (...args) => {
+//     let res = fn(...args);
+//     while (typeof res === 'function') {
+//       res = res();
+//     }
+//     return res;
+//   };
+
+// const recurse = trampoline(_recurse);
+
+// recurse();
+
+// console.log(decimals);
