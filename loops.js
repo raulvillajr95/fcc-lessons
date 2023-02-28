@@ -10,36 +10,13 @@
  */
 
 // if looping, use recursion
-function reverseSeq(n) {
-  n <= 1;
-  if (n <= 1) {
-    return [n];
+function countBy(x, n, arr = [], counter = x) {
+  if (arr.length >= n) {
+    return arr;
   } else {
-    return [n].concat(reverseSeq(n - 1));
+    arr.push(x);
+    return countBy(x + counter, n, arr, counter);
   }
 }
 
-// var decimals = [];
-// var max = 20000;
-
-// function _recurse() {
-//   decimals.push(Math.floor(Math.random() * 10));
-//   if (decimals.length === max) return;
-//   return () => _recurse();
-// }
-
-// const trampoline =
-//   (fn) =>
-//   (...args) => {
-//     let res = fn(...args);
-//     while (typeof res === 'function') {
-//       res = res();
-//     }
-//     return res;
-//   };
-
-// const recurse = trampoline(_recurse);
-
-// recurse();
-
-// console.log(decimals);
+console.log(countBy(1, 10));
