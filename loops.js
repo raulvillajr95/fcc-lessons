@@ -10,36 +10,21 @@
  */
 
 // if looping, use recursion
-class SmallestIntegerFinder {
-  findSmallestInt(arr, counter = arr.length, smallest = Infinity) {
-    // console.log(arr, counter, 'stats');
-    if (counter <= 0) {
-      if (arr[counter] < smallest) {
-        smallest = arr[counter];
-      }
-      return smallest;
-    } else {
-      if (arr[counter] < smallest) {
-        smallest = arr[counter];
-      }
-      return this.findSmallestInt(arr, counter - 1, smallest);
+function findAverage(arr, counter = arr.length - 1, total) {
+  if (arr.length === 0) return 0;
+  if (arr.length === 1) return arr[0];
+  if (counter <= 0) {
+    total = total + arr[counter];
+    console.log(total);
+    return total / arr.length;
+  } else {
+    if (total === undefined) {
+      total = 0;
     }
+    total = total + arr[counter];
+    console.log(total);
+    return findAverage(arr, counter - 1, total);
   }
 }
-let small = new SmallestIntegerFinder();
-console.log(small.findSmallestInt([78, 56, 232, 12, 18]));
 
-// function findSmallestInt(arr, counter = arr.length, smallest = Infinity) {
-//   if (counter <= 0) {
-//     if (arr[counter] < smallest) {
-//       smallest = arr[counter];
-//     }
-//     return smallest;
-//   } else {
-//     if (arr[counter] < smallest) {
-//       smallest = arr[counter];
-//     }
-//     return findSmallestInt(arr, counter - 1, smallest);
-//   }
-// }
-// console.log(findSmallestInt([78, 56, 232, 12, 18]), 'end');
+console.log(findAverage([96]));
