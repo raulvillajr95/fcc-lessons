@@ -588,3 +588,13 @@ function reverseString(str) {
 function makeNegative(num) {
   return num < 0 ? num : -num;
 }
+
+// Create array counting by steps
+function countBy(x, n, arr = [], counter = x) {
+  if (arr.length >= n) {
+    return arr;
+  } else {
+    arr.push(x);
+    return countBy(x + counter, n, arr, counter);
+  }
+}

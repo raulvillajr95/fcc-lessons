@@ -44,67 +44,56 @@
  */
 
 // Is a number a prime
-async function prime(n, number = [], primes = []) {
-  number[0] = n;
-  number = Number(number);
-  if (n < 2) {
-    // console.log(primes);
-    return primes.length === 0;
-  } else {
-    await Promise.resolve(false);
+function prime(n) {
+  let isPrime = true;
 
-    if (number % n === 0 && number != n) {
-      // console.log(n);
-      primes.push(n);
-    }
-    // console.log(n, number);
-    return await prime(n - 1, number, primes);
+  // Trial division
+  if (n === 2) return;
+  let firstRun = [];
+  for (let i = 3; i <= Math.sqrt(n); i += 2) {
+    firstRun.push(i);
   }
+  for (let j = 0; j < firstRun.length; j++) {
+    if (n % firstRun[j] === 0) isPrime = false;
+  }
+
+  return isPrime;
 }
-// prime(13195)
-//   .then((sum) => console.log(sum))
-//   .catch((err) => console.log(err.stack));
+// console.log(prime(15));
 
-// list of prime factors
-function primeFactors(n) {
-  let primes = [];
+// list of primes
+function primesList(n) {
+  const arr = [];
+  if (n > 2) arr[0] = 2;
+  for (let i = 3; i <= Math.sqrt(n); i += 2) {
+    if (prime(i)) {
+      arr.push(i);
+    }
+  }
+  return arr;
+}
+// console.log(primesList(1000));
 
-  // create list of primes
-  for (let i = 2; i <= n; i++) {
-    let list = [];
-    for (let j = 2; j <= i; j++) {
-      if (i % j == 0) {
-        list.push(j);
-      } else {
-        continue;
+function primeFactors(n, arr = [], primes = primesList(n)) {
+  if (n <= 2) {
+    return arr;
+  } else {
+    for (let i = 0; i < primes.length; i++) {
+      if (n % primes[i] == 0) {
+        arr.push(primes[i]);
+        return primeFactors(n / primes[i], arr, primes);
       }
     }
-    if (list.length == 1) {
-      primes.push(i);
-    }
-    list = [];
   }
-
-  // get prime factors
-  let primeFactors = [];
-  for (let i = 0; i < primes.length; i++) {
-    if (n % primes[i] == 0) {
-      console.log(n / primes[i]);
-    }
-  }
-
-  return primeFactors;
 }
-// console.log(primeFactors(100));
+console.log(primeFactors(10));
 
-function primeFactors2(n, arr = []) {
-  let primes = [];
-
+function primeFactors2(n, arr = [], primes = []) {
   if (n <= 2) {
     return arr;
   } else {
     // create list of primes
-    for (let i = 2; i <= Math.ceil(Math.sqrt(n)); i++) {
+    for (let i = 2; i <= n; i++) {
       let list = [];
       for (let j = 2; j <= i; j++) {
         if (i % j == 0) {
@@ -121,6 +110,7 @@ function primeFactors2(n, arr = []) {
 
     // get prime factors
     for (let i = 0; i < primes.length; i++) {
+      console.log(primes);
       if (n % primes[i] == 0) {
         arr.push(primes[i]);
 
@@ -129,7 +119,15 @@ function primeFactors2(n, arr = []) {
     }
   }
 }
-console.log(primeFactors2(600851475143));
+// console.log(primeFactors2(50039));
 
+/**
+ * improve primeFactors speed
+ *  it don't work around numbers 20
+ */
+
+// check if number is prime faster✅
 // create list of primes faster
+// get prime factors faster
+//  possibly only check up to sqrt(length)
 // get biggest number in arr
