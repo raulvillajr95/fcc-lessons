@@ -45,41 +45,35 @@
 
 // Is a number a prime
 function prime(n) {
-  // let isPrime = true;
-
-  // Trial division
-  if (n < 2) return false;
-  if (n == 2) return true;
-  // let firstRun = [];
-  for (let i = 3; i <= Math.sqrt(n); i += 2) {
-    // firstRun.push(i);
-    if (n % i === 0) return false;
+  let arr = [];
+  if (n > 2) {
+    arr.push(2);
   }
-  return true;
-  // console.log(firstRun, 'fs');
-  // for (let j = 0; j < firstRun.length; j++) {
-  //   if (n % firstRun[j] === 0) isPrime = false;
-  // }
-
-  // return isPrime;
-}
-console.log(prime(13195));
-
-// list of primes
-function primesList(n) {
-  const arr = [2];
-  // if (n > 2) arr[0] = 2;
-  // if (prime(n)) return [n];
+  // Trial division
   for (let i = 3; i <= Math.sqrt(n); i += 2) {
-    if (prime(i)) {
+    if (n % i === 0) {
       arr.push(i);
     }
   }
   return arr;
 }
+// console.log(prime(100));
+
+// list of primes
+// function primesList(n) {
+//   const arr = [2];
+//   // if (n > 2) arr[0] = 2;
+//   // if (prime(n)) return [n];
+//   for (let i = 3; i <= Math.sqrt(n); i += 2) {
+//     if (prime(i)) {
+//       arr.push(i);
+//     }
+//   }
+//   return arr;
+// }
 // console.log(primesList(100));
 
-function primeFactors(n, arr = [], primes = primesList(n)) {
+function primeFactors(n, arr = [], primes = prime(n)) {
   // if (prime(n)) return [n];
   // console.log(arr, 'tippy arr');
   if (n <= 2) {
@@ -99,7 +93,7 @@ function primeFactors(n, arr = [], primes = primesList(n)) {
     }
   }
 }
-// console.log(primeFactors(600851475143));
+console.log(primeFactors(600851475143));
 
 function primeFactors2(n, arr = [], primes = []) {
   if (n <= 2) {
