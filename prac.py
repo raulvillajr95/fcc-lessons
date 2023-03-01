@@ -1,10 +1,13 @@
 import urllib.request, urllib.parse, urllib.error
 
-fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+img = urllib.request.urlopen('http://data.pr4e.org/cover3.jpg')
+fhand = open('images/cover3.jpg', 'wb')
+size = 0
+while True:
+    info = img.read(100000)
+    if len(info) < 1: break
+    size = size + len(info)
+    fhand.write(info)
 
-counts = dict()
-for line in fhand:
-    words = line.decode().split()
-    for word in words:
-       counts[word] = counts.get(word, 0) + 1
-print(counts)
+print(size, 'characters copied.')
+fhand.close()
