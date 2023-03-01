@@ -10,13 +10,13 @@
  */
 
 // if looping, use recursion
-function countBy(x, n, arr = [], counter = x) {
-  if (arr.length >= n) {
-    return arr;
+function getAverage(arr, counter = arr.length - 1, total = 0) {
+  if (counter <= 0) {
+    total += arr[counter];
+    return Math.floor(total / arr.length);
   } else {
-    arr.push(x);
-    return countBy(x + counter, n, arr, counter);
+    total += arr[counter];
+    return getAverage(arr, counter - 1, total);
   }
 }
-
-console.log(countBy(1, 10));
+console.log(getAverage([2, 2, 2, 2]));
