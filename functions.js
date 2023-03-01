@@ -609,3 +609,32 @@ function prime(n) {
   }
   return true;
 }
+
+// Return list of primes
+function primeList(n) {
+  let arr = [];
+  if (n > 2) {
+    arr.push(2);
+  }
+  // Trial division
+  for (let i = 3; i <= n; i += 2) {
+    if (n % i === 0) {
+      arr.push(i);
+    }
+  }
+  return arr;
+}
+
+// Grab prime factors(buggy)
+function primeFactors(n, arr = [], primes = primeList(n)) {
+  if (n <= 2) {
+    return arr;
+  } else {
+    for (let i = 0; i < primes.length; i++) {
+      if (n % primes[i] == 0) {
+        arr.push(primes[i]);
+        return primeFactors(n / primes[i], arr, primes);
+      }
+    }
+  }
+}

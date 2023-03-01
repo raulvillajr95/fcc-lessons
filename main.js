@@ -44,7 +44,7 @@
  */
 
 // Is a number a prime
-function prime(n) {
+function primeList(n) {
   let arr = [];
   if (n > 2) {
     arr.push(2);
@@ -57,29 +57,30 @@ function prime(n) {
   }
   return arr;
 }
-console.log(prime(1));
+// console.log(primeList(23));
 
-function primeFactors(n, arr = [], primes = prime(n)) {
-  // if (prime(n)) return [n];
-  console.log(arr, 'tippy arr');
+function primeFactors(n, arr = [], primes = primeList(n)) {
+  // if (primeList(n)) return [n];
+  // console.log(arr, 'tippy arr');
+  console.log(primes);
   if (n <= 2) {
-    console.log(arr, 'top arr');
+    // console.log(arr, 'top arr');
     return arr;
   } else {
-    console.log(primes, 'one');
+    // console.log(primes, 'one');
     for (let i = 0; i < primes.length; i++) {
-      console.log(primes, 'for');
+      // console.log(primes, 'for');
       if (n % primes[i] == 0) {
-        console.log(arr, 'pf arr');
-        console.log(primes[i], 'pf primes[i]');
-        console.log(primes, 'pf primes');
+        // console.log(arr, 'pf arr');
+        // console.log(primes[i], 'pf primes[i]');
+        // console.log(primes, 'pf primes');
         arr.push(primes[i]);
         return primeFactors(n / primes[i], arr, primes);
       }
     }
   }
 }
-// console.log(primeFactors(23));
+console.log(primeFactors(23));
 
 function primeFactors2(n, arr = [], primes = []) {
   if (n <= 2) {
@@ -103,9 +104,9 @@ function primeFactors2(n, arr = [], primes = []) {
 
     // get prime factors
     for (let i = 0; i < primes.length; i++) {
-      console.log(arr, 'pf2 arr');
-      console.log(primes[i], 'pf2 primes[i]');
-      console.log(primes, 'pf2 primes');
+      // console.log(arr, 'pf2 arr');
+      // console.log(primes[i], 'pf2 primes[i]');
+      // console.log(primes, 'pf2 primes');
       if (n % primes[i] == 0) {
         arr.push(primes[i]);
 
@@ -114,13 +115,13 @@ function primeFactors2(n, arr = [], primes = []) {
     }
   }
 }
-// console.log(primeFactors2(20));
+// console.log(primeFactors2(600851475143));
 
 /**
  * improve primeFactors speed
  *  it don't work around numbers 20
- *  possibly combine prime() and primeFactors()
- *  start with prime(),
+ *  possibly combine primeList() and primeFactors()
+ *  start with primeList(),
  *    make sure it gets numbers around 20 and primes
  *  then check primeFactors(),
  *    make sure it gets numbers around 20 and primes
