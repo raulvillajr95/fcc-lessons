@@ -9,126 +9,134 @@
  */
 
 /**
- * Project Euler #3
- * Largest prime factor
- *  get prime factors of a number
- *  is number divisible by 2, 3, 5, 7, 11, 13, 17, 19(prime numbers up to that number)
- *    if so, divide
- *    now is that number divisible
- *  get largest single number of all prime factors
+ * Project Euler #4(if looping, use recursion)
+ *  create function that creates palindromes
+ *    we aint testing numbers, we're creating them
+ *      we already know what they look like, we just need to put them
+ *        in an array
+ *  create function to test for lots of palindromes
+ *    possibly get prime factors and see which can be combined to be 3 digits
  *
- * * jot down the process
- * Pseudo Code:
- * function primeFactors(number):
- *
- *
+ * maybe 3 or more functions
  */
 
-/**
- *
- * For loop:
- *  is a number a prime
- *  list of prime factors
- *  biggest in list of prime factors
- *
- * While loop:
- *  is a number a prime
- *  list of prime factors
- *  biggest in list of prime factors
- *
- * Recursive:
- *  is a number a prime
- *  list of prime factors
- *  biggest in list of prime factors
- *
- */
+// Return biggest number that 3 digits multiply to be palindrome
 
-// Is a number a prime
+// palindromes 991000 to 997799
+let palin = [991199, 992299, 993399, 994499, 995599, 996699, 997799];
+
+// create palindromes from 100001 to 999999
+function sixDigits(counter1 = 100, palins = []) {
+  if (counter1 >= 999) {
+    palins.push(
+      Number(
+        counter1.toString() + counter1.toString().split('').reverse().join('')
+      )
+    );
+    return palins.reverse();
+  } else {
+    palins.push(
+      Number(
+        counter1.toString() + counter1.toString().split('').reverse().join('')
+      )
+    );
+    return sixDigits(counter1 + 1, palins);
+  }
+}
+// console.log(sixDigits());
+const six = sixDigits();
+
+// all five digit palindromes
+function fiveDigits(counter1 = 100, palins = []) {
+  if (counter1 >= 999) {
+    palins.push(
+      Number(
+        counter1.toString() +
+          counter1.toString().split('').reverse().join('').slice(1)
+      )
+    );
+    return palins.reverse();
+  } else {
+    palins.push(
+      Number(
+        counter1.toString() +
+          counter1.toString().split('').reverse().join('').slice(1)
+      )
+    );
+    return fiveDigits(counter1 + 1, palins);
+  }
+}
+// console.log(fiveDigits());
+
+// find all factors of a number(they don't all have to be prime)
+function factors(n, counter = 1, arr = [], arr2 = []) {
+  if (counter >= Math.sqrt(n)) {
+    if (n % counter === 0) {
+      if (counter >= 100 && counter <= 999) arr.push(counter);
+    }
+    return [...arr, ...arr2];
+  } else {
+    if (n % counter === 0) {
+      if (counter >= 100 && counter <= 999) arr.push(counter);
+      if (n / counter >= 100 && n / counter <= 999) arr2.unshift(n / counter);
+    }
+    return factors(n, counter + 1, arr, arr2);
+  }
+}
+console.log(factors(10000));
+
+// function factrs(n) {
+//   let arr = [];
+//   let arr2 = [];
+//   for (let i = 0; i <= Math.sqrt(n); i++) {
+//     if (n % i === 0) {
+//       arr.push(i);
+//       arr2.unshift(n / i);
+//     }
+//   }
+//   return [...arr, ...arr2];
+// }
+// console.log(factrs(1000000));
+
+// remove all numbers in array that aren't 3 digits
+
 function primeList(n) {
   let arr = [];
   if (n > 2) {
     arr.push(2);
   }
   // Trial division
-  for (let i = 3; i <= Math.sqrt(n); i += 2) {
+  for (let i = 3; i <= n; i += 2) {
     if (n % i === 0) {
       arr.push(i);
     }
   }
   return arr;
 }
-// console.log(primeList(23));
 
-function primeFactors(n, arr = [], primes = primeList(n)) {
-  // if (primeList(n)) return [n];
-  // console.log(arr, 'tippy arr');
-  console.log(primes);
-  if (n <= 2) {
-    // console.log(arr, 'top arr');
-    return arr;
-  } else {
-    // console.log(primes, 'one');
-    for (let i = 0; i < primes.length; i++) {
-      // console.log(primes, 'for');
-      if (n % primes[i] == 0) {
-        // console.log(arr, 'pf arr');
-        // console.log(primes[i], 'pf primes[i]');
-        // console.log(primes, 'pf primes');
-        arr.push(primes[i]);
-        return primeFactors(n / primes[i], arr, primes);
-      }
-    }
-  }
-}
-console.log(primeFactors(23));
+// function factors(
+//   n,
+//   arr = [],
+//   arr2 = [],
+//   primes = primeList(n),
+//   counter = primes.length - 1
+// ) {
+//   console.log(primes);
+//   if (counter <= 0) {
+//     console.log(primes[counter], 'n l');
+//     arr.unshift(primes[counter]);
+//     arr.unshift(1);
+//     arr2.push(n / primes[counter]);
+//     arr2.push(n);
+//     return arr2;
+//   } else {
+//     console.log(primes[counter]);
 
-function primeFactors2(n, arr = [], primes = []) {
-  if (n <= 2) {
-    return arr;
-  } else {
-    // create list of primes
-    for (let i = 2; i <= Math.sqrt(n); i++) {
-      let list = [];
-      for (let j = 2; j <= Math.sqrt(n); j++) {
-        if (i % j == 0) {
-          list.push(j);
-        } else {
-          continue;
-        }
-      }
-      if (list.length == 1) {
-        primes.push(i);
-      }
-      list = [];
-    }
+//     arr.unshift(primes[counter]);
+//     console.log(primes[counter], 'n');
+//     arr2.push(n / primes[counter]);
 
-    // get prime factors
-    for (let i = 0; i < primes.length; i++) {
-      // console.log(arr, 'pf2 arr');
-      // console.log(primes[i], 'pf2 primes[i]');
-      // console.log(primes, 'pf2 primes');
-      if (n % primes[i] == 0) {
-        arr.push(primes[i]);
-
-        return primeFactors2(n / primes[i], arr, primes);
-      }
-    }
-  }
-}
-// console.log(primeFactors2(600851475143));
-
-/**
- * improve primeFactors speed
- *  it don't work around numbers 20
- *  possibly combine primeList() and primeFactors()
- *  start with primeList(),
- *    make sure it gets numbers around 20 and primes
- *  then check primeFactors(),
- *    make sure it gets numbers around 20 and primes
- */
-
-// check if number is prime faster✅
-// create list of primes faster
-// get prime factors faster
-//  possibly only check up to sqrt(length)
-// get biggest number in arr
+//     return factors(n, arr, arr2, primes, counter - 1);
+//   }
+// }
+// console.log(factors(100));
