@@ -18,4 +18,4 @@ function removeEveryOther(arr, counter = 0, arr1 = []) {
   if (counter % 2 === 0) arr1.push(arr[counter]);
   return removeEveryOther(arr, counter + 1, arr1);
 }
-console.log(removeEveryOther(['Hello', 'Goodbye', 'Hello Again']));
+// console.log(removeEveryOther(['Hello', 'Goodbye', 'Hello Again']));

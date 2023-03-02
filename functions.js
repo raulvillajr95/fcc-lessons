@@ -643,3 +643,19 @@ function primeFactors(n, arr = [], primes = primeList(n)) {
 function checkForFactor(base, factor) {
   return base % factor === 0;
 }
+
+// Return all divisors of a number in an array
+function divisors(n, counter = 1, arr = [], arr2 = []) {
+  if (counter >= Math.sqrt(n)) {
+    if (n % counter === 0) {
+      arr.push(counter);
+    }
+    return [...arr, ...arr2];
+  } else {
+    if (n % counter === 0) {
+      arr.push(counter);
+      arr2.unshift(n / counter);
+    }
+    return divisors(n, counter + 1, arr, arr2);
+  }
+}
