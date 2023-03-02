@@ -638,3 +638,8 @@ function primeFactors(n, arr = [], primes = primeList(n)) {
     }
   }
 }
+
+// Check if number is a factor
+function checkForFactor(base, factor) {
+  return base % factor === 0;
+}

@@ -83,60 +83,54 @@ function factors(n, counter = 1, arr = [], arr2 = []) {
     return factors(n, counter + 1, arr, arr2);
   }
 }
-console.log(factors(10000));
+// console.log(factors(10000));
 
-// function factrs(n) {
-//   let arr = [];
-//   let arr2 = [];
-//   for (let i = 0; i <= Math.sqrt(n); i++) {
-//     if (n % i === 0) {
-//       arr.push(i);
-//       arr2.unshift(n / i);
-//     }
-//   }
-//   return [...arr, ...arr2];
-// }
-// console.log(factrs(1000000));
+// just run through six digit palindromes from top down and look at the 3
+// digit numbers
 
-// remove all numbers in array that aren't 3 digits
-
-function primeList(n) {
-  let arr = [];
-  if (n > 2) {
-    arr.push(2);
+function runThrough(arr, counter = 0) {
+  let fct = factors(arr[counter]);
+  if (counter >= 100) {
+    if (fct.length >= 2) console.log(multiplyAllNumbers(fct, arr[counter]));
+    return 'Done';
+  } else {
+    if (fct.length >= 2) console.log(multiplyAllNumbers(fct, arr[counter]));
+    // console.log(multiplyAllNumbers(fct))
+    return runThrough(arr, counter + 1);
   }
-  // Trial division
-  for (let i = 3; i <= n; i += 2) {
-    if (n % i === 0) {
-      arr.push(i);
-    }
-  }
-  return arr;
 }
+console.log(runThrough(six));
+// Officially found it, 913 * 993 = 906609
 
-// function factors(
-//   n,
-//   arr = [],
-//   arr2 = [],
-//   primes = primeList(n),
-//   counter = primes.length - 1
-// ) {
-//   console.log(primes);
-//   if (counter <= 0) {
-//     console.log(primes[counter], 'n l');
-//     arr.unshift(primes[counter]);
-//     arr.unshift(1);
-//     arr2.push(n / primes[counter]);
-//     arr2.push(n);
-//     return arr2;
-//   } else {
-//     console.log(primes[counter]);
+function isPalindrome(int) {
+  return (
+    int.toString().split('').join('') ===
+    int.toString().split('').reverse().join('')
+  );
+}
+// console.log(isPalindrome(999));
 
-//     arr.unshift(primes[counter]);
-//     console.log(primes[counter], 'n');
-//     arr2.push(n / primes[counter]);
-
-//     return factors(n, arr, arr2, primes, counter - 1);
-//   }
-// }
-// console.log(factors(100));
+function multiplyAllNumbers(arr, palin, counter = 0) {
+  // console.log(arr.length, 'len');
+  // console.log(counter, 'cnt');
+  if (counter >= arr.length) {
+    return 'Done';
+  } else {
+    // console.log('yo');
+    for (let i = counter; i < arr.length; i++) {
+      // console.log('so');
+      // console.log(arr[counter], arr[i]);
+      // console.log(arr[counter] * arr[i]);
+      if (arr[counter] * arr[i] === palin) {
+        console.log(arr[counter], arr[i], arr[counter] * arr[i]);
+      }
+    }
+    return multiplyAllNumbers(arr, palin, counter + 1);
+  }
+}
+// console.log(
+//   multiplyAllNumbers([
+//     111, 117, 143, 189, 231, 259, 273, 297, 333, 351, 407, 429, 481, 693, 777,
+//     819, 999,
+//   ])
+// );

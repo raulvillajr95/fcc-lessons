@@ -10,9 +10,12 @@
  */
 
 // if looping, use recursion
-function feast(beast, dish) {
-  return (
-    beast[0] === dish[0] && beast[beast.length - 1] === dish[dish.length - 1]
-  );
+function removeEveryOther(arr, counter = 0, arr1 = []) {
+  if (counter >= arr.length - 1) {
+    if (counter % 2 === 0) arr1.push(arr[counter]);
+    return arr1;
+  }
+  if (counter % 2 === 0) arr1.push(arr[counter]);
+  return removeEveryOther(arr, counter + 1, arr1);
 }
-console.log(feast('great blue hero', 'garlic naan'));
+console.log(removeEveryOther(['Hello', 'Goodbye', 'Hello Again']));
