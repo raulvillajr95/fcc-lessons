@@ -1,15 +1,15 @@
 <!-- 
-goal wpm = 41(a lot of them)
+goal wpm = 42(a lot of them)
 * when I'm working on job, stay at current wpm and move up when I'm free of job
 after 48 completion, new code
 backtracking after completion: 9wpm
 lines to practice = 15(15 is max on speedcoder)
 
-key combiner: 3 correct
+key combiner: 5 correct
 
 async await article: Managing errors and return values
 
-html/css: exercises 6 ch76
+html/css: exercises 6 ch77
 -->
 
 <!-- 

@@ -8,65 +8,62 @@
  *
  */
 
-/**
- * Project Euler #5(if looping, use recursion)
- *
- * maybe 3 or more functions
- */
+const programCode = function (processingInstance) {
+  with (processingInstance) {
+    size(200, 275);
+    frameRate(30);
 
-// Return smallest number that is divisible by numbers 1-20
+    // write code here
+    fill(0, 0, 0);
+    var swap = function (array, firstIndex, secondIndex) {
+      var temp = array[firstIndex];
+      array[firstIndex] = array[secondIndex];
+      array[secondIndex] = temp;
+    };
 
-function divisors(n, counter = 1, arr = [], arr2 = []) {
-  if (n === 0) return [0];
-  if (counter >= Math.sqrt(n)) {
-    if (n % counter === 0) {
-      arr.push(counter);
-    }
-    return [...arr, ...arr2];
-  } else {
-    if (n % counter === 0) {
-      arr.push(counter);
-      arr2.unshift(n / counter);
-    }
-    return divisors(n, counter + 1, arr);
+    var indexOfMinimum = function (array, startIndex) {
+      var minValue = array[startIndex];
+      var minIndex = startIndex;
+
+      for (var i = minIndex + 1; i < array.length; i++) {
+        if (array[i] < minValue) {
+          minIndex = i;
+          minValue = array[i];
+        }
+      }
+      return minIndex;
+    };
+
+    var selectionSort = function (array) {
+      var position;
+
+      let lineYStart = 60;
+      let lineXStart = 60;
+      for (var i = 0; i < array.length - 1; i++) {
+        println(array + ' during for');
+
+        // put text on canvas
+        textFont(createFont('monospace'), 14);
+        text(array, 50, (i + 1) * 55);
+
+        // lines
+        if (i > 0) {
+          line(60 + position * 15, 5 + lineYStart, lineXStart, 35 + lineYStart);
+          lineYStart += 55;
+          lineXStart += 12;
+          println(`${i}, ${position + 1}`);
+        }
+
+        position = indexOfMinimum(array, i);
+        swap(array, i, position);
+      }
+    };
+
+    var array = [1, 2, 8, 3, 5];
+    selectionSort(array);
   }
-}
-console.log(divisors(3628800));
+};
 
-// check for first 20 values [1-20]
-// check only every 20 since it has to be divisible by 20
-function checkFirst20(arr) {
-  return arr.slice(0, 20).join('') === '1234567891011121314151617181920';
-}
-
-function loopThrough20s(counter = 0) {
-  let divi = divisors(counter).slice(0, 20).join('');
-  if (counter >= 1 && divi === '1234567891011121314151617181920') {
-    console.log(divi, counter);
-    return 'done';
-  } else {
-    console.log(divi, counter);
-    return loopThrough20s(counter + 232792560);
-  }
-}
-// console.log(loopThrough20s());
-// maxes out at 149380
-// the answer i got is 232792560
-
-// console.log(divisors(146480));
-
-function while20s() {
-  counter = 0;
-  let divi = divisors(counter).slice(0, 20).join('');
-  while (divi != '1234567891011121314151617181920') {
-    divi = divisors(counter).slice(0, 20).join('');
-
-    console.log(divi, counter);
-    counter += 2520;
-  }
-  // console.log(divi, counter, '');
-  return 'done';
-}
-// console.log(while20s());
-
-// instead of moving up by 20s, find a formula for a number divisible my [1-20]
+// process canvas
+const canvas = document.getElementById('mycanvas');
+const processingInstance = new Processing(canvas, programCode);

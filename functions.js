@@ -659,3 +659,59 @@ function divisors(n, counter = 1, arr = [], arr2 = []) {
     return divisors(n, counter + 1, arr, arr2);
   }
 }
+
+// Sort numbers in array using merge sort algorithm
+function mergeSorter(arr) {
+  // sort 2 arrays into 1
+  const sorter = (arr1, arr2, sorted = []) => {
+    if (arr1.length === 0 || arr2.length === 0) {
+      if (arr1.length === 0) {
+        sorted = [...sorted, ...arr2];
+      } else if (arr2.length === 0) {
+        sorted = [...sorted, ...arr1];
+      }
+      return sorted;
+    } else {
+      if (arr1[0] <= arr2[0]) {
+        sorted.push(arr1[0]);
+        arr1.shift();
+      }
+      if (arr1[0] > arr2[0]) {
+        sorted.push(arr2[0]);
+        arr2.shift();
+      }
+      return sorter(arr1, arr2, sorted);
+    }
+  };
+
+  const mergeSort = (arr) => {
+    if (arr.length <= 2) {
+      return arr.sort((a, b) => a - b);
+    } else {
+      return sorter(
+        mergeSort(arr.slice(0, Math.floor(arr.length / 2))),
+        mergeSort(arr.slice(Math.floor(arr.length / 2)))
+      );
+    }
+  };
+
+  return mergeSort(arr);
+}
+
+// Binary search, algorithm searches by cutting in half
+const binarySearch = function (array, targetValue) {
+  let min = 0;
+  let max = array.length - 1;
+  let guess;
+  while (guess != targetValue) {
+    guess = Math.floor((max * min) / 2);
+    if (array[guess] === targetValue) {
+      return guess;
+    } else if (array[guess] < target) {
+      min = guess + 1;
+    } else {
+      max = guess - 1;
+    }
+  }
+  return -1;
+};

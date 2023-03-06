@@ -10,12 +10,17 @@
  */
 
 // if looping, use recursion
-function removeEveryOther(arr, counter = 0, arr1 = []) {
-  if (counter >= arr.length - 1) {
-    if (counter % 2 === 0) arr1.push(arr[counter]);
-    return arr1;
-  }
-  if (counter % 2 === 0) arr1.push(arr[counter]);
-  return removeEveryOther(arr, counter + 1, arr1);
-}
-// console.log(removeEveryOther(['Hello', 'Goodbye', 'Hello Again']));
+// function finalGrade(exam, projects) {
+//   let grade;
+//   if (exam > 90 || projects > 10) {
+//     grade = 100;
+//   } else if (exam > 75 && projects >= 5) {
+//     grade = 90;
+//   } else if (exam > 50 && projects >= 2) {
+//     grade = 75;
+//   } else {
+//     grade = 0;
+//   }
+//   return grade;
+// }
+// console.log(finalGrade(85, 5));
