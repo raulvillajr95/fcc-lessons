@@ -23,7 +23,7 @@ var insert = function (array, rightIndex, value) {
   // array[1] = array[0];
   // console.log(array, 'array');
   var i;
-  for (i = rightIndex; value < array[i]; i--) {
+  for (i = rightIndex; i + 1 >= 0 && value < array[i]; i--) {
     array[i + 1] = array[i];
     console.log(array, 'array');
   }
@@ -37,8 +37,8 @@ var ex = [3, 5, 7, 11, 13, 2, 9, 6];
 // var ex = [2, 3, 7, 8, 10, 13, 5];
 
 insert(ex, 4, 2);
-// insert(ex, 5, 9);
-// insert(ex, 6, 6);
+insert(ex, 5, 9);
+insert(ex, 6, 6);
 
 // insert(ex, 5, 5);
 console.log(ex);
