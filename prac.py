@@ -15,4 +15,4 @@ and they lived at the bottom of a well.</p>
 
 soup = BeautifulSoup(html_doc, 'html.parser')
 
-print(soup.a)
+print(soup.get_text())

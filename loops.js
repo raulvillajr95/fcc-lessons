@@ -8,30 +8,12 @@
  */
 
 // if looping, do recursion
-function gooseFilter(birds, counter = birds.length - 1) {
-  const geese = [
-    'African',
-    'Roman Tufted',
-    'Toulouse',
-    'Pilgrim',
-    'Steinbacher',
-  ];
-
-  if (geese.includes(birds[counter])) birds.splice(counter, 1);
+function divisibleBy(numbers, divisor, counter = numbers.length - 1, arr = []) {
+  if (numbers[counter] % divisor === 0) arr.unshift(numbers[counter]);
   if (counter <= 0) {
-    return birds;
+    return arr;
   } else {
-    return gooseFilter(birds, counter - 1);
+    return divisibleBy(numbers, divisor, counter - 1, arr);
   }
 }
-console.log(
-  gooseFilter([
-    'Mallard',
-    'Hook Bill',
-    'African',
-    'Crested',
-    'Pilgrim',
-    'Toulouse',
-    'Blue Swedish',
-  ])
-);
+console.log(divisibleBy([1, 2, 3, 4, 5, 6], 2));
