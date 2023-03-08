@@ -8,12 +8,13 @@
  */
 
 // if looping, do recursion
-function divisibleBy(numbers, divisor, counter = numbers.length - 1, arr = []) {
-  if (numbers[counter] % divisor === 0) arr.unshift(numbers[counter]);
-  if (counter <= 0) {
-    return arr;
+function getRealFloor(n) {
+  if (n > 0 && n < 13) {
+    return n - 1;
+  } else if (n >= 13) {
+    return n - 2;
   } else {
-    return divisibleBy(numbers, divisor, counter - 1, arr);
+    return n;
   }
 }
-console.log(divisibleBy([1, 2, 3, 4, 5, 6], 2));
+console.log(getRealFloor(15));
