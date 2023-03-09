@@ -8,74 +8,45 @@
  *
  */
 
-//  from [p..q] and [q+1..r], and merges the array
-var merge = function (array, p, q, r) {
-  var lowHalf = [];
-  var highHalf = [];
-
-  var k = p;
-  var i;
-  var j;
-  for (i = 0; k <= q; i++, k++) {
-    lowHalf[i] = array[k];
-  }
-  for (j = 0; k <= r; j++, k++) {
-    highHalf[j] = array[k];
-  }
-
-  k = p;
-  i = 0;
-  j = 0;
-
-  // Repeatedly compare the lowest untaken element in
-  //  lowHalf with the lowest untaken element in highHalf
-  //  and copy the lower of the two back into array
-  while (i < lowHalf.length && j < highHalf.length) {
-    console.log(array[k], lowHalf[j], highHalf[j], 'array lowH highH');
-    console.log(k, i, j, 'k i j');
-    if (lowHalf[i] < highHalf[j]) {
-      array[k] = lowHalf[i];
-      i += 1;
-    } else {
-      array[k] = highHalf[j];
-      j += 1;
+// This function partitions given array and returns
+//  the index of the pivot.
+var partition = function (array, p, r) {
+  // This code has been purposefully obfuscated,
+  // as you will implement it yourself in next challenge
+  var e = array,
+    t = p,
+    n = r;
+  var r = function (e, t, n) {
+    var r = e[t];
+    e[t] = e[n];
+    e[n] = r;
+  };
+  var i = t;
+  for (var s = t; s < n; s++) {
+    if (e[s] <= e[n]) {
+      r(e, s, i);
+      i++;
     }
-    k += 1;
   }
-  while (i < lowHalf.length) {
-    console.log(i, 'i < lowHalf.length');
-    array[k] = lowHalf[i];
-    i += 1;
-    k += 1;
-  }
-  while (j < highHalf.length) {
-    console.log(j, 'j < highHalf.length');
-    array[k] = highHalf[j];
-    j += 1;
-    k += 1;
-  }
-  // while (condition) {}
-  // Once one of lowHalf and highHalf has been fully copied
-  //  back into array, copy the remaining elements from the
-  //  other temporary array back into the array
+  r(e, n, i);
+  return i;
 };
 
-// Takes in an array and recursively merge sorts it
-// var mergeSort = function (array, p, r) {
-//   if (p < r) {
-//     var q = Math.floor((p + r) / 2);
+var quickSort = function (array, p, r) {
+  console.log(array, p, r, 'array p r');
+  console.log(array.slice(p, r + 1).length, 'need 1');
+  console.log(array.substr(p).length + 1, 'need 2');
+  if (1 < array.slice(p, r + 1).length) {
+    var q = partition(array, p, r);
+    console.log(q);
 
-//     console.log(q, 'q');
-//     console.log(array, 'array');
-//     console.log(array.slice(0, q), 'first half');
-//     console.log(array.slice(q, array.length), 'second half');
+    quickSort(array, p, q - 1);
+    quickSort(array, q + 1, r);
+  }
+};
 
-//     mergeSort(array, p, q);
-//     mergeSort(array, q + 1, r);
-//     merge(array, p, q, r);
-//   }
-// };
-
-var array = [3, 7, 12, 14, 2, 6, 9, 11];
-merge(array, 0, Math.floor((0 + array.length - 1) / 2), array.length - 1);
-console.log('Array after merging: ' + array);
+var array = [9, 7, 5, 11, 12, 2, 14, 3, 10, 6];
+quickSort(array, 0, array.length - 1);
+// partition(array, 0, array.length - 1);
+console.log('Array after sorting: ' + array);
+// console.log(partition(array, 0, array.length - 1));
