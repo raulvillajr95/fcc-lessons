@@ -8,11 +8,7 @@
  */
 
 // if looping, do recursion
-function saleHotdogs(n) {
-  return n < 5
-    ? (price = n * 100)
-    : n >= 5 && n < 10
-    ? (price = n * 95)
-    : (price = n * 90);
+// create XOR for JS
+function xor(a, b) {
+  return (a && !b) || (!a && b);
 }
-console.log(saleHotdogs(100));

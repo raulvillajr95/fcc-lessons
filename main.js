@@ -45,20 +45,17 @@ var doBFS = function (graph, source) {
   queue.enqueue(source);
 
   // Traverse the graph
-  while (!queue.isEmpty()) {
-    var u = queue.dequeue();
+  // console.log(source, 'source'); // 3
+  // console.log(graph, 'graph'); // array of arrays
+  // console.log(bfsInfo, 'bfsInfo'); // array of objects
+  // visit neighbors
+  var u = queue.dequeue();
+  for (var v = 0; v < graph[u].length; v++) {
+    var neighbor = graph[u][v];
 
-    for (var v = 0; v < graph.length; v++) {
-      var deq = graph[u][v];
-      console.log(deq, u, v, 'grf');
-
-      if (bfsInfo[v].distance === null) {
-        console.log(deq, u, v, 'grf1');
-        // console.log(deq, '???');
-        bfsInfo[v].distance = u + 1;
-        bfsInfo[v].predecessor = u;
-        queue.enqueue(v);
-      }
+    if (bfsInfo[neighbor].distance == null) {
+      bfsInfo[neighbor].distance = bfsInfo[u].distance + 1;
+      bfsInfo[neighbor].predecessor = u;
     }
   }
 
