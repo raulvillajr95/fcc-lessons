@@ -8,12 +8,11 @@
  */
 
 // if looping, do recursion
-function multiTable(num, counter = 1) {
-  if (counter >= 10) {
-    return `${counter} * ${num} = ${num * counter}`;
-  }
-  return (
-    `${counter} * ${num} = ${num * counter}\n` + multiTable(num, counter + 1)
-  );
+function saleHotdogs(n) {
+  return n < 5
+    ? (price = n * 100)
+    : n >= 5 && n < 10
+    ? (price = n * 95)
+    : (price = n * 90);
 }
-console.log(multiTable(50));
+console.log(saleHotdogs(100));

@@ -8,59 +8,104 @@
  *
  */
 
-// Swaps two items in an array, changing the original array
-var swap = function (array, firstIndex, secondIndex) {
-  var temp = array[firstIndex];
-  array[firstIndex] = array[secondIndex];
-  array[secondIndex] = temp;
+/* A Queue object for queue-like functionality over JavaScript arrays. */
+var Queue = function () {
+  this.items = [];
+};
+Queue.prototype.enqueue = function (obj) {
+  this.items.push(obj);
+};
+Queue.prototype.dequeue = function () {
+  return this.items.shift();
+};
+Queue.prototype.isEmpty = function () {
+  return this.items.length === 0;
 };
 
-var partition = function (array, p, r) {
-  var q = p;
-  var j = p;
-  console.log(p, r, 'p r');
-  console.log(p, array.length + p);
-  for (var j = p; j < array.length + p; j++) {
-    if (array[j - p] <= array[r - p]) {
-      q += 1;
-      swap(array, j - p, q - p - 1);
+/*
+ * Performs a breadth-first search on a graph
+ * @param {array} graph - Graph, represented as adjacency lists.
+ * @param {number} source - The index of the source vertex.
+ * @returns {array} Array of objects describing each vertex, like
+ *     [{distance: _, predecessor: _ }]
+ */
+var doBFS = function (graph, source) {
+  var bfsInfo = [];
+
+  for (var i = 0; i < graph.length; i++) {
+    bfsInfo[i] = {
+      distance: null,
+      predecessor: null,
+    };
+  }
+
+  bfsInfo[source].distance = 0;
+
+  var queue = new Queue();
+  queue.enqueue(source);
+
+  // Traverse the graph
+  while (!queue.isEmpty()) {
+    var u = queue.dequeue();
+
+    for (var v = 0; v < graph.length; v++) {
+      var deq = graph[u][v];
+      console.log(deq, u, v, 'grf');
+
+      if (bfsInfo[v].distance === null) {
+        console.log(deq, u, v, 'grf1');
+        // console.log(deq, '???');
+        bfsInfo[v].distance = u + 1;
+        bfsInfo[v].predecessor = u;
+        queue.enqueue(v);
+      }
     }
   }
-  return q - 1;
+
+  // As long as the queue is not empty:
+  //  Repeatedly dequeue a vertex u from the queue.
+  //
+  //  For each neighbor v of u that has not been visited:
+  //     Set distance to 1 greater than u's distance
+  //     Set predecessor to u
+  //     Enqueue v
+  //
+  //  Hint:
+  //  use graph to get the neighbors,
+  //  use bfsInfo for distances and predecessors
+
+  return bfsInfo;
 };
 
-// model: before starting, 0th(1st loop), 1st(2nd loop)
+var adjList = [
+  [1],
+  [0, 4, 5],
+  [3, 4, 5],
+  [2, 6],
+  [1, 2],
+  [1, 2, 6],
+  [3, 5],
+  [],
+];
+var bfsInfo = doBFS(adjList, 3);
+for (var i = 0; i < adjList.length; i++) {
+  console.log(
+    'vertex ' +
+      i +
+      ': distance = ' +
+      bfsInfo[i].distance +
+      ', predecessor = ' +
+      bfsInfo[i].predecessor
+  );
+}
 
-var array = [9, 7, 5, 11, 12, 2, 14, 3, 10, 4, 6];
-var q = partition(array, 8, 18);
-// var q = partition(array, 4, 9);
-console.log('Array after partition: ' + array);
-console.log(q);
-
-// var array1 = [9, 7, 5, 11, 12, 2, 14, 3];
-// quickSort(array1, 0, array1.length - 1);
-// console.log('Array after sorting: ' + array1);
-
-// var array2 = [9];
-// quickSort(array2, 0, array2.length - 1);
-// console.log('Array after sorting: ' + array2);
-
-// var array3 = [9, 7];
-// quickSort(array3, 0, array3.length - 1);
-// console.log('Array after sorting: ' + array3);
-
-// var array4 = [9, 7, 5];
-// quickSort(array4, 0, array4.length - 1);
-// console.log('Array after sorting: ' + array4);
-
-// var array5 = [9, 7, 5, 11];
-// quickSort(array5, 0, array5.length - 1);
-// console.log('Array after sorting: ' + array5);
-
-// var array6 = [9, 7, 5, 11, 0, 2, 14, 3, 0, 6];
-// quickSort(array6, 0, array6.length - 1);
-// console.log('Array after sorting: ' + array6);
-
-// var array7 = [9, -7, 5, 11, 12, -2, 14, -3, 10, 6];
-// quickSort(array7, 0, array7.length - 1);
-// console.log('Array after sorting: ' + array7);
+/*
+Program.assertEqual(bfsInfo[0], {distance: 4, predecessor: 1});
+Program.assertEqual(bfsInfo[1], {distance: 3, predecessor: 4});
+Program.assertEqual(bfsInfo[2], {distance: 1, predecessor: 3});
+Program.assertEqual(bfsInfo[3], {distance: 0, predecessor: null});
+Program.assertEqual(bfsInfo[4], {distance: 2, predecessor: 2});
+Program.assertEqual(bfsInfo[5], {distance: 2, predecessor: 2});
+Program.assertEqual(bfsInfo[6], {distance: 1, predecessor: 3});
+Program.assertEqual(bfsInfo[7], {distance: null, predecessor: null});
+*/
