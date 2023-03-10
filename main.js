@@ -49,15 +49,29 @@ var doBFS = function (graph, source) {
   // console.log(graph, 'graph'); // array of arrays
   // console.log(bfsInfo, 'bfsInfo'); // array of objects
   // visit neighbors
-  var u = queue.dequeue();
-  for (var v = 0; v < graph[u].length; v++) {
-    var neighbor = graph[u][v];
 
-    if (bfsInfo[neighbor].distance == null) {
-      bfsInfo[neighbor].distance = bfsInfo[u].distance + 1;
-      bfsInfo[neighbor].predecessor = u;
+  while (!queue.isEmpty()) {
+    //////
+    var u = queue.dequeue();
+    // var u = source;
+    for (var v = 0; v < graph[u].length; v++) {
+      var neighbor = graph[u][v];
+      if (bfsInfo[neighbor].distance == null) {
+        bfsInfo[neighbor].distance = bfsInfo[u].distance + 1;
+        bfsInfo[neighbor].predecessor = u;
+        queue.enqueue(neighbor);
+      }
     }
+    ///////
   }
+  // learn about queue
+  // var you = queue.dequeue();
+  // for (let i = 0; i < 4; i++) {
+  //   console.log(you, 'you');
+  //   console.log(queue, 'que');
+  //   queue.enqueue(i);
+  //   console.log(queue);
+  // }
 
   // As long as the queue is not empty:
   //  Repeatedly dequeue a vertex u from the queue.
