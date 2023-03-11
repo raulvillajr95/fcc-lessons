@@ -5,7 +5,7 @@ after 48 completion, new code
 backtracking after completion: 9wpm
 lines to practice = 15(15 is max on speedcoder)
 
-key combiner: 8 correct
+key combiner: 9 correct
 
 async await article: Managing errors and return values
 
