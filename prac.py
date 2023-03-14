@@ -43,8 +43,29 @@
 # mysock.close()
 
 # Exercise 3
-# import urllib.request, urllib.parse
+# import urllib.request, urllib.parse, urllib.error
 
-# url = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
-# data = urllib.parse('http://data.pr4e.org/romeo.txt')
-# print(data)
+# inp = input('Enter URL: ')
+# url = urllib.request.urlopen(inp).read()
+# # data = urllib.parse('http://data.pr4e.org/romeo.txt')
+# text = url.decode()
+# print(''.join([*text][0:3000]))
+# print('Total characters:', len(text))
+
+# Exercise 4
+# import urllib.request, urllib.parse, urllib.error
+# from bs4 import BeautifulSoup
+# import ssl
+# ctx = ssl.create_default_context()
+# ctx.check_hostname = False
+# ctx.verify_mode = ssl.CERT_NONE
+# url = input('Enter - ')
+# html = urllib.request.urlopen(url, context=ctx).read()
+# soup = BeautifulSoup(html, 'html.parser')
+# count = 0
+# ptags = soup('p')
+# for tag in ptags:
+#     count = count + 1
+# print(count)
+
+# Exercise 5
