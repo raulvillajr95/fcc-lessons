@@ -1,21 +1,21 @@
 <!--
-goal wpm = 43(a lot of them)
+goal wpm = 44(a lot of them)
 * when I'm working on job, stay at current wpm and move up when I'm free of job
 after 48 completion, new code
 backtracking after completion: 9wpm
 lines to practice = 15(15 is max on speedcoder)
 
-key combiner: 11 correct
+key combiner: 12 correct
 
 async await article: Managing errors and return values
 
 html/css: exercises 6 ch79
 
-Algorithms Illuminated (Part 1): pg 34
-MathCS: pg 19
+Algorithms Illuminated (Part 1): pg 38
+MathCS: pg 59
 -->
 
-<!--  rual dl Villalobos
+<!--
 Phyhics book(ch1-ch14): pg 59
-Calculus book: pg 41lkdf alskd raul villalboso
+Calculus book: pg 41
 -->

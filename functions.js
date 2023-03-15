@@ -715,3 +715,9 @@ const binarySearch = function (array, targetValue) {
   }
   return -1;
 };
+
+// repeat a string
+function repeatChar(char, num) {
+  if (num <= 1) return char;
+  return char + repeatChar(char, num - 1);
+}

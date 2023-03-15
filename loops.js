@@ -9,12 +9,15 @@
 
 /**
  * if looping, use recursion
- *
- * generate range of integers
  */
 
-function usdcny(usd) {
-  const cyn = (usd * 6.75).toFixed(2);
-  return `${cyn} Chinese Yuan`;
+function repeatChar(char, num) {
+  if (num <= 1) return char;
+  return char + repeatChar(char, num - 1);
 }
-console.log(usdcny(15));
+// console.log(repeatChar('z', 3));
+
+function contamination(text, char) {
+  return char === '' || text === '' ? '' : repeatChar(char, text.length);
+}
+console.log(contamination('', 'z'));
