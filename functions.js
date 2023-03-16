@@ -716,8 +716,13 @@ const binarySearch = function (array, targetValue) {
   return -1;
 };
 
-// repeat a string
-function repeatChar(char, num) {
-  if (num <= 1) return char;
-  return char + repeatChar(char, num - 1);
+// Greatest common divisor, bigger number must go first
+function gcd(a, b, arr = [a, b]) {
+  if (arr[arr.length - 2] % arr[arr.length - 1] === 0) {
+    return arr[arr.length - 1];
+  } else {
+    let modu = arr[arr.length - 2] % arr[arr.length - 1];
+    arr.push(modu);
+    return gcd(arr[arr.length - 1], modu, arr);
+  }
 }

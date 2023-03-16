@@ -1,5 +1,5 @@
 <!--
-goal wpm = 44(a lot of them)
+goal wpm = 45(a lot of them)
 * when I'm working on job, stay at current wpm and move up when I'm free of job
 after 48 completion, new code
 backtracking after completion: 9wpm
@@ -12,10 +12,10 @@ async await article: Managing errors and return values
 html/css: exercises 6 ch79
 
 Algorithms Illuminated (Part 1): pg 38
-MathCS: pg 59
+MathCS: pg 66
 -->
 
 <!--
-Phyhics book(ch1-ch14): pg 59
+Phyhics book(ch1-ch14): pg 66
 Calculus book: pg 41
 -->
