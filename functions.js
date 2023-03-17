@@ -716,8 +716,9 @@ const binarySearch = function (array, targetValue) {
   return -1;
 };
 
-// Greatest common divisor, bigger number must go first
+// Greatest common divisor
 function gcd(a, b, arr = [a, b]) {
+  if (a > b) [a, b] = [b, a];
   if (arr[arr.length - 2] % arr[arr.length - 1] === 0) {
     return arr[arr.length - 1];
   } else {
