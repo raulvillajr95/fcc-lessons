@@ -89,7 +89,7 @@
 # beyond_headers = ''.join(text.split('\r\n\r\n')[1:])
 # print(beyond_headers, end='')
 
-from urllib.request import urlopen
+import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup
 import ssl
 
@@ -98,18 +98,22 @@ ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
-url = input('Enter - ')
-html = urlopen(url, context=ctx).read()
-soup = BeautifulSoup(html, "html.parser")
+url = input('Enter URL: ')
+count = input('Enter count: ')
+position = input('Enter position: ')
+html = urllib.request.urlopen(url, context=ctx).read()
+soup = BeautifulSoup(html, 'html.parser')
 
 # Retrieve all of the anchor tags
-spans = soup('span')
-count = 0
-for span in spans:
-    # Look at the parts of a tag
-    # print('SPAN:', span)
-    # print('Contents:', span.contents[0])
-    count = count + int(span.contents[0])
-#     print('Attrs:', tag.attrs)
-print(count)
+tags = soup('a')
+# for tag in tags:
+#     print(tag.get('href', None))
+
+for i in range(int(count)):
+    url = tags[int(position)-1].get('href', None)
+    html = urllib.request.urlopen(url, context=ctx).read()
+    soup = BeautifulSoup(html, 'html.parser')
+    tags = soup('a')
+    print(url)
+
 

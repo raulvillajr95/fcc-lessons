@@ -727,3 +727,10 @@ function gcd(a, b, arr = [a, b]) {
     return gcd(arr[arr.length - 1], modu, arr);
   }
 }
+
+// remove duplicates in string
+function removeDuplicatesStr(str, arr = [], counter = str.length) {
+  if (!arr.includes(str[counter])) arr.push(str[counter]);
+  if (counter < 0) return arr.join('');
+  return removeDuplicatesStr(str, arr, counter - 1);
+}
