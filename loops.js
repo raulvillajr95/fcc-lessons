@@ -12,47 +12,33 @@
  */
 
 function validParentheses(str) {
-  if (str.length === 0) return true;
-  let message;
-
-  const firstHalf = str.slice(0, Math.floor(str.length / 2));
-  const secondHalf = str.slice(Math.floor(str.length / 2));
-
-  // console.log(firstHalf);
-  // console.log(secondHalf);
-  // console.log(firstHalf.match(/[(]/gi).length);
-  // console.log(secondHalf.match(/[()]/gi).length);
-  // console.log(str.slice(0, Math.floor(str.length / 2)), 'test');
-
-  switch (true) {
-    case str.length % 2 === 1:
-      message = false;
-      break;
-    case str[0] === ')':
-      message = false;
-      break;
-    case str[str.length - 1] === '(':
-      message = false;
-      break;
-    case firstHalf.match(/[(]/gi).length !== secondHalf.match(/[(]/gi).length:
-      message = false;
-      break;
-    default:
-      message = true;
-      break;
-  }
-  return message;
+  // odd numbers out
+  // first needs to be '('
+  // last needs to be ')'
+  // '' emptys are valid
 }
 // true
-console.log(validParentheses('()'));
-console.log(validParentheses('((()))'));
-console.log(validParentheses('()()()'));
-console.log(validParentheses('(()())()'));
-console.log(validParentheses('()(())((()))(())()'));
+// console.log(validParentheses('()'));
+// ('())(()');
+// console.log(validParentheses('((()))'));
+// ('())(()');
+// console.log(validParentheses('()()()'));
+// ('())(()');
+// console.log(validParentheses('(()())()'));
+// ('())(()');
+// console.log(validParentheses('()(())((()))(())()'));
+// '())(()'.repeat(3);
+// console.log('(()())())(()())(()'.length);
 
 // false
-// console.log(validParentheses(''));
-// console.log(validParentheses(''));
-// console.log(validParentheses(''));
-// console.log(validParentheses(''));
+// console.log(validParentheses(')(')); X
+// console.log(validParentheses('()()(')); X
+// console.log(validParentheses('((())')); X
 // console.log(validParentheses('())(()'));
+// console.log(validParentheses(')()')); X
+// console.log(validParentheses(')')); X
+let n = 77;
+let f =
+  (1 / Math.sqrt(5)) * ((1 + Math.sqrt(5)) / 2) ** n -
+  (1 / Math.sqrt(5)) * ((1 - Math.sqrt(5)) / 2) ** n;
+console.log(Math.round(f));

@@ -734,3 +734,5 @@ function removeDuplicatesStr(str, arr = [], counter = str.length) {
   if (counter < 0) return arr.join('');
   return removeDuplicatesStr(str, arr, counter - 1);
 }
+
+// remove duplicates in array
