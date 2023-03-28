@@ -202,7 +202,7 @@ function randomizeCharsInArray(arr) {
   for (let i = 0; i < arr.length; i++) {
     let randomInt = Math.floor(Math.random() * copChar.length);
     rand.unshift(copChar[randomInt]);
-    let firstChar = rand[0];
+let firstChar = rand[0];
     copChar = removeOneFromArr(copChar, copChar.indexOf(firstChar));
   }
   return rand;
@@ -736,3 +736,12 @@ function removeDuplicatesStr(str, arr = [], counter = str.length) {
 }
 
 // remove duplicates in array
+function removeDuplicatesArr(inp, counter = 0, arr = []) {
+  if (counter >= inp.length - 1) {
+    if (!arr.includes(inp[counter])) arr.push(inp[counter]);
+    return arr;
+  } else {
+    if (!arr.includes(inp[counter])) arr.push(inp[counter]);
+    return removeDuplicatesArr(inp, counter + 1, arr);
+  }
+}
