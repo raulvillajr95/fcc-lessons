@@ -10,24 +10,22 @@
 /**
  * if looping, use recursion
  *
- * then two years
- * then start looping it
- *  then do the base case
+ * divisible by 5
+ * not divisible by 10
  */
 
-function money(principal, interest, tax, desire) {
-  let interestFirst;
-  let interestAfTx;
-  let final = principal;
-  let count = 0;
-
-  while (final < desire) {
-    interestFirst = final * interest;
-    interestAfTx = interestFirst - interestFirst * tax;
-    final = final + interestAfTx;
-    count += 1;
+function sequenceSum(begin, end, step, count = 0) {
+  // let count = 0;
+  // for (let i = begin; i <= end; i += step) {
+  //   count += i;
+  // }
+  // return count;
+  if (begin >= end) {
+    count += begin;
+    return count;
+  } else {
+    count += begin;
+    return sequenceSum((begin += step), end, step, count);
   }
-
-  return count;
 }
-console.log(money(1000, 0.01625, 0.18, 1200));
+console.log(sequenceSum(1, 5, 1));

@@ -171,3 +171,7 @@ def test():
     nodes = [20, 21, 22, 23, 24, 25]
     tour = create_tour(nodes)
     return is_eulerian_tour(nodes, tour)
+
+def multiply(a, b):
+    return a * b
+print(multiply(3, 3))

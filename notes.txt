@@ -8,12 +8,12 @@ lines to practice = 15(15 is max on speedcoder)
 
 key combiner: 17 correct
 big keyboard: 2 correct
-vimtutor: 1.3
+vimtutor: 1.6
 
-html/css: exercises 6 ch81
+html/css: exercises 6 ch82
 
-Algorithms Illuminated (Part 2): pg 36
-MathCS: pg 266
+Algorithms Illuminated (Part 2): pg 61
+MathCS: pg 281
 -->
 
 <!--
