@@ -10,22 +10,17 @@
 /**
  * if looping, use recursion
  *
- * divisible by 5
- * not divisible by 10
+ * 3 = 180
+ * 4 = 360
+ *
+ *
  */
 
-function sequenceSum(begin, end, step, count = 0) {
-  // let count = 0;
-  // for (let i = begin; i <= end; i += step) {
-  //   count += i;
-  // }
-  // return count;
-  if (begin >= end) {
-    count += begin;
-    return count;
-  } else {
-    count += begin;
-    return sequenceSum((begin += step), end, step, count);
-  }
+function checkCoupon(code1, code2, date1, date2) {
+  let dateOne = new Date(date1);
+  let dateOneMil = dateOne.valueOf();
+  let dateTwo = new Date(date2);
+  let dateTwoMil = dateTwo.valueOf();
+  return dateOneMil <= dateTwoMil && code1 === code2;
 }
-console.log(sequenceSum(1, 5, 1));
+console.log(checkCoupon('123', '123', 'July 9, 2015', 'July 9, 2015'));
