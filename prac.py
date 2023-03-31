@@ -90,8 +90,11 @@
 # print(beyond_headers, end='')
 
 
-import math
+def multiples(integer, limit):
+    lst = []
 
-def make_negative(num):
-    return -abs(num)
-print(make_negative(-5))
+    for i in range(integer,limit + 1):
+        if i % integer == 0:
+            lst.append(i)
+    return lst
+print(multiples(2,6))

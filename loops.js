@@ -16,11 +16,7 @@
  *
  */
 
-function checkCoupon(code1, code2, date1, date2) {
-  let dateOne = new Date(date1);
-  let dateOneMil = dateOne.valueOf();
-  let dateTwo = new Date(date2);
-  let dateTwoMil = dateTwo.valueOf();
-  return dateOneMil <= dateTwoMil && code1 === code2;
+function circleOfNumbers(n, firstNumber) {
+  return firstNumber >= n / 2 ? firstNumber - n / 2 : n / 2 + firstNumber;
 }
-console.log(checkCoupon('123', '123', 'July 9, 2015', 'July 9, 2015'));
+console.log(circleOfNumbers(10, 8));

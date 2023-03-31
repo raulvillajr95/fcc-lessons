@@ -13,7 +13,7 @@ vimtutor: 1.6
 html/css: exercises 6 ch82
 
 Algorithms Illuminated (Part 2): pg 85
-MathCS: pg 311
+MathCS: pg 331
 -->
 
 <!--
