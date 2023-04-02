@@ -90,11 +90,8 @@
 # print(beyond_headers, end='')
 
 
-def multiples(integer, limit):
-    lst = []
+import re
 
-    for i in range(integer,limit + 1):
-        if i % integer == 0:
-            lst.append(i)
-    return lst
-print(multiples(2,6))
+def no_space(x):
+    return re.sub('\s', '', x)
+print(no_space("8 j 8   mBliB8g  imjB8B8  jl  B"))
