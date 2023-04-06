@@ -42,6 +42,3 @@
 #     except:
 #         print('Not a country')        
 
-# def greeting(name):
-#     return "Hello, " + name + " how are you doing today?"
-# print(greeting('Raul'))
