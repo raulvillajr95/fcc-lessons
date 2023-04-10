@@ -8,25 +8,21 @@
  *
  */
 
-function selectionSort(array) {
-  for (let i = 0; i < array.length; i++) {
-    let lowerNumberIndex = i;
-    for (let j = i + 1; j < array.length; j++) {
-      if (array[j] < array[lowerNumberIndex]) {
-        lowerNumberIndex = j;
-      }
-    }
-    if (lowerNumberIndex != i) {
-      let temp = array[i];
-      array[i] = array[lowerNumberIndex];
-      array[lowerNumberIndex] = temp;
+function findFirstNonDuplicate(str) {
+  const freq = {};
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    freq[char] = (freq[char] || 0) + 1;
+  }
+
+  for (let j = 0; j < str.length; j++) {
+    const char = str[j];
+    if (freq[char] === 1) {
+      return char;
     }
   }
-  return array;
+
+  return null;
 }
-console.log(
-  selectionSort([
-    3, 6, 1, 3, 6, 1, 3, 6, 1, 3, 6, 1, 6, 1, 3, 6, 1, 3, 6, 1, 3, 6, 1, 6, 1,
-    3, 6, 1, 3, 6, 1, 3, 6, 1, 6, 1, 3, 6, 1, 3, 6, 1, 3, 6, 1,
-  ])
-);
+console.log(findFirstNonDuplicate('minimum'));

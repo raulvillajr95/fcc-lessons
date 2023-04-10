@@ -11,25 +11,57 @@
  * if looping, use recursion
  */
 
-function houses(address, n) {
-  let right = [];
-  let left = [];
-  for (let i = 1; i <= n * 2; i++) {
-    if (i % 2 === 0) {
-      right.unshift(i);
-    } else {
-      left.push(i);
-    }
-  }
-  return [right, left];
-}
-console.log(houses(0, 3));
+// function isSubset(array1, array2) {
+//   let largerArray;
+//   let smallerArray;
 
-function overTheRoad(address, n) {
-  if (address % 2 === 0) {
-    return (address - (n * 2 + 1)) / -1;
-  } else {
-    return -address + (n * 2 + 1);
+//   if (array1.length > array2.length) {
+//     largerArray = array1;
+//     smallerArray = array2;
+//   } else {
+//     largerArray = array2;
+//     smallerArray = array1;
+//   }
+
+//   for (let i = 0; i < smallerArray.length; i++) {
+//     let foundMatch = false;
+//   }
+//
+
+function sortNumFirstArray(arr) {
+  let len = arr.length;
+  let emp = [];
+  let highest = [0, ,];
+  for (let j = 0; j < len; j++) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i][0] > highest[0]) {
+        highest = arr[i];
+      }
+    }
+    emp.unshift(highest);
+    let index = arr.indexOf(highest);
+    if (index > -1) {
+      arr.splice(index, 1);
+    }
+    highest = [0, ,];
   }
+  return emp;
 }
-console.log(houses2(2, 3));
+
+function sortByStrLength(arr) {
+  let arrWLength = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    arrWLength.push([arr[i].length, arr[i]]);
+  }
+
+  let sortedWLength = sortNumFirstArray(arrWLength);
+
+  let sortedNoLength = [];
+
+  for (let j = 0; j < sortedWLength.length; j++) {
+    sortedNoLength.push(sortedWLength[i][1]);
+  }
+  return sortedWLength;
+}
+console.log(sortByStrLength(['Telescopes', 'Glasses', 'Eyes', 'Monocles']));

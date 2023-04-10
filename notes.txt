@@ -9,12 +9,12 @@ lines to practice = 15(15 is max on speedcoder)
 
 key combiner: 17 correct
 big keyboard: 2 correct
-vimtutor: 4.3
+vimtutor: 5.3
 
-html/css: exercises 6 ch85
+html/css: exercises 6 ch86
 js: exercises 4 #65
 
-A Common Sense Guide: pg 91
+A Common Sense Guide: pg 148
 Algorithms Illuminated (Part 2): pg 160
 -->
 
@@ -22,3 +22,4 @@ Algorithms Illuminated (Part 2): pg 160
 Phyhics book(ch1-ch14): pg 71
 Calculus book: pg 55
 -->
+
