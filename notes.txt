@@ -9,7 +9,7 @@ lines to practice = 15(15 is max on speedcoder)
 
 key combiner: 17 correct
 big keyboard: 2 correct
-vimtutor: 5.4
+vimtutor: ch 5 summary
 
 html/css: exercises 6 ch86
 js: exercises 4 #65

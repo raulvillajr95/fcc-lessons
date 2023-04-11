@@ -1,9 +1,9 @@
-STATUS_CODES = {200 => "OK", 301 => "Moved Permanently",
-                401 => "Unauthorized", 404 => "Not Found",
-                500 => "Internal Server Error"}
-
-def status_code_meaning number
-  return STATUS_CODES[number]
+def get_sum(array)
+  size = array.length
+  if size == 1
+    return array[0]
+  else
+    return (array[0] + get_sum(array[1...size]))
+  end
 end
-
-puts status_code_meaning 200
+puts get_sum([1,2,3])
