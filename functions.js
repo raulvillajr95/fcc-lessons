@@ -84,23 +84,21 @@ function reverseArr(arr) {
 
 // Sort Array by first index number e.g. [[1, 'Fred'], [2, 'Jesus']]
 function sortNumFirstArray(arr) {
-  let len = arr.length;
-  let emp = [];
-  let highest = [0, ,];
-  for (let j = 0; j < len; j++) {
+  let newArray = [];
+
+  let highest = [-Infinity];
+  while (arr.length > 0) {
     for (let i = 0; i < arr.length; i++) {
       if (arr[i][0] > highest[0]) {
         highest = arr[i];
       }
     }
-    emp.unshift(highest);
-    let index = arr.indexOf(highest);
-    if (index > -1) {
-      arr.splice(index, 1);
-    }
-    highest = [0, ,];
+    newArray.unshift(highest);
+    arr.splice(arr.indexOf(highest), 1);
+    highest = [-Infinity];
   }
-  return emp;
+
+  return newArray;
 }
 
 // e.g. [[1,2,3],[1,2,3],[1,2,3]]
@@ -202,7 +200,7 @@ function randomizeCharsInArray(arr) {
   for (let i = 0; i < arr.length; i++) {
     let randomInt = Math.floor(Math.random() * copChar.length);
     rand.unshift(copChar[randomInt]);
-let firstChar = rand[0];
+    let firstChar = rand[0];
     copChar = removeOneFromArr(copChar, copChar.indexOf(firstChar));
   }
   return rand;
@@ -744,4 +742,13 @@ function removeDuplicatesArr(inp, counter = 0, arr = []) {
     if (!arr.includes(inp[counter])) arr.push(inp[counter]);
     return removeDuplicatesArr(inp, counter + 1, arr);
   }
+}
+
+// compare 2 arrays, returns boolean
+function compareArrays(arr1, arr2) {
+  if (arr1.length !== arr2.length) return false;
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) return false;
+  }
+  return true;
 }

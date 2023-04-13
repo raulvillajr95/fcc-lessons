@@ -11,16 +11,22 @@
  * if looping, use recursion
  */
 
-function nb_year(p0, percent, newInhab, p) {
-  let start = p0;
-  percent = percent / 100;
-
-  let count = 0;
-  while (start < p) {
-    count += 1;
-    start = Math.floor(start + start * percent + newInhab);
+function orderedCount(str) {
+  let obj = {};
+  let letters = [];
+  for (let i = 0; i < str.length; i++) {
+    if (!letters.includes(str[i])) letters.push(str[i]);
+    if (obj[str[i]]) {
+      obj[str[i]] += 1;
+    } else {
+      obj[str[i]] = 1;
+    }
   }
 
-  return count;
+  let arr = [];
+  for (let j = 0; j < letters.length; j++) {
+    arr.push([letters[j], obj[letters[j]]]);
+  }
+  return arr;
 }
-console.log(nb_year(1500000, 2.5, 10000, 2000000));
+console.log(orderedCount('233312'));
