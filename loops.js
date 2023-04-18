@@ -11,22 +11,22 @@
  * if looping, use recursion
  */
 
-function orderedCount(str) {
-  let obj = {};
-  let letters = [];
-  for (let i = 0; i < str.length; i++) {
-    if (!letters.includes(str[i])) letters.push(str[i]);
-    if (obj[str[i]]) {
-      obj[str[i]] += 1;
-    } else {
-      obj[str[i]] = 1;
-    }
-  }
+// function potatoes(p0, w0, p1) {
+//   let p0Per = p0 / 100;
+//   let p1Per = p1 / 100;
+//   let m = w0 * (1 - p0Per);
+//   let w = (p1Per * m) / (1 - p1Per);
+//   let t = w + m;
+//   return t;
+// }
 
-  let arr = [];
-  for (let j = 0; j < letters.length; j++) {
-    arr.push([letters[j], obj[letters[j]]]);
-  }
-  return arr;
+// function potatoes(x, y, z) {
+//   return Math.trunc(
+//     ((z / 100) * (y * (1 - x / 100))) / (1 - z / 100) + y * (1 - x / 100)
+//   );
+// }
+
+function potatoes(x, y, z) {
+  return Math.trunc((100 * y - x * y) / (100 - z));
 }
-console.log(orderedCount('233312'));
+console.log(potatoes(82, 127, 80));

@@ -752,3 +752,13 @@ function compareArrays(arr1, arr2) {
   }
   return true;
 }
+
+// turns letter in to a number 1-26
+function letterToNumber(letter) {
+  return letter.toLowerCase().charCodeAt(0) - 96;
+}
+
+// turn numbers 1-26 to letters a-z
+function numberToLetter(number) {
+  return String.fromCharCode(number + 96);
+}
