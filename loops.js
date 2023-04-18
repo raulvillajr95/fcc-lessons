@@ -11,22 +11,32 @@
  * if looping, use recursion
  */
 
-// function potatoes(p0, w0, p1) {
-//   let p0Per = p0 / 100;
-//   let p1Per = p1 / 100;
-//   let m = w0 * (1 - p0Per);
-//   let w = (p1Per * m) / (1 - p1Per);
-//   let t = w + m;
-//   return t;
-// }
+function balanced(num) {
+  let strNum = num.toString();
+  let midDig;
+  let leftNums;
+  let rightNums;
+  let leftTotal = 0;
+  let rightTotal = 0;
 
-// function potatoes(x, y, z) {
-//   return Math.trunc(
-//     ((z / 100) * (y * (1 - x / 100))) / (1 - z / 100) + y * (1 - x / 100)
-//   );
-// }
+  if (strNum.length % 2 === 0) {
+    let leftDigit = strNum[strNum.length / 2 - 1];
+    let rightDigit = strNum[strNum.length / 2];
+    midDig = Number(`${leftDigit}${rightDigit}`);
 
-function potatoes(x, y, z) {
-  return Math.trunc((100 * y - x * y) / (100 - z));
+    leftNums = strNum.slice(0, strNum.length / 2 - 1);
+    rightNums = strNum.slice(strNum.length / 2 + 1);
+  } else {
+    let middle = Math.floor(strNum.length / 2);
+    midDig = Number(strNum[middle]);
+
+    leftNums = strNum.slice(0, middle);
+    rightNums = strNum.slice(middle + 1);
+  }
+  for (let i = 0; i < leftNums.length; i++) {
+    leftTotal += Number(leftNums[i]);
+    rightTotal += Number(rightNums[i]);
+  }
+  return leftTotal === rightTotal ? 'Balanced' : 'Not Balanced';
 }
-console.log(potatoes(82, 127, 80));
+console.log(balanced(195691));
