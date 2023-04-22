@@ -1,7 +1,7 @@
 <!--
 goal wpm = 46(a lot of them)
 big keyboard = 42
-random code wpm = 41
+random code wpm = 43
 * when I'm working on job, stay at current wpm and move up when I'm free of job
 after 48 completion, new code
 backtracking after completion: 9wpm
@@ -9,7 +9,7 @@ lines to practice = 15(15 is max on speedcoder)
 
 key combiner: 17 correct
 big keyboard: 2 correct
-vim user manual: 2.3
+vim user manual: 2 summary 21)
 
 html/css: exercises 7(2nd)
 js: exercises 4 #65
@@ -17,5 +17,5 @@ js: exercises 4 #65
 
 <!--
 Phyhics book(ch1-ch14): pg 72
-Calculus book: pg 63
+Calculus book: pg 69
 -->

@@ -1,65 +1,171 @@
 question = """
-Question 7
-Consider an alphabet with five letters, 
+Question 2
+Consider the following optimization to the Bellman-Ford algorithm.  Given a graph 
+�
+=
+(
+�
+,
+�
+)
+G=(V,E) with real-valued edge lengths, we label the vertices 
+�
+=
 {
-�
+1
 ,
-�
+2
 ,
-�
+3
 ,
-�
+…
 ,
 �
 }
-{a,b,c,d,e}, and suppose we know the frequencies 
+V={1,2,3,…,n}.  The source vertex 
 �
+s should be labeled "1", but the rest of the labeling can be arbitrary.  Call an edge 
+(
 �
-=
-0.28
-f 
-a
-​
- =0.28, 
+,
 �
+)
+∈
 �
-=
-0.27
-f 
-b
-​
- =0.27, 
+(u,v)∈E forward if 
 �
+<
 �
-=
-0.2
-f 
-c
-​
- =0.2, 
+u<v and backward if 
 �
+>
+�
+u>v.  In every odd iteration of the outer loop (i.e., when 
 �
 =
-0.15
-f 
-d
-​
- =0.15, and 
+1
+,
+3
+,
+5
+,
+.
+.
+.
+i=1,3,5,...), we visit the vertices in the order from 1 to 
 �
+n.  In every even iteration of the outer loop (when 
 �
 =
-0.1
-f 
-e
+2
+,
+4
+,
+6
+,
+.
+.
+.
+i=2,4,6,...), we visit the vertices in the order from 
+�
+n to 1.  In every odd iteration, we update the value of 
+�
+[
+�
+,
+�
+]
+A[i,v] using only the forward edges of the form 
+(
+�
+,
+�
+)
+(w,v), using the most recent subproblem value for 
+�
+w (that from the current iteration rather than the previous one).   That is, we compute 
+�
+[
+�
+,
+�
+]
+=
+min
+⁡
+{
+�
+[
+�
+−
+1
+,
+�
+]
+,
+min
+⁡
+(
+�
+,
+�
+)
+�
+[
+�
+,
+�
+]
++
+�
+�
+�
+}
+A[i,v]=min{A[i−1,v],min 
+(w,v)
 ​
- =0.1. What is the expected number of bits used by Huffman's coding scheme to encode a 1000-letter document?
+ A[i,w]+c 
+wv
+​
+ }, where the inner minimum ranges only over forward edges sticking into 
+�
+v (i.e., with 
+�
+<
+�
+w<v).  Note that all relevant subproblems from the current round (
+�
+[
+�
+,
+�
+]
+A[i,w] for all 
+�
+<
+�
+w<v with 
+(
+�
+,
+�
+)
+∈
+�
+(w,v)∈E) are available for constant-time lookup.  In even iterations, we compute this same recurrence using only the backward edges (again, all relevant subproblems from the current round are available for constant-time lookup).  Which of the following is true about this modified Bellman-Ford algorithm?
 
 1 point
 
-2450
-2520
-2230
-2250
+It correctly computes shortest paths if and only if the input graph has no negative-cost cycle.
+
+
+It correctly computes shortest paths if and only if the input graph has no negative edges.
+
+
+It correctly computes shortest paths if and only if the input graph is a directed acyclic graph.
+
+
+This algorithm has an asymptotically superior running time to the original Bellman-Ford algorithm.
 """
 
 solution = ""
@@ -87,21 +193,3 @@ print(solution)
 # for tag in tags:
 #     print(tag.get('href', None))
 
-# class PartyAnimal:
-#     x = 0
-
-#     def __init__(self):
-#         print('I am constructed')
-
-#     def party(self):
-#         self.x = self.x + 1
-#         print("So far", self.x)
-    
-#     def __del__(self):
-#         print('I am desctructed', self.x)
-
-# an = PartyAnimal()
-# an.party()
-# an.party()
-# an = 42
-# print('an contains', an)

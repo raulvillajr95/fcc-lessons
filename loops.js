@@ -11,32 +11,62 @@
  * if looping, use recursion
  */
 
-function balanced(num) {
-  let strNum = num.toString();
-  let midDig;
-  let leftNums;
-  let rightNums;
-  let leftTotal = 0;
-  let rightTotal = 0;
-
-  if (strNum.length % 2 === 0) {
-    let leftDigit = strNum[strNum.length / 2 - 1];
-    let rightDigit = strNum[strNum.length / 2];
-    midDig = Number(`${leftDigit}${rightDigit}`);
-
-    leftNums = strNum.slice(0, strNum.length / 2 - 1);
-    rightNums = strNum.slice(strNum.length / 2 + 1);
-  } else {
-    let middle = Math.floor(strNum.length / 2);
-    midDig = Number(strNum[middle]);
-
-    leftNums = strNum.slice(0, middle);
-    rightNums = strNum.slice(middle + 1);
-  }
-  for (let i = 0; i < leftNums.length; i++) {
-    leftTotal += Number(leftNums[i]);
-    rightTotal += Number(rightNums[i]);
-  }
-  return leftTotal === rightTotal ? 'Balanced' : 'Not Balanced';
+function Size(width = 80, height = 60) {
+  this.width = width;
+  this.height = height;
 }
-console.log(balanced(195691));
+Size.prototype.resize = function (newWidth, newHeight) {
+  this.width = newWidth;
+  this.height = newHeight;
+};
+// const size = new Size(1080, 764);
+// console.log(size.width);
+// console.log(size.height);
+// size.resize(1920, 1080);
+// console.log(size.width);
+// console.log(size.heigh
+
+function Position(x = 0, y = 0) {
+  this.x = x;
+  this.y = y;
+}
+Position.prototype.move = function (movedX, movedY) {
+  this.x = movedX;
+  this.y = movedY;
+};
+// const point = new Position();
+// console.log(point.x);
+// console.log(point.y);
+// point.move(100, 200);
+// console.log(point.x);
+// console.log(point.y);
+
+class ProgramWindow {
+  constructor() {
+    this.screenSize = new Size(800, 600);
+    this.size = new Size();
+    this.position = new Position();
+  }
+
+  resize(size) {
+    if (size.width < 1) {
+      this.size.width = 1;
+    } else if (size.width + this.position.x > this.screenSize.width) {
+      this.size.width = this.screenSize.width - this.position.x;
+    } else {
+      this.size.width = size.width;
+    }
+    if (size.height < 1) {
+      this.size.height = 1;
+    } else if (size.height + this.position.y > this.screenSize.height) {
+      this.size.height = this.screenSize.height - this.position.y;
+    } else {
+      this.size.height = size.height;
+    }
+  }
+}
+const programWindow = new ProgramWindow();
+const newSize = new Size(600, 400);
+programWindow.resize(newSize);
+console.log(programWindow.size.width);
+console.log(programWindow.size.height);
