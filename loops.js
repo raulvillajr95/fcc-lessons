@@ -64,9 +64,44 @@ class ProgramWindow {
       this.size.height = size.height;
     }
   }
+
+  move(position) {
+    if (position.x < 0) {
+      this.position.x = 0;
+    } else if (position.x + this.size.width > this.screenSize.width) {
+      this.position.x = this.screenSize.width - this.size.width;
+    } else {
+      this.position.x = position.x;
+    }
+
+    if (position.y < 0) {
+      this.position.y = 0;
+    } else if (position.y + this.size.height > this.screenSize.height) {
+      this.position.y = this.screenSize.height - this.size.height;
+    } else {
+      this.position.y = position.y;
+    }
+  }
 }
 const programWindow = new ProgramWindow();
-const newSize = new Size(600, 400);
-programWindow.resize(newSize);
+
+// const newSize = new Size(600, 400);
+// programWindow.resize(newSize);
+// console.log(programWindow.size.width);
+// console.log(programWindow.size.height);
+
+function changeWindow(programWindow) {
+  programWindow.size.width = 400;
+  programWindow.size.height = 300;
+
+  programWindow.position.x = 100;
+  programWindow.position.y = 150;
+
+  return programWindow;
+}
+
 console.log(programWindow.size.width);
-console.log(programWindow.size.height);
+// changeWindow(programWindow);
+const updateWindow = changeWindow(programWindow);
+console.log(updateWindow.size.width, 'size width');
+console.log(updateWindow.size.height, 'size height');
