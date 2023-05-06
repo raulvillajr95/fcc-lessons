@@ -24,13 +24,3 @@ function clearDisplay(element) {
     elem.children[0].remove();
   }
 }
-
-// return string version of european num format
-let eurPointsFormat = (num) => {
-  let strNum = num.toString();
-  if (num >= 1000 || num <= -1000) {
-    return strNum.slice(0, -3) + '.' + strNum.slice(-3, strNum.length);
-  } else {
-    return strNum;
-  }
-};

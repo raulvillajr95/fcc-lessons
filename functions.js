@@ -762,3 +762,71 @@ function letterToNumber(letter) {
 function numberToLetter(number) {
   return String.fromCharCode(number + 96);
 }
+
+// turn str of binary nums to int of regular nums
+function binaryStrToNum(strBin) {
+  let total = 0;
+  let reversed = strBin.split('').reverse().join('');
+  for (let i = 0; i < strBin.length; i++) {
+    console.log(reversed[i]);
+    console.log(Number(reversed[i]) * 2 ** i, i);
+    total += Number(reversed[i]) * 2 ** i;
+  }
+  return total;
+}
+
+// turn number to str binary
+function numToStrBinary(num) {
+  return num.toString(2);
+}
+
+// enter string and amount of digit length to pad to
+function padWithZeroes(str, num) {
+  let arr = [];
+  for (let i = 0; i < num; i++) {
+    if (str[i]) {
+      arr.push(str[i]);
+    } else {
+      arr.unshift('0');
+    }
+  }
+  return arr.join('');
+}
+
+// return string version of european num format
+let eurPointsFormat = (num) => {
+  let strNum = num.toString();
+  if (num >= 1000 || num <= -1000) {
+    return strNum.slice(0, -3) + '.' + strNum.slice(-3, strNum.length);
+  } else {
+    return strNum;
+  }
+};
+
+// input string, return array of the string rotated in every position
+function rotations(str) {
+  let arr = [str];
+  for (let i = 0; i < str.length - 1; i++) {
+    let lastWord = arr[arr.length - 1];
+    let word =
+      lastWord[lastWord.length - 1] + lastWord.slice(0, lastWord.length - 1);
+    arr.push(word);
+  }
+  return arr;
+}
+
+// input 0 or more objects with number values
+// output one object with values combines
+function combineObjects() {
+  let obj = { ...arguments[0] };
+  for (let i = 1; i < arguments.length; i++) {
+    for (const key of Object.keys(arguments[i])) {
+      if (obj[key]) {
+        obj[key] += arguments[i][key];
+      } else {
+        obj[key] = arguments[i][key];
+      }
+    }
+  }
+  return obj;
+}

@@ -6,19 +6,20 @@
  *
  *
  */
-
-/**
- * if looping, use recursion
- */
-
-function partial(arr, str) {
-  let newArray = [];
-  for (let i = 0; i < arr.length; i++) {
-    // console.log(arr[i].toLowerCase().match(str), arr[i]);
-    if (arr[i].toLowerCase().match(str.toLowerCase())) {
-      newArray.push(arr[i]);
-    }
-  }
-  return newArray.length == 0 ? ['Empty'] : newArray;
+function letterToNumber(letter) {
+  if (letter === ' ') return 0;
+  return letter.toLowerCase().charCodeAt(0) - 96;
 }
-console.log(partial(['ho', 'milk', 'rcury', 'fish'], 'me'));
+
+function wordValue(arr) {
+  let scores = [];
+  for (let i = 0; i < arr.length; i++) {
+    let wordScore = 0;
+    for (let j = 0; j < arr[i].length; j++) {
+      wordScore += letterToNumber(arr[i][j]);
+    }
+    scores.push(wordScore * (i + 1));
+  }
+  return scores;
+}
+console.log(wordValue(['abc abc', 'abc abc', 'abc', 'abc']));
