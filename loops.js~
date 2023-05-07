@@ -15,9 +15,6 @@ function mult(num) {
 }
 
 function chain(num, arr) {
-  for (let i = 0;i < arr.length;i++) {
-    num = arr[i](num)
-  }
-  return num
+  return 'yoda'
 }
 console.log(chain(2, [add, mult]))
