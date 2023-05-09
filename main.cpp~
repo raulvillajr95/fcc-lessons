@@ -4,9 +4,9 @@ using namespace std;
 
 int main() 
 {
-  cout << "+------+";
-  cout << "| Raul |";
-  cout << "+------+";
-  cout << "+------+" << endl;
+  cout << ".-.";
+  cout << " .-";
+  cout << " ..-";
+  cout << " .-.." << endl;
   return 0;
 }
