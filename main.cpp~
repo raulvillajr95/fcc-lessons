@@ -4,6 +4,9 @@ using namespace std;
 
 int main() 
 {
-  cout << "Raul" << endl;
+  cout << "+------+";
+  cout << "| Raul |";
+  cout << "+------+";
+  cout << "+------+" << endl;
   return 0;
 }
