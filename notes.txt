@@ -1,7 +1,7 @@
 <!--
 goal wpm = 47(a lot of them)
 
-vim user manual: ch 4.7
+vim user manual: ch 4.8
 
 html/css: exercises 7(2nd)
 js: exercises 4 #65
@@ -10,7 +10,7 @@ js: exercises 4 #65
 <!--
 English book1: pg 127
 C++ book: pg 62
-PreCal book: pg 33
+PreCal book: pg 36
 Calculus book: pg 75
 	answers: pg 61
 Phyhics book(ch1-ch14): pg 72
