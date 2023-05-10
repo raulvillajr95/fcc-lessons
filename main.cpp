@@ -2,13 +2,17 @@
 
 using namespace std;
 
+#include <string>
 int main() 
 {
-  cout << "List of Phrases to Translate  Spanish" << endl;
-  cout << "Good morning.                 Buen dia." << endl;
-  cout << "It is a pleasure to meet you. Un placer conocerte." << endl;
-  cout << "Please call me tomorrow.      Por favor llame mañana." << endl;
-  cout << "Have a nice day!              Tenga buen dia!" << endl;
+
+  cout << "Hello, my name is Hal!" << endl;
+  cout << "What would you like me to do?" << endl;
+  
+  string user_input;
+  getline(cin, user_input);
+
+  cout << "I am sorry, I cannot do that." << endl;
 
   return 0;
 }
