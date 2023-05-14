@@ -7,24 +7,14 @@
  *
  */
 
-function splitTheBill(group) {
-  let total = 0;
-  let amntPeople = Object.keys(group).length;
-  for (const key of Object.keys(group)) {
-    total += group[key];
+function validSpacing(str) {
+  let splat = str.split(' ')
+  let arr = []
+  for (let i = 0; i < splat.length; i++) {
+    if (splat[i]) {
+      arr.push(splat[i])
+    }
   }
-  console.log(total)
-
-  let avg = total / amntPeople;
-  console.log(avg)
-
-  for (const key of Object.keys(group)) {
-    group[key] -= Number(avg.toFixed(2));
-  }
-  return group;
+  return arr.join(' ')
 }
-console.log(splitTheBill({
-    A: 20, 
-    B: 15, 
-    C: 10
-}))
+console.log(validSpacing(' Hello world'))

@@ -1,5 +1,5 @@
 <!--
-goal wpm = 47(a lot of them)
+goal wpm = 46(a lot of them)
 
 vim user manual: ch 4.8
 
@@ -8,12 +8,13 @@ js: exercises 4 #65
 -->
 
 <!--
-English book1: pg 127
-C++ book: pg 62
-PreCal book: pg 41
+English book1: pg 134
+C++ book: pg 89
+PreCal book: pg 43
+	answers: pg 1087
 Calculus book: pg 75
 	answers: pg 61
 Phyhics book(ch1-ch14): pg 72
 	answers: pg 45
-
+-->
 
