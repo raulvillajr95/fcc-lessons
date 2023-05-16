@@ -7,11 +7,8 @@
  *
  */
 
-function evensAndOdds(num) {
-  if (num % 2 === 0) {
-    return num.toString(2)
-  } else {
-    return num.toString(16)
-  }
+function spaceAge(seconds) {
+  let earthYears = seconds / 31557600
+  return earthYears
 }
-console.log(evensAndOdds(253))
+console.log(spaceAge(31557600))

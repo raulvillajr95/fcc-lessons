@@ -7,5 +7,5 @@ int main()
   const float CM_PER_INCH = 2.54;
   float tallest_person = 187.96;
 
-  return 0
+  return 0;
 }
