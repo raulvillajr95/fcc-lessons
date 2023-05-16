@@ -7,14 +7,11 @@
  *
  */
 
-function validSpacing(str) {
-  let splat = str.split(' ')
-  let arr = []
-  for (let i = 0; i < splat.length; i++) {
-    if (splat[i]) {
-      arr.push(splat[i])
+function evensAndOdds(num) {
+    if (num % 2 === 0) {
+       return num.toString(2)
+    } else {
+       return num.toString(16)
     }
-  }
-  return arr.join(' ')
 }
-console.log(validSpacing(' Hello world'))
+console.log(evensAndOdds(253))
