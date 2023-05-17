@@ -86,10 +86,18 @@ class LinkedList {
     str += 'null'
     return str
   }
+
+  insertAt(value, index) {
+    let before = this.list[index-1];
+    let next = this.list[index];
+    console.log(before,'jjj', next)
+  }
 }
 
 let linker = new LinkedList()
 linker.prepend(2)
 linker.prepend(1)
 linker.append(3)
+linker.append(5)
 console.log(linker.toString())
+linker.insertAt(4, 3)

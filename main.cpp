@@ -1,11 +1,18 @@
 #include <iostream>
+#include <string>
+
+using namespace std;
 
 int main()
 {
-  float s = s0 + (v0 * t) + (1/2 * g * (t * t))
-  float FV = PV * pow(1 + (INT / 100), YRS)
-  float G = 4 * (PI * PI) * (pow(a, 3)/((p * p) * (m1 + m2)))
-  float c = sqrt((a * a) + (b * b) - (2 * a * b cos(Y)))
+  string s = "Hello";
+  string t = "World";
+
+  cout << s.length() + t.length() << endl;
+  cout << s.substr(1, 2) << endl;
+  cout << s.substr(s.length() / 2, 1) << endl;
+  cout << s + t << endl;
+  cout << t + s << endl;
 
   return 0;
 }
