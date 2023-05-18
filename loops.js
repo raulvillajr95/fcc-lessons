@@ -7,39 +7,17 @@
  *
  */
 
-class Matrix {
-  constructor(matrixStr) {
-    this.matrixStr = matrixStr;
-  }
-
-  get rows() {
-    let splat = this.matrixStr.split('\n') 
-    let arr = []
-    for (let i = 0; i < splat.length; i++) {
-      let row = []
-      let splatRow = splat[i].split(' ')
-      for (let j = 0; j < splatRow.length; j++) { 
-        row.push(Number(splatRow[j]))
-      }
-      arr.push(row)
+function steps(num) {
+  let count = 1
+  
+  while(num != 1){
+    if (num % 2 === 0) {
+      num = num / 2
+    } else if (num % 2 === 1) {
+      num = (num * 3) + 1
     }
-    return arr
+    count++
   }
-
-  get columns() {
-    let splat = this.matrixStr.split('\n') // column length
-    let rowLength = splat[0].split(' ').length
-    let arr = []
-
-    for(let i = 0; i < splat.length; i++) {
-      for (let j = 0; j < rowLength; j++) {
-        console.log(i, j)
-      }
-    }
-
-    return arr   
-  }
+  return count
 }
-
-let matrix = new Matrix('1 2 3\n4 5 6\n7 8 9')
-console.log(matrix.columns[2])
+console.log(collatz(12))

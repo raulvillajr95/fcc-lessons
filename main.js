@@ -90,6 +90,18 @@ class LinkedList {
   insertAt(value, index) {
     let before = this.list[index-1];
     let next = this.list[index];
+    let inserting = new Node(value, next)
+    console.log(this.list.slice(0,index), 'before')
+    console.log(this.list.slice(index), 'after')
+
+    before.nextNode = inserting
+    inserting.nextNode = next
+
+    this.list = this.list.slice(0,index)
+      .concat(inserting)
+      .concat(this.list.slice(index))
+
+    console.log(this.list)
     console.log(before,'jjj', next)
   }
 }
