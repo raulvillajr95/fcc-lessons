@@ -7,19 +7,20 @@
  *
  */
 
-function collatz(num) {
-  let count = 1
-  
-  console.log(num)
-  while(num != 1){
-    if (num % 2 === 0) {
-      num = num / 2
-    } else if (num % 2 === 1) {
-      num = (num * 3) + 1
-    }
-    count++
-    console.log(num)
+function compute(str1, str2) {
+  if (str1.length != str2.length) {
+    throw new Error('strands must be of equal length')
   }
+  let count = 0
+
+  for (let i = 0; i <  str1.length; i++) {
+    if (str1[i] != str2[i]) {
+      count++
+    }
+  }
+
   return count
 }
-console.log(collatz(12))
+console.log(compute('',''))
+console.log(compute('A','A'))
+console.log(compute('GGACTGAAATCTG','GGACTGAAATCTG'))

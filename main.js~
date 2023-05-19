@@ -91,15 +91,41 @@ class LinkedList {
     let before = this.list[index-1];
     let next = this.list[index];
     let inserting = new Node(value, next)
-    console.log(this.list.slice(0,index), 'before')
-    console.log(this.list.slice(index), 'after')
+
+    if (index <= 0) {
+      this.prepend(value)
+      return
+    } else if (index >= this.list.length) {
+      this.append(value)
+      return
+    }
+
+    before.nextNode = inserting
+    inserting.nextNode = next
 
     this.list = this.list.slice(0,index)
       .concat(inserting)
       .concat(this.list.slice(index))
+  }
 
-    console.log(this.list)
-    console.log(before,'jjj', next)
+  removeAt(index) {
+    let before = this.list[index-1];
+    let removing = this.list[index];
+    let next = this.list[index + 1];
+
+    if (index <= 0) {
+      this.list.shift()
+      this.size = this.list.length
+      return
+    } else if (index >= this.list.length - 1) {
+      this.pop()
+      return
+    }
+
+    before.nextNode = next
+    this.list = this.list.slice(0,index)
+      .concat(this.list.slice(index + 1))
+    this.size = this.list.length
   }
 }
 
@@ -108,5 +134,8 @@ linker.prepend(2)
 linker.prepend(1)
 linker.append(3)
 linker.append(5)
-console.log(linker.toString())
-linker.insertAt(4, 3)
+linker.removeAt(3)
+console.log(linker.list)
+console.log(linker.size)
+console.log(linker.head)
+console.log(linker.tail)

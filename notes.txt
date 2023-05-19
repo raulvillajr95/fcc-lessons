@@ -1,14 +1,14 @@
 <!--
-goal wpm = 46(a lot of them)
+goal wpm = 47(a lot of them)
 
-vim user manual: ch 4.10
+vim user manual: ch 5.2
 
 html/css: exercises 7(2nd)
 js: exercises 4 #65
 -->
 
 <!--
-English book1: pg 140
+English book1: pg 148
 C++ book: pg 100
 PreCal book: pg 54
 	answers: pg 1087
