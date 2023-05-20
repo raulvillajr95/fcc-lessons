@@ -7,22 +7,86 @@
  *
  */
 
-function convert(num) {
-  if (num % 3 != 0 && num % 5 != 0 && num % 7 != 0) {
-    return num.toString()
+class BankAccount {
+  constructor() {
+    this.balance = null
+    this.isOpen = false
+    this.setBalance = false
   }
-  let message = ''
-  if (num % 3 === 0) {
-    message += 'Pling'
+
+  open() {
+    if (this.isOpen === true) {
+      throw new ValueError
+    }
+    this.setBalance = true
+    this.balance = 0
+    this.setBalance = false
+    this.isOpen = true
   }
-  if (num % 5 === 0) {
-    message += 'Plang'
+
+  close() {
+    if (this.isOpen === false) {
+      throw new ValueError
+    }
+    this.isOpen = false
+    this.setBalance = true
+    this.balance = null
+    this.setBalance = false
   }
-  if (num % 7 === 0) {
-    message += 'Plong'
+
+  deposit(value) {
+    if (this.isOpen === false) {
+      throw new ValueError
+    }
+    if (value < 0) {
+      throw new ValueError
+    }
+    this.setBalance = true
+    this.balance += value
+    this.setBalance = false
   }
-  return message
+
+  withdraw(value) {
+    if (this.isOpen === false) {
+      throw new ValueError
+    }
+    if (value > this.balance) {
+      throw new ValueError
+    }
+    if (value < 0) {
+      throw new ValueError
+    }
+
+    this.setBalance = true
+    this.balance -= value
+    this.setBalance = false
+  }
+  
+  get balance() {
+    console.log('get')
+    if (this.isOpen === false) {
+      throw new ValueError
+    }
+    return this.balance
+  }
+  
+  set balance(value) {
+    console.log('set')
+    if (this.setBalance === false) {
+      throw new Error 
+    } else {
+      console.log(value)
+      this.balance = value
+    } 
+  }
 }
-console.log(convert(1))
-console.log(convert(5))
-console.log(convert(15))
+
+class ValueError extends Error{
+  constructor() {
+    super('Bank account error')
+  }
+}
+
+const account = new BankAccount()
+account.open()
+console.log(account.balance)

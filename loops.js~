@@ -7,20 +7,84 @@
  *
  */
 
-function compute(str1, str2) {
-  if (str1.length != str2.length) {
-    throw new Error('strands must be of equal length')
+class BankAccount {
+  constructor() {
+    this.balance = null
+    this.isOpen = false
+    this.setBalance = false
   }
-  let count = 0
 
-  for (let i = 0; i <  str1.length; i++) {
-    if (str1[i] != str2[i]) {
-      count++
+  open() {
+    if (this.isOpen === true) {
+      throw new ValueError
     }
+    this.setBalance = true
+    this.balance = 0
+    this.setBalance = false
+    this.isOpen = true
   }
 
-  return count
+  close() {
+    if (this.isOpen === false) {
+      throw new ValueError
+    }
+    this.isOpen = false
+    this.setBalance = true
+    this.balance = null
+    this.setBalance = false
+  }
+
+  deposit(value) {
+    if (this.isOpen === false) {
+      throw new ValueError
+    }
+    if (value < 0) {
+      throw new ValueError
+    }
+    this.setBalance = true
+    this.balance += value
+    this.setBalance = false
+  }
+
+  withdraw(value) {
+    if (this.isOpen === false) {
+      throw new ValueError
+    }
+    if (value > this.balance) {
+      throw new ValueError
+    }
+    if (value < 0) {
+      throw new ValueError
+    }
+
+    this.setBalance = true
+    this.balance -= value
+    this.setBalance = false
+  }
+  
+  get balance() {
+    if (this.isOpen === false) {
+      throw new ValueError
+    }
+    return this.balance
+  }
+  
+  set balance(value) {
+    if (this.setBalance === false) {
+      throw new Error 
+    } else {
+      console.log(value)
+      this.balance = value
+    } 
+  }
 }
-console.log(compute('',''))
-console.log(compute('A','A'))
-console.log(compute('GGACTGAAATCTG','GGACTGAAATCTG'))
+
+class ValueError extends Error{
+  constructor() {
+    super('Bank account error')
+  }
+}
+
+const account = new BankAccount()
+account.open()
+console.log(account.balance)

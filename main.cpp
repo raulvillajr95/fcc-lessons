@@ -1,18 +1,13 @@
 #include <iostream>
-#include <string>
+#include <cmath>
 
 using namespace std;
 
 int main()
 {
-  string s = "Hello";
-  string t = "World";
 
-  cout << s.length() + t.length() << endl;
-  cout << s.substr(1, 2) << endl;
-  cout << s.substr(s.length() / 2, 1) << endl;
-  cout << s + t << endl;
-  cout << t + s << endl;
+  cout << 23456 % 10 << endl;
+  cout << 23456 / 10000 << endl;
 
   return 0;
 }

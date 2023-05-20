@@ -9,7 +9,7 @@
 def create_tour(nodes):
     # your code here
     print('creeeeeee')
-    return []
+    return [(2,3),(3,5)]
 
 #########
 
