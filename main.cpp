@@ -5,14 +5,17 @@ using namespace std;
 
 int main()
 {
-  float height = 11;
-  float width = 8.5;
-  
-  float perimeter = 2*height + 2*width;
-  float diagonal = sqrt((height * height) + (width * width));
+  cout << "Enter a number: ";
+  float num;
+  cin >> num;
 
-  cout << "Perimeter: " << perimeter << "in" << endl;
-  cout << "Diagonal: " << diagonal << "in" << endl;
-  
+  int square = num * num;
+  int cube = num * num * num;
+  int fourth = pow(num, 4);
+
+  cout << "Square: " << square << endl;
+  cout << "Cube: " << cube << endl;
+  cout << "Fourth: " << fourth << endl;
+
   return 0;
 }
