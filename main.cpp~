@@ -4,11 +4,14 @@ using namespace std;
 
 int main()
 {
-  float mm_per_in = 25.4;
-  float height = 11 * mm_per_in;
-  float width = 8.5 * mm_per_in;
+  float height = 11;
+  float width = 8.5;
+  
+  float perimeter = 2*height + 2*width;
+  float diagonal = sqrt((height * height) + (width * width));
 
-  cout << "The sheet is " << width << "mm X " << height << "mm" << endl;
-
+  cout << "Perimeter: " << perimeter << "in" << endl;
+  cout << "Diagonal: " << diagonal << "in" << endl;
+  
   return 0;
 }
