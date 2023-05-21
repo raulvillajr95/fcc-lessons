@@ -7,84 +7,46 @@
  *
  */
 
-class BankAccount {
-  constructor() {
-    this.balance = null
-    this.isOpen = false
-    this.setBalance = false
-  }
 
-  open() {
-    if (this.isOpen === true) {
-      throw new ValueError
-    }
-    this.setBalance = true
-    this.balance = 0
-    this.setBalance = false
-    this.isOpen = true
-  }
 
-  close() {
-    if (this.isOpen === false) {
-      throw new ValueError
+function divisors(n, counter = 1, arr = [], arr2 = []) {
+  if (counter >= Math.sqrt(n)) {
+    if (n % counter === 0) {
+      arr.push(counter);
     }
-    this.isOpen = false
-    this.setBalance = true
-    this.balance = null
-    this.setBalance = false
-  }
-
-  deposit(value) {
-    if (this.isOpen === false) {
-      throw new ValueError
+    return [...arr, ...arr2];
+  } else {
+    if (n % counter === 0) {
+      arr.push(counter);
+      arr2.unshift(n / counter);
     }
-    if (value < 0) {
-      throw new ValueError
-    }
-    this.setBalance = true
-    this.balance += value
-    this.setBalance = false
-  }
-
-  withdraw(value) {
-    if (this.isOpen === false) {
-      throw new ValueError
-    }
-    if (value > this.balance) {
-      throw new ValueError
-    }
-    if (value < 0) {
-      throw new ValueError
-    }
-
-    this.setBalance = true
-    this.balance -= value
-    this.setBalance = false
-  }
-  
-  get balance() {
-    if (this.isOpen === false) {
-      throw new ValueError
-    }
-    return this.balance
-  }
-  
-  set balance(value) {
-    if (this.setBalance === false) {
-      throw new Error 
-    } else {
-      console.log(value)
-      this.balance = value
-    } 
+    return divisors(n, counter + 1, arr, arr2);
   }
 }
 
-class ValueError extends Error{
-  constructor() {
-    super('Bank account error')
+function removeDuplicatesArr(inp, counter = 0, arr = []) {
+  if (counter >= inp.length - 1) {
+    if (!arr.includes(inp[counter])) arr.push(inp[counter]);
+    return arr;
+  } else {
+    if (!arr.includes(inp[counter])) arr.push(inp[counter]);
+    return removeDuplicatesArr(inp, counter + 1, arr);
   }
 }
 
-const account = new BankAccount()
-account.open()
-console.log(account.balance)
+function classify (num) {
+  if (num <= 0) {
+    throw new Error('Classification is only possible for natural numbers.')
+  }
+
+  let factors = divisors(num)
+  let remDups = removeDuplicatesArr(factors)
+  let sum = 0
+  for (let i = 0; i < remDups.length - 1; i++) {
+    sum += remDups[i]
+  }
+  return sum
+
+}
+
+console.log(classify(6))
