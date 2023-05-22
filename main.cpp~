@@ -6,21 +6,23 @@ using namespace std;
 
 int main()
 {
-  cout << "Enter distance(meters): ";
-  float num1;
-  cin >> num1;
+  cout << "Enter radius: ";
+  float radius;
+  cin >> radius; 
 
-  float meter_to_in = 39.370139;
-  float meter_to_feet = 3.28084;
-  float meter_to_miles = 0.000621371;
+  const float PI = 3.14159;
 
-  float miles = meters * meter_to_miles;
-  float feet = meters * meter_to_feet;
-  float inches = meters * meter_to_in;
+  float four_by_three = 4 / 3;
 
-  cout << "Miles: " << miles << endl;
-  cout << "Feet: " << feet << endl;
-  cout << "Inches: " << inches << endl;
+  float circle_area = PI * pow(radius, 2);
+  float circle_circumference = 2 * PI * radius;
+  float sphere_volume = PI * pow(radius, 3.0) * four_by_three;
+  float sphere_surface_area = 4 * PI * pow(radius, 2.0);
+
+  cout << "Circle area: " << circle_area << endl;
+  cout << "Circle circumference: " << circle_circumference << endl;
+  cout << "Sphere volume: " << sphere_volume << endl;
+  cout << "Sphere surface area: " << sphere_surface_area << endl;
 
   return 0;
 }
