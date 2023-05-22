@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <algorithm>
 
 using namespace std;
 
@@ -12,15 +13,13 @@ int main()
   float num2;
   cin >> num2;
 
-  float sum = num1 + num2;
-  float difference = num1 - num2;
-  float product = num1 * num2;
-  float average = (num1 + num2) / 2; 
+  float distance = abs(num1 - num2);
+  float maximum = max(num1, num2);
+  float minimum = min(num1, num2);
 
-  cout << "Sum: " << sum << endl;
-  cout << "Difference: " << difference << endl;
-  cout << "Product: " << product << endl;
-  cout << "Average: " << average << endl;
+  cout << "Distance: " << distance << endl;
+  cout << "Maximum: " << maximum << endl;
+  cout << "Minimum: " << minimum << endl;
 
   return 0;
 }

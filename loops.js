@@ -8,44 +8,28 @@
  */
 
 
+function parse(str) {
+  let ac = ""
+  let newStr = str.replace(/[-\s_]+/g, ' ')
+  let splat = newStr.split(' ')
 
-function divisors(n, counter = 1, arr = [], arr2 = []) {
-  if (counter >= Math.sqrt(n)) {
-    if (n % counter === 0) {
-      arr.push(counter);
+  for(let i = 0; i < str.length; i++) {
+    if (str[i] != " " && str[i] != "-" && str[i] != "_") {
+      newStr += str[i]
     }
-    return [...arr, ...arr2];
-  } else {
-    if (n % counter === 0) {
-      arr.push(counter);
-      arr2.unshift(n / counter);
-    }
-    return divisors(n, counter + 1, arr, arr2);
   }
+
+  for(let i = 0; i < splat.length; i++) {
+    ac += splat[i][0].toUpperCase()
+  }
+
+  return ac
 }
-
-function removeDuplicatesArr(inp, counter = 0, arr = []) {
-  if (counter >= inp.length - 1) {
-    if (!arr.includes(inp[counter])) arr.push(inp[counter]);
-    return arr;
-  } else {
-    if (!arr.includes(inp[counter])) arr.push(inp[counter]);
-    return removeDuplicatesArr(inp, counter + 1, arr);
-  }
-}
-
-function classify (num) {
-  if (num <= 0) {
-    throw new Error('Classification is only possible for natural numbers.')
-  }
-
-  let factors = divisors(num)
-  let remDups = removeDuplicatesArr(factors)
-  let sum = 0
-  for (let i = 0; i < remDups.length - 1; i++) {
-    sum += remDups[i]
-  }
-  return sum
-}
-
-console.log(classify(6))
+console.log(parse('Portable Network Graphics'))
+console.log(parse('Ruby on Rails'))
+console.log(parse('First In, First Out'))
+console.log(parse('GNU Image Manipulation Program'))
+console.log(parse('Complementary metal-oxide semiconductor'))
+console.log(parse('Rolling On The Floor Laughing So Hard That My Dogs Came Over And Licked Me'))
+console.log(parse('Something - I made up from thin air'))
+console.log(parse('The Road _Not_ Taken'))

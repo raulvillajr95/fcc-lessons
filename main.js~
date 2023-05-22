@@ -67,9 +67,30 @@ class Tree {
   constructor(arr = []) {
     this.root = arr
   }
+  this.root = removeDuplicatesArr(arr)   
+  this.root = mergeSorter(removeDups)
   
-  buildTree(arr) {
-    let removeDups = removeDuplicatesArr(arr)   
-    let sorted = mergeSorter(removeDups)
+  buildTree(arr, start, end) {
+    if (start > end) {
+      return null
+    } 
+    let mid = (start + end) / 2
+    let root = new Node(arr[mid])
+
+    root.left = this.buildTree(arr, start, mid-1)
+    root.right = this.buildTree(arr, mid+1, end)
+   
+    return root
   }
 }
+
+let tree = new Tree([1,2,3,4,5,6,7])
+console.log(tree.buildTree(this.arr))
+
+
+
+
+
+
+
+
