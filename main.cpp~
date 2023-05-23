@@ -3,19 +3,17 @@
 
 using namespace std;
 
-int main() 
+int main()
 {
-  cout << "Path: ";
-  string path;
-  cin >> path;
-  cout << "File name: ";
-  string file_name;
-  cin >> file_name;
-  cout << "Extension: ";
-  string extension;
-  cin >> extension;
-  
-  cout << "Full path: " << path << file_name << "." << extension << endl;
+  cout << "Please enter an integer between 1000 and 999999: ";
+  string num;
+  cin >> num;
+
+  int num_length = num.length();
+  string first = num.substr(0, 1);
+  string second = num.substr(1,3);
+
+  cout << first << "," << second << endl;
 
   return 0;
 }
