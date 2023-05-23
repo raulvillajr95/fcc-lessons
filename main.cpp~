@@ -1,28 +1,31 @@
 #include <iostream>
-#include <iomanip>
 
 using namespace std;
 
-int main()
-{
-  const int PENNIES_PER_DOLLAR = 100;
-  const int PENNIES_PER_QUARTER = 25;
+int main() {
+  cout << "Gallons of gas in tank: "; 
+  int gallons_in_tank;
+  cin >> gallons_in_tank;
+  cout << "Miles per gallon: "; 
+  int miles_per_gallon;
+  cin >> miles_per_gallon;
+  cout << "Price of gallons of gas: "; 
+  float price_of_gallon;
+  cin >> price_of_gallon;
 
-  cout << "Enter bill value (1 = $1 bill, 5 = $5 bill, etc.): ";
-  int bill_value;
-  cin >> bill_value; 
-  cout << "Enter item price in pennies: ";
-  int item_price;
-  cin >> item_price; 
+  // Cost per 100 miles
+  float gallons_per_mile = 1 / miles_per_gallon;
+  cout << "g p mil" << gallons_per_mile << endl;
+  float cost_per_mile = gallons_per_mile * price_of_gallon;
+  cout << "c p m" << cost_per_mile << endl;
+  float cost_per_100miles = 100 * cost_per_mile;
+  cout << "Price per 100 miles: " << cost_per_100miles << endl;
 
-  int change_due = PENNIES_PER_DOLLAR * bill_value - item_price;
-  int dollar_coins = change_due / PENNIES_PER_DOLLAR;
-  change_due = change_due % PENNIES_PER_DOLLAR;
-  int quarters = change_due / PENNIES_PER_QUARTER;
+  // Length of travel with gas in tank
+  float miles_from_tank = miles_per_gallon * gallons_in_tank;
+  cout << "Length of travel with gas in tank: " << miles_from_tank << endl;
 
-  cout << "Dollar coins: " << setw(6) << dollar_coins << endl
-     << "Quarter:      " << setw(6) << quarters << endl;
-
+  cout << gallons_in_tank << " " << miles_per_gallon << " " << price_of_gallon << endl;
 
   return 0;
 }
