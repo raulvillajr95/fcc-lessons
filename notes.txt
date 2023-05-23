@@ -1,16 +1,16 @@
 <!--
 goal wpm = 48(a lot of them)
 
-vim user manual: ch 5.3
+vim user manual: ch 5.4
 
 html/css: exercises 7(2nd)
 js: exercises 4 #65
 -->
 
 <!--
-English book1: pg 172
+English book1: pg 186
 C++ book: pg 103
-PreCal book: pg 60
+PreCal book: pg 67
 	answers: pg 1089
 Calculus book: pg 75
 	answers: pg 61
