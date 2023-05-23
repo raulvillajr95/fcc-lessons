@@ -1,28 +1,25 @@
 #include <iostream>
 #include <cmath>
-#include <algorithm>
 
 using namespace std;
 
 int main()
 {
-  cout << "Enter radius: ";
-  float radius;
-  cin >> radius; 
+  cout << "Enter length: ";
+  float length;
+  cin >> length; 
+  cout << "Enter width: ";
+  float width;
+  cin >> width; 
 
-  const float PI = 3.14159;
+  float area = length * width;
+  float perimeter = length * 2 + width * 2;
+  float diagonal = sqrt(length * length + width * width)
 
-  float four_by_three = 4 / 3;
+  cout << "Area: " << area << endl;
+  cout << "Perimeter: " << perimeter << endl;
+  cout << "Diagonal: " << diagonal << endl;
 
-  float circle_area = PI * pow(radius, 2);
-  float circle_circumference = 2 * PI * radius;
-  float sphere_volume = PI * pow(radius, 3.0) * four_by_three;
-  float sphere_surface_area = 4 * PI * pow(radius, 2.0);
-
-  cout << "Circle area: " << circle_area << endl;
-  cout << "Circle circumference: " << circle_circumference << endl;
-  cout << "Sphere volume: " << sphere_volume << endl;
-  cout << "Sphere surface area: " << sphere_surface_area << endl;
 
   return 0;
 }
