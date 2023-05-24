@@ -642,7 +642,7 @@ function checkForFactor(base, factor) {
   return base % factor === 0;
 }
 
-// Return all divisors of a number in an array
+// Return all divisors of a number in an array (buggy)
 function divisors(n, counter = 1, arr = [], arr2 = []) {
   if (counter >= Math.sqrt(n)) {
     if (n % counter === 0) {

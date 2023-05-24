@@ -55,17 +55,6 @@ function mergeSorter(arr) {
   return mergeSort(arr);
 }
 
-function removeDuplicatesArr(inp, counter = 0, arr = []) {
-  if (counter >= inp.length - 1) {
-    if (!arr.includes(inp[counter])) arr.push(inp[counter]);
-    return arr;
-  } else {
-    if (!arr.includes(inp[counter])) arr.push(inp[counter]);
-    return removeDuplicatesArr(inp, counter + 1, arr);
-  }
-}
-
-
 class Node {
   constructor(data) {
     this.data = data

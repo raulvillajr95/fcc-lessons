@@ -5,15 +5,15 @@ using namespace std;
 
 int main()
 {
-  cout << "Please enter an integer between 1000 and 999999: ";
-  string num;
-  cin >> num;
+  cout << "Please enter an integer between 1,000 and 999,999: ";
+  string number;
+  cin >> number;
 
-  int num_length = num.length();
-  string first = num.substr(0, num_length - 3);
-  string second = num.substr(num_length - 3,3);
+  int str_length = number.length();
+  string first = number.substr(0, str_length - 4);
+  string last = number.substr(str_length - 3, 3);
 
-  cout << first << "," << second << endl;
+  cout << first << last << endl;
 
   return 0;
 }
