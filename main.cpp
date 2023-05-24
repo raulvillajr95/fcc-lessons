@@ -3,15 +3,18 @@
 
 using namespace std;
 
-int main()
-{
-  string comb = "+--+--+--+\n|  |  |  |";
-  string bottom = "+--+--+--+";
+int main() {
+  cout << "Enter number up to 5 digits: ";
+  string num;
+  cin >> num;
 
-  cout << comb << endl;
-  cout << comb << endl;
-  cout << comb << endl;
-  cout << bottom << endl;
+  string space = " ";
+  
+  cout << num.substr(0,1) << space;
+  cout << num.substr(1,1) << space;
+  cout << num.substr(2,1) << space;
+  cout << num.substr(3,1) << space;
+  cout << num.substr(4,1) << endl;
 
   return 0;
 }

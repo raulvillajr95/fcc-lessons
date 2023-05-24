@@ -8,9 +8,9 @@ js: exercises 4 #65
 -->
 
 <!--
-English book1: pg 192
+English book1: pg 195
 C++ book: pg 104
-PreCal book: pg 67
+PreCal book: pg 68
 	answers: pg 1089
 Calculus book: pg 75
 	answers: pg 61
