@@ -4,15 +4,26 @@
 using namespace std;
 
 int main() {
-  cout << "Enter number up to 5 digits: ";
-  string num;
-  cin >> num;
+  cout << "Please enter the first time: ";
+  int num1;
+  cin >> num1;
+  cout << "Please enter the second time: ";
+  int num2;
+  cin >> num2;
+
+  int first_num1 = num1 / 100;
+  int second_num1 = num1 % 100;
+  int first_num2 = num2 / 100;
+  int second_num2 = num2 % 100;
+
+  int hours = first_num2 - first_num1;
+  int minutes = second_num2 - second_num2;
   
-  cout << num.substr(0,1) << " ";
-  cout << num.substr(1,1) << " ";
-  cout << num.substr(2,1) << " ";
-  cout << num.substr(3,1) << " ";
-  cout << num.substr(4,1) << endl;
+  cout << hours << " hours " << minutes << " minutes " << endl;
 
   return 0;
 }
+
+/*
+ * use abs() for extra extra credit
+*/
