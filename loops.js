@@ -7,16 +7,11 @@
  *
  */
 
-function score(x, y) {
-  let distance = Math.sqrt((x)**2 + (y)**2)
-  if (distance <= 1) {
-    return 10
-  } else if (distance <= 5) {
-    return 5
-  } else if (distance <= 10) {
-    return 1
-  } else {
-    return 0
+function makeBackronym(str) {
+  let arr = []
+  for(let i = 0; i < str.length; i++) {
+    arr.push(dict[str[i].toUpperCase()])
   }
+  return arr.join(' ')
 }
-console.log(score(0,10))
+console.log(makeBackronym('dgm'))
