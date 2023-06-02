@@ -7,16 +7,19 @@
  *
  */
 
-function toCamelCase(str) {
-  let splat = str.split(/[-_]/g)
-  let newStr = ""
-  for (let i = 0; i < splat.length; i++) {
-    if (i === 0) {
-      newStr += splat[i]
+function uniqueInOrder(str) {
+  if (str.length === 0) return []
+  let lastUsed = str[0]
+  let arr = [lastUsed]
+  for (let i = 1; i < str.length; i++) {
+    if (str[i] === lastUsed) {
+      continue
     } else {
-      newStr += splat[i][0].toUpperCase() + splat[i].slice(1)
+      lastUsed = str[i]
+      arr.push(lastUsed)
     }
   }
-  return newStr
+  return arr
 }
-console.log(camelCase("the-stealth-warrior"))
+console.log(uniqueInOrder('AAAABBBCCDAABBB'))
+console.log(uniqueInOrder([1,2,2,3,3]))
