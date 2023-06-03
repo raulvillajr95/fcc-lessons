@@ -7,19 +7,21 @@
  *
  */
 
-function uniqueInOrder(str) {
-  if (str.length === 0) return []
-  let lastUsed = str[0]
-  let arr = [lastUsed]
-  for (let i = 1; i < str.length; i++) {
-    if (str[i] === lastUsed) {
-      continue
-    } else {
-      lastUsed = str[i]
-      arr.push(lastUsed)
+function isPangram(str) {
+  let alphabet = [
+    'a', 'b', 'c', 'd', 'e', 'f',
+    'g', 'h', 'i', 'j', 'k', 'l',
+    'm', 'n', 'o', 'p', 'q', 'r',
+    's', 't', 'u', 'v', 'w', 'x',
+    'y', 'z'
+  ]
+  let splat = str.toLowerCase().split('')
+  let arr = []
+  for (let i = 0; i < alphabet.length; i++) {
+    if (!splat.includes(alphabet[i])) {
+      return false
     }
   }
-  return arr
+  return true
 }
-console.log(uniqueInOrder('AAAABBBCCDAABBB'))
-console.log(uniqueInOrder([1,2,2,3,3]))
+console.log(isPangram('abcdefghjklmnopqrstuvwxyz'))

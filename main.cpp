@@ -1,22 +1,19 @@
 #include <iostream>
-#include <iomanip>
 
 using namespace std;
 
 int main()
 {
-  cout << "Enter integer: ";
-  int num;
-  cin >> num;
-  string space = " ";
+  const string LETTER_H = "*   *\n*   *\n*****\n*   *\n*   *\n";
+  const string LETTER_E = "*****\n*\n***\n*\n*****\n";
+  const string LETTER_L = "*\n*\n*\n*\n*****\n";
+  const string LETTER_O = " *** \n*   *\n*   *\n*   *\n *** \n";
 
-  int num1 = num / 10000;
-  int num2 = (num / 1000) % 10;
-  int num3 = (num / 100) % 10;
-  int num4 = (num / 10) % 10;
-  int num5 = num % 10;
-
-  cout << num1 << " " << num2 << " " << num3 <<  " " << num4 << " " << num5 << endl;
+  cout << LETTER_H << endl;
+  cout << LETTER_E << endl;
+  cout << LETTER_L << endl;
+  cout << LETTER_L << endl;
+  cout << LETTER_O << endl;
 
   return 0;
 }
