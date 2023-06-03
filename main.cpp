@@ -1,19 +1,21 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 int main()
 {
-  const string LETTER_H = "*   *\n*   *\n*****\n*   *\n*   *\n";
-  const string LETTER_E = "*****\n*\n***\n*\n*****\n";
-  const string LETTER_L = "*\n*\n*\n*\n*****\n";
-  const string LETTER_O = " *** \n*   *\n*   *\n*   *\n *** \n";
+  cout << "Enter month number: ";
+  int num;
+  cin >> num;
 
-  cout << LETTER_H << endl;
-  cout << LETTER_E << endl;
-  cout << LETTER_L << endl;
-  cout << LETTER_L << endl;
-  cout << LETTER_O << endl;
+  // longest month: 9
+  string months = "January   February  March     April     May       June      July      August    September October   November  December ";
+
+  int start = 10 * num - 10;
+  string month = months.substr(start, 10);
+
+  cout << month << endl;
 
   return 0;
 }
