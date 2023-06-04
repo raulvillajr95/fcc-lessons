@@ -1,21 +1,19 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
-int main()
-{
-  cout << "Enter month number: " << endl;
-  int num;
-  cin >> num;
+int main() {
+  cout << "enter year: ";
+  int y;
+  cin >> y;
 
-  // longest month: 9
-  string months = "January   February  March     April     May       June      July      August    September October   November  December ";
-
-  int start = 10 * num - 10;
-  string month = months.substr(start, 10);
-
-  cout << month << endl;
+  int a = y % 19;
+  int b = y / 100;
+  int c = y % 100;
+  int d = b / 4;
+  int e = b % 4;
+  int g = (8 * b + 13) / 25;
+  int h = (19 * a + b - d - g + 15) % 30;
 
   return 0;
 }
