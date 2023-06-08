@@ -3,17 +3,24 @@
 using namespace std;
 
 int main() {
-  cout << "enter year: ";
-  int y;
-  cin >> y;
-
-  int a = y % 19;
-  int b = y / 100;
-  int c = y % 100;
-  int d = b / 4;
-  int e = b % 4;
-  int g = (8 * b + 13) / 25;
-  int h = (19 * a + b - d - g + 15) % 30;
+  cout << "X1: ";
+  int x1;
+  cin >> x1;
+  cout << "Y1: ";
+  int y1;
+  cin >> y1;
+  cout << "X2: ";
+  int x2;
+  cin >> x2;
+  cout << "Y2: ";
+  int y2;
+  cin >> y2;
+  cout << "X3: ";
+  int x3;
+  cin >> x3;
+  cout << "y3: ";
+  int y3;
+  cin >> y3;
 
   return 0;
 }

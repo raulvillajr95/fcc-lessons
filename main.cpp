@@ -1,28 +1,30 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
 int main() {
-  cout << "enter year: ";
-  int y;
-  cin >> y;
+  cout << "XA: ";
+  int xA;
+  cin >> xA;
+  cout << "YA: ";
+  int yA;
+  cin >> yA;
+  cout << "XB: ";
+  int xB;
+  cin >> xB;
+  cout << "YB: ";
+  int yB;
+  cin >> yB;
+  cout << "XC: ";
+  int xC;
+  cin >> xC;
+  cout << "yC: ";
+  int yC;
+  cin >> yC;
 
-  int a = y % 19;
-  int b = y / 100;
-  int c = y % 100;
-  int d = b / 4;
-  int e = b % 4;
-  int g = (8 * b + 13) / 25;
-  int h = (19 * a + b - d - g + 15) % 30;
-  int j = c / 4;
-  int k = c % 4;
-  int m = (a + 11 * h) / 319;
-  int r = (2 * e + 2 * j - k - h + m + 32) % 7;
-  int n = (h - m + r + 90) / 25;
-  int p = (h - m + r + n + 19) % 32;
-
-  cout << "Month: " << n << endl;
-  cout << "Day: " << p << endl;
+  // length of sides
+  int a = sqrt( pow() + pow());
 
   return 0;
 }

@@ -7,21 +7,11 @@
  *
  */
 
-function isPangram(str) {
-  let alphabet = [
-    'a', 'b', 'c', 'd', 'e', 'f',
-    'g', 'h', 'i', 'j', 'k', 'l',
-    'm', 'n', 'o', 'p', 'q', 'r',
-    's', 't', 'u', 'v', 'w', 'x',
-    'y', 'z'
-  ]
-  let splat = str.toLowerCase().split('')
-  let arr = []
-  for (let i = 0; i < alphabet.length; i++) {
-    if (!splat.includes(alphabet[i])) {
-      return false
-    }
+function findUniq(arr) {
+  let obj = {}
+  for (let i = 0; i < arr.length; i++) {
+    obj[arr[i]] ? obj[arr[i]] += 1 : obj[arr[i]] = 1
   }
-  return true
+  return obj
 }
-console.log(isPangram('abcdefghijklmnopqrstuvwxyz'))
+console.log(findUniq([ 0, 0, 0.55, 0, 0 ]))
