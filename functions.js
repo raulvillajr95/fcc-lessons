@@ -598,6 +598,7 @@ function countBy(x, n, arr = [], counter = x) {
 }
 
 // Is a number a prime
+// ** doesn't work
 function prime(n) {
   // Trial division
   if (n < 2) return false;

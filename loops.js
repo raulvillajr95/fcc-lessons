@@ -7,16 +7,15 @@
  *
  */
 
-function findUniq(arr) {
+function countChar(str) {
   let obj = {}
-  for (let i = 0; i < arr.length; i++) {
-    obj[arr[i]] ? obj[arr[i]] += 1 : obj[arr[i]] = 1
-  }
-  for(const prop in obj) {
-    if (obj[prop] === 1) {
-      return Number(prop)
+  for(let i = 0; i < str.length; i++) {
+    if (obj[str[i]]) {
+      obj[str[i]] += 1
+    } else {
+      obj[str[i]] = 1
     }
   }
   return obj
 }
-console.log(findUniq([ 0, 0, 0.55, 0, 0 ]))
+console.log(countChar('aba'))
