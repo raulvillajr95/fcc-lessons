@@ -1,7 +1,7 @@
 <!--
-goal wpm = 40.20(a lot of them) AVG
+goal wpm = 40.21(a lot of them) AVG
 
-vim user manual: ch 7.1
+vim user manual: ch 7.2
 
 html/css: exercises 7(2nd)
 js: exercises 4 #65

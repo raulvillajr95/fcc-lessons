@@ -9,7 +9,12 @@
 
 def create_tour(nodes):
     # your code here
-    return []
+    arr = []
+    for i in range(len(nodes)-1):
+       arr.append((nodes[i],nodes[i+1]))
+    arr.append((nodes[len(nodes)-1], nodes[0]))
+    return arr
+print(create_tour([0,1,2,3,4]))
 
 #########
 
@@ -62,16 +67,16 @@ def is_eulerian_tour(nodes, tour):
         try:
             d = degree[node]
             if d % 2 == 1:
-                print "Node %s has odd degree" % node
+                print ("Node %s has odd degree" % node)
                 return False
         except KeyError:
-            print "Node %s was not in your tour" % node
+            print ("Node %s was not in your tour" % node)
             return False
     connected = connected_nodes(tour)
     if len(connected) == len(nodes):
         return True
     else:
-        print "Your graph wasn't connected"
+        print ("Your graph wasn't connected")
         return False
 
 def test():
