@@ -1,9 +1,9 @@
-def clique(n):
-    print("in a clique...")
-    for j in range(n):
-        for i in range(j):
-            print(i, "is friends with", j)
-clique(4)
+def find_eulerian_tour(graph):
+    answer = [graph[0][0]]
 
-# not: 1, 2, 4, 7, 11
-# 7 + 1 + 4
+    for i in range(0, len(graph)):
+        answer.append(graph[i][1])
+
+    return answer
+
+print(find_eulerian_tour([(0, 1), (1, 5), (1, 7), (4, 5), (4, 8), (1, 6), (3, 7), (5, 9), (2, 4), (0, 4), (2, 5), (3, 6), (8, 9)]))
