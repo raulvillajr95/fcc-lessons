@@ -7,30 +7,15 @@
  *
  */
 
-function part(str1, str2) {
-  // str1 small, str2 bigger
-  for (let i = 0; i <= str2.length - str1.length ; i++) {
-    // console.log(str2.substring(i, i + str1.length))
-    if (str2.substring(i, i + str1.length) === str1) {
-      return true
+function countChar(str) {
+  let obj = {}
+  for(let i = 0; i < str.length; i++) {
+    if (obj[str[i]]) {
+      obj[str[i]] += 1
+    } else {
+      obj[str[i]] = 1
     }
   }
-  return false
+  return obj
 }
-// console.log(part('arp', 'harp'))
-
-function subs(a1, a2) {
-  let arr = []
-  for (let i = 0; i < a1.length; i++) {
-    for (let j = 0; j < a2.length; j++) {
-      console.log(a1[i], a2[j])
-      console.log(part(a1[i], a2[j]))
-       if (part(a1[i], a2[j])) {
-         arr.push(a1[i])
-         break
-       }
-    } 
-  }
-  return arr 
-}
-console.log(subs(["arp", "live", "strong"], ["lively", "alive", "harp", "sharp", "armstrong"]))
+console.log(countChar('aba'))

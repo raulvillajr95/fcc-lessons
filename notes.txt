@@ -1,15 +1,15 @@
 <!--
-goal wpm = 40.26(a lot of them) AVG
+goal wpm = 40.30(a lot of them) AVG
 
-vim user manual: ch 8.3
+vim user manual: ch 8.7
 
 html/css: exercises 7(2nd)
 js: exercises 4 #65
 -->
 
 <!--
-guid book: pg 113
-hist book: pg 50
+history readings # : pg 1
+guidance book: pg 43
 C++ book: pg 106
 PreCal book: pg 1.1
 music book: pg 19
