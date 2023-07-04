@@ -1,20 +1,16 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 int main() {
-  cout << "Total book price: ";
-  float total_book_price;
-  cin >> total_book_price;
-  cout << "Number of books: ";
-  int number_of_books;
-  cin >> number_of_books;
+  cout << "Input phone number: ";
+  string phone_number;
+  cin >> phone_number;
 
-  float tax = 0.075 * total_book_price;
-  int shipping_charge = 2 * number_of_books;
+  string first_three = "(" + phone_number.substr(0, 3) + ")";
 
-  float price_of_order = total_book_price + tax + shipping_charge;
-  cout << "Total: " << price_of_order << endl;
+  cout << first_three + " " + phone_number.substr(3, 3) + " - " + phone_number.substr(6,4) << endl;
 
-  return 0;
+  return 0; 
 }
