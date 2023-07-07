@@ -13,7 +13,7 @@ guidance book: pg 82
 C++ book: pg 106
 PreCal book: pg 1.1
 music book: pg 19
-photography book: pg 5
+photography book: pg 7
 Calculus book: pg 76
 	answers: pg 61
 Phyhics book(ch1-ch14): pg 73

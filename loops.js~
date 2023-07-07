@@ -7,28 +7,30 @@
  *
  */
 
-function removeOneFromArr(arr, ind) {
-  let cop = [...arr];
-  if (ind > -1) {
-    cop.splice(ind, 1);
-  }
-  return cop;
-}
+function brk(str) {
+  let arr = []
+  let start = 0
 
-function comp(a, b) {
-  if (a === null || b === null) return false
-  for (let i = 0; i < b.length; i++) {
-    let sqroot = Math.sqrt(b[i])
-    console.log(sqroot)
-    console.log(a, 'a')
-    if (!a.includes(sqroot)) {
-      return false
-    } else {
-      console.log(a.indexOf(sqroot)) 
-      removeOneFromArr(a, a.indexOf(sqroot))
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === str[i].toUpperCase() || i === str.length - 1) {
+      console.log(str[i])
+      console.log(str.substring(start, i))
+      arr.push(str.substring(start, i))
+      start = i
+      break
     }
   }
 
-  return true
+  for (let i = start+1; i < str.length; i++) {
+    if (str[i] === str[i].toUpperCase() || i === str.length - 1) {
+      console.log(str[i])
+      console.log(str.substring(start, i+1))
+      arr.push(str.substring(start, i+1))
+      start = i
+    }
+
+  }
+
+  return arr.join(' ')
 }
-console.log(comp([121, 144, 19, 161, 19, 144, 19, 11], [121, 14641, 20736, 361, 25921, 361, 20736, 361]))
+console.log(brk('camelCasingTest'))

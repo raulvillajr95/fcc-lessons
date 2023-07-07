@@ -1,16 +1,17 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
 int main() {
-  cout << "Input phone number: ";
-  string phone_number;
-  cin >> phone_number;
+  cout << "Enter price: ";
+  float price;
+  cin >> price;
 
-  string first_three = "(" + phone_number.substr(0, 3) + ")";
+  int dollars = price;
+  int cents = ((price - dollars) * 100) + 0.5
 
-  cout << first_three + " " + phone_number.substr(3, 3) + " - " + phone_number.substr(6,3) << endl;
+  cout << "Dollars: " << dollars << endl;
+  cout << "Cents: " << cents << endl;
 
-  return 0; 
+  return 0;
 }
