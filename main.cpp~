@@ -11,8 +11,18 @@
   cin >> amount_received;
 
   float change = amount_received - amount_due;
+  
+  int dollars = change;
+  int quarters = (change - dollars) / 0.25;
+  int dimes = 0;
+  int nickels = 0;
+  int pennies = 0;
 
-  cout << "Change: " << change << endl;
+  cout << "Dollars: " << dollars << endl;
+  cout << "Quarters: " << quarters << endl;
+  cout << "Dimes: " << dimes << endl;
+  cout << "Nickels: " << nickels << endl;
+  cout << "Pennies: " << pennies << endl;
   
   return 0;
 }

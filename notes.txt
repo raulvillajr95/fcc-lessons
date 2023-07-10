@@ -8,14 +8,14 @@ js: exercises 4 #65
 -->
 
 <!--
-guidance book: pg 104
+guidance book: pg 158
 C++ book: pg 107
 PreCal book: pg 1.1
 music book: pg 19
 photography book: pg 10
 
 As book: 143
-Writing book: 11
+Writing book: 18
 Calculus book: pg 76
 	answers: pg 61
 Phyhics book(ch1-ch14): pg 73
