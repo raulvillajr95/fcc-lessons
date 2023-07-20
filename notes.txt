@@ -12,9 +12,10 @@ guidance book: pg 158
 C++ book: pg 107
 PreCal book: pg 1.1
 music book: pg 19
-photography book: pg 10
+photography book: pg 13
+astronomy book: pg 7
 
-As book: 143
+As book: 146
 Writing book: 18
 Calculus book: pg 76
 	answers: pg 61

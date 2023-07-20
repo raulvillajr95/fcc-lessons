@@ -1,4 +1,5 @@
  #include <iostream>
+ #include <math.h>
 
  using namespace std;
 
@@ -14,15 +15,14 @@
   
   int dollars = change;
   int quarters = (change - dollars) / 0.25;
-  int dimes = 0;
-  int nickels = 0;
-  int pennies = 0;
+  int dimes = (change - dollars - (quarters * 0.25)) / 0.1;
+  int nickels = (change - dollars - (quarters * 0.25) - (dimes * 0.1)) / 0.05;
+  float pennies = round((change - dollars - (quarters * 0.25) - (dimes * 0.1) - (nickels * 0.05)) / 0.01);
 
   cout << "Dollars: " << dollars << endl;
   cout << "Quarters: " << quarters << endl;
   cout << "Dimes: " << dimes << endl;
   cout << "Nickels: " << nickels << endl;
-  cout << "Pennies: " << pennies << endl;
   
   return 0;
 }
