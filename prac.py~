@@ -1,5 +1,6 @@
 import re
 
 def vowels(srr):
-    return re.match("/[aeiou]/g", srr)
+    return len(re.findall(r"[aeiou]", srr))
+
 print(vowels("aeiou"))

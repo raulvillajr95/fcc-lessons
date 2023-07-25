@@ -15,7 +15,7 @@ music book: pg 19
 photography book: pg 13
 astronomy book: pg 7
 
-As book: 146
+As book: 171
 Writing book: 18
 Calculus book: pg 76
 	answers: pg 61
