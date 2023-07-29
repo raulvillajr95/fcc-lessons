@@ -1,6 +1,11 @@
-import re
 
-def vowels(srr):
-    return len(re.findall(r"[aeiou]", srr))
 
-print(vowels("aeiou"))
+def disemvowel(strr):
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    empty = ""
+    for letter in range(len(strr)):
+        if strr[letter] not in vowels:
+            empty += letter
+    return empty
+
+print(disemvowel("This website is for losers LOL!"))
