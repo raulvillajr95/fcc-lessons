@@ -2,10 +2,5 @@
 
 int main()
 {
-
-  std::cout << "Dear Self,\n";
-  std::cout << "\n";
-  std::cout << "\n";
-  std::cout << "\n";
-  std::cout << "\n";
+  std::cout << "Hello World!\n";
 }
