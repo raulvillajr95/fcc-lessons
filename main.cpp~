@@ -2,7 +2,7 @@
 
 int main()
 {
-  int year;
+  int score = 0;
 
-  year = 2019;
+  score = 1234 * 99;
 }
