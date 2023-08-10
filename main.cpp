@@ -2,7 +2,5 @@
 
 int main()
 {
-  int year;
-
-  year = 2019;
+  int year = 2019;
 }
