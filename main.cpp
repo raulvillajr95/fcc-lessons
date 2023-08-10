@@ -1,11 +1,11 @@
 #include <iostream>
 
-using namespace std;
+int main()
+{
 
-int main () {
-  cout << "R1: ";
-  int
-  cin 
-  cout << "R1: ";
-  cout << "R1: ";
+  std::cout << "Dear Self,\n";
+  std::cout << "\n";
+  std::cout << "My goal this year is to do well in my COMPSCI-1 class.\n";
+  std::cout << "\n";
+  std::cout << "Raul Villalobos 08/10/23\n";
 }

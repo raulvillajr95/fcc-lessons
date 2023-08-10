@@ -8,12 +8,12 @@ js: exercises 4 #65
 -->
 
 <!--
+PreCal book: pg 1.2
 C++ book: pg 107
-PreCal book: pg 1.1
-music book: pg 19
+music book: pg 37
 
-compsci_2: pg 471
-phys_44 book: pg 1
-Calculus book: pg 76
+Calculus book: pg 77
 	answers: pg 61
+compsci_2: pg 476
+phys_44 book: pg 22
 -->
