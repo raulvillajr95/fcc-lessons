@@ -2,10 +2,15 @@
 
 int main()
 {
-  int score = 0;
+  double ph = 4.6;
 
-  score = 1234 * 99;
-
-  std::cout << score << "\n";
-
+  if (ph > 7) {
+    std::cout << "Basic\n";
+  }
+  else if (ph < 7) {
+    std::cout << "Acidic\n";
+  }
+  else {
+    std::cout << "Neutral\n";
+  }
 }

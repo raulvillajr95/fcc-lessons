@@ -2,7 +2,12 @@
 
 int main()
 {
-  int score = 0;
+  int grade = 59;
 
-  score = 1234 * 99;
+  if (grade > 60) {
+    std::cout << "Pass\n";
+  }
+  else {
+    std::cout << "Fail\n";
+  }
 }
