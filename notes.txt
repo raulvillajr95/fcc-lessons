@@ -10,7 +10,7 @@ js: exercises 4 #65
 <!--
 PreCal book: pg 1.2
 C++ book: pg 107
-music book: pg 39
+music book: pg 1
 
 Calculus book: pg 79
 	answers: pg 61
