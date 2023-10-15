@@ -5,7 +5,7 @@ def disemvowel(strr):
     empty = ""
     for letter in range(len(strr)):
         if strr[letter] not in vowels:
-            empty += letter
+            empty += strr[letter]
     return empty
 
 print(disemvowel("This website is for losers LOL!"))

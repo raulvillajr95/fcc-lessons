@@ -1,26 +1,25 @@
+
+
+
 #include <iostream>
+#include <vector>
+using namespace std;
 
 int main()
 {
-  std::cout << "Enter year: ";
-  int year;
-  std::cin >> year;
+   vector<int> num = {1,2,3,4,5};
 
-  bool is_leap_year;
+   for (int a = 1; a <= 5; a++)
+   {
+      num.push_back(a);
+   }
 
+   cout << "Output from begin and end: ";
 
+   for (auto a = num.begin(); a != num.end(); ++a)
+   {
+      cout << *a << " ";
+   }
 
-  if(year < 10000 && year > 999) {
-    if (year % 4 == 0) {
-      if (year % 100 == 0 && !(year % 400 == 0)) {
-        std::cout << "Is not a leap year ❌\n";
-      }
-      else {
-        std::cout << "Is leap year 👍\n";
-      }
-    }
-  }
-  else {
-    std::cout << "Enter a 4 digit number\n";
-  }
+   return 0;
 }
