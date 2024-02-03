@@ -1,2 +1,5 @@
-CPJM KHMSL FQT APQTXKXPQL FZMHHSHQK XL F ZMHFK OUFAH KP TXLAUPLH FQT OMPKHAK CPJM XQKHUUHAKJFU
-OMPOHMKC MXZYKL, GYXAY YHUOL OMHIHQK PGQHMLYXO TXLOJKHL FQT APOCMXZYK XQRMXQZHSHQK.
+Now enter the data; for example, type "32041103" as the roll number and press the
+ENTER key, then "William" as the name and press the ENTER key again, "IT" as the
+course and press the ENTER key again, and "89" as the mark and press the ENTER
+key to save these records of a student in the file. The sample output after using
+these inputs is shown in the following snapshot:

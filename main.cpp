@@ -94,10 +94,22 @@ string encryptedString(string message, string cryptedAlpha)
         bool charFound = false;
         for (int j = 0; j < alphabet.length(); j++)
         {
-            if (message[i] == alphabet[j])
+            if (isupper(message[i]))
             {
-                result += cryptedAlpha[j];
-                charFound = true;
+                if (message[i] == alphabet[j])
+                {
+                    result += cryptedAlpha[j];
+                    charFound = true;
+                }
+    
+            }
+            else
+            {
+                if (message[i] == tolower(alphabet[j]))
+                {
+                    result += tolower(cryptedAlpha[j]);
+                    charFound = true;
+                }
             }
         }
         if (charFound == false)
@@ -106,7 +118,6 @@ string encryptedString(string message, string cryptedAlpha)
         }
         
     }
-    
 
     return result;
 }
@@ -121,10 +132,21 @@ string decryptedString(string message, string cryptedAlpha)
         bool charFound = false;
         for (int j = 0; j < cryptedAlpha.length(); j++)
         {
-            if (message[i] == cryptedAlpha[j])
+            if(isupper(message[i]))
             {
-                result += alphabet[j];
-                charFound = true;
+                if (message[i] == cryptedAlpha[j])
+                {
+                    result += alphabet[j];
+                    charFound = true;
+                }
+            }
+            else
+            {
+                if (message[i] == tolower(cryptedAlpha[j]))
+                {
+                    result += tolower(alphabet[j]);
+                    charFound = true;
+                }
             }
         }
         if (charFound == false)
@@ -140,31 +162,26 @@ string decryptedString(string message, string cryptedAlpha)
 
 int main(int argc, char* argv[])
 {
-    // if (argc != 5)
-    // {
-    //     cout << "Please supply 5 arguments in this order." << endl;
-    //     cout << "./<file-name> -<e-or-d> -k<key-word> <input-file> <output-file>" << endl;
+    if (argc != 5)
+    {
+        cout << "Please supply 5 arguments in this order." << endl;
+        cout << "./<file-name> -<e-or-d> -k<key-word> <input-file> <output-file>" << endl;
 
-    //     return 0;
-    // }
-    // check for correct command argument amount
-    // cout << argv[0] << endl;
+        return 0;
+    }
+
+    string firstArg = argv[0];
     string secondArg = argv[1];
-    // cout << argv[2] << endl;
-    // cout << argv[3] << endl;
+    string thirdArg = argv[2];
+    string fourthArg = argv[3];
+    string fifthArg = argv[4];
 
-    // cout << reverseString("output");
-
-    // cout << removeLettersFromAlphabet("FEATHR");
-
-    string cryptedBet = cryptedAlphabet("FEATHER");
-    // string encryptedName = encryptedString("RAUL", cryptedBet);
-
-    // cout << decryptedString("MFJU", cryptedBet);
+    string keyword = thirdArg.substr(2, thirdArg.length()-2);
+    string cryptedBet = cryptedAlphabet(keyword);
 
     // Turn file contents into a string
     string message = "";
-    ifstream inputFile ("sample.txt");
+    ifstream inputFile (fourthArg);
     char c;
     int pos = 0;
     while(inputFile.get(c))
@@ -175,7 +192,6 @@ int main(int argc, char* argv[])
         pos++;
         inputFile.seekg(pos);
     }
-    // cout << message;
 
     // Encrypt/Decrypt string
     string cryptedMessage;
@@ -187,17 +203,17 @@ int main(int argc, char* argv[])
     {
         cryptedMessage = decryptedString(message, cryptedBet);
     }
-    // cout << cryptedMessage;
 
     // Output string to file
-    ofstream outputFile ("output.txt");
+    ofstream outputFile (fifthArg);
     outputFile << cryptedMessage;
     
-
     return 0;
 }
 
 
 /* Ideas:
 - do it for lowercases
+    • work on encryptedString/decryptedString
+    • work on 
 */
