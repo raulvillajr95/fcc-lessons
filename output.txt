@@ -1,5 +1,3 @@
-Now enter the data; for example, type "32041103" as the roll number and press the
-ENTER key, then "William" as the name and press the ENTER key again, "IT" as the
-course and press the ENTER key again, and "89" as the mark and press the ENTER
-key to save these records of a student in the file. The sample output after using
-these inputs is shown in the following snapshot:
+One common tree structure is the binary tree. In a binary tree, each node has at most 2 “branches”,
+every branch has at most 2 “leafs”, and so forth, you go as deep as you need. In a binary tree,
+information is stored both at the “tips” and at intersections. 

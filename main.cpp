@@ -1,104 +1,67 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 using namespace std;
 
-string removeDuplicates(string starter)
+// Shifts alphabet according to letter
+string shiftAlpha(char letter)
 {
-   string result = "";
+   letter = toupper(letter);
+   string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+   string result;
    
-   for (int i = 0; i < starter.length(); i++)
+   if (letter == 'A')
    {
-      char currentLetter = starter[i];
-      bool in_result = false;
-      
-      for(int j = 0; j < result.length(); j++)
+      result = alphabet;
+   }
+   else
+   {
+      for (int i = 0; i < alphabet.length(); i++)
       {
-         if (currentLetter == result[j])
+         if (alphabet[i] == letter)
          {
-            in_result = true;
+            result.append(alphabet.substr(i, alphabet.length() - 1));
+            result.append(alphabet.substr(0, i));
          }
-      }
-      
-      if (in_result == false)
-      {
-         result += currentLetter;
       }
    }
    
    return result;
 }
 
-string reverseString(string word)
+vector<string> ciphers(string keyword)
 {
-    string result = "";
-
-    for (int i = word.length() - 1; i >= 0; i--)
-    {
-        result += word[i];
-    }
-    
-    return result;
+   vector<string> results;
+   
+   for (int i = 0; i < keyword.length(); i++)
+   {
+      string shiftedBet = shiftAlpha(keyword[i]);
+      results.push_back(shiftedBet);
+   }
+   
+   return results;
 }
 
-string removeLettersFromAlphabet(string word)
-{
-    string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    string result = "";
-
-    for (int i = 0; i < alphabet.length(); i++)
-    {
-        if (word.find(alphabet[i]) != string::npos)
-        {
-            continue;
-        }
-        else
-        {
-            result += alphabet[i];
-        }
-    }
-
-    return result;
-}
-
-string cryptedAlphabet(string keyword)
-{
-    string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    string encryptedAlpha = "";
-
-    // remove duplicates from 'keyword'
-    string keywordNoDuplicates = removeDuplicates(keyword);
-
-    // append that to 'encryptedAlphabet'
-    encryptedAlpha.append(keywordNoDuplicates);
-
-    // remove letters from alphabet
-    string alphabetRemovedKeyletters = removeLettersFromAlphabet(keywordNoDuplicates);
-
-    // reverse new alphabet
-    string newAlphaReversed = reverseString(alphabetRemovedKeyletters);
-
-    // append that to 'encryptedAlphabet'
-    encryptedAlpha.append(newAlphaReversed);
-
-    return encryptedAlpha;
-}
-
-string encryptedString(string message, string cryptedAlpha)
+string encryptedString(string message, vector<string> cryptedAlphas, int keyLen)
 {
     string result = "";
     string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    int pos = 0;
 
     for (int i = 0; i < message.length(); i++)
     {
         bool charFound = false;
-        for (int j = 0; j < alphabet.length(); j++)
+        for (int j = 0; j < 26; j++)
         {
             if (isupper(message[i]))
             {
                 if (message[i] == alphabet[j])
                 {
-                    result += cryptedAlpha[j];
+                    result += cryptedAlphas[pos % keyLen][j]; // ???
+                    cout << cryptedAlphas[pos%keyLen][0] << " TEST" << endl;
+                    pos++; // We don't just keep using the next one, we go back to zero
                     charFound = true;
                 }
     
@@ -107,7 +70,9 @@ string encryptedString(string message, string cryptedAlpha)
             {
                 if (message[i] == tolower(alphabet[j]))
                 {
-                    result += tolower(cryptedAlpha[j]);
+                    result += tolower(cryptedAlphas[pos % keyLen][j]);
+                    cout << cryptedAlphas[pos%keyLen][0] << " TEST" << endl;
+                    pos++;
                     charFound = true;
                 }
             }
@@ -122,29 +87,35 @@ string encryptedString(string message, string cryptedAlpha)
     return result;
 }
 
-string decryptedString(string message, string cryptedAlpha)
+string decryptedString(string message, vector<string> cryptedAlphas, int keyLen)
 {
     string result = "";
     string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+    int pos = 0;
+
     for (int i = 0; i < message.length(); i++)
     {
         bool charFound = false;
-        for (int j = 0; j < cryptedAlpha.length(); j++)
+        for (int j = 0; j < 26; j++)
         {
-            if(isupper(message[i]))
+            if(isupper(message[i]) && charFound == false)
             {
-                if (message[i] == cryptedAlpha[j])
+                if (message[i] == cryptedAlphas[pos % keyLen][j])
                 {
+                    cout << cryptedAlphas[pos%keyLen][0] << " TEST" << endl;
                     result += alphabet[j];
+                    pos++;
                     charFound = true;
                 }
             }
-            else
+            else if (charFound == false)
             {
-                if (message[i] == tolower(cryptedAlpha[j]))
+                if (message[i] == tolower(cryptedAlphas[pos % keyLen][j]))
                 {
+                    cout << cryptedAlphas[pos%keyLen][0] << " TEST" << endl;
                     result += tolower(alphabet[j]);
+                    pos++;
                     charFound = true;
                 }
             }
@@ -177,7 +148,7 @@ int main(int argc, char* argv[])
     string fifthArg = argv[4];
 
     string keyword = thirdArg.substr(2, thirdArg.length()-2);
-    string cryptedBet = cryptedAlphabet(keyword);
+    vector<string> cryptedCiphers = ciphers(keyword);
 
     // Turn file contents into a string
     string message = "";
@@ -197,11 +168,11 @@ int main(int argc, char* argv[])
     string cryptedMessage;
     if (secondArg == "-e")
     {
-        cryptedMessage = encryptedString(message, cryptedBet);
+        cryptedMessage = encryptedString(message, cryptedCiphers, keyword.length());
     }
     else if (secondArg == "-d")
     {
-        cryptedMessage = decryptedString(message, cryptedBet);
+        cryptedMessage = decryptedString(message, cryptedCiphers, keyword.length());
     }
 
     // Output string to file
@@ -213,6 +184,7 @@ int main(int argc, char* argv[])
 
 
 /* Ideas:
+- decryption needs work
 - do it for lowercases
     • work on encryptedString/decryptedString
     • work on 
