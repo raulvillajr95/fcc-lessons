@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <cstdio>
 using namespace std;
 
 // Seperates sentence by space; returning array/vector
@@ -59,4 +60,12 @@ string reverseString(string word)
     }
     
     return result;
+}
+
+// Read/write to file named 's'
+// use 'cin' to read and 'cout' to write
+void setIO(string s)
+{
+   freopen(( s + ".in").c_str(), "r", stdin);
+   freopen((s + ".out").c_str(), "w", stdout);
 }

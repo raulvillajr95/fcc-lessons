@@ -1,51 +1,59 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
-class Person {
+
+class PermutationIterator
+{
 public:
-    Person(string name);
-    void befriend(Person p);
-    void unfriend(Person p);
-    string get_friend_names();
+    PermutationIterator(string s)
+    {
 
+    }
 
-private:
-    string firstName;
-    string friends;
+    string next_permutation()
+    {
+
+    }
+
+    bool has_more_permutations()
+    {
+
+    }
 };
 
-Person::Person(string name)
+vector<string> permutations(string word)
 {
-    firstName = name;
-    friends = "";
-}
-
-void Person::befriend(Person p)
-{
-    if (friends.length() == 0)
+    vector<string> result;
+    if (word.length() == 0)
     {
-        friends.append(p.firstName);
+        result.push_back(word);
+        return result;
     }
-    else
+   
+    for (int i = 0; i < word.length(); i++)
     {
-        friends.append(" " + p.firstName);
+        string shorter = word.substr(0, i) + word.substr(i + 1);
+        vector<string> shorter_permutations = permutations(shorter);
+        for (string s : shorter_permutations)
+        {
+            result.push_back(word[i] + s);
+        }
     }
-}
-
-void Person::unfriend(Person p)
-{
-
-}
-
-string Person::get_friend_names()
-{
-    return friends;
+    return result;
 }
 
 int main()
 {
-
+    cout << "Enter a string: ";
+    string input;
+    getline(cin, input);   
+    vector<string> v = permutations(input);
+    for (int i = 0; i < v.size(); i++)
+    {
+        cout << v[i] << endl;
+    }
 
     return 0;
 }
