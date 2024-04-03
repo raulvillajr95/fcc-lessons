@@ -1,63 +1,111 @@
 #include <iostream>
-#include <string>
 #include <vector>
+#include <string>
 using namespace std;
 
-
-class PermutationIterator
+string numToHex(int num)
 {
-public:
-    PermutationIterator(string s)
-    {
+    string hex = "";
 
+    if (num >= 255)
+    {
+        hex = "FF";
     }
-
-    string next_permutation()
+    else if (num <= 0)
     {
-
+        hex = "00";
     }
-
-    bool has_more_permutations()
+    else
     {
-
-    }
-};
-
-vector<string> permutations(string word)
-{
-    vector<string> result;
-    if (word.length() == 0)
-    {
-        result.push_back(word);
-        return result;
-    }
-   
-    for (int i = 0; i < word.length(); i++)
-    {
-        string shorter = word.substr(0, i) + word.substr(i + 1);
-        vector<string> shorter_permutations = permutations(shorter);
-        for (string s : shorter_permutations)
+        int test = ((num / 16) % 16) + 48;
+        char str1 = test;
+        if (((num / 16) % 16) > 9)
         {
-            result.push_back(word[i] + s);
+            str1 = ((num / 16) % 16) + 55;
         }
+
+        int test2 = (num % 16) + 48;
+        char str2 = test2;
+        if ((num % 16) > 9)
+        {
+            str2 = (num % 16) + 55;
+        }
+        hex = string(1, str1) + str2;
     }
+
+    return hex;
+}
+
+string rgb_to_hex(int r, int g, int b)
+{
+    string result = "";
+    result += numToHex(r);
+    result += numToHex(g);
+    result += numToHex(b);
+
     return result;
 }
 
 int main()
 {
-    cout << "Enter a string: ";
-    string input;
-    getline(cin, input);   
-    vector<string> v = permutations(input);
-    for (int i = 0; i < v.size(); i++)
+    // cout << numToHex(148) << endl;
+    cout << rgb_to_hex(148,0,125) << endl;
+
+    // string hex = "";
+
+    // if (num >= 255)
+    // {
+    //     hex = "FF";
+    // }
+    // else if (num <= 0)
+    // {
+    //     hex = "00";
+    // }
+    // else
+    // {
+    //     int test = ((num / 16) % 16) + 48;
+    //     char str1 = test;
+    //     if (((num / 16) % 16) > 9)
+    //     {
+    //         cout << "SII" << endl;
+    //         str1 = ((num / 16) % 16) + 55;
+    //         hex += str1;
+    //         cout << str1;
+    //     }
+
+    //     int test2 = (num % 16) + 48;
+    //     char str2 = test2;
+    //     if ((num % 16) > 9)
+    //     {
+    //         cout << "NOO" << endl;
+    //         str1 = ((num / 16) % 16) + 55;
+    //         str2 = (num % 16) + 55;
+    //         hex += str2;
+    //         cout << str2 << endl;
+    //     }
+    //     hex = string(1, str1) + str2;
+    // }
+
+    // cout << hex << endl;
+
+    // // Testing
+    int num = 125;
+    int test = ((num / 16) % 16) + 48;
+    char str1 = test;
+    if (((num / 16) % 16) > 9)
     {
-        cout << v[i] << endl;
+        str1 = ((num / 16) % 16) + 55;
     }
+
+    int test2 = (num % 16) + 48;
+    char str2 = test2;
+    if ((num % 16) > 9)
+    {
+        str2 = (num % 16) + 55;
+    }
+    auto hex2 = string(1, str1) + str2;
+    // cout  << "Num: " << num << " Hex?: " << str1 << str2 << " \%\%: " << test2 << endl;
+    // cout << hex2 << endl;
 
     return 0;
 }
-
-/* Ideas:
-- 
-*/
