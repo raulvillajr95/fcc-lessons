@@ -3,7 +3,132 @@
 #include <cstdio>
 #include <cmath>
 #include <bitset>
+#include <set>
 using namespace std;
+
+// Remove place in a string
+string removPlaceStr(int place, string s1)
+{
+   if (place < 0)
+   {
+      place = 0;
+   }
+   else if (place >= s1.length())
+   {
+      place = s1.length() - 1;
+   }
+   
+   string part1 = s1.substr(0, place);
+   string part2 = s1.substr(place+1, s1.length()-(place + 1));
+   
+   string result = part1 + part2;
+
+   return result;
+}
+
+// Return true if the character is found in the string
+bool isCharInStr(char letter, string test)
+{
+   bool isIn = false;
+   
+   set<char> s1;
+   
+   for (int i = 0; i < test.length(); i++)
+   {
+      s1.insert(test[i]);
+   }
+   
+   auto pos = s1.find(letter);
+   
+   if (pos != s1.end())
+   {
+      isIn = true;
+   }
+   
+   return isIn;
+}
+
+// Returns true if a string is numbers
+bool strIsAllNums(string letters)
+{
+   bool result = true;
+   
+   for (int i = 0; i < letters.length(); i++)
+   {
+      if (isalpha(letters[i]))
+      {
+         result = false;
+         break;
+      }
+   }
+   
+   return result;
+}
+
+// Get Nth number in Fibonacci sequence
+int fibonacci(long long n)
+{
+    vector<long long> nums;
+
+    int i = 0;
+    while ( i < n)
+    {
+        if (i < 2)
+        {
+            nums.push_back(i);
+        }
+        else
+        {
+            long long newNum = nums[i-2] + nums[i - 1];
+            nums.push_back(newNum);
+        }
+        i++;
+    }
+
+    
+
+    return nums[n-1];
+}
+
+// Convert numbers 0-255 to Hex
+string numToHex(int num)
+{
+    string hex = "";
+    if (num >= 255)
+    {
+        hex = "FF";
+    }
+    else if (num <= 0)
+    {
+        hex = "00";
+    }
+    else
+    {
+        int test = ((num / 16) % 16) + 48;
+        char str1 = test;
+        if (((num / 16) % 16) > 9)
+        {
+            str1 = ((num / 16) % 16) + 55;
+        }
+
+        int test2 = (num % 16) + 48;
+        char str2 = test2;
+        if ((num % 16) > 9)
+        {
+            str2 = (num % 16) + 55;
+        }
+        hex = string(1, str1) + str2;
+    }
+    return hex;
+}
+string rgb_to_hex(int r, int g, int b)
+{
+    string result = "";
+    result += numToHex(r);
+    result += numToHex(g);
+    result += numToHex(b);
+    return result;
+}
 
 // Turns characters to it's place in alphabet
 int charToInt(char lett)
