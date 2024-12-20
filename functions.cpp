@@ -6,6 +6,73 @@
 #include <set>
 using namespace std;
 
+// Check if parentheses are valid
+bool validParentheses(const string& str)
+{
+   int balance = 0;
+   for (int i = 0; i < str.length(); i++)
+   {
+      if (balance < 0)
+      {
+         return false;
+      }
+      
+      if (str[i] == '(')
+      {
+         balance++;
+      }
+      else if (str[i] == ')')
+      {
+         balance--;
+      }
+   }
+   
+   if (balance != 0)
+   {
+      return false;
+   }
+   
+   return true;
+}
+
+// Checks if numbers are the same sign
+bool areSignsTheSame(int num1, int num2)
+{
+   if (num1 < 0 && num2 < 0)
+   {
+      return true;
+   }
+   else if (num1 > 0 && num2 > 0)
+   {
+      return true;
+   }
+   else
+   {
+      return false;
+   }
+}
+
+// Checks if a number is a prime
+bool isPrime(int n)
+{
+   if (n < 2 || n % 2 == 0)
+   {
+      return false;
+   }
+   else if (n == 2)
+   {
+      return true;
+   }
+   for (int i = 3; i <= sqrt(n); i += 2)
+   {
+      if (n % i == 0)
+      {
+         return false;
+      }
+   }
+   return true;
+}
+
 // Remove place in a string
 string removPlaceStr(int place, string s1)
 {
