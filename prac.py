@@ -1,19 +1,53 @@
-# exercises
+# Problem Set 1
+# Name: Raul Villalobos
 
-guess_count = 0
+# a)
+# x = 3
+# primeCount = 1
+# while (primeCount < 1000):
 
-correct_pass = 'dee234'
+#   # Check if Prime
+#   start = 3
+#   foundPrime = True
+#   while (start < x):
+#     if(x % start == 0):
+#       foundPrime = False
+#       break
+#     else:
+#       start += 2
+#   if (foundPrime):
+#     primeCount += 1
+#   x += 2
 
-while True:
-  pass_guess = input("Please enter your password: ")
+# Result
+# print("The 1000th prime:", x)
 
-  guess_count += 1
+# b)
+import math
 
-  if pass_guess == correct_pass:
-    print ('You have successfully logged in.')
-    break
+n = 7
+i = 0
+sumOfPrimes = math.log(2)
+sumOfPrimes1 = 3
+x = 3
+primeCount = 1
 
-  elif pass_guess != correct_pass:
-    if guess_count >= 3:
-      print ("You have been denied access.")
+while (x < n):
+  # Check if Prime
+  print("ran   ")
+  start = 3
+  foundPrime = True
+  while (start < x):
+    if(x % start == 0):
+      foundPrime = False
       break
+    else:
+      start += 2
+  if (foundPrime):
+    primeCount += 1
+    sumOfPrimes += math.log(x)
+  x += 2
+  i += 1
+
+# Result
+print(sumOfPrimes/n)
