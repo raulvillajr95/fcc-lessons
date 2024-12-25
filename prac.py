@@ -19,12 +19,14 @@ set count to 0
 for n in range 1 to infinity
   for
 '''
-n = 60
+n = 100
 a = 6
 b = 9
+c = 20
 
 for i in range(0, n):
   for j in range(0, n):
-    if ((i*a + j*b) == n):
-      print("6(", i, ") + 9(", j, ") = ", n)
-      break
+    for k in range(0, n):
+      if ((i*a + j*b + k*c) == n):
+        print("6(", i, ") + 9(", j, ") + 20(", k, ") = ", n)
+        break
