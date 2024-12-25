@@ -1,53 +1,30 @@
-# Problem Set 1
+# Problem Set 2
 # Name: Raul Villalobos
 
-# a)
-# x = 3
-# primeCount = 1
-# while (primeCount < 1000):
+# 1) *done on miro whiteboard
+# 2) This theorem is true because the 6, 9, and 20 pieces offer a perfect set of remainders. As an example we
+#    have 10, 11, 12, 13, 14, 15, sets of McNuggets, adding a box of 6 pieces can get you from 16 to 21 and a piece can get you
+#    from 19 to 24. Then to get to 25, we can add a 6 piece and 9 piece to the 10. Those 2 sets have a full
+#    range of numbers from 16 to 25 which add 1 to 10 to the original 10-15.
 
-#   # Check if Prime
-#   start = 3
-#   foundPrime = True
-#   while (start < x):
-#     if(x % start == 0):
-#       foundPrime = False
-#       break
-#     else:
-#       start += 2
-#   if (foundPrime):
-#     primeCount += 1
-#   x += 2
+# 3)
+'''
+Objectives:
+-find larget number of McNuggets that CANNOT be bought in exact quantity.
 
-# Result
-# print("The 1000th prime:", x)
+todo:
+-third create a loop of all possible triples
 
-# b)
-import math
+set count to 0
+for n in range 1 to infinity
+  for
+'''
+n = 60
+a = 6
+b = 9
 
-n = 7
-i = 0
-sumOfPrimes = math.log(2)
-sumOfPrimes1 = 3
-x = 3
-primeCount = 1
-
-while (x < n):
-  # Check if Prime
-  print("ran   ")
-  start = 3
-  foundPrime = True
-  while (start < x):
-    if(x % start == 0):
-      foundPrime = False
+for i in range(0, n):
+  for j in range(0, n):
+    if ((i*a + j*b) == n):
+      print("6(", i, ") + 9(", j, ") = ", n)
       break
-    else:
-      start += 2
-  if (foundPrime):
-    primeCount += 1
-    sumOfPrimes += math.log(x)
-  x += 2
-  i += 1
-
-# Result
-print(sumOfPrimes/n)

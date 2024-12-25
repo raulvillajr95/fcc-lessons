@@ -8,13 +8,13 @@ js: exercises 4 #65
 -->
 
 <!--
-PreCal book: pg 1.3
-
 Calculus book: pg 79
 	answers: pg 61
 compsci_2: pg 479
 phys_44 book: pg 24
 -->
+
+x^n + y^n = z^n
 
 todo:
 
