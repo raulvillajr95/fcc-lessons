@@ -8,26 +8,33 @@
 #    range of numbers from 16 to 25 which add 1 to 10 to the original 10-15.
 
 # 3)
-'''
-Objectives:
--find larget number of McNuggets that CANNOT be bought in exact quantity.
+import math
 
-todo:
--third create a loop of all possible triples
-
-set count to 0
-for n in range 1 to infinity
-  for
-'''
-x = 100
+x = True
+n = 1
 a = 6
 b = 9
 c = 20
 
-for n in range(0, x):
+countNotFound = 0
+consecutiveFound = 0
+while (x):
+  foundCoeff = False
   for i in range(0, n):
     for j in range(0, n):
       for k in range(0, n):
         if ((i*a + j*b + k*c) == n):
-          print(n, " = 6(", i, ") + 9(", j, ") + 20(", k, ")")
+          consecutiveFound += 1
+          print(n, "= " + str(a) + "(" + str(i) + ") + " + str(b) + "(" + str(j) + ") + " + str(c) + "(" + str(k) + ")", "ConsecF:", consecutiveFound)
+          foundCoeff = True
           break
+  if (consecutiveFound >= a and foundCoeff == False):
+    print("Largest number of McNuggets that cannot be bought in exact quantity:", n)
+    break
+  if (foundCoeff == False):
+    countNotFound += 1
+    consecutiveFound = 0
+    print(n, "was not possible", countNotFound)
+  n += 1
+  
+# 4)
