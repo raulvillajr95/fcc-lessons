@@ -8,33 +8,33 @@
 #    range of numbers from 16 to 25 which add 1 to 10 to the original 10-15.
 
 # 3)
-import math
+# import math
 
-x = True
-n = 1
-a = 6
-b = 9
-c = 20
+# x = True
+# n = 1
+# a = 6
+# b = 9
+# c = 20
 
-countNotFound = 0
-consecutiveFound = 0
-while (x):
-  foundCoeff = False
-  for i in range(0, n):
-    for j in range(0, n):
-      for k in range(0, n):
-        if ((i*a + j*b + k*c) == n):
-          consecutiveFound += 1
-          print(n, "= " + str(a) + "(" + str(i) + ") + " + str(b) + "(" + str(j) + ") + " + str(c) + "(" + str(k) + ")", "ConsecF:", consecutiveFound)
-          foundCoeff = True
-          break
-  if (consecutiveFound >= a and foundCoeff == False):
-    print("Largest number of McNuggets that cannot be bought in exact quantity:", n)
-    break
-  if (foundCoeff == False):
-    countNotFound += 1
-    consecutiveFound = 0
-    print(n, "was not possible", countNotFound)
-  n += 1
+# countNotFound = 0
+# consecutiveFound = 0
+# while (x):
+#   foundCoeff = False
+#   for i in range(0, n):
+#     for j in range(0, n):
+#       for k in range(0, n):
+#         if ((i*a + j*b + k*c) == n):
+#           consecutiveFound += 1
+#           print(n, "= " + str(a) + "(" + str(i) + ") + " + str(b) + "(" + str(j) + ") + " + str(c) + "(" + str(k) + ")", "ConsecF:", consecutiveFound)
+#           foundCoeff = True
+#           break
+#   if (consecutiveFound >= a and foundCoeff == False):
+#     print("Largest number of McNuggets that cannot be bought in exact quantity:", n)
+#     break
+#   if (foundCoeff == False):
+#     countNotFound += 1
+#     consecutiveFound = 0
+#     print(n, "was not possible", countNotFound)
+#   n += 1
   
 # 4)
