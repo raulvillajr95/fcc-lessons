@@ -4,7 +4,7 @@
 from string import *
 
 example = "atgacatgcacaagtatgcat"
-ex = "atxc"
+ex = "atgc"
 
 # def countSubStringMatch(target, key):
 
@@ -21,6 +21,19 @@ ex = "atxc"
 
 
 
+# print(example[example.find(ex,0)+1:])
 
 def countSubStringMatchRecursive(target, key):
-  return 1
+
+  # print("CALL")
+  # totalFound = 0
+  targetOne = target[target.find(key,0)+1:]
+  print("Ran", key, targetOne, target.find(key,0))
+
+  if(target.find(key,0) == -1):
+    print("NEGATIVE ONE")
+    return 0
+  else:
+    return 1 + countSubStringMatchRecursive(targetOne, key)
+
+print(countSubStringMatchRecursive(example, ex))
