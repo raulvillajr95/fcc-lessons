@@ -14,21 +14,13 @@ compsci_2: pg 479
 phys_44 book: pg 24
 -->
 
-x^n + y^n = z^n
-
 todo:
 
 
 later:
 
-
-
-
-
-
-
-
-
+Ideas for Problem 1:
+-use string slicing
 
 option 1: keep running local
 then make the html complex
