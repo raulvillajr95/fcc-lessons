@@ -23,17 +23,24 @@ ex = "atgc"
 
 # print(example[example.find(ex,0)+1:])
 
-def countSubStringMatchRecursive(target, key):
+# def countSubStringMatchRecursive(target, key):
 
-  # print("CALL")
-  # totalFound = 0
-  targetOne = target[target.find(key,0)+1:]
-  print("Ran", key, targetOne, target.find(key,0))
+#   targetOne = target[target.find(key,0)+1:]
 
-  if(target.find(key,0) == -1):
-    print("NEGATIVE ONE")
-    return 0
-  else:
-    return 1 + countSubStringMatchRecursive(targetOne, key)
+#   if(target.find(key,0) == -1):
+#     return 0
+#   else:
+#     return 1 + countSubStringMatchRecursive(targetOne, key)
 
-print(countSubStringMatchRecursive(example, ex))
+# print(countSubStringMatchRecursive(example, ex))
+
+def newtonsMethod(n, iterations):
+  start = n/2.0
+  result = 0.0
+
+  for i in range(0,iterations):
+    start = 0.5 * (start + 3/start)
+
+  return start
+
+print(newtonsMethod(3, 10))
