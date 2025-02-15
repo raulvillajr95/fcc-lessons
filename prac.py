@@ -1,56 +1,35 @@
-#Truth Table Generator - www.101computing.net/truth-table-generator/
+# fill in this function
+def fib():
+  a = 1
+  b = 1
 
-def truthTable(expression, inputs=2):
-    print("Boolean Expression:")
-    print("  X = " + expression.upper())
-    expression = expression.lower()
+  for i in range(10):
+    yield a
+    yield b
+    a = a+b
+    b = a+b
+######
+import random
 
-    #replace Boolean Operators with bitwise operators
-    expression = expression.replace("and", "&")
-    expression = expression.replace("xor", "^")
-    expression = expression.replace("or", "|")
-    expression = expression.replace("not", "~")
+def lottery():
+  # returns 6 numbers between 1 and 40
+  for i in range(6):
+    yield random.randint(1, 40)
+  
+  yield random.randint(1, 15)
 
-    print("\nTruth Table:")
-    if inputs==2:
-        print("  -------------")
-        print("  | A | B | X |")
-        print("  -------------")
+for random_number in lottery():
+  print("And the next number is... %d!" %(random_number))
+######
 
-        for a in range(0,2):
-            for b in range(0,2):
-                x = eval(expression)
-                print("  | " + str(a) + " | " + str(b) + " | " + str(x) + " |")
-                print(" ")
-                print("  -------------")
+# testing code
+import types
+if type(fib()) == types.GeneratorType:
+  print("Good, The fib function is a generator.")
 
-    elif inputs==3:
-        print("  -----------------")
-        print("  | A | B | C | X |")
-        print("  -----------------")
-
-        for a in range(0,2):
-            for b in range(0,2):
-                for c in range(0,2):
-                    x = eval(expression)
-                    print("  | " + str(a) + " | " + str(b) + " | " + str(c) + " | "+ str(x) + " |")
-                    print("  -----------------")
-    
-    elif inputs==4:
-        print("  ---------------------")
-        print("  | A | B | C | D | X |")
-        print("  ---------------------")
-
-        for a in range(0,2):
-            for b in range(0,2):
-                for c in range(0,2):
-                    for d in range(0,2):
-                        x = eval(expression)
-                        print("  | " + str(a) + " | " + str(b) + " | " + str(c) + " | " + str(d) + " | " + str(x) + " |")
-                        print("  ---------------------")
-
-########################################################
-
-expression = "A AND NOT (B XOR C)"
-truthTable(expression, 3)
-
+  counter = 0
+  for n in fib():
+    print(n)
+    counter += 1
+    if counter == 10:
+      break
