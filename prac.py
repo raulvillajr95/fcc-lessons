@@ -1,7 +1,14 @@
-numbers = [34.6, -203.4, 44.9, 68.3, -12.2, 44.6, 12.7]
-newlist = []
+actor = {"name": "John Cleese", "rank": "awesome"}
 
-for num in numbers:
-  newlist.append(int(abs(num)))
+def get_last_name():
+    try:
+        return actor["last_name"]
+    except:
+        name = actor["name"]
+        lastName = name.split(" ")[1]
+        return lastName
+  
 
-print(newlist)
+get_last_name()
+print("All exceptions caught! Good job!")
+print("The actor's last name is %s" % get_last_name())
