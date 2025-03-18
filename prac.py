@@ -1,14 +1,13 @@
-import math
+def fibonacci(n, arr = [0, 1]):
+    result = 0
+    if (n <= 2):
+        result = arr[n-1]
+    else:
+        arr.append(arr[len(arr) - 2] + arr[len(arr) - 1])
+        result = fibonacci(n-1, arr) + arr[n - 3]
 
-repeat = True
+    return result
 
-while repeat:
-  x = input("Input value within 0 and π/2 (1.570796): ")
-  sinxCosx = math.sin(float(x)) + math.cos(float(x))
-  result = "sin(" + x + ") + cos(" + x + ") = " + f'{sinxCosx:.6f}'
-  print(result)
-  choice = input("Try again? (Y/N): ")
-  if (choice.upper() == "Y"):
-    continue
-  else:
-    repeat = False
+# Calling the function
+for i in range(10):
+    print(i+1, fibonacci(i+1))

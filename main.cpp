@@ -1,10 +1,12 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 void square(int side, char fillCharacter)
 {
     for (int i = 0; i < side; i++)
     {
+
         for (int j = 0; j < side; j++)
         {
             cout << fillCharacter;
@@ -22,6 +24,10 @@ int main()
     cin >> fillChar >> sideLen;
 
     square(sideLen, fillChar);
+
+    string test = "string";
+
+    test.size();
 
     return 0;
 }
