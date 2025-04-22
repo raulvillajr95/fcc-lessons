@@ -428,3 +428,32 @@ int main() {
 
     return 0;
 }
+
+// Decimal base to binary numbers
+//    *3 space indentation
+long int decToBin(int decNum)
+{
+   vector<int> binNums;
+   
+   while (decNum > 0)
+   {
+      int bin = decNum % 2;
+      decNum /= 2;
+      binNums.push_back(bin);
+   }
+   
+   long int result = 0;
+   for (int i = 0; i < binNums.size(); i++)
+   {
+      result += binNums[i] * pow(10, i);
+   }
+   
+   return result;
+}
+
+// Round a double to a number of places
+double roundToDecPlaces(double value, int decimal_places)
+{
+   const double multiplier = pow(10.0, decimal_places);
+   return round(value * multiplier) / multiplier;
+}
