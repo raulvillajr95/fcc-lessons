@@ -1,18 +1,11 @@
-movies = {:'The Godfather' => 1972, :"Star Wars IV" => 1977, :"Pulp Fiction" => 1994, :"The Matrix" => 1999, :"Titanic" => 1997}
-years = [movies[:'The Godfather'], movies[:'Star Wars IV'], movies[:'Pulp Fiction'], movies[:'The Matrix'], movies[:'Titanic']]
+# Factorial
 
-puts years[0]
-puts years[1]
-puts years[2]
-puts years[3]
-puts years[4]
+fact5 = 5 * 4 * 3 * 2
+fact6 = 6 * 5 * 4 * 3 * 2
+fact7 = 7 * 6 * 5 * 4 * 3 * 2
+fact8 = 8 * 7 * 6 * 5 * 4 * 3 * 2
 
-# def get_sum(array)
-#   size = array.length
-#   if size == 1
-#     return array[0]
-#   else
-#     return (array[0] + get_sum(array[1...size]))
-#   end
-# end
-# puts get_sum([1,2,3])
+puts fact5
+puts fact6
+puts fact7
+puts fact8
