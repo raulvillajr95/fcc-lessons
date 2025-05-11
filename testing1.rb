@@ -1,11 +1,9 @@
-# Factorial
+require 'pp'
 
-fact5 = 5 * 4 * 3 * 2
-fact6 = 6 * 5 * 4 * 3 * 2
-fact7 = 7 * 6 * 5 * 4 * 3 * 2
-fact8 = 8 * 7 * 6 * 5 * 4 * 3 * 2
+puts [1,false, 2, nil]
 
-puts fact5
-puts fact6
-puts fact7
-puts fact8
+print [1,false, 2, nil]
+
+p [1,false, 2, nil]
+
+pp [1,false, 2, nil]
