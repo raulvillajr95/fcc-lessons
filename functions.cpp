@@ -1,9 +1,13 @@
+#include <iostream>
 #include <vector>
 #include <string>
 #include <cstdio>
 #include <cmath>
 #include <bitset>
 #include <set>
+#include <sstream>
+#include <gumbo.h>
+#include <curl/curl.h>
 using namespace std;
 
 // Check if parentheses are valid
@@ -286,6 +290,18 @@ vector<string> SeperateBySpace(string sentence)
 
    return words;
 }
+// OR
+vector<string> SeperateBySpace2(string sentence)
+{
+   vector<string> words;
+   
+   istringstream iss(sentence);
+   
+   for (string s; iss >> s;)
+      words.push_back(s);
+
+   return words;
+}
 
 // Removes duplicate characters in a string
 string removeDuplicates(string starter)
@@ -334,13 +350,6 @@ void setIO(string s)
    freopen(( s + ".in").c_str(), "r", stdin);
    freopen((s + ".out").c_str(), "w", stdout);
 }
-
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
-#include <gumbo.h>
-#include <curl/curl.h>  // Add this line for cURL
 
 struct Job {
     std::string title;
@@ -399,6 +408,67 @@ void extractJobTitles(GumboNode* node, std::vector<Job>& jobs) {
     }
 }
 
+// Decimal base to binary numbers
+//    *3 space indentation
+long int decToBin(int decNum)
+{
+   vector<int> binNums;
+   
+   while (decNum > 0)
+   {
+      int bin = decNum % 2;
+      decNum /= 2;
+      binNums.push_back(bin);
+   }
+   
+   long int result = 0;
+   for (int i = 0; i < binNums.size(); i++)
+   {
+      result += binNums[i] * pow(10, i);
+   }
+   
+   return result;
+}
+
+// Round a double to a number of places
+double roundToDecPlaces(double value, int decimal_places)
+{
+   const double multiplier = pow(10.0, decimal_places);
+   return round(value * multiplier) / multiplier;
+}
+
+// Capitalize the first character and uppercase the rest
+string CapFirstChrLowerRest(string word)
+{
+   string result = "";
+   result += toupper(word[0]);
+   
+   for (int i = 1; i < word.size(); i++ )
+   {
+      result += tolower(word[i]);
+   }
+   
+   return result;
+}
+
+// Join array of strings by space
+string JoinBySpace(vector<string> words)
+{
+   string result = "";
+   
+   for (int i = 0; i < words.size(); i++)
+   {
+      result += words[i];
+      if (i < words.size() - 1)
+      {
+         result += " ";
+      }
+   }
+   
+   return result;
+}
+
+
 int main() {
     // URL of the website to scrape
     std::string url = "https://realpython.github.io/fake-jobs/";  // Replace with your URL
@@ -427,33 +497,4 @@ int main() {
     gumbo_destroy_output(&kGumboDefaultOptions, output);
 
     return 0;
-}
-
-// Decimal base to binary numbers
-//    *3 space indentation
-long int decToBin(int decNum)
-{
-   vector<int> binNums;
-   
-   while (decNum > 0)
-   {
-      int bin = decNum % 2;
-      decNum /= 2;
-      binNums.push_back(bin);
-   }
-   
-   long int result = 0;
-   for (int i = 0; i < binNums.size(); i++)
-   {
-      result += binNums[i] * pow(10, i);
-   }
-   
-   return result;
-}
-
-// Round a double to a number of places
-double roundToDecPlaces(double value, int decimal_places)
-{
-   const double multiplier = pow(10.0, decimal_places);
-   return round(value * multiplier) / multiplier;
 }
