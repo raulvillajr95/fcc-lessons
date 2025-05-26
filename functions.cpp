@@ -468,6 +468,37 @@ string JoinBySpace(vector<string> words)
    return result;
 }
 
+// Checks if a year is a leap year
+bool IsLeapYear(int year)
+{
+   bool res = false;
+   
+   if (year % 4 == 0)
+   {
+      if (year % 100 == 0)
+      {
+         if (year % 400 == 0)
+         {
+            res = true;
+         }
+         else
+         {
+            res = false;
+         }
+      }
+      else
+      {
+         res = true;
+      }
+   }
+   else
+   {
+      res = false;
+   }
+   
+   return res;
+}
+
 
 int main() {
     // URL of the website to scrape

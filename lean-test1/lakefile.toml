@@ -1,0 +1,10 @@
+name = "lean-test1"
+version = "0.1.0"
+defaultTargets = ["lean-test1"]
+
+[[lean_lib]]
+name = "LeanTest1"
+
+[[lean_exe]]
+name = "lean-test1"
+root = "Main"

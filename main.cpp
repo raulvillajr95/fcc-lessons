@@ -1,33 +1,31 @@
 #include <iostream>
-#include <string>
+#include <vector>
+#include <utility>
 using namespace std;
 
-void square(int side, char fillCharacter)
-{
-    for (int i = 0; i < side; i++)
-    {
+bool numInArr(vector)
 
-        for (int j = 0; j < side; j++)
-        {
-            cout << fillCharacter;
-        }
-        cout << endl;
-    }
-    
-}
+// vector<int> nums(vector<int> numbers)
+// {
+
+// }
+
+// int stray(vector<int> numbers)
+// {
+//     vector<pair <int, int>> reps = {(numbers[0], 0)};
+
+//     int n = numbers.size();
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (reps[0].first)
+//     }
+
+
+//     return reps[1];
+// }
 
 int main()
 {
-    int sideLen;
-    char fillChar;
-    cout << "Enter a character and the side length: ";
-    cin >> fillChar >> sideLen;
-
-    square(sideLen, fillChar);
-
-    string test = "string";
-
-    test.size();
 
     return 0;
 }
