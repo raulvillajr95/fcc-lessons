@@ -1,0 +1,48 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{geometry}                
+\geometry{letterpaper}                   
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{LaTeX Nw}
+\author{Raul Villalobos}
+\date{July 5, 2025}
+
+\begin{document}
+\maketitle
+Let $a$,~$b \in \mathbb{Z}$ \\
+Let $\pi = a/b$ \\
+Define polynomials: \\
+\begin{center}
+$f(x) = \frac{x^{n}(a-bx)^n}{n!}$, \\
+\vspace{4pt}
+$F(x) = f(x) - f^{(2)}(x)+f^{(4)}(x) - \cdots +(-1)^{n}f^{(2n)}(x)$
+\vspace{4pt}
+\end{center}
+
+$n$ is some postitive integer. Since $n!f(x)$ has integral coefficients and terms in $x$ of degree not less than $n$,~$f(x)$ and its derivatives $f^{(i)}(x)$ have integral values for $x=0;$ also for $x=\pi=a/b$,~since$f(x)=f(a/b-x)$. We have \\
+\begin{center}
+$\frac{d}{dx} \{F'(x)\sin x -F(x)\cos x\} = F''(x)\sin x + F(x) \sin x = f(x) \sin x$ \\
+\vspace{4pt}
+\end{center}
+and
+\begin{equation}
+  \int_{0}^{\pi} f(x) \sin x dx = [F'(x) \sin x - F(x) \cos x]_{0}^{\pi} = F(\pi) + F(0).
+\end{equation}
+$F(\pi)+F(0)$ is now an integer, since $f^{(i)}(\pi)$and$f^{(i)}(0)$ are integers. For $0<x<\pi$ though,
+\begin{center}
+$0<f(x)\sin x <\frac{\pi^{n}a^{n}}{n!}$,
+\end{center}
+so the integral from $(1)$ is $positive, but~arbitrarily~small$ for $n$ which is large enough. So $(1)$ is false, and our assumption that $\pi$ is rational is aswel.
+\vspace{4pt}
+Full proof by Ivan Niven\cite{Niven}.
+
+\begin{thebibliography}{1}
+\bibitem{Niven} I.~Niven, ``A simple proof that $\pi$ is irrational,''
+\emph{Bull.\ Amer.\ Math.\ Soc.\ (New Series)}, vol.~53, no.~6, p.~509, June~1947.
+\end{thebibliography}
+
+\end{document}  

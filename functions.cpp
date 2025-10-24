@@ -6,6 +6,7 @@
 #include <bitset>
 #include <set>
 #include <sstream>
+#include <utility>
 #include <gumbo.h>
 #include <curl/curl.h>
 using namespace std;
@@ -336,9 +337,7 @@ string reverseString(string word)
     string result = "";
 
     for (int i = word.length() - 1; i >= 0; i--)
-    {
-        result += word[i];
-    }
+         result += word[i];
     
     return result;
 }
@@ -499,6 +498,297 @@ bool IsLeapYear(int year)
    return res;
 }
 
+// Reverses a vector
+vector<int> revArr(vector<int> arr)
+{
+   vector<int> res;
+   
+   int n = arr.size();
+   for (int i = n-1; i >= 0; i--)
+      res.push_back(arr[i]);
+   
+   return res;
+}
+
+// Returns true if an integer is in the vector
+bool intInArr(vector<int> arr, int num)
+{
+   bool res = false;
+   
+   int n = arr.size();
+   for (int i = 0; i < n; i++)
+   {
+      if (arr[i] == num)
+      {
+         res = true;
+         break;
+      }
+   }
+   
+   return res;
+}
+
+// Returns true if a character is in the vector
+bool charInArr(vector<char> arr, char ch)
+{
+   bool res = false;
+   
+   int n = arr.size();
+   for (int i = 0; i < n; i++)
+   {
+      if (arr[i] == ch)
+      {
+         res = true;
+         break;
+      }
+   }
+   
+   return res;
+}
+
+// Returns new vector with removed duplicates
+vector<int> remDups(vector<int> arr)
+{
+   vector<int> res;
+   
+   int n = arr.size();
+   for(int i = 0; i < n; i++)
+   {
+      if(!intInArr(res, arr[i]))
+      {
+         res.push_back(arr[i]);
+      }
+   }
+   
+   return res;
+}
+
+// Counts the times an integer appears in a vector
+int numApp(vector<int> arr, int num)
+{
+   int res = 0;
+   
+   int n = arr.size();
+   for(int i = 0; i < n; i++)
+   {
+      if (arr[i] == num)
+         res++;
+   }
+   
+   return res;
+}
+
+// Returns true if there are spaces on edge of string
+bool edgeSpacing(const string& s)
+{
+   bool res = false;
+   int n = s.size();
+   
+   if (s[0] == ' ' || s[n-1] == ' ')
+   {
+      res = true;
+   }
+  
+   return res;
+}
+
+// Returns the most appearances of any single integer
+bool intPairVect(vector<pair<int,int>>& counts, int num)
+{
+   bool res = false;
+   
+   int n = counts.size();
+   for(int i = 0; i < n; i++)
+      if (num == counts[i].first)
+      {
+         res = true;
+         break;
+      }
+   
+   return res;
+}
+void intPairVectInc(vector<pair<int,int>>& counts, int num)
+{
+   int n = counts.size();
+   for(int i = 0; i < n; i++)
+      if (num == counts[i].first)
+      {
+         counts[i].second++;
+         break;
+      }
+}
+int intPairVectMax(vector<pair<int,int>>& counts)
+{
+   int max = counts[0].second;
+   
+   int n = counts.size();
+   for(int i = 1; i < n; i++)
+      if (counts[i].second > max)
+         max = counts[i].second;
+   
+   return max;
+}
+
+unsigned int most_frequent_item_count(const vector<int>& collection)
+{
+   vector<pair<int, int>> counts;
+   
+   int n = collection.size();
+   
+   if (n <= 1)
+      return n;
+   
+   for (int i = 0; i < n; i++)
+   {
+      if(!intPairVect(counts, collection[i]))
+      {
+         pair<int, int> temp;
+         temp.first = collection[i];
+         temp.second = 1;
+         counts.push_back(temp);
+      }
+      else if (intPairVect(counts, collection[i]))
+      {
+         intPairVectInc(counts, collection[i]);
+      }
+   }
+   return intPairVectMax(counts);
+}
+
+// Seperate int into single digits
+vector<int> seperateInt(int num)
+{
+   vector<int> res;
+   
+   int n = to_string(num).size();
+   for (int i = 0; i < n; i++)
+   {
+      int temp = num % 10;
+      num = (num - temp) / 10;
+      res.insert(res.begin(), temp);
+   }
+   
+   return res;
+}
+
+// Return the factorial of a num
+int factorial(int num)
+{
+   int res = 1;
+   
+   for (int i = 1; i <= num; i++)
+      res *= i;
+   
+   return res;
+}
+
+// Return nth digit starting from right. Starts with 1.
+int findDigit(int num, int nth)
+{
+   if (num < 0)
+      num = -num;
+   
+   int n = to_string(num).size();
+   
+   if (nth < 1)
+      return -1;
+   else if (nth > n)
+      return 0;
+   
+   vector<int> sepInt =  seperateInt(num);
+   
+   return sepInt[n-nth];
+}
+
+// Removes integer from given vector
+void removeInt(vector<int>& arr, int num)
+{
+   int n = arr.size();
+   for(int i = 0; i < n;)
+   {
+      if(arr[i] == num)
+      {
+         arr.erase(arr.begin() + i);
+         n = arr.size();
+      }
+      else
+      {
+         i++;
+      }
+   }
+}
+
+// Returns true if integer's digits are sorted
+bool tidyNumber(int number)
+{
+   vector<int> sepNum = seperateInt(number);
+   vector<int> sepNumCopy = sepNum;
+   sort(sepNum.begin(), sepNum.end());
+   
+   bool isSorted = true;
+   
+   int n = sepNum.size();
+   for (int i = 0; i < n; i++)
+      if (sepNum[i] != sepNumCopy[i])
+         isSorted = false;
+   
+   return isSorted;
+}
+
+// Displays single line of integers on console
+void displayIntVec(vector<int> nums)
+{
+   int n = nums.size();
+   for(int i = 0; i < n; i++)
+   {
+      cout << nums[i] << " ";
+   }
+   cout << endl;
+}
+
+void displayStrVec(vector<string> arr)
+{
+   int n = arr.size();
+   for(int i = 0; i < n; i++)
+   {
+      cout << arr[i] << " ";
+   }
+   cout << endl;
+}
+
+// Combine 2 integer vectors
+vector<int> combineTwoVec(vector<int> vec1, vector<int> vec2)
+{
+   vector<int> res;
+   
+   int n1 = vec1.size();
+   for (int i = 0; i < n1; i++)
+   {
+      res.push_back(vec1[i]);
+   }
+   
+   int n2 = vec2.size();
+   for (int i = 0; i < n2; i++)
+   {
+      res.push_back(vec2[i]);
+   }
+   
+   return res;
+}
+
+// Seperate by specified char
+vector<int> sepByChar(string str, char cr)
+{
+   stringstream ss(str);
+   string item;
+   vector<int> nums;
+   while(getline(ss, item, cr))
+   {
+      nums.push_back(stoi(item));
+   }
+
+   return nums;
+}
 
 int main() {
     // URL of the website to scrape

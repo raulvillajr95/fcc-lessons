@@ -3,7 +3,7 @@
 #include <utility>
 using namespace std;
 
-bool numInArr(vector)
+// bool numInArr(vector)
 
 // vector<int> nums(vector<int> numbers)
 // {
@@ -26,6 +26,7 @@ bool numInArr(vector)
 
 int main()
 {
+    cout << "Hello world" << endl;
 
     return 0;
 }

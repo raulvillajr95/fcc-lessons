@@ -5,6 +5,7 @@
     "cstdio": "cpp",
     "vector": "cpp",
     "string": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "__split_buffer": "cpp"
   }
 }
