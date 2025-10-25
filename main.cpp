@@ -1,32 +1,38 @@
 #include <iostream>
-#include <vector>
-#include <utility>
 using namespace std;
 
-// bool numInArr(vector)
+string replace(const string &s)
+{
+    string res = "";
 
-// vector<int> nums(vector<int> numbers)
-// {
+    int n = s.size();
+    for(int i = 0; i < n; i++)
+    {
+        switch(s[i])
+        {
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':
+            case 'A':
+            case 'E':
+            case 'I':
+            case 'O':
+            case 'U':
+                res += "!";
+                break;
+            default:
+                res += s[i];
+        }
+    }
 
-// }
-
-// int stray(vector<int> numbers)
-// {
-//     vector<pair <int, int>> reps = {(numbers[0], 0)};
-
-//     int n = numbers.size();
-//     for (int i = 0; i < n; i++)
-//     {
-//         if (reps[0].first)
-//     }
-
-
-//     return reps[1];
-// }
+    return res;
+}
 
 int main()
 {
-    cout << "Hello world" << endl;
+    cout << replace("Hallo world") << endl;
 
     return 0;
 }
