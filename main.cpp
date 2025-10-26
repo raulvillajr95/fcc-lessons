@@ -1,30 +1,25 @@
 #include <iostream>
 using namespace std;
 
-string replace(const string &s)
+double calculator(double a, double b, char op)
 {
-    string res = "";
+    double res = 0.0;
 
-    int n = s.size();
-    for(int i = 0; i < n; i++)
+    if(op == '+')
     {
-        switch(s[i])
-        {
-            case 'a':
-            case 'e':
-            case 'i':
-            case 'o':
-            case 'u':
-            case 'A':
-            case 'E':
-            case 'I':
-            case 'O':
-            case 'U':
-                res += "!";
-                break;
-            default:
-                res += s[i];
-        }
+        res = a+b;
+    } else if(op == '-')
+    {
+        res = a-b;
+    } else if(op == '*')
+    {
+        res = a*b;
+    } else if(op == '/')
+    {
+        res = a/b;
+    } else
+    {
+        throw invalid_argument ("Invalid argument");
     }
 
     return res;
@@ -32,7 +27,10 @@ string replace(const string &s)
 
 int main()
 {
-    cout << replace("Hallo world") << endl;
+    cout << calculator(1, 2, '+') << endl;
+    cout << calculator(1, 2, '-') << endl;
+    cout << calculator(3, 5, '*') << endl;
+    cout << calculator(6, 2, '/') << endl;
 
     return 0;
 }

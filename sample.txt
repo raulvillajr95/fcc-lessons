@@ -1,1 +1,0 @@
-dsin(θ) = mλ where m = 0,1,2,... (bright fringes)
