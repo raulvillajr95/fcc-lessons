@@ -1,0 +1,1 @@
+dsinθ = (m + 1/2)λ, m = 0,1,2,... (dark fringes)
