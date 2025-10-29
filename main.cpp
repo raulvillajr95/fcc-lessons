@@ -1,30 +1,40 @@
 #include <iostream>
 using namespace std;
 
-unsigned int hotpo(unsigned int n)
+int countSquares(int n)
 {
-    int count = 0;
 
-    while(n != 1)
+    if (n == 0)
     {
-        if(n % 2 == 0)
-        {
-            n /= 2;
-        }
-        else
-        {
-            n = 3*n + 1;
-        }
-        count += 1;
+        return 1;
+    } else if (n == 1)
+    {
+        return 8;
     }
 
-    return count;
+    int a = (n+1)*(n+1)*6;
+    int b = a - (2*8);
+    int c = b - ((n+1-2)*12);
+
+    return c;
 }
 
 int main()
 {
-    cout << hotpo(1) << endl;
-    cout << hotpo(5) << endl;
+    cout << countSquares(0) << endl;
+    cout << countSquares(1) << endl;
+    cout << countSquares(2) << endl;
 
     return 0;
 }
+
+/*
+9*6 = 54
+54 - (2*8) = 38
+38 - (1*12) = 26
+
+(n+1)*(n+1) * 6 = a
+a - (2*8) = b
+b - ((n+1-2)*12) = c
+
+*/
