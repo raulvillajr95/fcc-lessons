@@ -1,30 +1,35 @@
 #include <iostream>
 using namespace std;
 
-int countSquares(int n)
+bool isOpposite(const string& s1, const string& s2)
 {
+    int n1 = s1.size();
+    int n2 = s2.size();
 
-    if (n == 0)
+    if(n1 == 0 || n2 == 0 || (n1 != n2))
     {
-        return 1;
-    } else if (n == 1)
-    {
-        return 8;
+        return false;
     }
 
-    int a = (n+1)*(n+1)*6;
-    int b = a - (2*8);
-    int c = b - ((n+1-2)*12);
+    bool res = true;
 
-    return c;
+    for(int i = 0; i < n1; i++)
+    {
+        int diff = s1[i] - s2[i];
+        char s1Low = tolower(s1[i]);
+        char s2Low = tolower(s2[i]);
+
+        if(diff == 0 || (s1Low != s2Low))
+        {
+            res = false;
+        }
+    }
+
+    return res;
 }
 
 int main()
 {
-    cout << countSquares(0) << endl;
-    cout << countSquares(1) << endl;
-    cout << countSquares(2) << endl;
-
     return 0;
 }
 

@@ -1,1 +1,1 @@
-M = f_objective / f_eyepiece. Image inverted
+The bending and spreading of a wave when it encounters an object or opening.
