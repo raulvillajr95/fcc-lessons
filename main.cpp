@@ -1,43 +1,25 @@
 #include <iostream>
-#include <vector>
+#include <bitset>
 using namespace std;
 
-bool oper(bool a, bool b, string str)
+string evil(int num)
 {
+    bitset<8> numBin(num);
 
-    bool res = false;
+    int count = 0;
 
-    if (str == "AND")
+    for (int i = 0; i < 8; i++)
     {
-        res = a && b;
-    }
-    else if (str == "OR")
-    {
-        res = a || b;
-    }
-    else if (str == "XOR")
-    {
-        res = a xor b;
-    }
-
-    return res;
-}
-
-bool logicalCalc(const vector<bool>& items, const string& op)
-{
-    bool res = true;
-
-    int n = items.size();
-
-    for (int i = 0; i < n-1; i++)
-    {
-        if(i == 0)
+        if(numBin[i] == 1)
         {
-            res = oper(items[i], items[i+1], op);
-        } else
-        {
-            res = oper(res, items[i+1], op);
+            count++;
         }
+    }
+
+    string res = "It's Odious!";
+    if (count % 2 == 0)
+    {
+        res = "It's Evil!";
     }
 
     return res;
@@ -45,18 +27,7 @@ bool logicalCalc(const vector<bool>& items, const string& op)
 
 int main()
 {
-    cout << oper(true, true, "AND") << endl;
-    cout << oper(true, false, "AND") << endl;
-    cout << oper(true, true, "OR") << endl;
-    cout << oper(true, false, "OR") << endl;
-    cout << oper(true, true, "XOR") << endl;
-    cout << oper(false, false, "XOR") << endl;
+    cout << evil(34) << endl;
 
     return 0;
 }
-
-/*
-s = rt
-r = s/t
-r = s/(π/2)
-*/
