@@ -1,45 +1,27 @@
 #include <iostream>
-#include <vector>
-#include <string>
+#include <cmath>
 using namespace std;
 
-int sumInts(int num)
+using point = const pair<double, double>;
+
+pair<double, double> barTriang(point a, point b, point c)
 {
-    int sum = 0;
+    double xo = (a.first + b.first + c.first) / 3.0;
+    double yo = (a.second + b.second + c.second) / 3.0;
 
-    string numStr = to_string(num);
-    int n = numStr.size();
+    xo = round(xo * 10000.0) / 10000.0;
+    yo = round(yo * 10000.0) / 10000.0;
 
-    for (int i = 0; i < n; i++)
-    {
-        int charInt = numStr[i] - '0';
-        sum += charInt;
-    }
+    cout << "xo: " << xo << endl;
+    cout << "yo: " << yo << endl;
 
-    return sum;
-}
-
-string SubtractSum(int num)
-{
-    vector<string> fruits = {"kiwi", "pear", "kiwi", "banana", "melon", "banana", "melon", "pineapple", "apple", "pineapple", "cucumber", "pineapple", "cucumber", "orange", "grape", "orange", "grape", "apple", "grape", "cherry", "pear", "cherry", "pear", "kiwi", "banana", "kiwi", "apple", "melon", "banana", "melon", "pineapple", "melon", "pineapple", "cucumber", "orange", "apple", "orange", "grape", "orange", "grape", "cherry", "pear", "cherry", "pear", "apple", "pear", "kiwi", "banana", "kiwi", "banana", "melon", "pineapple", "melon", "apple", "cucumber", "pineapple", "cucumber", "orange", "cucumber", "orange", "grape", "cherry", "apple", "cherry", "pear", "cherry", "pear", "kiwi", "pear", "kiwi", "banana", "apple", "banana", "melon", "pineapple", "melon", "pineapple", "cucumber", "pineapple", "cucumber", "apple", "grape", "orange", "grape", "cherry", "grape", "cherry", "pear", "cherry", "apple", "kiwi", "banana", "kiwi", "banana", "melon", "banana", "melon", "pineapple", "apple", "pineapple"};
-
-    num = num - sumInts(num);
-
-    while(num < 1 || num > 100)
-    {
-        num = num - sumInts(num);
-    }
-
-    // cout << num << endl;
-
-    return fruits[num - 1];
+    return {xo, yo};
 }
 
 int main()
 {
-    // cout << sumInts(325) << endl;
-    cout << SubtractSum(325) << endl;
-    cout << SubtractSum(10) << endl;
+    barTriang({4,6}, {12,4},{10,10});
+    barTriang({4,2}, {12,2},{6,10});
 
     return 0;
 }
