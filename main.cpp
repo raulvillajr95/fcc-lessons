@@ -1,23 +1,11 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
-class Cube
+double converter(int mpg)
 {
-public:
-    void SetSide(int num);
-    int GetSide();
-private:
-    int Side = 0;
-};
-
-int Cube::GetSide(void)
-{
-    return Side;
-}
-
-void Cube::SetSide(int num)
-{
-    Side = num;
+    double kpl = mpg * 1.609344 * (1.0/4.54609188);
+    return round(kpl * 100.0)/100.0;
 }
 
 int main()
