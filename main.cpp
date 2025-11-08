@@ -1,30 +1,22 @@
 #include <iostream>
+#include <utility>
 using namespace std;
 
-bool canSnailReachEnd(double x, double y, double z)
+pair<int, int> swap_values(pair<int, int> values)
 {
-    double travel = 0.0;
-    int min = 0;
-    bool res = true;
-    while(travel < x)
-    {
-        travel += y;
-        x += z;
-        min++;
+    int temp = values.first;
+    values.first = values.second;
+    values.second = temp;
 
-        // if min more than year, false
-        if (min > 525600)
-        {
-            res = false;
-            break;
-        }
-
-    }
-
-    return res;
+    return values;
 }
 
 int main()
 {
+    pair<int, int> paired = swap_values({123, 321});
+
+    cout << paired.first << endl;
+    cout << paired.second << endl;
+
     return 0;
 }
