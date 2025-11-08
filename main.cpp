@@ -1,11 +1,27 @@
 #include <iostream>
-#include <cmath>
 using namespace std;
 
-double converter(int mpg)
+bool canSnailReachEnd(double x, double y, double z)
 {
-    double kpl = mpg * 1.609344 * (1.0/4.54609188);
-    return round(kpl * 100.0)/100.0;
+    double travel = 0.0;
+    int min = 0;
+    bool res = true;
+    while(travel < x)
+    {
+        travel += y;
+        x += z;
+        min++;
+
+        // if min more than year, false
+        if (min > 525600)
+        {
+            res = false;
+            break;
+        }
+
+    }
+
+    return res;
 }
 
 int main()

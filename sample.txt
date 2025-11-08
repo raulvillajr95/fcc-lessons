@@ -1,2 +1,1 @@
-t = (λ₀)/(4πn_coat)
-other: (2m+1)*(λ₀)/(4πn_coat)
+When a white beam of light passes through a medium which splits it into various colors because of their wavelengths.
