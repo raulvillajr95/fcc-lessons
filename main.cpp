@@ -1,38 +1,30 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
-vector<string> towerBuilder(unsigned num)
+unsigned int realNumbers(unsigned int n)
 {
-   int length = 2*num + 1;
-   vector<string> res;
-
-   for (int i = 0; i < num; i++)
-   {
-      string strip = "";
-      for (int j = 0; j < num-1-i; j++)
+   int count = 0;
+   for(unsigned int i = 1; i <= n; i += 2)
+      if (i % 3 != 0 && i % 5 != 0)
       {
-         strip += " ";
+         // cout << "i: " << i << endl;
+         // cout << ": " << i << endl;
+
+         count++;
       }
 
-      for (int j = 0; j < 2*i+1; j++)
-      {
-         strip += "*";
-      }
-
-      for (int j = 0; j < num-1-i; j++)
-      {
-         strip += " ";
-      }
-      res.push_back(strip);
-   }
-
-   return res;
+   return count;
 }
 
 int main()
 {
-
+   // 1, 
+   // cout << realNumbers(5) << endl;
+   // cout << realNumbers(10) << endl;
+   // cout << realNumbers(20) << endl;
+   cout << realNumbers(100) << endl;
+   cout << realNumbers(200) << endl;
+   cout << realNumbers(300) << endl;
 
    return 0;
 }
