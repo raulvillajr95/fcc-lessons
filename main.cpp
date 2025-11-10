@@ -1,22 +1,60 @@
 #include <iostream>
-#include <utility>
+#include <vector>
 using namespace std;
 
-pair<int, int> swap_values(pair<int, int> values)
+vector<int> latinRow(int num, int start)
 {
-    int temp = values.first;
-    values.first = values.second;
-    values.second = temp;
+   vector<int> res;
 
-    return values;
+   for(int i = start; i < (start+num); i++)
+   {
+      res[i] = i + 1;
+   }
+
+   return res;
+}
+
+void displayArrInt(vector<int> arr)
+{
+   int n = arr.size();
+
+   for(int i = 0; i < n; i++)
+   {
+      cout << arr[i] << " ";
+   }
+
+   cout << endl;
+}
+
+int triSum(int num)
+{
+   num++;
+   int count = 0;
+   int start = 1;
+   // int temp = num;
+   while (num > 0)
+   {
+      cout << "num: " << num << endl;
+      for(int i = start; i < start+num; i++)
+      {
+         cout << i << endl;
+         count += i;
+      }
+
+      start += num;
+      
+      num--;
+   }
+
+   return count;
 }
 
 int main()
 {
-    pair<int, int> paired = swap_values({123, 321});
+   // vector<int> test1 = latinRow(4, 0);
+   // displayArrInt(test1);
 
-    cout << paired.first << endl;
-    cout << paired.second << endl;
+   cout << triSum(2) << endl;
 
-    return 0;
+   return 0;
 }
