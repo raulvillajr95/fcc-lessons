@@ -1,36 +1,23 @@
 #include <iostream>
-#include <vector>
+#include <map>
 using namespace std;
 
-vector<int> cleaned_counts(const vector<int>& data)
+map<char, unsigned> count(const string& str)
 {
-   vector<int> res = {data[0]};
+   map<char, unsigned> chars;
 
-   int n = data.size();
-   int biggest = data[0];
-   for (int i = 0; i < n-1; i++)
+   int n = str.size();
+   for(int i = 0; i < n; i++)
    {
-      if (biggest > data[i+1])
-      {
-         res.push_back(biggest);
-      }
-      else if (data[i+1] > biggest)
-      {
-         biggest = data[i+1];
-         res.push_back(biggest);
-      }
-      else
-      {
-         res.push_back(data[i+1]);
-      }
-      
+      chars[str[i]]++;
    }
 
-   return res;
+   return chars;
 }
 
 int main()
 {
+
 
    return 0;
 }
