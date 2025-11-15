@@ -1,37 +1,27 @@
 #include <iostream>
 #include <vector>
-#include <cmath>
+#include <utility>
 using namespace std;
 
-vector<int> bin(unsigned long long num)
+vector<string> openOrSenior(vector<pair<int, int>>& data)
 {
-   vector<int> res;
+   vector<string> res;
 
-   int n = to_string(num).size();
-
-   unsigned long long two = 0;
-   int power = 0;
-   while(true)
+   int n = data.size();
+   for(int i = 0; i < n; i++)
    {
-      two = pow(2, power);
-      power++;
+      if (data[i].first >= 55 && data[i].second > 7)
+      {
+         res.push_back("Senior");
+      }
+      else
+      {
+         res.push_back("Open");
+      }
+      
    }
-   
-   cout << two << endl;
 
-   // for (int i = 0; i < n; i++)
-   // {
-   //    int n = pow(2, i);
-   //    if (num % n == 0)
-   // }
-   
    return res;
-}
-
-bool interlockable(unsigned long long a, unsigned long long b)
-{
-
-   return false;
 }
 
 int main()
