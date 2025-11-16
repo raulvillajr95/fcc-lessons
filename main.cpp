@@ -1,74 +1,62 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
-int barista(const vector<int>& v)
+string letters(int a, int b)
 {
-   vector<int> coff = v;
-   int n = coff.size();
+   string res = "";
 
-   if(n == 0)
+   for (int i = a; i < a+b; i++)
    {
-      return 0;
-   }
-   else if (n == 1)
-   {
-      return coff[0];
-   }
+      char lett = (i % 26) + 97;
+      res += lett;
 
-   sort(coff.begin(), coff.end());
+      if(i < (a+b)-1)
+      {
+         res += " ";
+      }
 
-   int tot = coff[0];
-   int temp = coff[0];
-   for (int i = 1; i < n; i++)
-   {
-      tot += (temp + 2 + coff[i]);
-      temp += 2 + coff[i];
+      // cout << lett << endl;
    }
 
-   return tot;
+   return res;
+}
+
+string grid(int n)
+{
+   string res = "";
+
+   for(int i = 0; i < n; i++)
+   {
+      res += letters(i, n);
+
+      if(i < n-1)
+      {
+         res += "\n";
+      }
+   }
+
+   return res;
 }
 
 int main()
 {
+   // letters(1, 4);
+   // cout << grid(4) << endl;
+   cout << grid(10) << endl;
 
-   vector<int> coff = {4,3,2};
-   int n = coff.size();
-
-   if(n == 0)
-   {
-      cout << 0 << endl;
-   }
-   else if (n == 1)
-   {
-      cout << coff[0] << endl;
-   }
-
-   sort(coff.begin(), coff.end());
-
-   int tot = coff[0];
-   int temp = coff[0];
-   cout << "start: " << tot << endl << endl;
-   for (int i = 1; i < n; i++)
-   {
-      cout << tot << " " << 2 << " " << coff[i] << endl;
-      tot += (temp + 2 + coff[i]);
-      temp += 2 + coff[i];
-      cout << "after: " << i << ", tot: " << tot << endl << endl;
-   }
-
-   cout << "res: " << tot << endl;
 
    return 0;
 }
 
 /*
-per coffee:
-   make coffee + 2 min to clean
 
-if 0, then 0
-if 1, then that 1 wait time
-else,
-   sort
+1,1,1 : 12
+2,1,1 : 20
+
+2,2,2 : 
+
+
+start at 1(a) to n(some letter)
+   return one string
 
 */
