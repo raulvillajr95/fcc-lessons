@@ -1,38 +1,44 @@
 #include <iostream>
 using namespace std;
 
-string letters(int a, int b)
+string plant(string seed, int stem, int flower, int temp)
 {
    string res = "";
 
-   for (int i = a; i < a+b; i++)
+   // Broken plant
+   if (temp < 20 || temp > 30)
    {
-      char lett = (i % 26) + 97;
-      res += lett;
-
-      if(i < (a+b)-1)
+      for(int i = 0; i < stem; i++)
       {
-         res += " ";
-      }
+         string temp = "";
 
-      // cout << lett << endl;
+         for (int j = 0; j < stem; j++)
+         {
+            temp += "-";
+         }
+
+         res += temp;
+      }
+      res += seed;
+
+      return res;
    }
 
-   return res;
-}
-
-string grid(int n)
-{
-   string res = "";
-
-   for(int i = 0; i < n; i++)
+   for(int i = 0; i < stem; i++)
    {
-      res += letters(i, n);
+      string temp = "";
 
-      if(i < n-1)
+      for (int j = 0; j < stem; j++)
       {
-         res += "\n";
+         temp += "-";
       }
+
+      for (int k = 0; k < flower; k++)
+      {
+         temp += seed;
+      }
+
+      res += temp;
    }
 
    return res;
@@ -40,10 +46,6 @@ string grid(int n)
 
 int main()
 {
-   // letters(1, 4);
-   // cout << grid(4) << endl;
-   cout << grid(10) << endl;
-
 
    return 0;
 }

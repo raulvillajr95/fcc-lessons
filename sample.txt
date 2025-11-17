@@ -1,3 +1,2 @@
-If E < U₀ a finite probability transmits.
-Transmission falls roughly like e^(-2βL)
-β = sqrt(2m(U₀ - E)/ℏ)
+Ψ(x) = sqrt(2/L)sin(nπx/L)
+Eₙ = (π²ℏ²/2mL²) n²
