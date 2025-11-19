@@ -1,0 +1,3 @@
+Get probability of a particles position from x_a to x_b
+
+int x_a -> x_b [|Ψ(x,t)|²]dx
