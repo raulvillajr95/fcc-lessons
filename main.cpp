@@ -1,82 +1,44 @@
 #include <iostream>
-#include <array>
 using namespace std;
 
-array<int, 3> burner(int c, int h, int o)
+string speedify(const string &wrd)
 {
-   array<int, 3> molecules = {0,0,0};
+   string res = "";
 
-   // Get H2O
-   while(h >= 2 && o >= 1)
+   int n = wrd.size();
+   for(int i = 0; i < n; i++)
    {
-      h -= 2;
-      o--;
-      molecules[0]++;
+      int spaces = wrd[i] - 'A';
+
+      if(res.size() <= i+spaces+1)
+      {
+         for (int k = res.size(); k < i+spaces+1; k++)
+         {
+            res += " ";
+         }
+         res[i+spaces] = wrd[i];
+      }
+      else
+      {
+         res[i+spaces] = wrd[i];
+      }
    }
 
-   // Get CO2
-   while(c >= 1 && o >= 2)
-   {
-      c--;
-      o -= 2;
-      molecules[1]++;
-   }
-
-   // Get CH4
-   while(c >= 1 && h >= 4)
-   {
-      c--;
-      h -= 4;
-      molecules[2]++;
-   }
-
-   return molecules;
+   return res;
 }
 
 int main()
 {
-   // C, H, O
-   int c = 45;
-   int h = 11;
-   int o = 100;
-
-   // H2O, CO2, CH4
-   array<int, 3> molecules = {0,0,0};
-
-   // Get H2O
-   while(h >= 2 && o >= 1)
-   {
-      h -= 2;
-      o--;
-      molecules[0]++;
-   }
-
-   // Get CO2
-   while(c >= 1 && o >= 2)
-   {
-      c--;
-      o -= 2;
-      molecules[1]++;
-   }
-
-   // Get CH4
-   while(c >= 1 && h >= 4)
-   {
-      c--;
-      h -= 4;
-      molecules[2]++;
-   }
-
-   cout << molecules[0] << " ";
-   cout << molecules[1] << " ";
-   cout << molecules[2] << endl;
-
+   cout  << "|" << speedify("AZ") << "|" << endl;
+   cout  << "|" << speedify("ABC") << "|" << endl;
+   cout  << "|" << speedify("ACE") << "|" << endl;
+   cout  << "|" << speedify("CBA") << "|" << endl;
+   cout  << "|" << speedify("HELLOWORLD") << "|" << endl;
+   
    return 0;
 }
 
 /*
 
-find position of negatives
-get sum of nums
 
 */

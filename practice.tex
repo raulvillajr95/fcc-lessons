@@ -31,25 +31,71 @@ $$
 \beta = \sqrt{\frac{m\omega}{\hbar}}
 $$
 
-(4) d. From $ n = 4 $ to $ n = 1 $ \newline
-Find energy (eV) \newline 
-$$ E_n = \left(n + \frac{1}{2}\right)\hbar\omega $$
-$$ E_n = \left(n + \frac{1}{2}\right)\left(\frac{h}{2\pi}\right)\left(2\pi f\right) $$
-$$ E_n = \left(n + \frac{1}{2}\right)hf$$
-$$ E_n = \left(n_a + \frac{1}{2}\right)hf - \left(n_b + \frac{1}{2}\right)hf$$
-$$ E_n = \left(n_a - n_b\right)hf$$
-$$ E_1 = 13.6 \text{ eV} $$
-$$ E_p = |E_f - E_i| $$
-$$ E_p = \left|\frac{-13.6 \text{eV}}{1^2} - \frac{-13.6 \text{eV}}{4^2}\right| = 12.75 \text{ eV}$$
-$$ E_p = 12.75 \text{ eV}\left(\frac{1.602 \times 10^{-19} \text{J}}{1 \text{eV}}\right) = 2.043 \times 10^{-18} \text{ J}$$
+Build $ -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\psi(x) $
+$$ \psi_0'(x) = \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2} \left(- \beta^2 x\right) $$
+$$ \psi_0''(x) = \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} \left[ \left(e^{-\frac{1}{2} \beta^2 x^2} \times -\beta^2\right) + \left(e^{-\frac{1}{2} \beta^2 x^2} \left(- \beta^2 x\right) \times -\beta^2 x\right) \right]$$
+$$ = \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2} \left[\left(- \beta^2\right) + \beta^4 x^2\right]$$
+$$ = \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2} \left(\beta^2\right)\left[\beta^2 x^2 - 1\right]$$
 
-Find frequency (Hz)
-$$ f = \frac{E}{h} $$
-$$ f = \frac{2.043 \times 10^{-18} \text{ J}}{6.626 \times 10^{-34} \text{J s}} = 3.083 \times 10^{15} \text{ Hz} $$
+$$ -\frac{\hbar^2}{2m} \frac{d^2}{dx^2}\psi(x) = \left(-\frac{\hbar^2}{2m}\right) \left(\left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2} \left(\beta^2\right)\left[\beta^2 x^2 - 1\right] \right) $$
 
-Find wavelength
-$$ \lambda = \frac{v}{f} $$
-$$ \lambda = \frac{3.00 \times 10^8 \frac{\text{m}}{\text{s}}}{3.083 \times 10^{15} \text{ Hz}} = 9.732 \times 10^{-8} \text{m} $$
+Build $ U(x)\psi (x) $
+$$ U(x)\psi (x) = \left(\frac{mw^2 x^2}{2}\right) \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2} $$
 
+Build $E \psi (x)$
+$$ E_0 = \frac{\hbar \omega}{2} $$
+$$ E_0\psi (x) = \frac{\hbar \omega}{2} \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2}$$
+
+End result
+$$
+\left(-\frac{\hbar^2}{2m}\right) \left(\left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2} \left(\beta^2\right)\left[\beta^2 x^2 - 1\right] \right)
++ \left(\frac{mw^2 x^2}{2}\right) \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2}
+= \frac{\hbar \omega}{2} \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2}
+$$
+$$
+\left(-\frac{\hbar^2}{2m}\right) \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2} \left(\beta^2\right)\left[\beta^2 x^2 - 1\right] 
++ \left(\frac{mw^2 x^2}{2}\right) \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2}
+= \frac{\hbar \omega}{2} \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2}
+$$
+
+$$
+\left(-\frac{\hbar^2}{2m}\right)  e^{-\frac{1}{2} \beta^2 x^2} \left(\beta^2\right)\left[\beta^2 x^2 - 1\right] 
++ \left(\frac{mw^2 x^2}{2}\right)  e^{-\frac{1}{2} \beta^2 x^2}
+= \frac{\hbar \omega}{2}  e^{-\frac{1}{2} \beta^2 x^2}
+$$
+$$
+\left(-\frac{\hbar^2}{2m}\right) \left(\beta^2\right)\left[\beta^2 x^2 - 1\right] 
++ \left(\frac{mw^2 x^2}{2}\right)  
+= \frac{\hbar \omega}{2}  
+$$
+
+$$
+\left(-\frac{\hbar^2}{2m}\right) \left(\frac{m\omega}{\hbar}\right)\left[\beta^2 x^2 - 1\right] 
++ \left(\frac{mw^2 x^2}{2}\right)  
+= \frac{\hbar \omega}{2}  
+$$
+
+$$
+\left(-\frac{\hbar}{2}\right) \left(\omega\right)\left[\left(\frac{m\omega}{\hbar}\right) x^2 - 1\right] 
++ \left(\frac{mw^2 x^2}{2}\right)  
+= \frac{\hbar \omega}{2}  
+$$
+
+$$
+\left(-\frac{\hbar \omega}{2}\right) \left[\left(\frac{m\omega}{\hbar}\right) x^2 - 1\right] 
++ \left(\frac{mw^2 x^2}{2}\right)  
+= \frac{\hbar \omega}{2}  
+$$
+
+$$
+-\left(\frac{m\omega^2 x^2}{2}\right) + \frac{\hbar \omega}{2} 
++ \left(\frac{mw^2 x^2}{2}\right)  
+= \frac{\hbar \omega}{2}  
+$$
+
+$$
+\frac{\hbar \omega}{2} 
+= \frac{\hbar \omega}{2}  
+$$
 
 \end{document}  
