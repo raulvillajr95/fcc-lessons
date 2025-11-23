@@ -1,44 +1,58 @@
 #include <iostream>
 using namespace std;
 
-string speedify(const string &wrd)
+long pentagonal(long num)
 {
-   string res = "";
-
-   int n = wrd.size();
-   for(int i = 0; i < n; i++)
+   if (num <= 0)
    {
-      int spaces = wrd[i] - 'A';
-
-      if(res.size() <= i+spaces+1)
-      {
-         for (int k = res.size(); k < i+spaces+1; k++)
-         {
-            res += " ";
-         }
-         res[i+spaces] = wrd[i];
-      }
-      else
-      {
-         res[i+spaces] = wrd[i];
-      }
+      return -1;
    }
 
-   return res;
+   long count = 1 + (5*((num - 1)*(num))/2);
+
+   // for (long i = 0; i < num; i++)
+   // {
+   //    if (i == 0)
+   //    {
+   //       count++;
+   //    }
+   //    else
+   //    {
+   //       count += (i * 5);
+   //    }
+   // } 
+
+   return count;
 }
 
 int main()
 {
-   cout  << "|" << speedify("AZ") << "|" << endl;
-   cout  << "|" << speedify("ABC") << "|" << endl;
-   cout  << "|" << speedify("ACE") << "|" << endl;
-   cout  << "|" << speedify("CBA") << "|" << endl;
-   cout  << "|" << speedify("HELLOWORLD") << "|" << endl;
-   
+
+   // int num = 8;
+   // int count = 0;
+   // for (int i = 0; i < num; i++)
+   // {
+   //    if (i == 0)
+   //    {
+   //       count++;
+   //    }
+   //    else
+   //    {
+   //       count += (i * 5);
+   //    }
+   // }
+
+   // cout << count << endl;
+
+   cout << pentagonal(1) << endl;
+   cout << pentagonal(2) << endl;
+   cout << pentagonal(3) << endl;
    return 0;
 }
 
 /*
+need to make it faster
 
+possibly find a k + k+1 type pattern to get final result
 
 */

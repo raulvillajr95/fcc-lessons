@@ -13,89 +13,61 @@
 \begin{document}
 \maketitle
 
+(31) a. Normalization
 $$
-U(x) = \frac{mw^2 x^2}{2} 
-$$
-$$
-E_n = (n + \frac{1}{2})\hbar\omega
-$$
-$$
-\psi_0(x) = \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2}
-$$
-
-% Specific wave function
-$$
--\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\psi(x) + U(x)\psi(x) = E\psi(x)
-$$
-$$
-\beta = \sqrt{\frac{m\omega}{\hbar}}
-$$
-
-Build $ -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\psi(x) $
-$$ \psi_0'(x) = \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2} \left(- \beta^2 x\right) $$
-$$ \psi_0''(x) = \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} \left[ \left(e^{-\frac{1}{2} \beta^2 x^2} \times -\beta^2\right) + \left(e^{-\frac{1}{2} \beta^2 x^2} \left(- \beta^2 x\right) \times -\beta^2 x\right) \right]$$
-$$ = \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2} \left[\left(- \beta^2\right) + \beta^4 x^2\right]$$
-$$ = \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2} \left(\beta^2\right)\left[\beta^2 x^2 - 1\right]$$
-
-$$ -\frac{\hbar^2}{2m} \frac{d^2}{dx^2}\psi(x) = \left(-\frac{\hbar^2}{2m}\right) \left(\left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2} \left(\beta^2\right)\left[\beta^2 x^2 - 1\right] \right) $$
-
-Build $ U(x)\psi (x) $
-$$ U(x)\psi (x) = \left(\frac{mw^2 x^2}{2}\right) \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2} $$
-
-Build $E \psi (x)$
-$$ E_0 = \frac{\hbar \omega}{2} $$
-$$ E_0\psi (x) = \frac{\hbar \omega}{2} \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2}$$
-
-End result
-$$
-\left(-\frac{\hbar^2}{2m}\right) \left(\left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2} \left(\beta^2\right)\left[\beta^2 x^2 - 1\right] \right)
-+ \left(\frac{mw^2 x^2}{2}\right) \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2}
-= \frac{\hbar \omega}{2} \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2}
-$$
-$$
-\left(-\frac{\hbar^2}{2m}\right) \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2} \left(\beta^2\right)\left[\beta^2 x^2 - 1\right] 
-+ \left(\frac{mw^2 x^2}{2}\right) \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2}
-= \frac{\hbar \omega}{2} \left(\frac{\beta^2}{\pi}\right)^{\frac{1}{4}} e^{-\frac{1}{2} \beta^2 x^2}
+\psi(x) = A\cos\alpha x, -\frac{\pi}{2\alpha} \le x \le \frac{\pi}{2\alpha}
 $$
 
 $$
-\left(-\frac{\hbar^2}{2m}\right)  e^{-\frac{1}{2} \beta^2 x^2} \left(\beta^2\right)\left[\beta^2 x^2 - 1\right] 
-+ \left(\frac{mw^2 x^2}{2}\right)  e^{-\frac{1}{2} \beta^2 x^2}
-= \frac{\hbar \omega}{2}  e^{-\frac{1}{2} \beta^2 x^2}
-$$
-$$
-\left(-\frac{\hbar^2}{2m}\right) \left(\beta^2\right)\left[\beta^2 x^2 - 1\right] 
-+ \left(\frac{mw^2 x^2}{2}\right)  
-= \frac{\hbar \omega}{2}  
+\int_{a}^{b} \left|\psi(x)\right|^2 dx = 1
 $$
 
 $$
-\left(-\frac{\hbar^2}{2m}\right) \left(\frac{m\omega}{\hbar}\right)\left[\beta^2 x^2 - 1\right] 
-+ \left(\frac{mw^2 x^2}{2}\right)  
-= \frac{\hbar \omega}{2}  
+\int_{-\frac{\pi}{2\alpha}}^{\frac{\pi}{2\alpha}} \left|A\cos\alpha x\right|^2 dx = 1
 $$
 
 $$
-\left(-\frac{\hbar}{2}\right) \left(\omega\right)\left[\left(\frac{m\omega}{\hbar}\right) x^2 - 1\right] 
-+ \left(\frac{mw^2 x^2}{2}\right)  
-= \frac{\hbar \omega}{2}  
+A^2 \int_{-\frac{\pi}{2\alpha}}^{\frac{\pi}{2\alpha}} \cos^2\alpha x dx= 1
 $$
 
 $$
-\left(-\frac{\hbar \omega}{2}\right) \left[\left(\frac{m\omega}{\hbar}\right) x^2 - 1\right] 
-+ \left(\frac{mw^2 x^2}{2}\right)  
-= \frac{\hbar \omega}{2}  
+\frac{A^2}{\alpha}\left[\frac{u}{2} + \frac{\sin2u}{4}\right]_{\mathbf{0}}^{\mathbf{0.5 \times 10^{-10} \text{m}}}
 $$
 
 $$
--\left(\frac{m\omega^2 x^2}{2}\right) + \frac{\hbar \omega}{2} 
-+ \left(\frac{mw^2 x^2}{2}\right)  
-= \frac{\hbar \omega}{2}  
+\frac{\left(\sqrt{\frac{2\alpha}{\pi}}\right)^2}{\alpha}\left[\frac{u}{2} + \frac{\sin2u}{4}\right]_{\mathbf{0}}^{\mathbf{0.5 \times 10^{-10} \text{m}}}
 $$
 
 $$
-\frac{\hbar \omega}{2} 
-= \frac{\hbar \omega}{2}  
+\frac{\left(\frac{2\alpha}{\pi}\right)}{\alpha}\left[\frac{u}{2} + \frac{\sin2u}{4}\right]_{\mathbf{0}}^{\mathbf{0.5 \times 10^{-10} \text{m}}}
 $$
+
+$$
+\frac{2}{\pi}\left[\left(\frac{0.5 \times 10^{-10} \text{m}}{2} + \frac{\sin\left(2\left(0.5 \times 10^{-10} \text{m}\right)\right)}{4}\right) -
+\left(\frac{0}{2} + \frac{\sin\left(2\left(0\right)\right)}{4}\right)\right]_{\mathbf{0}}^{\mathbf{0.5 \times 10^{-10} \text{m}}}
+$$
+
+$$
+\frac{2}{\pi}\left(\frac{0.5 \times 10^{-10} \text{m}}{2} + \frac{\sin\left(2\left(0.5 \times 10^{-10} \text{m}\right)\right)}{4}\right)
+$$
+
+(62) \newline
+$ k = 1.13 \times 10^3 \frac{\text{N}}{\text{m}} $ \newline
+$ m = 1.67 \times 10^{-27} \text{ kg} $ \newline
+
+a. Find f
+$$ w = \sqrt{\frac{k}{m}} = 2\pi f $$
+$$ f = \frac{\sqrt{\frac{k}{m}}}{2\pi} $$
+$$ f = \frac{\sqrt{\frac{\left(1.13 \times 10^3 \frac{\text{N}}{\text{m}}\right)}{\left(1.67 \times 10^{-27} \text{ kg} \div 2\right)}}}{2\pi} $$
+$$ f = 1.851 \times 10^{14} \text{ Hz}$$
+
+b. Find $E$ and $\lambda$
+$$ \Delta E_{43} = hf $$
+$$ \Delta E_{43} = \left(6.626 \times 10^{-34} \text{ Js}\right) \left(1.851 \times 10^{14} \text{ Hz}\right)$$
+$$ \Delta E_{43} = 1.227 \times 10^{-19} \text{ J}$$
+
+$$ \lambda = \frac{v}{f} $$
+$$ \lambda = \frac{3.00 \times 10^8 \frac{\text{m}}{\text{s}}}{1.851 \times 10^{14} \text{ Hz}} $$
+$$ \lambda = 1.621 \times 10^{-6} \text{ m} $$
 
 \end{document}  
