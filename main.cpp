@@ -1,63 +1,49 @@
 #include <iostream>
-#include <map>
+#include <vector>
 using namespace std;
 
-string wordPattern(const string &word)
+string getTurkishNumber(unsigned int n)
 {
-   string wordLow = "";
+   vector<string> ones = {"sıfır","bir","iki","üç","dört","beş","altı","yedi","sekiz","dokuz"};
+   vector<string> tens = {"on","yirmi","otuz","kırk","elli","altmış","yetmiş","seksen","doksan"};
 
-   // Lower letters;
-   int n = word.size();
-   for (int i = 0; i < n; i++)
+   int one = 0;
+   int two = 0;
+
+   string message = "";
+
+   if(n < 10)
    {
-      wordLow += tolower(word[i]);
+      message += ones[n];
    }
-
-   // cout << wordLow << endl;
-
-   string res = "0.";
-   map<char, int> myMap;
-   // If 1 letter, return "0"
-   if(n == 1)
+   else
    {
-      return "0";
-   }
-   else if (n == 0)
-   {
-      return "";
-   }
+      one = n % 10;
+      two = (n - one)/10;
 
-   // Check if
-   int num = 0;
-   for(int i = 1; i < n; i++)
-   {
-      // cout << word[i] << " " << word[i-1] << endl;
-      if(wordLow[i] != wordLow[i-1])
+      if(one == 0)
       {
-         // cout << "DIFF" << endl;
-         num++;
-         res += to_string(num);
+         message += tens[two-1];
       }
       else
       {
-         res += to_string(num);
+         message += tens[two-1];
+         message += " ";
+         message += ones[one];
       }
 
-      if (i < n-1)
-      {
-         res += ".";
-      }
+      
    }
 
-   return res;
+   return message;
 }
 
 int main()
 {
-   cout << wordPattern("") << endl;
-   cout << wordPattern("hello") << endl;
-   cout << wordPattern("helLo") << endl;
-   cout << wordPattern("helLo") << endl;
+   cout << getTurkishNumber(0) << endl;
+   cout << getTurkishNumber(16) << endl;
+   cout << getTurkishNumber(70) << endl;
+   cout << getTurkishNumber(26) << endl;
 
    return 0;
 }
