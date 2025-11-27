@@ -1,3 +1,0 @@
-work: energy transferred to/from a system by a force moving a distance.
-heat: energy transferred between systems due to a temperature difference.
-E_int: The sum of the microscopic kinetic and potential energies in a system.

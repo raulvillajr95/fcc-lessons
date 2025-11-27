@@ -13,96 +13,85 @@
 \begin{document}
 \maketitle
 
-(3) Isobaric Process \newline
-$ n = 0.475 \text{ mol} $ \newline
-$ T_i = 575 \text{ K} $ \newline
-$ T_f = 1150 \text{ K} $ \newline
-$ f_{\le 1150 \text{ K}} = 5 $ \newline
-$ f_{> 1150 \text{ K}} = 7 $ \newline
+(6) \newline
+$ m_1 = 0.650 \text{ kg} $ \newline
+$ T_{i1} = 352 + 273 = 625 \text{ K} $ \newline
+$ m_2 = 0.650 \text{ kg} $ \newline
+$ T_{i2} = 704 + 273 = 977 \text{ K} $ \newline
+$ C_{fe} = 450.0 \frac{\text{J}}{\text{kg K}} $ \newline
 
-a. Total Q \newline
+a. Find $T_f$ in °C and K \newline
 $
-Q = n C_p \Delta T
+Q = mC\Delta T
 $ \newline
 $
-C_p = \left(\frac{f}{2} + 1\right)R
-$ \newline
-
-From $ 575 $ K to $ 1150 $ K \newline
-$
-C_p = \left(\frac{5}{2} + 1\right)R = \frac{7}{2}R
-= \frac{7}{2} 8.314 \frac{\text{J}}{\text{K mol}}
-= 29.1 \frac{\text{J}}{\text{K mol}}
+0 = Q_1 + Q_2 = m_1 C_{fe} \left(T_f - T_{i1}\right)
++ m_2 C_{fe} \left(T_f - T_{i2}\right)
 $ \newline
 $
-Q = 0.475 \text{ mol} \times
-29.1 \frac{\text{J}}{\text{K mol}} \times
-\left(1150 \text{ K} - 575 \text{ K}\right)
-= 7948 \text{ J}
+m_1 C_{fe} T_{i1} + m_2 C_{fe} T_{i2} = m_1 C_{fe} T_f 
++ m_2 C_{fe} T_f 
 $ \newline
-
-From $ 1151 $ K to $ 1575 $ K \newline
 $
-C_p = \left(\frac{7}{2} + 1\right)R = \frac{9}{2}R
-= \frac{9}{2} 8.314 \frac{\text{J}}{\text{K mol}}
-= 37.41 \frac{\text{J}}{\text{K mol}}
-$\newline
+m_1 C_{fe} T_{i1} + m_2 C_{fe} T_{i2} = T_f \left(m_1 C_{fe}  
++ m_2 C_{fe}\right)
+$ \newline
 $
-Q = 0.475 \text{ mol} \times
-37.41 \frac{\text{J}}{\text{K mol}} \times
-\left(1575 \text{ K} - 1151 \text{ K}\right)
-= 7534 \text{ J}
+T_f = \frac{m_1 C_{fe} T_{i1} + m_2 C_{fe} T_{i2}}
+{m_1 C_{fe} + m_2 C_{fe}}
+$ \newline
+$
+T_f = \frac{T_{i1} + T_{i2}}{2}
+= \frac{\left(625 + 977\right) \text{ K}}{2}
+= 801 \text{ K} = 528 \text{ °C}
 $ \newline
 
+b. Find $\Delta S$ \newline
 $
-Q_{tot} = \left(7948 + 7534\right) \text{ J}
-= 15482 \text{ J}
+\Delta S_{tot} = \Delta S_1 + \Delta S_2
+= m_1 C_{fe} \ln\left(\frac{T_f}{T_{i1}}\right) +
+m_2 C_{fe} \ln\left(\frac{T_f}{T_{i2}}\right)
+$ \newline
+$
+\Delta S_{tot} =
+mC
+\left(
+  \ln\left(\frac{T_f}{T_{i1}}\right) +
+  \ln\left(\frac{T_f}{T_{i2}}\right)
+\right)
+= mC
+  \ln\left(\frac{T_f}{T_{i1}} \times
+  \frac{T_f}{T_{i2}}\right) 
+$ \newline
+$
+\Delta S_{tot} =
+mC \ln\left(
+  \frac{T_f^2}{T_{i1} \times T_{i2}}
+\right)
+= \left(0.650 \text{ kg}\right)
+\left(450.0 \frac{\text{J}}{\text{kg K}}\right)
+\ln\left(
+  \frac{\left(801 \text{ K}\right)^2}
+  {
+    625 \text{ K} \times 
+    977 \text{ K}
+  }
+\right)
+$ \newline
+$
+\Delta S_{tot} = 14.47 \frac{\text{J}}{K}
 $ \newline
 
-b. Total $ W $ \newline
+c. Find $\Delta S_{env}$ \newline
 $
-W = Q - \Delta E_{int}
-$ \newline
-$
-W_{tot} = \left(15482 - 11539\right) \text{ J}
-= 3943 \text{ J}
+\Delta S_{env} = 0 \frac{\text{J}}{K}
 $ \newline
 
-c. Total $ \Delta E_{int} $ \newline
+d. Find $\Delta S_{uni}$ \newline
 $
-\Delta E_{int} = n C_v \Delta T
+\Delta S_{uni} = \Delta S_{sys} + \Delta S_{env}
+= 14.47 \frac{\text{J}}{K} + 0 \frac{\text{J}}{K}
+= 14.47 \frac{\text{J}}{K}
 $ \newline
-$
-C_v = \frac{f}{2}R
-$ \newline
-
-From $ 575 $ K to $ 1150 $ K \newline
-$
-C_v = \frac{5}{2}R 
-= \frac{5}{2} 8.314 \frac{\text{J}}{\text{K mol}}
-= 20.79 \frac{\text{J}}{\text{K mol}}
-$ \newline
-$
-\Delta E_{int} = 0.475 \text{ mol} \times
-20.79 \frac{\text{J}}{\text{K mol}} \times
-\left(1150 \text{ K} - 575 \text{ K}\right)
-= 5678 \text{ J}
-$ \newline
-
-From $ 1151 $ K to $ 1575 $ K \newline
-$
-C_v = \frac{7}{2}R 
-= \frac{7}{2} 8.314 \frac{\text{J}}{\text{K mol}}
-= 29.1 \frac{\text{J}}{\text{K mol}}
-$ \newline
-$
-\Delta E_{int} = 0.475 \text{ mol} \times
-29.1 \frac{\text{J}}{\text{K mol}} \times
-\left(1575 \text{ K} - 1151 \text{ K}\right)
-= 5861 \text{ J}
-$ \newline
-$
-\Delta E_{int tot} = \left(5678 + 5861\right) \text{ J}
-= 11539 \text{ J}
-$ \newline
+The process is irreversible.
 \end{document}  
