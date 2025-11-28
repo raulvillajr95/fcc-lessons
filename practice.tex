@@ -7,91 +7,15 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
+\usepackage{xcolor}
+\pagecolor{black}
+\color{white}
+
 \title{LaTeX Practice}
 \author{Raul Villalobos}
 
 \begin{document}
 \maketitle
 
-(6) \newline
-$ m_1 = 0.650 \text{ kg} $ \newline
-$ T_{i1} = 352 + 273 = 625 \text{ K} $ \newline
-$ m_2 = 0.650 \text{ kg} $ \newline
-$ T_{i2} = 704 + 273 = 977 \text{ K} $ \newline
-$ C_{fe} = 450.0 \frac{\text{J}}{\text{kg K}} $ \newline
 
-a. Find $T_f$ in °C and K \newline
-$
-Q = mC\Delta T
-$ \newline
-$
-0 = Q_1 + Q_2 = m_1 C_{fe} \left(T_f - T_{i1}\right)
-+ m_2 C_{fe} \left(T_f - T_{i2}\right)
-$ \newline
-$
-m_1 C_{fe} T_{i1} + m_2 C_{fe} T_{i2} = m_1 C_{fe} T_f 
-+ m_2 C_{fe} T_f 
-$ \newline
-$
-m_1 C_{fe} T_{i1} + m_2 C_{fe} T_{i2} = T_f \left(m_1 C_{fe}  
-+ m_2 C_{fe}\right)
-$ \newline
-$
-T_f = \frac{m_1 C_{fe} T_{i1} + m_2 C_{fe} T_{i2}}
-{m_1 C_{fe} + m_2 C_{fe}}
-$ \newline
-$
-T_f = \frac{T_{i1} + T_{i2}}{2}
-= \frac{\left(625 + 977\right) \text{ K}}{2}
-= 801 \text{ K} = 528 \text{ °C}
-$ \newline
-
-b. Find $\Delta S$ \newline
-$
-\Delta S_{tot} = \Delta S_1 + \Delta S_2
-= m_1 C_{fe} \ln\left(\frac{T_f}{T_{i1}}\right) +
-m_2 C_{fe} \ln\left(\frac{T_f}{T_{i2}}\right)
-$ \newline
-$
-\Delta S_{tot} =
-mC
-\left(
-  \ln\left(\frac{T_f}{T_{i1}}\right) +
-  \ln\left(\frac{T_f}{T_{i2}}\right)
-\right)
-= mC
-  \ln\left(\frac{T_f}{T_{i1}} \times
-  \frac{T_f}{T_{i2}}\right) 
-$ \newline
-$
-\Delta S_{tot} =
-mC \ln\left(
-  \frac{T_f^2}{T_{i1} \times T_{i2}}
-\right)
-= \left(0.650 \text{ kg}\right)
-\left(450.0 \frac{\text{J}}{\text{kg K}}\right)
-\ln\left(
-  \frac{\left(801 \text{ K}\right)^2}
-  {
-    625 \text{ K} \times 
-    977 \text{ K}
-  }
-\right)
-$ \newline
-$
-\Delta S_{tot} = 14.47 \frac{\text{J}}{K}
-$ \newline
-
-c. Find $\Delta S_{env}$ \newline
-$
-\Delta S_{env} = 0 \frac{\text{J}}{K}
-$ \newline
-
-d. Find $\Delta S_{uni}$ \newline
-$
-\Delta S_{uni} = \Delta S_{sys} + \Delta S_{env}
-= 14.47 \frac{\text{J}}{K} + 0 \frac{\text{J}}{K}
-= 14.47 \frac{\text{J}}{K}
-$ \newline
-The process is irreversible.
 \end{document}  

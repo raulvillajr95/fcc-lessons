@@ -1,27 +1,73 @@
 #include <iostream>
-#include <cmath>
 using namespace std;
 
-int square_pi(int digits)
+string draw_spider(int legSize, int bodySize, char mouth, char eye)
 {
-   string pee = "31415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679";
-   int sum = 0;
-   for (int i = 0; i < digits; i++)
+   // Legs
+   string legL = "";
+   string legR = "";
+   if(legSize == 1)
    {
-      int dig = pee[i] - '0';
-      sum += (dig * dig);
+      legL = "^";
+      legR = "^";
+   } else if (legSize == 2)
+   {
+      legL = "/\\";
+      legR = "/\\";
+   } else if (legSize == 3)
+   {
+      legL = "/╲";
+      legR = "╱\\";
+   }
+   else if (legSize == 4)
+   {
+      legL = "╱╲";
+      legR = "╱╲";
    }
 
-   return ceil(sqrt(sum));
+   // Body
+   string bodyL = "";
+   string bodyR = "";
+   if(bodySize == 1)
+   {
+      bodyL = "(";
+      bodyR = ")";
+   } else if(bodySize == 2)
+   {
+      bodyL = "((";
+      bodyR = "))";
+   } else if(bodySize == 3)
+   {
+      bodyL = "(((";
+      bodyR = ")))";
+   }
+
+   // Eyes
+   string eyes = "";
+   string eyeStr(1, eye);
+   if(bodySize == 1)
+   {
+      eyes += eyeStr;
+   } else if (bodySize == 2)
+   {
+      eyes += eyeStr + eyeStr;
+   } else if (bodySize == 3)
+   {
+      eyes += eyeStr + eyeStr + eyeStr + eyeStr;
+   }
+
+   return legL + bodyL + eyes + mouth + eyes + bodyR + legR;
 }
 
 int main()
 {
-   cout << square_pi(1) << endl;
-   cout << square_pi(3) << endl;
 
    return 0;
 }
 
 /*
+need to make it faster
+
+possibly find a k + k+1 type pattern to get final result
+
 */
