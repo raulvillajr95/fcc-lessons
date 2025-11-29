@@ -2,35 +2,6 @@
 #include <vector>
 using namespace std;
 
-vector<int> Pendulum(vector<int> arr)
-{
-   sort(arr.begin(), arr.end());
-   int n = arr.size();
-   int pos = 0;
-   vector<int> res;
-
-   while(n > 0)
-   {
-      if (n > 0)
-      {
-         res.insert(res.begin(), arr[pos]);
-
-         n--;
-         pos++;
-      }
-
-      if (n > 0)
-      {
-         res.push_back(arr[pos]);
-
-         n--;
-         pos++;
-      }
-   }
-
-   return res;
-}
-
 void dispInt(vector<int> arr)
 {
    int n = arr.size();
@@ -39,6 +10,51 @@ void dispInt(vector<int> arr)
       cout << arr[i] << " ";
    }
    cout << endl;
+}
+
+vector<int> Pendulum(vector<int> arr)
+{
+   sort(arr.begin(), arr.end());
+   int n = arr.size();
+   int pos = 0;
+   vector<int> res;
+   vector<int> pB;
+   vector<int> pF;
+
+   while(n > 0)
+   {
+      if (n > 0)
+      {
+         res.insert(res.begin(), arr[pos]);
+         pF.push_back(arr[pos]);
+
+         n--;
+         pos++;
+      }
+
+      if (n > 0)
+      {
+         // res.push_back(arr[pos]);
+         pB.push_back(arr[pos]);
+
+         n--;
+         pos++;
+      }
+   }
+
+   int nF = pF.size();
+   for(int i = nF-1; i >= 0; i--)
+   {
+      res.push_back(pF[i]);
+   }
+
+   int nB = pB.size();
+   for(int i = 0; i < nB; i++)
+   {
+      res.push_back(pB[i]);
+   }
+
+   return res;
 }
 
 int main()
