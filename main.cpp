@@ -1,73 +1,81 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-string draw_spider(int legSize, int bodySize, char mouth, char eye)
+vector<int> Pendulum(vector<int> arr)
 {
-   // Legs
-   string legL = "";
-   string legR = "";
-   if(legSize == 1)
+   sort(arr.begin(), arr.end());
+   int n = arr.size();
+   int pos = 0;
+   vector<int> res;
+
+   while(n > 0)
    {
-      legL = "^";
-      legR = "^";
-   } else if (legSize == 2)
-   {
-      legL = "/\\";
-      legR = "/\\";
-   } else if (legSize == 3)
-   {
-      legL = "/╲";
-      legR = "╱\\";
-   }
-   else if (legSize == 4)
-   {
-      legL = "╱╲";
-      legR = "╱╲";
+      if (n > 0)
+      {
+         res.insert(res.begin(), arr[pos]);
+
+         n--;
+         pos++;
+      }
+
+      if (n > 0)
+      {
+         res.push_back(arr[pos]);
+
+         n--;
+         pos++;
+      }
    }
 
-   // Body
-   string bodyL = "";
-   string bodyR = "";
-   if(bodySize == 1)
-   {
-      bodyL = "(";
-      bodyR = ")";
-   } else if(bodySize == 2)
-   {
-      bodyL = "((";
-      bodyR = "))";
-   } else if(bodySize == 3)
-   {
-      bodyL = "(((";
-      bodyR = ")))";
-   }
+   return res;
+}
 
-   // Eyes
-   string eyes = "";
-   string eyeStr(1, eye);
-   if(bodySize == 1)
+void dispInt(vector<int> arr)
+{
+   int n = arr.size();
+   for(int i = 0; i < n; i++)
    {
-      eyes += eyeStr;
-   } else if (bodySize == 2)
-   {
-      eyes += eyeStr + eyeStr;
-   } else if (bodySize == 3)
-   {
-      eyes += eyeStr + eyeStr + eyeStr + eyeStr;
+      cout << arr[i] << " ";
    }
-
-   return legL + bodyL + eyes + mouth + eyes + bodyR + legR;
+   cout << endl;
 }
 
 int main()
 {
 
+   vector<int> arr = {6, 6, 8 ,5 ,10};
+   sort(arr.begin(), arr.end());
+   int n = arr.size();
+   int count = n;
+   int posB = 0;
+   int posE = n-1;
+   vector<int> res;
+
+   while(n > 0)
+   {
+      if (n > 0)
+      {
+         res.insert(res.begin(), arr[posB]);
+
+         n--;
+         posB++;
+      }
+
+      if (n > 0)
+      {
+         res.push_back(arr[posB]);
+
+         n--;
+         posB++;
+      }
+   }
+
+   dispInt(res);
+
    return 0;
 }
 
 /*
-need to make it faster
-
-possibly find a k + k+1 type pattern to get final result
 
 */
