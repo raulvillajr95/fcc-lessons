@@ -1,3 +1,0 @@
-When E < U₀ a finite probability transmits.
-Falls roughly like e^(-2βL)
-β = sqrt(2m(U₀ - E)/ℏ)
