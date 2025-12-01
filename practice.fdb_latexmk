@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1764625367.21098 "/Users/raulvillalobos/repos/fcc-lessons/practice.tex" "practice.pdf" "practice" 1764625368.22997 0
-  "/Users/raulvillalobos/repos/fcc-lessons/practice.tex" 1764625366.80321 1684 13e6c07200dab2c9d54d4b333aae3304 ""
+["pdflatex"] 1764626029.2483 "/Users/raulvillalobos/repos/fcc-lessons/practice.tex" "practice.pdf" "practice" 1764626029.67227 0
+  "/Users/raulvillalobos/repos/fcc-lessons/practice.tex" 1764626028.84389 1785 2dcba2c5ef172726b6e60a37fb2bfbba ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm" 1246382020 996 a18840b13b499c08ac2de96a99eda4bc ""
@@ -60,8 +60,8 @@
   "/usr/local/texlive/2025basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1751748794 80242 36d20467e6e9bb8a7d6e4469f7e174a9 ""
   "/usr/local/texlive/2025basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1741448339 2663854 a6f6b8c904d47faabe5d94cfdac61310 ""
   "/usr/local/texlive/2025basic/texmf.cnf" 1741448314 628 81d1ada0f601fb1ffa62f1323192d946 ""
-  "practice.aux" 1764625367.99752 168 23aeeb56264b611b42959e54d96db7ab "pdflatex"
-  "practice.tex" 1764625366.80321 1684 13e6c07200dab2c9d54d4b333aae3304 ""
+  "practice.aux" 1764626029.55874 168 23aeeb56264b611b42959e54d96db7ab "pdflatex"
+  "practice.tex" 1764626028.84389 1785 2dcba2c5ef172726b6e60a37fb2bfbba ""
   (generated)
   "practice.aux"
   "practice.log"
