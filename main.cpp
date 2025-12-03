@@ -9,11 +9,11 @@ int pyramid(int n)
 
 int main()
 {
-   cout << pyramid() << endl;
-   cout << pyramid() << endl;
-   cout << pyramid() << endl;
-   cout << pyramid() << endl;
-   cout << pyramid() << endl;
+   cout << pyramid(1) << endl;
+   cout << pyramid(3) << endl;
+   cout << pyramid(6) << endl;
+   cout << pyramid(10) << endl;
+   cout << pyramid(15) << endl;
 
    return 0;
 }
