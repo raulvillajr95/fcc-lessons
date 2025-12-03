@@ -1,3 +1,0 @@
-K_avg = 3/2 k_B T
-k_B: boltzman's constant
-T: absolute temperature

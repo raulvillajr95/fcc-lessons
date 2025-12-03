@@ -17,4 +17,98 @@
 \begin{document}
 \maketitle
 
+Quiz Practice \newline
+Calculate probabilites and expectation values. \newline
+
+$\psi(x) = C\left(1 - x^2\right)$ \newline
+for $0 \leq x \leq 1$ \newline
+$= 0$ everywhere else \newline
+
+$
+\int \left|\psi(x)\right|^2 dx
+$ \newline
+$
+\int \left|C\left(1 - x^2\right)\right|^2 dx
+$ \newline
+$
+C^2 \int \left(1 - x^2\right)^2 dx
+$ \newline
+$
+C^2 \int \left(1 - 2x^2 + x^4\right) dx
+$ \newline
+$
+C^2 \left[x - \frac{2x^3}{3} + \frac{x^5}{5}\right]
+$ \newline
+
+Find normalization \newline
+$
+C^2 \left[x - \frac{2x^3}{3} + \frac{x^5}{5}\right]_0^1
+= 1
+$ \newline
+$
+C^2 \left[
+    \left(1 - \frac{2\times1^3}{3} + \frac{1^5}{5}\right) -
+    \left(0 - \frac{2\times0^3}{3} + \frac{0^5}{5}\right)
+  \right]
+= 1
+$ \newline
+$
+C^2 \left[
+    \left(1 - \frac{2}{3} + \frac{1}{5}\right) -
+    \left(0\right)
+  \right]
+= 1
+$ \newline
+$
+C^2 \left(\frac{8}{15}\right)
+= 1
+$ \newline
+$
+C^2 = \frac{15}{8}
+$ \newline
+$
+C = \sqrt{\frac{15}{8}}
+$ \newline
+
+Find expected pos \newline
+$
+\int x\left|\psi(x)\right|^2 dx
+$ \newline
+$
+\int x\left|C\left(1 - x^2\right)\right|^2 dx
+$ \newline
+$
+C^2 \int x\left(1 - x^2\right)^2 dx
+$ \newline
+$
+C^2 \int x\left(1 - 2x^2 + x^4\right) dx
+$ \newline
+$
+C^2 \int \left(x - 2x^3 + x^5\right) dx
+$ \newline
+$
+C^2 \left[\frac{x^2}{2} - \frac{2x^4}{4} + \frac{x^6}{6}\right]
+$ \newline
+$
+C^2 \left[\frac{x^2}{2} - \frac{x^4}{2} + \frac{x^6}{6}\right]
+$ \newline
+$
+\frac{\frac{15}{8}}{2} \left[x^2 - x^4 + \frac{x^6}{3}\right]_0^1
+$ \newline
+$
+\frac{15}{16} \left[
+  \left(1^2 - 1^4 + \frac{1^6}{3}\right) -
+  \left(0^2 - 0^4 + \frac{0^6}{3}\right)
+  \right]
+$ \newline
+$
+\frac{15}{16} \left[
+  \left(1 - 1 + \frac{1}{3}\right) -
+  \left(0\right)
+  \right]
+$ \newline
+$
+\frac{15}{16} \left(\frac{1}{3}\right)
+= \frac{5}{16}
+$ \newline
 \end{document}  
