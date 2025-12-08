@@ -1,3 +1,4 @@
-K_avg = 3/2 k_B T
-k_B: boltzmanns constant
-T: absolute temperature
+∆L = αL₀∆T
+α: expansion coefficient
+L₀: inital length
+∆T: change in temperature
