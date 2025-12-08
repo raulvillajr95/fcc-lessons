@@ -1,50 +1,102 @@
 #include <iostream>
+#include <vector>
 #include <utility>
 using namespace std;
 
-void dispPair(pair<int, int> p)
+void dispIntP(pair<int, int> par)
 {
-   cout << p.first << " " << p.second << endl;
+   cout << par.first << " " << par.second << endl;
 }
 
-pair<int, int> solve(int a, int b)
+pair<int, int> evaluatePath(const vector<int>& numbers)
 {
-   if (a == 0 || b == 0)
+
+   int lives = 2;
+   int pos = 0;
+   int moves = 0;
+   int n = numbers.size();
+
+   while (numbers[pos] != 0 && lives > 0)
    {
-      // cout << "ZERO" << endl;
-      return {a,b};
-   }
-   
-   if (a >= (2*b))
-   {
-      a = a - 2*b;
-      return solve(a,b);
-   }
-   
-   if (b >= (2*a))
-   {
-      b = b - 2*a;
-      return solve(a,b);
+      cout << "round pos: " << pos << endl;
+      if(lives == 2)
+      {
+         cout << "value: " << numbers[pos] << endl;
+
+         // Try
+         if ((pos + numbers[pos]) < 0 || (pos + numbers[pos]) >= n)
+         {
+            lives--;
+            continue;
+         }
+
+         pos += numbers[pos];
+         cout << "Life2 pos: " << pos << endl;
+         moves++;
+      } else if (lives == 1)
+      {
+         cout << "value: " << -numbers[pos] << endl;
+         
+         // Try
+         if ((pos - numbers[pos]) < 0 || (pos - numbers[pos]) >= n)
+         {
+            break;
+         }
+
+         pos -= numbers[pos];
+         cout << "Life1 pos: " << pos << endl;
+         moves++;
+      }
+
+      // if(pos < 0)
+      // {
+      //    lives--;
+      //    // if(lives == 0)
+      //    // {
+      //    //    break;
+      //    // }
+
+      //    pos = -pos;
+      //    cout << "too small pos: " << pos << endl;
+      // } else if (pos >= n)
+      // {
+      //    lives--;
+      //    // if(lives == 0)
+      //    // {
+      //    //    break;
+      //    // }
+
+      //    pos = (n-1)-(pos-(n-1));
+      //    cout << "too big pos: " << pos << endl;
+      // }
+      
+      cout << "total moves: " << moves << endl;
+      cout << "----------------" << endl;
    }
 
-   return {a,b};
+   return {pos, moves};
 }
 
 int main()
 {
-   // pair<int, int> test1 = solve(6,19);
-   // dispPair(test1);
+   vector<int> test1 = {3, 4, 1, 1, -3, 1};
+   pair<int, int> par1 = evaluatePath(test1);
+   dispIntP(par1); // 4,5
 
-   // test1 = solve(2,1);
-   // dispPair(test1);
-   
-   pair<int, int> test1 = solve(22,5);
-   dispPair(test1);
+   // vector<int> test2 = {2, 1, -3, 4};
+   // pair<int, int> par2 = evaluatePath(test2);
+   // dispIntP(par2); // 2,1
+
    return 0;
 }
 
 /*
+if char: 
+   could be same char or X
+if newline:
+   must be a newline
 
+must be same length
 
 
 check for negative bit

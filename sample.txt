@@ -1,4 +1,0 @@
-∆L = αL₀∆T
-α: expansion coefficient
-L₀: inital length
-∆T: change in temperature
