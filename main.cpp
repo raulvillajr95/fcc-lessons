@@ -2,55 +2,61 @@
 #include <vector>
 using namespace std;
 
-long elementsSum(const vector<vector<int>>& arr, int d = 0)
+void dispInt(vector<int> nums)
 {
-   int n = arr.size();
-   long count = 0;
-   for(int i = 0; i < n; i++)
+   int n = nums.size();
+   for (int i = 0; i < n; i++)
    {
-      unsigned long pos = n - i - 1;
+      cout << nums[i] << " ";
+   }
+   cout << endl;
+}
 
-      // if(arr[i].size() == 0)
-      // {
+vector<int> breakUpInt(int num)
+{
+   vector<int> res;
 
-      // }
+   while (num > 10)
+   {
+      int first = num % 10;
+      num -= first;
+      num /= 10;
+      res.insert(res.begin(), first);
+   }
+   res.insert(res.begin(), num);
 
-      if (arr[i].size() == 0 || pos > arr[i].size()-1)
+   return res;
+}
+
+vector<int> digits(int num)
+{
+   vector<int> res;
+
+   vector<int> digi = breakUpInt(num);
+   int n = digi.size();
+   for(int i = 0; i < n-1; i++)
+   {
+      for (int j = i+1; j < n; j++)
       {
-         count += d;
-      }
-      else
-      {
-         count += arr[i][pos];
+         res.push_back(digi[i] + digi[j]);
       }
    }
 
-   return count;
+   return res;
 }
 
 int main()
 {
-   vector<vector<int>> test1 = {{3, 2, 1, 0}, {4, 6, 5, 3, 2}, {9, 8, 7, 4}};
-   cout << elementsSum(test1) << endl;
-
-   vector<vector<int>> test2 = {{}, {4, 6, 5, 3, 2}, {9, 8, 7, 4}};
-   cout << elementsSum(test2) << endl;
-
-   vector<vector<int>> test3 = {{3, 2, 1, 0}, {4, 6, 5, 3, 2}, {}};
-   cout << elementsSum(test3) << endl;
-
+   vector<int> test1 = breakUpInt(12345);
+   dispInt(test1);
+   vector<int> dig1 = digits(12345);
+   dispInt(dig1);
 
    return 0;
 }
 
 /*
-n = size of main array
-grab number n-1 from 1st sub
-grab number n-2 from 2nd sub
-...
-if n-num is too big for sub
-   get number d
-sum all number
+
 
 check for negative bit
 check for exponents
