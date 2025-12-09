@@ -1,7 +1,40 @@
 #include <iostream>
 #include <vector>
+#include <utility>
 using namespace std;
 
+// int totMinFreeL(vector<pair<int,int>> freeLanc)
+// {
+//    int count = 0;
+//    int n = freeLanc.size();
+//    for (int i = 0; i < n; i++)
+//    {
+//       count += freeLanc[i].first * 60;
+//       count += freeLanc[i].second;
+//    }
+
+//    return count;
+// }
+
+// pair<int,int> hrsMins(int mins)
+// {
+//    // convert mins to [hrs, mins]
+// }
+
+// string workNeeded(int projMin, vector<pair<int,int>> freeL)
+// {
+//    int freeLMins = totMinFreeL(freeL);
+//    int myMin = projMin - freeLMins;
+//    if(myMin < 0)
+//       myMin = 0;
+
+   
+
+
+// }
+
+
+//////// Code Signal
 void dispInt(vector<int> nums)
 {
    int n = nums.size();
@@ -12,45 +45,71 @@ void dispInt(vector<int> nums)
    cout << endl;
 }
 
-vector<int> breakUpInt(int num)
+vector<int> solution(const vector<int> &numbers, int obstacle)
 {
    vector<int> res;
 
-   while (num > 10)
+   int n = numbers.size();
+   for (int i = 0; i < n; i++)
    {
-      int first = num % 10;
-      num -= first;
-      num /= 10;
-      res.insert(res.begin(), first);
-   }
-   res.insert(res.begin(), num);
+      int pos = i;
+      int steps = 0;
 
-   return res;
-}
+      // Debug
+      // cout << i << endl;
 
-vector<int> digits(int num)
-{
-   vector<int> res;
-
-   vector<int> digi = breakUpInt(num);
-   int n = digi.size();
-   for(int i = 0; i < n-1; i++)
-   {
-      for (int j = i+1; j < n; j++)
+      // -1 Exit
+      if(numbers[i] == obstacle)
       {
-         res.push_back(digi[i] + digi[j]);
+         // cout << "-1 Exit" << endl;
+         res.push_back(-1);
+         continue;
+      }
+
+      while(pos < n)
+      {
+         // cout << pos << endl;
+         if(numbers[pos] == obstacle)
+         {
+            res.push_back(-1);
+            steps++;
+            break;
+         }
+
+         pos += numbers[pos];
+         steps++;
+      }
+
+      // if(numbers[pos] == obstacle)
+      // {
+      //    res.push_back(-1);
+      //    continue;
+      // } else
+      // {
+
+      //    res.push_back(steps);
+      // }
+
+      if(numbers[pos] != obstacle)
+      {
+         res.push_back(steps);
       }
    }
-
+   
    return res;
 }
 
 int main()
 {
-   vector<int> test1 = breakUpInt(12345);
-   dispInt(test1);
-   vector<int> dig1 = digits(12345);
-   dispInt(dig1);
+   vector<int> test1 = solution({5, 3, 2, 6, 2, 1, 7}, 3);
+   dispInt(test1); // 3, -1, 3, 1, 2, 2, 1
+
+   vector<int> test2 = solution({2, 4, 2, 1, 3, 2, 8, 4, 7}, 4);
+   dispInt(test2); 
+   // -1, -1, -1, -1, -1, -1, 1, -1, 1
+   // -1 -1 -1 -1 -1 -1 1 -1 1
+   // -1, -1, -1, -1, -1, -1, 1, -1, 1
+   // -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1 -1 1
 
    return 0;
 }
