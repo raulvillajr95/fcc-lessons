@@ -1,59 +1,77 @@
 #include <iostream>
 #include <vector>
-#include <utility>
 using namespace std;
 
-int totMinFreeL(vector<pair<int,int>> freeLanc)
+vector<string> splitPacket(string packet)
 {
-   int count = 0;
-   int n = freeLanc.size();
-   for (int i = 0; i < n; i++)
-   {
-      count += freeLanc[i].first * 60;
-      count += freeLanc[i].second;
-   }
+   string header = packet.substr(0, 4);
+   string instr = packet.substr(4, 4);
+   string dat1 = packet.substr(8, 4);
+   string dat2 = packet.substr(12, 4);
+   string foot = packet.substr(16, 4);
 
-   return count;
+   return {header, instr, dat1, dat2, foot};
 }
 
-pair<int,int> hrsMins(int mins)
+string datStr(int num)
 {
-   // convert mins to [hrs, mins]
-   int hours = 0;
+   string res = "";
 
-   hours = mins / 60;
-   mins -= hours*60;
-
-   return {hours, mins};
-}
-
-string workNeeded(int projMin, vector<pair<int,int>> freeL)
-{
-   int freeLMins = totMinFreeL(freeL);
-   int myMin = projMin - freeLMins;
-   string message = "";
-   if(myMin < 0)
+   if (num < 0)
    {
-      myMin = 0;
-      message = "Easy Money!";
+      res = "0000";
+   } else if (num > 9999)
+   {
+      res = "9999";
+   } else if (num < 10)
+   {
+      res += "000";
+      res += to_string(num);
+   } else if (num < 100)
+   {
+      res += "00";
+      res += to_string(num);
+   } else if (num < 1000)
+   {
+      res += "0";
+      res += to_string(num);
    } else
    {
-
-      pair<int, int> hM = hrsMins(myMin);
-      if (hM.first == 0 && hM.second == 0)
-      {
-         message = "Easy Money!";
-      } else
-      {
-         message += "I need to work ";
-         message += to_string(hM.first);
-         message += " hour(s) and ";
-         message += to_string(hM.second);
-         message += " minute(s)";
-      }
+      res += to_string(num);
    }
 
-   return message;
+   return res;
+}
+
+string value(string data1, string data2, string instr)
+{
+   int dat1 = stoi(data1);
+   int dat2 = stoi(data2);
+
+   int res = 0;
+
+   if(instr == "0F12")
+   {
+      res = dat1 + dat2;
+   } else if(instr == "B7A2")
+   {
+      res = dat1 - dat2;
+   } else if(instr == "C3D9")
+   {
+      res = dat1 * dat2;
+   }
+
+   return datStr(res);
+}
+
+string communicationModule(string packet)
+{
+   vector<string> spPack = splitPacket(packet);
+   spPack[2] = value(spPack[2], spPack[3], spPack[1]);
+   spPack[1] = "FFFF";
+   spPack[3] = "0000";
+
+   return spPack[0] + spPack[1] + spPack[2] + spPack[3] + spPack[4];
 }
 
 // string addLargeNumbers(string num1, string num2)
@@ -68,7 +86,10 @@ int main()
 }
 
 /*
-
+split int 5 data string (len 4 each)
+function that performs calc
+   takes 3 data strings
+function that turns int to 4 digit string
 
 check for negative bit
 check for exponents
