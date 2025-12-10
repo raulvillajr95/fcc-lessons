@@ -1,21 +1,46 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
-// string addLargeNumbers(string num1, string num2)
-// {
-//    int 
-// }
-
-vector<int> L(int n, int L0, int L1, int add)
+int solution(const string& num1, const string& num2)
 {
-   vector<int> res = {L0, L1};
+   int n1 = num1.size();
+   int n2 = num2.size();
 
-   for(int i = 2; i < n; i++)
+   int res = 0;
+   int max = n1;
+   if (n2 > n1)
    {
-      int temp1 = res[i-1];
-      int temp2 = res[i-2];
-      res.push_back(temp1 + temp2 + add);
+      max = n2;
+      res = -1;
+   }
+   int min = n1;
+   if (n2 < n1)
+   {
+      min = n2;
+      res = 1;
+   }
+
+   // Equality
+   if(n1 == n2)
+   {
+      for(int i = 0; i < max; i++)
+      {
+         // if(num1[i] != num2[i])
+         // {
+         //    res = 1;
+         //    break;
+         // }
+
+         if(num1[i] > num2[i])
+         {
+            res = 1;
+            break;
+         } else if (num1[i] < num2[i])
+         {
+            res = -1;
+            break;
+         }
+      }
    }
 
    return res;
@@ -23,6 +48,9 @@ vector<int> L(int n, int L0, int L1, int add)
 
 int main()
 {
+   cout << solution("12345", "1234") << endl;
+   cout << solution("1234", "12345") << endl;
+   cout << solution("12345", "12345") << endl;
 
    return 0;
 }
