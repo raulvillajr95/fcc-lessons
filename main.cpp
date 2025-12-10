@@ -17,6 +17,8 @@ vector<int> L(int n, int L0, int L1, int add)
       int temp2 = res[i-2];
       res.push_back(temp1 + temp2 + add);
    }
+
+   return res;
 }
 
 int main()
