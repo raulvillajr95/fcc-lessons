@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <cmath>
 using namespace std;
 
 // string solution(const string &num1, const string &num2)
@@ -44,40 +45,36 @@ using namespace std;
 
 //////////////////
 
-string solve_rock_off(const vector<int> &alice, const vector<int> &bob)
+int powStr(string pow)
 {
-   int aPoints = 0;
-   int bPoints = 0;
+   int res = 0;
 
-   for (int i = 0; i < 3; i++)
-   {
-      if(alice[i] > bob[i])
-      {
-         aPoints++;
-      } else if (alice[i] < bob[i])
-      {
-         bPoints++;
-      }
-   }
+   int n = pow.size();
+   res = stoi(pow.substr(0, n-1));
 
-   string message = "";
-   message += to_string(aPoints);
-   message += ", ";
-   message += to_string(bPoints);
-   message += ": ";
+   return res;
+}
 
-   if(aPoints > bPoints)
-   {
-      message += "Alice made \"Kurt\" proud!";
-   } else if (aPoints < bPoints)
-   {
-      message += "Bob made \"Jeff\" proud!";
-   } else
-   {
-      message += "that looks like a \"draw\"! Rock on!";
-   }
+string cookingTime(const string &needPow, int min, int sec, const string &givPow)
+{
+   int nPow = powStr(needPow);
+   int gPow = powStr(givPow);
 
-   return message;
+   int ogTime = min*60 + sec;
+   double factor = nPow/(gPow*1.0);
+
+   int newTime = ceil(factor*ogTime);
+
+   int nMin = newTime / 60;
+   newTime -= nMin * 60;
+
+   string res = "";
+   res += to_string(nMin);
+   res += " minutes ";
+   res += to_string(newTime);
+   res += " seconds";
+
+   return res;
 }
 
 int main()
@@ -90,6 +87,7 @@ int main()
    // cout << solution("100", "1") << endl;
 
    ////////////
+   
 
 
    return 0;
@@ -97,6 +95,12 @@ int main()
 
 /*
 
+find out calculatation from a watts to b watts
+600W -> 260 [4 min 20 sec]
+800W -> 195 [3 min 15 sec]
+
+600/800 = 6/8 = 3/4
+3/4 * 260 = 195
 
 
 check for negative bit
