@@ -1,56 +1,96 @@
 #include <iostream>
+#include <algorithm>
+#include <vector>
 using namespace std;
 
-int solution(const string& num1, const string& num2)
+// string solution(const string &num1, const string &num2)
+// {
+//    vector<char> nums;
+
+//    int n1 = num1.size();
+//    int n2 = num2.size();
+
+//    if (n2 < n1)
+//    {
+//       // fill with zeros
+      
+//       n2 = n1;
+//    }
+
+//    int carry = 0;
+
+//    // Proceed through longest num for 0's
+//    for(int i = n1-1; i >= 0; i--)
+//    {
+//       int n1P = num1[i + (n1-n2)] - '0' - carry;
+//       int n2P = num2[i] - '0';
+//       char c = ' ';
+
+//       if(n1P >= n2P)
+//       {
+//          c = (n1P - n2P) + '0';
+//          nums.push_back(c);
+//          carry = 0;
+//       } else {
+//          c = (n1P + 10 - n2P) + '0';
+//          nums.push_back(c);
+//          carry = 1;
+//       }
+//    }
+
+//    reverse(nums.begin(), nums.end());
+//    return string(nums.begin(), nums.end());
+// }
+
+//////////////////
+
+string solve_rock_off(const vector<int> &alice, const vector<int> &bob)
 {
-   int n1 = num1.size();
-   int n2 = num2.size();
+   int aPoints = 0;
+   int bPoints = 0;
 
-   int res = 0;
-   int max = n1;
-   if (n2 > n1)
+   for (int i = 0; i < 3; i++)
    {
-      max = n2;
-      res = -1;
-   }
-   int min = n1;
-   if (n2 < n1)
-   {
-      min = n2;
-      res = 1;
-   }
-
-   // Equality
-   if(n1 == n2)
-   {
-      for(int i = 0; i < max; i++)
+      if(alice[i] > bob[i])
       {
-         // if(num1[i] != num2[i])
-         // {
-         //    res = 1;
-         //    break;
-         // }
-
-         if(num1[i] > num2[i])
-         {
-            res = 1;
-            break;
-         } else if (num1[i] < num2[i])
-         {
-            res = -1;
-            break;
-         }
+         aPoints++;
+      } else if (alice[i] < bob[i])
+      {
+         bPoints++;
       }
    }
 
-   return res;
+   string message = "";
+   message += to_string(aPoints);
+   message += ", ";
+   message += to_string(bPoints);
+   message += ": ";
+
+   if(aPoints > bPoints)
+   {
+      message += "Alice made \"Kurt\" proud!";
+   } else if (aPoints < bPoints)
+   {
+      message += "Bob made \"Jeff\" proud!";
+   } else
+   {
+      message += "that looks like a \"draw\"! Rock on!";
+   }
+
+   return message;
 }
 
 int main()
 {
-   cout << solution("12345", "1234") << endl;
-   cout << solution("1234", "12345") << endl;
-   cout << solution("12345", "12345") << endl;
+   // cout << solution("9", "2") << endl;
+   // cout << solution("70", "22") << endl;
+   // cout << solution("300", "299") << endl;
+   // cout << solution("1000", "1") << endl;
+   // cout << solution("10", "1") << endl;
+   // cout << solution("100", "1") << endl;
+
+   ////////////
+
 
    return 0;
 }
