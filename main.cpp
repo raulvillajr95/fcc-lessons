@@ -1,7 +1,8 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include <cmath>
+#include <iomanip>
+#include <sstream>
 using namespace std;
 
 // string solution(const string &num1, const string &num2)
@@ -45,36 +46,43 @@ using namespace std;
 
 //////////////////
 
-int powStr(string pow)
+string createIngredients(double sa = 0, double se = 0, double ch = 0)
 {
-   int res = 0;
+   if(sa < 0 || se < 0 || ch < 0)
+   {
+      return "";
+   }
 
-   int n = pow.size();
-   res = stoi(pow.substr(0, n-1));
+   if (sa == 0 && se == 0 && ch == 0)
+   {
+      return "[60.00;180.00;5.00]";
+   }
 
-   return res;
-}
+   if (sa > 0)
+   {
+      se = sa*3.0;
+      ch = sa/12.0;
+   } else if (se > 0)
+   {
+      sa = se/3.0;
+      ch = se/36.0;
+   } else if (ch > 0)
+   {
+      sa = ch*12.0;
+      se = ch*36.0;
+   }
 
-string cookingTime(const string &needPow, int min, int sec, const string &givPow)
-{
-   int nPow = powStr(needPow);
-   int gPow = powStr(givPow);
+   stringstream ss;
+   ss << "[" << fixed << setprecision(2) << sa << ";";
+   ss << fixed << setprecision(2) << se << ";";
+   ss << fixed << setprecision(2) << ch << "]";
 
-   int ogTime = min*60 + sec;
-   double factor = nPow/(gPow*1.0);
+   string message = ss.str();
+   // message += "[" + to_string(sa) + ";";
+   // message += to_string(se) + ";";
+   // message += to_string(ch) + "]";
 
-   int newTime = ceil(factor*ogTime);
-
-   int nMin = newTime / 60;
-   newTime -= nMin * 60;
-
-   string res = "";
-   res += to_string(nMin);
-   res += " minutes ";
-   res += to_string(newTime);
-   res += " seconds";
-
-   return res;
+   return message;
 }
 
 int main()
@@ -87,20 +95,18 @@ int main()
    // cout << solution("100", "1") << endl;
 
    ////////////
-   
+   cout << createIngredients() << endl;
+   cout << createIngredients(60) << endl;
+   cout << createIngredients(0,180) << endl;
+   cout << createIngredients(100) << endl;
 
 
    return 0;
 }
 
 /*
-
-find out calculatation from a watts to b watts
-600W -> 260 [4 min 20 sec]
-800W -> 195 [3 min 15 sec]
-
-600/800 = 6/8 = 3/4
-3/4 * 260 = 195
+ratio: 12/36/1
+get only 2 decimal places
 
 
 check for negative bit
