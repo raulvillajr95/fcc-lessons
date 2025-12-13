@@ -45,36 +45,40 @@ using namespace std;
 
 //////////////////
 
-string solve(int num)
+void dispStr(vector<string> arr)
 {
-   vector<string> parts = {"0", "01"};
-
-   // Special cases
-   if (num == 0)
+   int n = arr.size();
+   for (int i = 0; i < n; i++)
    {
-      return "0";
-   } else if (num == 1)
-   {
-      return "01";
+      cout << arr[i] << " ";
    }
-
-   // Build sequence
-   for(int i = 2; i <= num; i++)
-   {
-      cout << "BUILD" << endl;
-      string last = parts[i-1];
-      string lastLast = parts[i-2];
-      string build = last + lastLast;
-      cout << "build: " << build << endl;
-      parts.push_back(last + lastLast);
-   }
-
-   // Join parts
-   // int n = parts.size();
-   // string res = parts[n-1];
-
-   return parts[parts.size() - 1];
+   cout << endl;
 }
+
+vector<vector<string>> matrixSquareUp(int b)
+{
+   vector<vector<string>> res;
+
+   for (int i = 1; i <= b; i++)
+   {
+      vector<string> temp;
+      for (int j = b; j >= 1; j--)
+      {
+         if(j > i)
+         {
+            temp.push_back("x");
+         } else
+         {
+            temp.push_back(to_string(j));
+         }
+      }
+      res.push_back(temp);
+      dispStr(temp);
+   }
+
+   return res;
+}
+
 
 int main()
 {
@@ -82,11 +86,7 @@ int main()
 
 
    ////////////
-   // cout << solve(0) << endl;
-   // cout << solve(1) << endl;
-   // cout << solve(2) << endl;
-   // cout << solve(3) << endl;
-   cout << solve(5) << endl;
+   matrixSquareUp(3);
 
 
 
