@@ -1,3 +1,0 @@
-Substitute all non-linear types.
-This makes it a linear system.
-Solve the linear system.
