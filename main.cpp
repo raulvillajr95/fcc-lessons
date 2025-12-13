@@ -45,48 +45,35 @@ using namespace std;
 
 //////////////////
 
-string solve(string expression)
+string solve(int num)
 {
-   // Split by operator
-   vector<string> vals;
-   vector<char> oper;
+   vector<string> parts = {"0", "01"};
 
-   int n = expression.size();
-   string tempVal = "";
-   for(int i = 0; i < n; i++)
+   // Special cases
+   if (num == 0)
    {
-      char x = expression[i];
-      if(x == '*' || x == '+' || x == '-' || x == '/')
-      {
-         vals.push_back(tempVal);
-         tempVal = "";
-         oper.push_back(x);
-      } else if (i == n-1)
-      {
-         tempVal += x;
-         vals.push_back(tempVal);
-      } else
-      {
-         tempVal += x;
-      }
+      return "0";
+   } else if (num == 1)
+   {
+      return "01";
    }
 
-   // Join back up
-   string res = "";
-   int nV = vals.size();
-   for (int i = nV-1; i >= 0; i--)
+   // Build sequence
+   for(int i = 2; i <= num; i++)
    {
-      if(i > 0)
-      {
-         res += vals[i];
-         res += oper[i-1];
-      } else
-      {
-         res += vals[i];
-      }
+      cout << "BUILD" << endl;
+      string last = parts[i-1];
+      string lastLast = parts[i-2];
+      string build = last + lastLast;
+      cout << "build: " << build << endl;
+      parts.push_back(last + lastLast);
    }
 
-   return res;
+   // Join parts
+   // int n = parts.size();
+   // string res = parts[n-1];
+
+   return parts[parts.size() - 1];
 }
 
 int main()
@@ -95,9 +82,11 @@ int main()
 
 
    ////////////
-
-   cout << solve("100*b/y") << endl;
-   cout << solve("a+b-c/d*30") << endl;
+   // cout << solve(0) << endl;
+   // cout << solve(1) << endl;
+   // cout << solve(2) << endl;
+   // cout << solve(3) << endl;
+   cout << solve(5) << endl;
 
 
 
