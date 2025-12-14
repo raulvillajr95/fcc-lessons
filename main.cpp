@@ -40,7 +40,7 @@ string addLargeNumbers(string num1, string num2)
    while(i >= 0 || j >= 0 || carry)
    {
       int n1 = (i >= 0) ? num1[i] - '0' : 0;
-      int n2 = (j >= 0) ? num1[j] - '0' : 0;
+      int n2 = (j >= 0) ? num2[j] - '0' : 0;
       int current = n1 + n2 + carry;
       carry = current / 10;
       current = current % 10;
@@ -55,6 +55,11 @@ string addLargeNumbers(string num1, string num2)
 
 string solution(const string &num1, const string &num2)
 {
+   if (num1 == "0" || num2 == "0")
+   {
+      return "0";
+   }
+
    int n1 = num1.size();
    int n2 = num2.size();
 
@@ -138,6 +143,7 @@ string solution(const string &num1, const string &num2)
       }
       cout << "temp: " << temp << endl;
       res = addLargeNumbers(res, temp);
+      cout << "added: " << res << endl;
    }
 
    return res;
@@ -145,36 +151,19 @@ string solution(const string &num1, const string &num2)
 
 //////////////////
 
+// vector<int> squareUp(int n)
+// {
+//    vector<int> res;
+//    for(int i = n; i > n; i--)
+//    {
+//       for(int j = n; j > 0; j--)
+//       {
 
-string diagonal(const vector<vector<int>> &matrix)
-{
-   int n = matrix.size();
-   int priD = 0;
-   int secD = 0;
-   for(int i = 0; i < n; i++)
-   {
-      priD += matrix[i][i];
-      secD += matrix[i][n-1-i];
-      // for(int j = 0; j < n; j++)
-      // {
+//       }
+//    }
 
-      // }
-   }
-
-   string mess = "";
-   if(priD > secD)
-   {
-      mess = "Principal Diagonal win!";
-   } else if (priD < secD)
-   {
-      mess = "Secondary Diagonal win!";
-   } else
-   {
-      mess = "Draw!";
-   }
-
-   return mess;
-}
+//    return res;
+// }
 
 int main()
 {
@@ -182,8 +171,9 @@ int main()
    // solution("13", "5");
    // cout << solution("95", "22") << endl;
    // cout << solution("319", "204") << endl;
+   cout << solution("0", "500") << endl;
 
-   // cout << addLargeNumbers("63800","") << endl;
+   // cout << addLargeNumbers("63800","1276") << endl;
    // // cout << addLargeNumbers("","") << endl;
 
    ////////////
