@@ -1,39 +1,9 @@
 #include <iostream>
 #include <vector>
-#include <climits>
+#include <unordered_map>
 using namespace std;
 
-int solution(vector<int> arrayA, vector<int> arrayB, int sizeA, int sizeB)
-{
-   int indexA = 0;
-   int indexB = -1;
-   bool in_arrayA = true;
-   int max_value = INT_MIN;
-
-   while (true)
-   {
-      if (in_arrayA)
-      {
-         indexB = arrayA[indexA];
-         if (arrayB[indexB] > max_value)
-         {
-            max_value = arrayB[indexB];
-         }
-      } else
-      {
-         indexA = arrayB[indexB];
-         if (indexA == 0)
-         {
-            return max_value;
-         }
-      }
-      in_arrayA = !in_arrayA;
-   }
-}
-
-//////////////////
-
-void disP(vector<int> arr)
+void dispInt(vector<int> arr)
 {
    int n = arr.size();
    for (int i = 0; i < n; i++)
@@ -43,39 +13,84 @@ void disP(vector<int> arr)
    cout << endl;
 }
 
-vector<int> squareUp(int n)
+vector<int> solution(const vector<int>& arrayA, const vector<int>& arrayB)
 {
+
+   bool ran = false;
+   int pos = 0;
    vector<int> res;
-   for(int i = 0; i < n; i++)
+   // for(int i = 0; i < 5; i++)
+   while(pos != 0 || ran != true)
    {
-      for(int j = n; j > 0; j--)
-      {
-         if (j > i+1)
-         {
-            res.push_back(0);
-         }
-         else
-         {
-            res.push_back(j);
-         }
-      }
+      cout << "added: " << arrayA[pos] << endl;
+      res.push_back(arrayA[pos]);
+
+      ran = true;
+
+      pos = arrayA[pos];
+      cout << "first: " << pos << endl;
+
+      pos = arrayB[pos-1] - 1;
+      cout << "second: " << pos << endl;
+
+      cout << "----------" << endl;
    }
 
    return res;
 }
 
+
+//////////////////
+
+unordered_map<string, vector<string>> conjugate(string verb)
+{
+   unordered_map<string, vector<string>> res;
+   vector<string> conj;
+
+   string part = verb.substr(0,verb.size()-2);
+   string suff = verb.substr(verb.size()-3);
+
+   if(suff == "ar")
+   {
+      conj.push_back(part + "o");
+      conj.push_back(part + "as");
+      conj.push_back(part + "a");
+      conj.push_back(part + "amos");
+      conj.push_back(part + "áis");
+      conj.push_back(part + "an");
+   } else if (suff == "er")
+   {
+      conj.push_back(part + "o");
+      conj.push_back(part + "es");
+      conj.push_back(part + "e");
+      conj.push_back(part + "emos");
+      conj.push_back(part + "éis");
+      conj.push_back(part + "en");
+   } else if (suff == "ir")
+   {
+      conj.push_back(part + "o");
+      conj.push_back(part + "es");
+      conj.push_back(part + "e");
+      conj.push_back(part + "imos");
+      conj.push_back(part + "ís");
+      conj.push_back(part + "en");
+   }
+
+   res[verb] = conj;
+   return res;
+}
+
 int main()
 {
-   // vector<int> arrayA = {2, 4, 3, 1, 6};
-   // vector<int> arrayB = {4, 0, 3, 2, 0};
-   // int sizeA = arrayA.size();
-   // int sizeB = arrayB.size();
-
-   // cout << "Maximum value encountered in arrayB: " << solution(arrayA, arrayB, sizeA, sizeB) << endl;
+   // vector<int> arrA = {1,3,2,5,4};
+   // vector<int> arrB = {5,4,3,2,1};
+   // dispInt(solution(arrA, arrB));
 
    ////////////
-   vector<int> test1 = squareUp(3);
-   disP(test1);
+
+   unordered_map<string, int> res;
+   res["key"] = 3;
+   cout << res["key"] << endl;
 
 
    return 0;
