@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <unordered_map>
+#include <utility>
 using namespace std;
 
 void dispInt(vector<int> arr)
@@ -42,42 +42,24 @@ vector<int> solution(const vector<int>& arrayA, const vector<int>& arrayB)
 
 //////////////////
 
-unordered_map<string, vector<string>> conjugate(string verb)
+pair<bool, vector<char>> caseSensitive(const string& str)
 {
-   unordered_map<string, vector<string>> res;
-   vector<string> conj;
-
-   string part = verb.substr(0,verb.size()-2);
-   string suff = verb.substr(verb.size()-3);
-
-   if(suff == "ar")
+   bool isLow = true;
+   vector<char> highs;
+   int n = str.size();
+   for(int i = 0; i < n; i++)
    {
-      conj.push_back(part + "o");
-      conj.push_back(part + "as");
-      conj.push_back(part + "a");
-      conj.push_back(part + "amos");
-      conj.push_back(part + "áis");
-      conj.push_back(part + "an");
-   } else if (suff == "er")
-   {
-      conj.push_back(part + "o");
-      conj.push_back(part + "es");
-      conj.push_back(part + "e");
-      conj.push_back(part + "emos");
-      conj.push_back(part + "éis");
-      conj.push_back(part + "en");
-   } else if (suff == "ir")
-   {
-      conj.push_back(part + "o");
-      conj.push_back(part + "es");
-      conj.push_back(part + "e");
-      conj.push_back(part + "imos");
-      conj.push_back(part + "ís");
-      conj.push_back(part + "en");
+      if (str[i] == ' ')
+      {
+         continue;
+      } else if(str[i] == toupper(str[i]))
+      {
+         isLow = false;
+         highs.push_back(str[i]);
+      }
    }
 
-   res[verb] = conj;
-   return res;
+   return {isLow, highs};
 }
 
 int main()
@@ -88,9 +70,7 @@ int main()
 
    ////////////
 
-   unordered_map<string, int> res;
-   res["key"] = 3;
-   cout << res["key"] << endl;
+
 
 
    return 0;
