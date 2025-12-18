@@ -1,1 +1,4 @@
-#include <string>
+int a = 1;
+double b = 2.0;
+char c = '3';
+bool d = true;

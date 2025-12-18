@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <utility>
 using namespace std;
 
 void dispInt(vector<int> arr)
@@ -42,25 +41,7 @@ vector<int> solution(const vector<int>& arrayA, const vector<int>& arrayB)
 
 //////////////////
 
-pair<bool, vector<char>> caseSensitive(const string& str)
-{
-   bool isLow = true;
-   vector<char> highs;
-   int n = str.size();
-   for(int i = 0; i < n; i++)
-   {
-      if (str[i] == ' ')
-      {
-         continue;
-      } else if(str[i] == toupper(str[i]))
-      {
-         isLow = false;
-         highs.push_back(str[i]);
-      }
-   }
 
-   return {isLow, highs};
-}
 
 int main()
 {
