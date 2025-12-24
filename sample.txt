@@ -1,2 +1,0 @@
-Use v.size()
-for(size_t i = 0; i < v.size(); i++)

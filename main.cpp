@@ -28,26 +28,26 @@ int solution(const vector<int> &arrayA, const vector<int> &arrayB, const vector<
    {
       if (pos >= nA)
       {break;}
-      cout << arrayA[pos] << endl;
+      cout << "arrA: " << arrayA[pos] << endl;
       pos = arrayA[pos];
 
       if (pos >= nB)
       {break;}
       if (arrayB[pos] > maxB)
       {maxB = arrayB[pos];}
-      cout << arrayB[pos] << endl;
+      cout << "arrB: " << arrayB[pos] << endl;
       pos = arrayB[pos];
 
       if (pos >= nA)
       {break;}
-      cout << arrayA[pos] << endl;
+      cout << "arrA: " << arrayA[pos] << endl;
       pos = arrayA[pos]; 
 
       if (pos >= nC)
       {break;}
       if (arrayB[pos] > maxC)
       {maxC = arrayB[pos];}
-      cout << arrayC[pos] << endl;
+      cout << "arrC: " << arrayC[pos] << endl;
       pos = arrayC[pos];
 
       if (pos == initPos)
@@ -65,79 +65,56 @@ int solution(const vector<int> &arrayA, const vector<int> &arrayB, const vector<
 
 //////////////////
 
-bool isPalindrome(string word)
+bool inD(string num, char d)
 {
-   int n = word.size();
-   bool pal = true;
-   for(size_t i = 0; i < n; i++)
-   {
-      char back = word[n-1-i];
-      char front = word[i];
-
-      if (back != front)
-      {
-         pal = false;
-         break;
-      }
-   }
-
-   return pal;
-}
-
-bool solve(string s)
-{
-
-
-   string rev = "";
-   size_t n = s.size();
    int count = 0;
-   for(size_t i = 0; i < n; i++)
+   int n = num.size();
+   for(int i = 0; i < n; i++)
    {
-      rev += s[n-1-i];
-      if(s[i] != s[n-1-i])
+      if(d == num[i])
       {
          count++;
       }
    }
 
+   return count == (d-'0');
+}
+
+bool is_dd(int n)
+{
+   string num = to_string(n);
+   int nN = num.size();
    bool res = false;
-   // cout << count << endl;
-   if(count == 2)
+   for(int i = 0; i < nN; i++)
    {
-      res = true;
-   } else if (isPalindrome(s) && n % 2 == 1)
-   {
-      res = true
+      if (inD(num, num[i]))
+      {
+         res = true;
+         break;
+      }
+      
    }
 
    return res;
 }
 
+
 int main()
 {
-   // vector<int> arrA = {2,1,3,0};
-   // vector<int> arrB = {1,3,2,4};
-   // vector<int> arrC = {4,2,5,1};
-
    vector<int> arrA = {2,1,3,0};
    vector<int> arrB = {1,3,2,4};
-   vector<int> arrC = {4,2,5,3};
+   vector<int> arrC = {4,2,5,1};
 
-   // cout << solution(arrA, arrB, arrC) << endl;
+   // vector<int> arrA = {2,1,3,0};
+   // vector<int> arrB = {1,3,2,4};
+   // vector<int> arrC = {4,2,5,3};
+
+   cout << solution(arrA, arrB, arrC) << endl;
 
 
 
    ////////////
-   // cout << isPalindrome("abba") << endl;
-   // cout << isPalindrome("abcba") << endl;
-   // cout << isPalindrome("abbx") << endl;
 
-   cout << solve("abba") << endl;
-   cout << solve("abbaa") << endl;
-   cout << solve("abbx") << endl;
-   cout << solve("aa") << endl;
-   cout << solve("ab") << endl;
-   cout << solve("abcba") << endl;
 
 
    return 0;
@@ -149,8 +126,9 @@ get maxes
 check repetition
 
 /////////////
-if regular palindrome: false
-if regular palindrome, but off by 1: true
-else: false
+helper func: is d in num d times?
+
+
+
 
 */
