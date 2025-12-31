@@ -1,0 +1,2 @@
+Use streams
+std::osstringstream s;

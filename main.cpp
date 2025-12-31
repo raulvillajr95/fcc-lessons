@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <climits>
+#include <numeric>
 using namespace std;
 
 void dispInt(const vector<int> arr)
@@ -65,37 +66,40 @@ int solution(const vector<int> &arrayA, const vector<int> &arrayB, const vector<
 
 //////////////////
 
-bool inD(string num, char d)
+string solve(const string &s, unsigned k)
 {
-   int count = 0;
-   int n = num.size();
-   for(int i = 0; i < n; i++)
+   string word = s;
+   int n = word.size();
+   int count = k;
+   char car = 'a';
+
+   while(count < k)
    {
-      if(d == num[i])
+      string tempWord = "";
+      for(int i = 0; i < n; i++)
       {
-         count++;
+         if(count >= k)
+         {
+            break;
+         }
+
+         if(word[i] == car)
+         {
+            // take character away
+
+
+            count++;
+         } else {
+            tempWord += word[i];
+         }
+
       }
+      n = tempWord.size();
+      word = tempWord;
+      car++;
    }
 
-   return count == (d-'0');
-}
-
-bool is_dd(int n)
-{
-   string num = to_string(n);
-   int nN = num.size();
-   bool res = false;
-   for(int i = 0; i < nN; i++)
-   {
-      if (inD(num, num[i]))
-      {
-         res = true;
-         break;
-      }
-      
-   }
-
-   return res;
+   return word;
 }
 
 
@@ -109,12 +113,13 @@ int main()
    // vector<int> arrB = {1,3,2,4};
    // vector<int> arrC = {4,2,5,3};
 
-   cout << solution(arrA, arrB, arrC) << endl;
+   // cout << solution(arrA, arrB, arrC) << endl;
 
 
 
    ////////////
 
+   cout << solve("abracadabra", 1) << endl;
 
 
    return 0;
