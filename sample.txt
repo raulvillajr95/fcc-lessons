@@ -1,2 +1,3 @@
-Use streams
-std::osstringstream s;
+auto it = std::find(v.begin(), v.end(), target);
+needs #include <algorithm>
+check: it != v.end();

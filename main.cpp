@@ -2,6 +2,7 @@
 #include <vector>
 #include <climits>
 #include <numeric>
+#include <cmath>
 using namespace std;
 
 void dispInt(const vector<int> arr)
@@ -64,42 +65,31 @@ int solution(const vector<int> &arrayA, const vector<int> &arrayB, const vector<
 }
 
 
-//////////////////
+////////////////// Bugs Life
 
-string solve(const string &s, unsigned k)
+double diag(double a, double b)
 {
-   string word = s;
-   int n = word.size();
-   int count = k;
-   char car = 'a';
+   return sqrt(a*a + b*b);
+}
 
-   while(count < k)
+double shortestDistance(double x, double y, double z)
+{
+   double a = diag(x,y + z);
+   double b = diag(x + y,z);
+   double c = diag(x + z,y);
+
+   double res = a;
+
+   if(b < res)
    {
-      string tempWord = "";
-      for(int i = 0; i < n; i++)
-      {
-         if(count >= k)
-         {
-            break;
-         }
-
-         if(word[i] == car)
-         {
-            // take character away
-
-
-            count++;
-         } else {
-            tempWord += word[i];
-         }
-
-      }
-      n = tempWord.size();
-      word = tempWord;
-      car++;
+      res = b;
    }
-
-   return word;
+   if(c < res)
+   {
+      res = c;
+   }
+   
+   return res;
 }
 
 
@@ -118,8 +108,9 @@ int main()
 
 
    ////////////
-
-   cout << solve("abracadabra", 1) << endl;
+   cout << shortestDistance(1,2,3) << endl;
+   cout << shortestDistance(1,1,1) << endl;
+   cout << shortestDistance(134,191.5,45.5) << endl;
 
 
    return 0;
@@ -131,8 +122,10 @@ get maxes
 check repetition
 
 /////////////
-helper func: is d in num d times?
-
+caculate 3 distances; get the shortes
+diag of c b; + a
+diag of c a; + b
+diag of a b; + c
 
 
 
