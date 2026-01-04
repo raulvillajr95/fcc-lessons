@@ -66,78 +66,24 @@ using namespace std;
 
 //////////////////
 
-vector<string> sepBySpace(string message)
+string generate_shape(unsigned n)
 {
-   int n = message.size();
-   vector<string> res;
-   string temp = "";
+   string res = "";
 
    for(int i = 0; i < n; i++)
    {
-      if(message[i] == ' ')
+      string temp = "";
+
+      for(int j = 0; j < n; j++)
       {
-         res.push_back(temp);
-         temp = "";
-      }  else if (i == n-1)
+         temp += '+';
+      }
+
+      if(i < n-1)
       {
-         temp += message[i];
-         res.push_back(temp);
-      } else 
-      {
-         temp += message[i];
+         temp += '\n';
       }
    }
-
-   return res;
-}
-
-int strToInt(string strNum)
-{
-   int res = 0;
-
-   if(strNum == "one")
-   {
-      res = 1;
-   } else if(strNum == "two")
-   {
-      res = 2;
-   } else if(strNum == "three")
-   {
-      res = 3;
-   } else if(strNum == "four")
-   {
-      res = 4;
-   } else if(strNum == "five")
-   {
-      res = 5;
-   } else if(strNum == "six")
-   {
-      res = 6;
-   } else if(strNum == "seven")
-   {
-      res = 7;
-   } else if(strNum == "eight")
-   {
-      res = 8;
-   } else if(strNum == "nine")
-   {
-      res = 9;
-   }
-   
-   return res;
-}
-
-vector<int> scoreboard(const string &s)
-{
-   vector<string> sepped = sepBySpace(s);
-
-   int n = sepped.size();
-   vector<int> res;
-   int first = strToInt(sepped[n-2]);
-   res.push_back(first);
-
-   int second = strToInt(sepped[n-1]);
-   res.push_back(second);
 
    return res;
 }
@@ -157,6 +103,7 @@ int main()
 
 
    ////////////
+   cout << generate_shape(3) << endl;
 
 
    return 0;
