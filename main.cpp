@@ -65,24 +65,24 @@ using namespace std;
 
 
 //////////////////
-
-string generate_shape(unsigned n)
+vector<vector<int>> solve(int n)
 {
-   string res = "";
+   vector<vector<int>> res;
 
    for(int i = 0; i < n; i++)
    {
-      string temp = "";
-
+      vector<int> temp;
       for(int j = 0; j < n; j++)
       {
-         temp += '+';
+         if(i == j)
+         {
+            temp.push_back(1);
+         } else
+         {
+            temp.push_back(0);
+         }
       }
-
-      if(i < n-1)
-      {
-         temp += '\n';
-      }
+      res.push_back(temp);
    }
 
    return res;
@@ -103,7 +103,6 @@ int main()
 
 
    ////////////
-   cout << generate_shape(3) << endl;
 
 
    return 0;
