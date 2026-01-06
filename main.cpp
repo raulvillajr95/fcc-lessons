@@ -65,27 +65,28 @@ using namespace std;
 
 
 //////////////////
-vector<vector<int>> solve(int n)
-{
-   vector<vector<int>> res;
 
+string low(string word)
+{
+   string res = "";
+   int n = word.size();
    for(int i = 0; i < n; i++)
    {
-      vector<int> temp;
-      for(int j = 0; j < n; j++)
-      {
-         if(i == j)
-         {
-            temp.push_back(1);
-         } else
-         {
-            temp.push_back(0);
-         }
-      }
-      res.push_back(temp);
+      res += tolower(word[i]);
    }
-
    return res;
+}
+
+unsigned int countConsonants(const string& str)
+{
+   string strLow = low(str);
+   vector<int> letts(26);
+   int n = str.size();
+   for(int i = 0; i < n; i++)
+   {
+      int charNum = strLow[i] - 'a';
+      
+   }
 }
 
 int main()
@@ -104,6 +105,8 @@ int main()
 
    ////////////
 
+
+   cout << ('z' - 'a') << endl;
 
    return 0;
 }
