@@ -85,8 +85,34 @@ unsigned int countConsonants(const string& str)
    for(int i = 0; i < n; i++)
    {
       int charNum = strLow[i] - 'a';
-      
+      if(charNum > 0 && charNum < 4)
+      {
+         letts[charNum]++;
+      } else if (charNum > 4 && charNum < 8)
+      {
+         letts[charNum]++;
+      } else if (charNum > 8 && charNum < 14)
+      {
+         letts[charNum]++;
+      } else if (charNum > 14 && charNum < 20)
+      {
+         letts[charNum]++;
+      } else if (charNum > 20 && charNum < 26)
+      {
+         letts[charNum]++;
+      }
    }
+
+   int count = 0;
+   for(int i = 0; i < 26; i++)
+   {
+      if(letts[i] > 0)
+      {
+         count++;
+      }
+   }
+
+   return count;
 }
 
 int main()
