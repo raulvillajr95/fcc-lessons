@@ -14,89 +14,60 @@ using namespace std;
 //    cout << endl;
 // }
 
-// int solution(const vector<int> &arrayA, const vector<int> &arrayB, const vector<int> &arrayC)
-// {
-//    int pos = 0;
-//    int initPos = 0;
-//    int maxB = INT_MIN;
-//    int maxC = INT_MIN;
+int solution(const vector<int> &arrayA, const vector<int> &arrayB, const vector<int> &arrayC)
+{
+   int pos = 0;
+   int initPos = 0;
+   int maxB = INT_MIN;
+   int maxC = INT_MIN;
 
-//    int nA = arrayA.size();
-//    int nB = arrayB.size();
-//    int nC = arrayC.size();
+   int nA = arrayA.size();
+   int nB = arrayB.size();
+   int nC = arrayC.size();
 
-//    while(true)
-//    {
-//       if (pos >= nA)
-//       {break;}
-//       cout << "arrA: " << arrayA[pos] << endl;
-//       pos = arrayA[pos];
+   while(true)
+   {
+      if (pos >= nA)
+      {break;}
+      cout << "arrA: " << arrayA[pos] << endl;
+      pos = arrayA[pos];
 
-//       if (pos >= nB)
-//       {break;}
-//       if (arrayB[pos] > maxB)
-//       {maxB = arrayB[pos];}
-//       cout << "arrB: " << arrayB[pos] << endl;
-//       pos = arrayB[pos];
+      if (pos >= nB)
+      {break;}
+      if (arrayB[pos] > maxB)
+      {maxB = arrayB[pos];}
+      cout << "arrB: " << arrayB[pos] << endl;
+      pos = arrayB[pos];
+      
 
-//       if (pos >= nA)
-//       {break;}
-//       cout << "arrA: " << arrayA[pos] << endl;
-//       pos = arrayA[pos]; 
+      if (pos >= nA)
+      {break;}
+      cout << "arrA: " << arrayA[pos] << endl;
+      pos = arrayA[pos]; 
 
-//       if (pos >= nC)
-//       {break;}
-//       if (arrayB[pos] > maxC)
-//       {maxC = arrayB[pos];}
-//       cout << "arrC: " << arrayC[pos] << endl;
-//       pos = arrayC[pos];
+      if (pos >= nC)
+      {break;}
+      if (arrayC[pos] > maxC)
+      {maxC = arrayC[pos];}
+      cout << "arrC: " << arrayC[pos] << endl;
+      pos = arrayC[pos];
 
-//       if (pos == initPos)
-//       {
-//          break;
-//       } else
-//       {
-//          initPos = pos;
-//       }
-//    }
+      if (pos == initPos)
+      {
+         break;
+      } else
+      {
+         initPos = pos;
+      }
+   }
 
-//    return maxB + maxC;
-// }
+   return maxB + maxC;
+}
 
 
 //////////////////
 
-string doubles(string word)
-{
-   string res = "";
-   int n = word.size();
 
-   for(int i = 0; i < n-1; i++)
-   {
-      cout << word[i] << " " << word[i+1] << endl;
-      // cout << word[i] << endl;
-      if(word[i] == word[i+1])
-      {
-         // cout << "IF" << endl;
-         i++;
-      } else 
-      {
-         // cout << "EL" << endl;
-         if(i == n-2)
-         {
-            // cout << "RE" << endl;
-            res += word[i+1];
-         } else
-         {
-            res += word[i];
-            res += word[i+1];
-         }
-      }
-
-   }
-
-   return res;
-}
 
 
 int main()
@@ -105,22 +76,15 @@ int main()
    // vector<int> arrA = {2,1,3,0};
    // vector<int> arrC = {4,2,5,1};
 
-   // vector<int> arrA = {2,1,3,0}; // 7
-   // vector<int> arrB = {1,3,2,4};
-   // vector<int> arrC = {4,2,5,3};
+   vector<int> arrA = {2,1,3,0}; // 7
+   vector<int> arrB = {1,3,2,4};
+   vector<int> arrC = {4,2,5,3};
 
-   // cout << solution(arrA, arrB, arrC) << endl;
+   cout << solution(arrA, arrB, arrC) << endl;
 
 
 
    ////////////
-
-   cout << doubles("abbbzz") << endl; // ab
-   cout << doubles("zzzzykkkd") << endl; // ykd
-   // cout << doubles("abbcccdddda") << endl; // aca
-   // cout << doubles("vvvvvoiiiiin") << endl; // voin
-   // cout << doubles("rrrmooomqqqqj") << endl; // rmomj
-   // cout << doubles("xxbnnnnnyaaaaam") << endl; // bnyam
 
    return 0;
 }
