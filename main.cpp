@@ -66,54 +66,38 @@ using namespace std;
 
 //////////////////
 
-string low(string word)
+string doubles(string word)
 {
    string res = "";
    int n = word.size();
-   for(int i = 0; i < n; i++)
+
+   for(int i = 0; i < n-1; i++)
    {
-      res += tolower(word[i]);
+      cout << word[i] << " " << word[i+1] << endl;
+      // cout << word[i] << endl;
+      if(word[i] == word[i+1])
+      {
+         // cout << "IF" << endl;
+         i++;
+      } else 
+      {
+         // cout << "EL" << endl;
+         if(i == n-2)
+         {
+            // cout << "RE" << endl;
+            res += word[i+1];
+         } else
+         {
+            res += word[i];
+            res += word[i+1];
+         }
+      }
+
    }
+
    return res;
 }
 
-unsigned int countConsonants(const string& str)
-{
-   string strLow = low(str);
-   vector<int> letts(26);
-   int n = str.size();
-   for(int i = 0; i < n; i++)
-   {
-      int charNum = strLow[i] - 'a';
-      if(charNum > 0 && charNum < 4)
-      {
-         letts[charNum]++;
-      } else if (charNum > 4 && charNum < 8)
-      {
-         letts[charNum]++;
-      } else if (charNum > 8 && charNum < 14)
-      {
-         letts[charNum]++;
-      } else if (charNum > 14 && charNum < 20)
-      {
-         letts[charNum]++;
-      } else if (charNum > 20 && charNum < 26)
-      {
-         letts[charNum]++;
-      }
-   }
-
-   int count = 0;
-   for(int i = 0; i < 26; i++)
-   {
-      if(letts[i] > 0)
-      {
-         count++;
-      }
-   }
-
-   return count;
-}
 
 int main()
 {
@@ -131,8 +115,12 @@ int main()
 
    ////////////
 
-
-   cout << ('z' - 'a') << endl;
+   cout << doubles("abbbzz") << endl; // ab
+   cout << doubles("zzzzykkkd") << endl; // ykd
+   // cout << doubles("abbcccdddda") << endl; // aca
+   // cout << doubles("vvvvvoiiiiin") << endl; // voin
+   // cout << doubles("rrrmooomqqqqj") << endl; // rmomj
+   // cout << doubles("xxbnnnnnyaaaaam") << endl; // bnyam
 
    return 0;
 }
