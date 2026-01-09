@@ -14,73 +14,53 @@ using namespace std;
 //    cout << endl;
 // }
 
-int solution(const vector<int> &arrayA, const vector<int> &arrayB, const vector<int> &arrayC)
+vector<int> solution(const vector<int>& roadA, const vector<int>& roadB)
 {
-   int pos = 0;
-   int initPos = 0;
-   int maxB = INT_MIN;
-   int maxC = INT_MIN;
-
-   int nA = arrayA.size();
-   int nB = arrayB.size();
-   int nC = arrayC.size();
-
-   while(true)
+   int nA = roadA.size();
+   int nB = roadB.size();
+   vector<int> counts;
+   for(int i = 0; i < nA; i++)
    {
-      if (pos >= nA)
-      {break;}
-      cout << "arrA: " << arrayA[pos] << endl;
-      pos = arrayA[pos];
-
-      if (pos >= nB)
-      {break;}
-      if (arrayB[pos] > maxB)
-      {maxB = arrayB[pos];}
-      cout << "arrB: " << arrayB[pos] << endl;
-      pos = arrayB[pos];
-      
-
-      if (pos >= nA)
-      {break;}
-      cout << "arrA: " << arrayA[pos] << endl;
-      pos = arrayA[pos]; 
-
-      if (pos >= nC)
-      {break;}
-      if (arrayC[pos] > maxC)
-      {maxC = arrayC[pos];}
-      cout << "arrC: " << arrayC[pos] << endl;
-      pos = arrayC[pos];
-
-      if (pos == initPos)
+      int count = 0;
+      vector<bool> visitA(nA);
+      vector<bool> visitB(nB);
+      int pos = i;
+      while(true)
       {
-         break;
-      } else
-      {
-         initPos = pos;
+         if(visitA[pos])
+         {
+            break;
+         } else {
+            visitA[pos] = true;
+         }
+         pos = roadA[pos];
+         count++;
+
+         if(visitB[pos])
+         {
+            break;
+         } else {
+            visitB[pos] = true;
+         }
+         pos = roadB[pos];
+         count++;
       }
+
+      counts.push_back(count);
    }
 
-   return maxB + maxC;
+   return counts;
 }
+
 
 
 //////////////////
 
 
 
-
 int main()
 {
-   // vector<int> arrB = {1,3,2,4}; // 7
-   // vector<int> arrA = {2,1,3,0};
-   // vector<int> arrC = {4,2,5,1};
 
-   vector<int> arrA = {2,1,3,0}; // 7
-   vector<int> arrB = {1,3,2,4};
-   vector<int> arrC = {4,2,5,3};
-
-   cout << solution(arrA, arrB, arrC) << endl;
 
 
 
