@@ -55,7 +55,39 @@ vector<int> solution(const vector<int>& roadA, const vector<int>& roadB)
 
 
 //////////////////
+string revStr(string str)
+{
+   string res = "";
+   int n = str.size();
+   for(int i = n-1; i >= 0; i--)
+   {
+      res += str[i];
+   }
 
+   return res;
+}
+
+string shorter_reverse_longer(const string& a, const string& b)
+{
+   int nA = a.size();
+   int nB = b.size();
+
+   string message = "";
+
+   if (nA < nB)
+   {
+      message += a;
+      message += revStr(b);
+      message += a;
+   } else
+   {
+      message += b;
+      message += revStr(a);
+      message += b;
+   }
+
+   return message;
+}
 
 
 int main()
