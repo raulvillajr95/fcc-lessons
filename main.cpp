@@ -55,38 +55,35 @@ vector<int> solution(const vector<int>& roadA, const vector<int>& roadB)
 
 
 //////////////////
-string revStr(string str)
+string firstCap(string word)
 {
    string res = "";
-   int n = str.size();
-   for(int i = n-1; i >= 0; i--)
+   int n = word.size();
+   for(int i = 0; i < n; i++)
    {
-      res += str[i];
+      if(i = 0)
+      {
+         res += toupper(word[i]);
+      } else
+      {
+         res += tolower(word[i]);
+      }
    }
 
    return res;
 }
 
-string shorter_reverse_longer(const string& a, const string& b)
+vector<string> capMe(const vector<string>& strings)
 {
-   int nA = a.size();
-   int nB = b.size();
+   vector<string> res;
 
-   string message = "";
-
-   if (nA < nB)
+   int n = strings.size();
+   for(int i = 0; i < n; i++)
    {
-      message += a;
-      message += revStr(b);
-      message += a;
-   } else
-   {
-      message += b;
-      message += revStr(a);
-      message += b;
+      res.push_back(firstCap(strings[i]));
    }
 
-   return message;
+   return res;
 }
 
 
