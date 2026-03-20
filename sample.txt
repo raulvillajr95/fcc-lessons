@@ -1,0 +1,2 @@
+5.32
+I'm thinking of a 2-digit number. If the digits of my number are reversed, the new number is 36 greater than my original number. If the tens digit of my original number is doubled and the units digit is halved, the new number is 17 greater than my original number. What is my original number?
